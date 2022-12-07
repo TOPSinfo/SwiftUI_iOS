@@ -1,0 +1,136 @@
+//
+//  UserViewModel.swift
+//  Astroyodha
+//
+//  Created by Tops on 01/11/22.
+//
+
+import Foundation
+import Firebase
+
+class UserViewModel: ObservableObject {
+    // user model
+    @Published var userDataList = [UserModel]()
+<<<<<<< HEAD
+=======
+    
+>>>>>>> d5ad54b87dbedc033bd4c771a70c9d53c325c07e
+    // Get a reference to the database
+    let db = Firestore.firestore()
+    
+    let device = UIDevice.modelName
+    
+    func addData() {
+        // Add a data to a collection
+        db.collection("user").addDocument(data: ["birthdate":objUser.birthdate,
+                                                 "birthplace":objUser.birthplace,
+                                                 "birthtime":objUser.birthtime,
+                                                 "createdat":Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                                 "devicedetails":device,
+                                                 "email":objUser.email,
+                                                 "fullname":objUser.fullname,
+                                                 "isOnline":objUser.isOnline,
+                                                 "lastupdatetime":Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                                 "phone":objUser.phone,
+                                                 "profileimage":objUser.profileimage,
+                                                 "socialid":objUser.socialid,
+                                                 "socialtype":objUser.socialtype,
+                                                 "token":objUser.token,
+                                                 "uid":objUser.uid,
+                                                 "usertype": currentUserType.rawValue,
+                                                 "walletbalance": objUser.walletbalance
+                                                ]) { error in
+            // Check for errors
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+<<<<<<< HEAD
+   
+=======
+    
+    func addAstrologerData() {
+        // Add a data to a collection
+        let device = UIDevice.modelName
+        db.collection("user").addDocument(data: ["birthdate":objUser.birthdate,
+                                                 "birthplace":objUser.birthplace,
+                                                 "birthtime":objUser.birthtime,
+                                                 "createdat":Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                                 "devicedetails":device,
+                                                 "email":objUser.email,
+                                                 "fullname":objUser.fullname,
+                                                 "isOnline":objUser.isOnline,
+                                                 "lastupdatetime":Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                                 "phone":objUser.phone,
+                                                 "price": 0,
+                                                 "profileimage":objUser.profileimage,
+                                                 "rating": 0,
+                                                 "socialid":objUser.socialid,
+                                                 "socialtype":objUser.socialtype,
+                                                 "token":objUser.token,
+                                                 "uid":objUser.uid,
+                                                 "usertype": currentUserType.rawValue,
+                                                 "walletbalance": objUser.walletbalance
+                                                ]) { error in
+            // Check for errors
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+
+>>>>>>> d5ad54b87dbedc033bd4c771a70c9d53c325c07e
+    func fetchData() {
+        // Read the documents at a specific path
+        db.collection("user").getDocuments { snapshot, error in
+            if error == nil {
+                if let snapshot = snapshot {
+                    // Update the list property in the main thread
+                    DispatchQueue.main.async {
+                        // Get all the documents and create Todos
+                        self.userDataList = snapshot.documents.map { getFireData in
+                            // Create a Todo item for each document returned
+                            objUser = UserModel(birthdate: getFireData["birthdate"] as! String,
+                                                birthplace: getFireData["birthplace"] as! String,
+                                                birthtime:  getFireData["birthtime"] as! String,
+                                                createdat: getFireData["createdat"] as? Date ?? Foundation.Date(),
+                                                devicedetails: getFireData["devicedetails"] as! String,
+                                                email: getFireData["email"] as! String,
+                                                fullname: getFireData["fullname"] as! String,
+                                                isOnline: getFireData["isOnline"] as! Bool,
+                                                lastupdatetime: getFireData["lastupdatetime"] as? Date ?? Foundation.Date(),
+                                                phone: getFireData["phone"] as! String,
+                                                profileimage: getFireData["profileimage"] as! String,
+                                                socialid: getFireData["socialid"] as! String,
+                                                socialtype: getFireData["socialtype"] as! String,
+                                                token: getFireData["token"] as! String,
+                                                uid: getFireData["uid"] as! String,
+                                                usertype: getFireData["usertype"] as! String,
+                                                walletbalance: getFireData["walletbalance"] as! Int)
+                            
+                            return objUser
+                        }
+                        
+                        let userUID = Auth.auth().currentUser?.uid
+                        let objCurrentUser = self.userDataList.first { $0.uid ==  userUID}
+                        
+                        LoginDataCache.save(objCurrentUser)
+                        
+                        if let objLoginDataCache = LoginDataCache.get() {
+                            print(objLoginDataCache.fullname)
+                            print(objLoginDataCache.email)
+                            print(objLoginDataCache.phone)
+                            print(objLoginDataCache.usertype)
+                        }
+                    }
+                }
+            }
+            else {
+                // Handle the error
+                print(error!.localizedDescription)
+            }
+        }
+    }
+}

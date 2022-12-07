@@ -1,0 +1,52 @@
+//
+//  Strings.swift
+//  Astroyodha
+//
+//  Created by Tops on 05/12/22.
+//
+
+import Foundation
+
+var strAstroYodha = "Astroyodha"
+var strLoginToAstrologer = "Login to Astrologer"
+var strLoginToUser = "Login to User"
+var strCreateAccount = "Create Account"
+var strAlreadyAccount = "Already have an account?"
+var strLogin = "Login"
+var strCreateAnAccount = "Create\nAccount"
+var strSignUpText = "Sign Up"
+var strEnterMobileNumberToCreateAccountText = "Enter your mobile number to create an account or sign in."
+var strNotRegisteredYet = "Not Registered yet?"
+var strOtpVerification = "OTP Verification"
+var strEnterOTP = "Enter OTP code send to "
+var strVerify = "Verify"
+var strResendOTP = "Resend OTP"
+var strLogoutConfirmation = "Are ou sure you want to Logout?"
+var strMobileNotRegisteredDoSignUp = "Phone number is not registered, Please Sign up"
+var strMobileNotRegistered = "Phone number is not registered."
+var strEnterPhoneNumber = "Please enter phone number"
+var strEnterValidPhoneNumber = "Please enter valid phone number"
+var strMobilealreadyRegistered = "Mobile number is already registered"
+var strEnterEmail = "Please enter email"
+var strEnterValidEmail = "Please enter valid email"
+var strAcceptPrivacyPolicy = "Please accept privacy policy"
+var strTryAgainLater = "Please try again"
+var strEnterUserDetail = "Please enter user details"
+var strUploadPhoto = "Please upload your photo"
+var strUploadKundali = "Please upload kundali"
+var strAddBirthPlace = "Please enter person place of birth"
+var strEventAdded = "Add event sucesssfully"
+var strOtpSent = "OTP Sent Sucessfully"
+var strEnterValidOtp = "Please enter valid OTP"
+var strProfileUpdated = "Profile updated successfully"
+var strTimeSlotDeleted = "Timeslot deleted successfully"
+var strEnterFullName = "Please enter full name"
+var strSelectBirthDate = "Please select birth date"
+var strEnterAboutYou = "Please enter about yourself"
+var strSelectDate = "Please select date"
+var strSelectStartTime = "Please select start time"
+var strSelectEndTime = "Please select end time"
+var strSelectEndDateGreaterThanStartDate = "Please select end date greater than start date"
+var strSelectEndTimeGreaterThanStartTime = "Please select end time greater than start time"
+var strSelectDays = "Please select days"
+var strAstrologerName = "Astrologer Name"

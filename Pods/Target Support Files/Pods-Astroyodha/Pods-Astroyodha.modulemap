@@ -1,0 +1,6 @@
+framework module Pods_Astroyodha {
+  umbrella header "Pods-Astroyodha-umbrella.h"
+
+  export *
+  module * { export * }
+}
