@@ -12,7 +12,6 @@ import IQKeyboardManagerSwift
 @main
 struct AstroyodhaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
     @StateObject private var userViewModel = UserViewModel()
     
     var body: some Scene {
