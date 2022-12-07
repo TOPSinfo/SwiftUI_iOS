@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4BB9D003088B617AF480D7DC /* Pods_Astroyodha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22475E16D08BADB4AEB7CF4C /* Pods_Astroyodha.framework */; };
 		760C8A1528BE322E00EB01CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 760C8A1428BE322E00EB01CF /* LaunchScreen.storyboard */; };
 		762326B528CF583700194BEC /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762326B428CF583700194BEC /* SignupView.swift */; };
 		762326B728CF5CC000194BEC /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762326B628CF5CC000194BEC /* OTPVerificationView.swift */; };
@@ -35,6 +34,7 @@
 		769A1F2928BDDA8F00D80E40 /* AstroyodhaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A1F2828BDDA8F00D80E40 /* AstroyodhaApp.swift */; };
 		769A1F2D28BDDA9000D80E40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 769A1F2C28BDDA9000D80E40 /* Assets.xcassets */; };
 		769A1F3028BDDA9000D80E40 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 769A1F2F28BDDA9000D80E40 /* Preview Assets.xcassets */; };
+		91CA875B0D808726B359D617 /* Pods_Astroyodha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E5B2396394659A045588D79 /* Pods_Astroyodha.framework */; };
 		E704424F293F0A65000BED0B /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E704424E293F0A65000BED0B /* EditProfileViewModel.swift */; };
 		E7044252293F0FDA000BED0B /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7044251293F0FDA000BED0B /* LanguageModel.swift */; };
 		E7044254293F0FF6000BED0B /* AstrologyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7044253293F0FF6000BED0B /* AstrologyModel.swift */; };
@@ -105,9 +105,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1EEEF7AD3C1BF9F857628494 /* Pods-Astroyodha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astroyodha.debug.xcconfig"; path = "Target Support Files/Pods-Astroyodha/Pods-Astroyodha.debug.xcconfig"; sourceTree = "<group>"; };
-		22475E16D08BADB4AEB7CF4C /* Pods_Astroyodha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astroyodha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		41071B03F228B633C136088E /* Pods-Astroyodha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astroyodha.release.xcconfig"; path = "Target Support Files/Pods-Astroyodha/Pods-Astroyodha.release.xcconfig"; sourceTree = "<group>"; };
+		05406F84FEFBFC1336FA5849 /* Pods-Astroyodha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astroyodha.release.xcconfig"; path = "Target Support Files/Pods-Astroyodha/Pods-Astroyodha.release.xcconfig"; sourceTree = "<group>"; };
 		760C8A1128BE209400EB01CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		760C8A1428BE322E00EB01CF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		762326B428CF583700194BEC /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
@@ -137,6 +135,8 @@
 		769A1F2828BDDA8F00D80E40 /* AstroyodhaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroyodhaApp.swift; sourceTree = "<group>"; };
 		769A1F2C28BDDA9000D80E40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		769A1F2F28BDDA9000D80E40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9E5B2396394659A045588D79 /* Pods_Astroyodha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astroyodha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8DC7754C1031FAA04C106E6 /* Pods-Astroyodha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Astroyodha.debug.xcconfig"; path = "Target Support Files/Pods-Astroyodha/Pods-Astroyodha.debug.xcconfig"; sourceTree = "<group>"; };
 		E704424E293F0A65000BED0B /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		E7044251293F0FDA000BED0B /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		E7044253293F0FF6000BED0B /* AstrologyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrologyModel.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BB9D003088B617AF480D7DC /* Pods_Astroyodha.framework in Frameworks */,
+				91CA875B0D808726B359D617 /* Pods_Astroyodha.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +226,8 @@
 		1045D40281BDF5F2B42CF526 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1EEEF7AD3C1BF9F857628494 /* Pods-Astroyodha.debug.xcconfig */,
-				41071B03F228B633C136088E /* Pods-Astroyodha.release.xcconfig */,
+				B8DC7754C1031FAA04C106E6 /* Pods-Astroyodha.debug.xcconfig */,
+				05406F84FEFBFC1336FA5849 /* Pods-Astroyodha.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 				E78DC8D02910ECC1003E4851 /* FirebaseFirestore.framework */,
 				E78DC8CC2910E5B7003E4851 /* FirebaseStorage.framework */,
 				E73BF8D1290FD52700FE1FE2 /* FirebaseAuth.framework */,
-				22475E16D08BADB4AEB7CF4C /* Pods_Astroyodha.framework */,
+				9E5B2396394659A045588D79 /* Pods_Astroyodha.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -636,11 +636,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 769A1F3328BDDA9000D80E40 /* Build configuration list for PBXNativeTarget "Astroyodha" */;
 			buildPhases = (
-				EA1EF172ACAC007DF467E2D9 /* [CP] Check Pods Manifest.lock */,
+				B4B8AECE03B300E7ABB46C5C /* [CP] Check Pods Manifest.lock */,
 				769A1F2128BDDA8F00D80E40 /* Sources */,
 				769A1F2228BDDA8F00D80E40 /* Frameworks */,
 				769A1F2328BDDA8F00D80E40 /* Resources */,
-				7D3A507C6DF73A0B3A8A4FDB /* [CP] Embed Pods Frameworks */,
+				82F25E62977B97BD0BB91A62 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -720,7 +720,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7D3A507C6DF73A0B3A8A4FDB /* [CP] Embed Pods Frameworks */ = {
+		82F25E62977B97BD0BB91A62 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -737,7 +737,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Astroyodha/Pods-Astroyodha-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EA1EF172ACAC007DF467E2D9 /* [CP] Check Pods Manifest.lock */ = {
+		B4B8AECE03B300E7ABB46C5C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -957,7 +957,7 @@
 		};
 		769A1F3428BDDA9000D80E40 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EEEF7AD3C1BF9F857628494 /* Pods-Astroyodha.debug.xcconfig */;
+			baseConfigurationReference = B8DC7754C1031FAA04C106E6 /* Pods-Astroyodha.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -994,7 +994,7 @@
 		};
 		769A1F3528BDDA9000D80E40 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41071B03F228B633C136088E /* Pods-Astroyodha.release.xcconfig */;
+			baseConfigurationReference = 05406F84FEFBFC1336FA5849 /* Pods-Astroyodha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

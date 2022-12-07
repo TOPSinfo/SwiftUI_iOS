@@ -11,7 +11,7 @@
 
 Astrologer Credential
 =====================
-- Phone Number    ==>    9099813990
+- Phone Number    ==>    9099813990 
 - OTP             ==>    111111
 
 User Credential
