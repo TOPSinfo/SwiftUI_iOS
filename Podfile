@@ -7,7 +7,6 @@ target 'Astroyodha' do
 
   # Pods for Astroyodha
 
-
 pod 'Firebase/Auth'
 pod 'FirebaseStorage'
 pod 'FirebaseFirestore'
