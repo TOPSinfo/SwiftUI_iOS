@@ -4,7 +4,7 @@ This swiftUI Demo app is very simple &amp; easy to understand. This swiftUI demo
 ![video](/Media/SwiftUI-Sample-App.gif)
 
 
-# Technical detail:
+# Technical details
 
 - Project Name  ==> SwiftUI Sample App
 - Language      ==> SwiftUI
