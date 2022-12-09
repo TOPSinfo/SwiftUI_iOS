@@ -3,6 +3,16 @@ This swiftUI Demo app is very simple &amp; easy to understand. This swiftUI demo
 
 ![video](/Media/SwiftUI-Sample-App.gif)
 
+
+# Technical detail:
+
+- Project Name  ==> SwiftUI Sample App
+- Language      ==> SwiftUI
+- Architecture  ==> MVVM
+- Minimum os    ==> 15.0
+- Database      ==> Firebase Firestore
+
+
 # Description  
 
 In the registration screen, You need to enter the user data (First Name, Phone Number, Email) and then it will redirect you to the OTP screen. Once the otp verification done you will be redirect to the dashbaord screen.
@@ -71,15 +81,5 @@ In the help/faq screen, User and Astrologer can see the common help and faq deta
 - Swipable Top TabBar
 
 
-# By Apple 
-
-Xcode 13.2.1
-iOS 15.0 or later
-
-
 # Documentation 
 SwiftUI - https://developer.apple.com/xcode/swiftui/
-
-
-# Conclusion 
-Despite the fact that SwiftUI still has much to be discovered, I hope the information provided in this article has clarified some of the major points. Keep digging, and I'll report all of my new discoveries soon.
