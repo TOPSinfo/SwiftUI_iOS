@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AppColor {
     static let white = Color.white
-    
     static let c242424 = Color("c242424") // Black
     static let c333333 = Color("c333333") // Charcol
     static let c999999 = Color("c999999") // Gray
