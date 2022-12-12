@@ -45,11 +45,11 @@ struct TimeSlotView: View {
                 .navigationBarColor(backgroundColor: currentUserType.themeColor, titleColor: .white)
             
                 .toolbar {
-                    //1 navigation cancel button
+                    // 1 navigation cancel button
                     ToolbarItem(placement: .navigationBarLeading) {
                         backButtonView
                     }
-                    //2 navigation save button
+                    // 2 navigation save button
                     ToolbarItem(placement: .navigationBarTrailing) {
                         saveButtonView
                     }
@@ -121,7 +121,6 @@ extension TimeSlotView {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .frame(width: UIScreen.main.bounds.width - 60)
-                    
                     .onTapGesture {
                         viewModel.changeTimeSlotRepeatSelection(index: index)
                     }
@@ -274,8 +273,7 @@ extension TimeSlotView {
             
             if viewModel.currentTimeSlot == .repeatOption {
                 endDateView
-            }
-            else if viewModel.currentTimeSlot == .customOption {
+            } else if viewModel.currentTimeSlot == .customOption {
                 VStack(alignment: .leading, spacing: 5) {
                     HStack {
                         Text("")

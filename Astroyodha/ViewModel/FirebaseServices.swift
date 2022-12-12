@@ -17,7 +17,8 @@ class FirebaseService: ObservableObject {
     var strKundaliURL: String = ""
     
     // MARK: - Check For Mobile Number Exist Or Not While SignIn/SignUp
-    func checkMobileNumberIsExistOrNot(strPhoneNumber: String, completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func checkMobileNumberIsExistOrNot(strPhoneNumber: String,
+                                       completion: @escaping (_ isCompleted: Bool) -> Void) {
         Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
         
         let collectionRef = db.collection("user")
@@ -37,7 +38,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Login User
-    func loginUser(strPhoneNumber: String, completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func loginUser(strPhoneNumber: String,
+                   completion: @escaping (_ isCompleted: Bool) -> Void) {
         Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
         PhoneAuthProvider.provider().verifyPhoneNumber(strPhoneNumber, uiDelegate: nil) { ID, err in
             Singletion.shared.hideProgress()
@@ -52,7 +54,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Verify Phone Number And Send Otp
-    func verifyNumberAndSendOTP(phone: String, completion: @escaping (_ isCompleted: Bool, _ error: Error? , _ id: String) -> Void) {
+    func verifyNumberAndSendOTP(phone: String,
+                                completion: @escaping (_ isCompleted: Bool, _ error: Error? , _ id: String) -> Void) {
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { ID, err in
             if err != nil {
                 Singletion.shared.hideProgress()
@@ -69,7 +72,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Verify User Entered Otp
-    func verifyOTP(credential: PhoneAuthCredential, completion: @escaping (_ isCompleted: Bool, _ error: Error?, _ authResult: AuthDataResult?) -> Void) {
+    func verifyOTP(credential: PhoneAuthCredential,
+                   completion: @escaping (_ isCompleted: Bool, _ error: Error?, _ authResult: AuthDataResult?) -> Void) {
         Auth.auth().signIn(with: credential) { (authResult, err) in
             if err != nil {
                 Singletion.shared.hideProgress()
@@ -85,7 +89,10 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Update User/Astrologer Profile Photo
-    func uploadProfileImage(imgPhoto: UIImage, dict: [String: Any], isUser: Bool, completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func uploadProfileImage(imgPhoto: UIImage,
+                            dict: [String: Any],
+                            isUser: Bool,
+                            completion: @escaping (_ isCompleted: Bool) -> Void) {
         guard (Auth.auth().currentUser?.uid) != nil else{return}
         
         userPhotoPath = Singletion.shared.objLoggedInUser.imagepath.isEmpty ? userPhotoPath : Singletion.shared.objLoggedInUser.imagepath
@@ -95,7 +102,7 @@ class FirebaseService: ObservableObject {
         let fileRefProfile = storageRefrance.child(userPhotoPath)
         
         _ = fileRefProfile.putData(imageDataProfile, metadata: nil) { metaData, error in
-            if error == nil && metaData != nil{
+            if error == nil && metaData != nil {
                 let storageRefrance = Storage.storage().reference().child(userPhotoPath)
                 storageRefrance.downloadURL { url, err in
                     if err == nil && url != nil {
@@ -130,7 +137,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Update User Profile Data
-    func updateUserData(dict: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func updateUserData(dict: [String: Any],
+                        completion: @escaping (_ isCompleted: Bool) -> Void) {
         let userUID = Auth.auth().currentUser?.uid ?? ""
         db.collection("user").whereField("uid", isEqualTo: userUID).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -162,7 +170,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Update Astroloer Profile Data
-    func updateAstrologerData(dict: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func updateAstrologerData(dict: [String: Any],
+                              completion: @escaping (_ isCompleted: Bool) -> Void) {
         let userUID = Auth.auth().currentUser?.uid ?? ""
         db.collection("user").whereField("uid", isEqualTo: userUID).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -256,7 +265,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Add Astrologer Timeslot Data
-    func addAstrologerTimeSlotData(objSlot: AppointmentTimeSlotModel, completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func addAstrologerTimeSlotData(objSlot: AppointmentTimeSlotModel,
+                                   completion: @escaping (_ isCompleted: Bool) -> Void) {
         let timeSlotReference = self.db.collection("user").document(objSlot.uid).collection("timeslot").document(objSlot.timeslotid)
         
         timeSlotReference.setData(["createdat": Date(timeIntervalSince1970: Double(timestamp) / 1000),
@@ -310,7 +320,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Delete Astrologer TimeSlot Data
-    func deleteAstrologerTimeSlotData(objSlot: AppointmentTimeSlotModel, completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func deleteAstrologerTimeSlotData(objSlot: AppointmentTimeSlotModel,
+                                      completion: @escaping (_ isCompleted: Bool) -> Void) {
         let timeSlotReference = self.db.collection("user").document(objSlot.uid).collection("timeslot")
         timeSlotReference.document(objSlot.timeslotid).delete() { err in
             if let err = err {
@@ -325,10 +336,12 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Upload Add Event Attachment
-    func uploadImage(imageProfile: UIImage, imageKundali: UIImage, timeslotid: String, completion: @escaping (_ isCompleted: Bool) -> Void)  {
+    func uploadImage(imageProfile: UIImage,
+                     imageKundali: UIImage,
+                     timeslotid: String,
+                     completion: @escaping (_ isCompleted: Bool) -> Void)  {
         
-        guard (Auth.auth().currentUser?.uid) != nil else{return}
-        
+        guard (Auth.auth().currentUser?.uid) != nil else { return }
         let storageRefrance = Storage.storage().reference()
         
         guard let imageDataProfile = imageProfile.jpegData(compressionQuality: 0.5) else { return }
@@ -338,17 +351,17 @@ class FirebaseService: ObservableObject {
         let fileRefKundali = storageRefrance.child(pathKundali)
         
         _ = fileRefProfile.putData(imageDataProfile, metadata: nil) { metaData, error in
-            if error == nil && metaData != nil{
+            if error == nil && metaData != nil {
                 _ = fileRefKundali.putData(imageDataKundali, metadata: nil) { metaData, error in
-                    if error == nil && metaData != nil{
+                    if error == nil && metaData != nil {
                         let storageRefrance = Storage.storage().reference().child(pathPhoto)
                         storageRefrance.downloadURL { url, err in
-                            if err == nil && url != nil{
+                            if err == nil && url != nil {
                                 self.strPhotoURL = url!.absoluteString // Get photo url
                                 
                                 let storageRefrance = Storage.storage().reference().child(pathKundali)
                                 storageRefrance.downloadURL { url, err in
-                                    if err == nil && url != nil{
+                                    if err == nil && url != nil {
                                         self.strKundaliURL = url!.absoluteString // Get photo url
                                         self.addBooking(timeSloat: timeslotid) { isComplet in
                                             completion(isComplet)
@@ -364,7 +377,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Add Booking Data
-    func addBooking(timeSloat: String, completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func addBooking(timeSloat: String,
+                    completion: @escaping (_ isCompleted: Bool) -> Void) {
         // Add a data to a collection
         let timeSlotReference = self.db.collection("bookinghistory").document(timeSloat)
         timeSlotReference.setData(["allowextend": objAddBooking.allowextend,
@@ -391,7 +405,7 @@ class FirebaseService: ObservableObject {
                                    "paymenttype": objAddBooking.paymenttype,
                                    "photo": strPhotoURL,
                                    "photopath" : pathPhoto,
-                                   "starttime": objAddBooking.starttime,//Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                   "starttime": objAddBooking.starttime,
                                    "status": objAddBooking.status,
                                    "transactionid": objAddBooking.transactionid,
                                    "uid": objAddBooking.uid,
@@ -438,7 +452,9 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Fetch Booking Data
-    func fetchBookingsData(completion: @escaping (_ upcomingData: [BookingAstrologerModel], _ ongoingData: [BookingAstrologerModel], _ pastData: [BookingAstrologerModel]) -> Void) {
+    func fetchBookingsData(completion: @escaping (_ upcomingData: [BookingAstrologerModel],
+                                                  _ ongoingData: [BookingAstrologerModel],
+                                                  _ pastData: [BookingAstrologerModel]) -> Void) {
         var comparingFieldKey = ""
         if let userUID = Auth.auth().currentUser?.uid {
             
@@ -456,18 +472,24 @@ class FirebaseService: ObservableObject {
                         if let snapshot = querySnapshot {
                             let arrAllBookings: [BookingAstrologerModel] = snapshot.documents.map{ userData in
                                 
-                                let createAtTimestamp: Timestamp = userData.get("createdat") as! Timestamp
-                                let createdAt: Date = createAtTimestamp.dateValue()
+                                var createdAt: Date?
+                                var endTime: Date?
+                                var startTime: Date?
                                 
-                                let endTimeStamp: Timestamp = userData.get("endtime") as! Timestamp
-                                let endTime: Date = endTimeStamp.dateValue()
+                                if let createAtTimestamp: Timestamp = userData.get("createdat") as? Timestamp {
+                                    createdAt = createAtTimestamp.dateValue()
+                                }
                                 
-                                let startTimeStamp: Timestamp = userData.get("starttime") as! Timestamp
-                                let startTime: Date = startTimeStamp.dateValue()
+                                if let endTimeStamp: Timestamp = userData.get("endtime") as? Timestamp {
+                                    endTime = endTimeStamp.dateValue()
+                                }
                                 
-                                print(userData.data())
+                                if let startTimeStamp: Timestamp = userData.get("starttime") as? Timestamp {
+                                    startTime = startTimeStamp.dateValue()
+                                }
                                 
-                                let booking = BookingAstrologerModel.init(allowextend: userData["allowextend"] as? String ?? "",
+                                let booking = BookingAstrologerModel.init(
+                                                                          allowextend: userData["allowextend"] as? String ?? "",
                                                                           amount: userData["amount"] as? Int ?? 0,
                                                                           astrologercharge: userData["astrologercharge"] as? Int ?? 0,
                                                                           astrologerid: userData["astrologerid"] as? String ?? "",
@@ -476,10 +498,10 @@ class FirebaseService: ObservableObject {
                                                                           birthplace: userData["birthplace"] as? String ?? "",
                                                                           birthtime: userData["birthtime"] as? String ?? "",
                                                                           bookingid: userData["bookingid"] as? String ?? "",
-                                                                          createdat: createdAt,
+                                                                          createdat: createdAt ?? Date(),
                                                                           date: userData["date"] as? String ?? "",
                                                                           description: userData["description"] as? String ?? "",
-                                                                          endtime: endTime,
+                                                                          endtime: endTime ?? Date(),
                                                                           extendtime: userData["extendtime"] as? Int ?? 0,
                                                                           fullName: userData["fullName"] as? String ?? "",
                                                                           kundali: userData["kundali"] as? String ?? "",
@@ -490,7 +512,7 @@ class FirebaseService: ObservableObject {
                                                                           paymentstatus: userData["paymentstatus"] as? String ?? "",
                                                                           paymenttype: userData["paymenttype"] as? String ?? "",
                                                                           photo: userData["photo"] as? String ?? "",
-                                                                          starttime: startTime,
+                                                                          starttime: startTime ?? Date(),
                                                                           status: userData["status"] as? String ?? "",
                                                                           transactionid: userData["transactionid"] as? String ?? "",
                                                                           uid: userData["uid"] as? String ?? "",
@@ -509,16 +531,15 @@ class FirebaseService: ObservableObject {
                             for booking in arrAllBookings {
                                 print(booking.starttime)
                                 
-                                let endDate = Singletion.shared.convertStringToDate(strDate: booking.date, outputFormate: datePickerDateFormat)
+                                let endDate = Singletion.shared.convertStringToDate(strDate: booking.date,
+                                                                                    outputFormate: datePickerDateFormat)
                                 let status = Singletion.shared.compareDate(date: endDate)
                                 
                                 if status == .upcoming {
                                     arrUpcomingBookings.append(booking)
-                                }
-                                else if status == .ongoing {
+                                } else if status == .ongoing {
                                     arrOnGoingBookings.append(booking)
-                                }
-                                else if status == .past {
+                                } else if status == .past {
                                     arrPastBookings.append(booking)
                                 }
                             }
@@ -530,7 +551,8 @@ class FirebaseService: ObservableObject {
     }
     
     // MARK: - Fetch Particular Date Booking Data
-    func fetchSelectedDateBookings(selectedDate: Date, completion: @escaping (_ bookingsData: [BookingAstrologerModel]) -> Void) {
+    func fetchSelectedDateBookings(selectedDate: Date,
+                                   completion: @escaping (_ bookingsData: [BookingAstrologerModel]) -> Void) {
         var comparingFieldKey = ""
         if let userUID = Auth.auth().currentUser?.uid {
             
@@ -548,18 +570,24 @@ class FirebaseService: ObservableObject {
                         if let snapshot = querySnapshot {
                             let arrAllBookings: [BookingAstrologerModel] = snapshot.documents.map{ userData in
                                 
-                                let createAtTimestamp: Timestamp = userData.get("createdat") as! Timestamp
-                                let createdAt: Date = createAtTimestamp.dateValue()
+                                var createdAt: Date?
+                                var endTime: Date?
+                                var startTime: Date?
                                 
-                                let endTimeStamp: Timestamp = userData.get("endtime") as! Timestamp
-                                let endTime: Date = endTimeStamp.dateValue()
+                                if let createAtTimestamp: Timestamp = userData.get("createdat") as? Timestamp {
+                                    createdAt = createAtTimestamp.dateValue()
+                                }
                                 
-                                let startTimeStamp: Timestamp = userData.get("starttime") as! Timestamp
-                                let startTime: Date = startTimeStamp.dateValue()
+                                if let endTimeStamp: Timestamp = userData.get("endtime") as? Timestamp {
+                                    endTime = endTimeStamp.dateValue()
+                                }
                                 
-                                print(userData.data())
+                                if let startTimeStamp: Timestamp = userData.get("starttime") as? Timestamp {
+                                    startTime = startTimeStamp.dateValue()
+                                }
                                 
-                                let booking = BookingAstrologerModel.init(allowextend: userData["allowextend"] as? String ?? "",
+                                let booking = BookingAstrologerModel.init(
+                                                                          allowextend: userData["allowextend"] as? String ?? "",
                                                                           amount: userData["amount"] as? Int ?? 0,
                                                                           astrologercharge: userData["astrologercharge"] as? Int ?? 0,
                                                                           astrologerid: userData["astrologerid"] as? String ?? "",
@@ -568,10 +596,10 @@ class FirebaseService: ObservableObject {
                                                                           birthplace: userData["birthplace"] as? String ?? "",
                                                                           birthtime: userData["birthtime"] as? String ?? "",
                                                                           bookingid: userData["bookingid"] as? String ?? "",
-                                                                          createdat: createdAt,
+                                                                          createdat: createdAt ?? Date(),
                                                                           date: userData["date"] as? String ?? "",
                                                                           description: userData["description"] as? String ?? "",
-                                                                          endtime: endTime,
+                                                                          endtime: endTime ?? Date(),
                                                                           extendtime: userData["extendtime"] as? Int ?? 0,
                                                                           fullName: userData["fullName"] as? String ?? "",
                                                                           kundali: userData["kundali"] as? String ?? "",
@@ -582,7 +610,7 @@ class FirebaseService: ObservableObject {
                                                                           paymentstatus: userData["paymentstatus"] as? String ?? "",
                                                                           paymenttype: userData["paymenttype"] as? String ?? "",
                                                                           photo: userData["photo"] as? String ?? "",
-                                                                          starttime: startTime,
+                                                                          starttime: startTime ?? Date(),
                                                                           status: userData["status"] as? String ?? "",
                                                                           transactionid: userData["transactionid"] as? String ?? "",
                                                                           uid: userData["uid"] as? String ?? "",
@@ -598,11 +626,20 @@ class FirebaseService: ObservableObject {
                             for booking in arrAllBookings {
                                 print(booking.starttime)
                                 
-                                let endDate = Singletion.shared.convertStringToDate(strDate: booking.date, outputFormate: datePickerDateFormat)
+                                let endDate = Singletion.shared.convertStringToDate(strDate: booking.date,
+                                                                                    outputFormate: datePickerDateFormat)
                                 
-                                let currentDate = Singletion.shared.convertStringToDate(strDate: Singletion.shared.convertDateFormate(date: selectedDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash), outputFormate: datePickerDateFormatWithoutDash)
+                                let currentDate = Singletion.shared.convertStringToDate(
+                                    strDate: Singletion.shared.convertDateFormate(date: selectedDate,
+                                                                                  currentFormate: datePickerSelectedFormat,
+                                                                                  outputFormat: datePickerDateFormatWithoutDash),
+                                    outputFormate: datePickerDateFormatWithoutDash)
                                 
-                                let bookingDate = Singletion.shared.convertStringToDate(strDate: Singletion.shared.convertDateFormate(date: endDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash), outputFormate: datePickerDateFormatWithoutDash)
+                                let bookingDate = Singletion.shared.convertStringToDate(
+                                    strDate: Singletion.shared.convertDateFormate(date: endDate,
+                                                                                  currentFormate: datePickerSelectedFormat,
+                                                                                  outputFormat: datePickerDateFormatWithoutDash),
+                                    outputFormate: datePickerDateFormatWithoutDash)
                                 
                                 if bookingDate == currentDate {
                                     arrSelectedDayBookings.append(booking)

@@ -26,7 +26,7 @@ struct ProfileView: View {
                 Color.white
                     .edgesIgnoringSafeArea(.bottom)
                 
-                GeometryReader { g in
+                GeometryReader { geometry in
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 0) {
                             profilePhotoView
@@ -47,7 +47,7 @@ struct ProfileView: View {
                                 OptionsFirstSectionView(arrOptions: $viewModel.arrOptions)
                                 OptionsSecondSectionView(arrOptions: $viewModel.arrOptions)
                             }
-                            .frame(width: g.size.width - 5, height: g.size.height - 270, alignment: .center)
+                            .frame(width: geometry.size.width - 5, height: geometry.size.height - 270, alignment: .center)
                             
                             .shadow(color: AppColor.c999999.opacity(0.25), radius: 2, y: 1.5)
                             .background(AppColor.cF3F3F3)
@@ -88,13 +88,11 @@ struct OptionsFirstSectionView: View {
                 let option = arrOptions[index]
                 
                 Button {
-                    if (arrOptions[index].name == "Transaction History") {
+                    if arrOptions[index].name == "Transaction History" {
                         showTransactionHistoryView = true
-                    }
-                    else if (arrOptions[index].name == "Help / FAQ") {
+                    } else if arrOptions[index].name == "Help / FAQ" {
                         showHelpAndFaqView = true
-                    }
-                    else if (arrOptions[index].name == "Rate app") {
+                    } else if arrOptions[index].name == "Rate app" {
                         guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
                             print("UNABLE TO GET CURRENT SCENE")
                             return
@@ -154,10 +152,10 @@ struct OptionsSecondSectionView: View {
                 
                 VStack {
                     Button {
-                        if (arrOptions[index].name == "Share app") {
+                        if arrOptions[index].name == "Share app" {
                             Singletion.shared.showActivityPopup()
                         }
-                        else if (arrOptions[index].name == "Logout") {
+                        else if arrOptions[index].name == "Logout" {
                             isAlertShow.toggle()
                         }
                         print("Tapped at \(index)")

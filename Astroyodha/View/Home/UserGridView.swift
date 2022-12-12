@@ -20,7 +20,7 @@ struct UserGridView: View {
             AppColor.cF2F2F7
                 .edgesIgnoringSafeArea(.all)
             
-            GeometryReader { g in
+            GeometryReader { geometry in
                 ScrollView(showsIndicators: false) {
                     VStack {
                         LazyVGrid(columns: viewModel.columns, spacing: 14.66) {
@@ -43,7 +43,7 @@ struct UserGridView: View {
                             isActive: $viewModel.isAddEvent) {EmptyView()}
                     }
                 }
-                .frame(width: g.size.width, height: g.size.height + 49, alignment: .center)
+                .frame(width: geometry.size.width, height: geometry.size.height + 49, alignment: .center)
             }
             .navigationTitle(currentUserType == .user ? "Select Astrologers" : "Caht with Astrologer")
             .navigationBarColor(backgroundColor: currentUserType.themeColor, titleColor: .white)

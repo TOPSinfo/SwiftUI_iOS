@@ -215,6 +215,13 @@ public struct CITTopTabView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     public static var previews: some View {
-        CITTopTabView(index: 0, item: .init(title: "Tab One"), config: .examplePillShaped, doesAnyTabHaveIcon: false, namespace: namespace, selectedTab: .constant(0), greatestTabHeight: .constant(100), greatestBackgroundHeight: .constant(80))
+        CITTopTabView(index: 0,
+                      item: .init(title: "Tab One"),
+                      config: .examplePillShaped,
+                      doesAnyTabHaveIcon: false,
+                      namespace: namespace,
+                      selectedTab: .constant(0),
+                      greatestTabHeight: .constant(100),
+                      greatestBackgroundHeight: .constant(80))
     }
 }

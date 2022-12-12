@@ -79,9 +79,13 @@ class BookingAstrologerViewModel: ObservableObject {
         let cancelButton: ActionSheet.Button = .cancel()
         switch actionSheetOption {
         case .camera:
-            return ActionSheet(title: Text(""), message: Text("Select Option"), buttons: [cameraButton, gallaryButton, cancelButton])
+            return ActionSheet(title: Text(""),
+                               message: Text("Select Option"),
+                               buttons: [cameraButton, gallaryButton, cancelButton])
         case .gallery:
-            return ActionSheet(title: Text(""), message: Text("Select Option"), buttons: [cameraButton, gallaryButton, cancelButton])
+            return ActionSheet(title: Text(""),
+                               message: Text("Select Option"),
+                               buttons: [cameraButton, gallaryButton, cancelButton])
         }
     }
     
@@ -103,16 +107,13 @@ class BookingAstrologerViewModel: ObservableObject {
         if strDetails.isEmpty {
             displayAlertWith(message: strEnterUserDetail)
             return false
-        }
-        else if pickedImage.isEqual(UIImage(named: "imgUploadImage")) {
+        } else if pickedImage.isEqual(UIImage(named: "imgUploadImage")) {
             displayAlertWith(message: strUploadPhoto)
             return false
-        }
-        else if pickedImageKundali.isEqual(UIImage(named: "imgUploadImage")) {
+        } else if pickedImageKundali.isEqual(UIImage(named: "imgUploadImage")) {
             displayAlertWith(message: strUploadKundali)
             return false
-        }
-        else if strPlaceOfBirth.isEmpty {
+        } else if strPlaceOfBirth.isEmpty {
             displayAlertWith(message: strAddBirthPlace)
             return false
         }
@@ -126,7 +127,8 @@ class BookingAstrologerViewModel: ObservableObject {
     }
     
     // MARK: SET BOOKING DATA TO FIREBASE
-    func addBookingData(selectedAstrologer: AstrologerGridItmeVM?, completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func addBookingData(selectedAstrologer: AstrologerGridItmeVM?,
+                        completion: @escaping (_ isCompleted: Bool) -> Void) {
         if isValidate() {
             UIApplication.shared.dismissKeyboard()
             Singletion.shared.showDefaultProgress()
@@ -135,11 +137,21 @@ class BookingAstrologerViewModel: ObservableObject {
             let strNotificationSelectionWitoutMin = String(strNotification.prefix(2))
             let finalTramNotification = strNotificationSelectionWitoutMin.trimmingCharacters(in: .whitespaces)
             
-            let strMyBirthDate = Singletion.shared.convertDateFormate(date: datePickerBirthDate, currentFormate: datePickerDateFormat, outputFormat: "dd MMM yyyy")
-            let strBirthMonth = Singletion.shared.convertDateFormate(date: datePickerBirthDate, currentFormate: datePickerDateFormat, outputFormat: "MM")
-            let strBirthYear = Singletion.shared.convertDateFormate(date: datePickerBirthDate, currentFormate: datePickerDateFormat, outputFormat: "yyyy")
-            let strMyBirthTime = Singletion.shared.convertDateFormate(date: timePickerBirth, currentFormate: "h:mm a", outputFormat: "h:mm a")
-            let strSelectedDate = Singletion.shared.convertDateFormate(date: datePicker, currentFormate: datePickerDateFormat, outputFormat: "dd-MMM-yyyy")
+            let strMyBirthDate = Singletion.shared.convertDateFormate(date: datePickerBirthDate,
+                                                                      currentFormate: datePickerDateFormat,
+                                                                      outputFormat: "dd MMM yyyy")
+            let strBirthMonth = Singletion.shared.convertDateFormate(date: datePickerBirthDate,
+                                                                     currentFormate: datePickerDateFormat,
+                                                                     outputFormat: "MM")
+            let strBirthYear = Singletion.shared.convertDateFormate(date: datePickerBirthDate,
+                                                                    currentFormate: datePickerDateFormat,
+                                                                    outputFormat: "yyyy")
+            let strMyBirthTime = Singletion.shared.convertDateFormate(date: timePickerBirth,
+                                                                      currentFormate: "h:mm a",
+                                                                      outputFormat: "h:mm a")
+            let strSelectedDate = Singletion.shared.convertDateFormate(date: datePicker,
+                                                                       currentFormate: datePickerDateFormat,
+                                                                       outputFormat: "dd-MMM-yyyy")
             
             let randomDocumentIDBooking: String = Singletion.shared.randomAlphaNumericString(length: 20)
             
@@ -179,7 +191,9 @@ class BookingAstrologerViewModel: ObservableObject {
                 objAddBooking.username = objLoginDataCache.fullname
                 objAddBooking.userprofileimage = objLoginDataCache.profileimage
                 
-                firebase.uploadImage(imageProfile: pickedImage, imageKundali: pickedImageKundali,timeslotid: randomDocumentIDBooking) { isCompleted in
+                firebase.uploadImage(imageProfile: pickedImage,
+                                     imageKundali: pickedImageKundali,
+                                     timeslotid: randomDocumentIDBooking) { isCompleted in
                     if isCompleted {
                         self.displayAlertWith(message: strEventAdded)
                         Singletion.shared.hideProgress()

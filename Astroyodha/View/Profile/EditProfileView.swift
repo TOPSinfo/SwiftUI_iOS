@@ -367,9 +367,13 @@ extension EditProfileView {
     // MARK: - User Submit Button View
     private var userEditProfileSubmitView: some View {
         Button(action: {
-            let strBirthDate = Singletion.shared.convertDateFormate(date: viewModel.datePickerBirthDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash)
+            let strBirthDate = Singletion.shared.convertDateFormate(date: viewModel.datePickerBirthDate,
+                                                                    currentFormate: datePickerSelectedFormat,
+                                                                    outputFormat: datePickerDateFormatWithoutDash)
             
-            let strBirthTime = Singletion.shared.convertDateFormate(date: viewModel.datePickerTime, currentFormate: datePickerSelectedFormat, outputFormat: datePickertimeFormat)
+            let strBirthTime = Singletion.shared.convertDateFormate(date: viewModel.datePickerTime,
+                                                                    currentFormate: datePickerSelectedFormat,
+                                                                    outputFormat: datePickertimeFormat)
             
             if viewModel.isUserValidate() {
                 UIApplication.shared.dismissKeyboard()
@@ -425,7 +429,7 @@ extension EditProfileView {
                 .colorMultiply(AppColor.c999999)
                 .padding(.trailing, 10)
             
-            ZStack (alignment: .topLeading) {
+            ZStack(alignment: .topLeading) {
                 Button {
                     viewModel.isLanguageVisible = true
                 } label: {
@@ -458,7 +462,7 @@ extension EditProfileView {
                 .colorMultiply(AppColor.c999999)
                 .padding(.trailing, 10)
             
-            ZStack (alignment: .topLeading) {
+            ZStack(alignment: .topLeading) {
                 Button {
                     viewModel.isAstrologyVisible = true
                 } label: {

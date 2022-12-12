@@ -103,7 +103,9 @@ extension BookingListView {
     //Top TabBar
     private var swipableTopTabBarView: some View {
         VStack {
-            CITTopTabBarView(selectedTab: $bookingViewModel.selectedTab, tabs: $bookingViewModel.tabs, config: bookingViewModel.config)
+            CITTopTabBarView(selectedTab: $bookingViewModel.selectedTab,
+                             tabs: $bookingViewModel.tabs,
+                             config: bookingViewModel.config)
             
             TabView(selection: $bookingViewModel.selectedTab) {
                 ForEach(Array(bookingViewModel.tabs.enumerated()), id: \.offset) { offset, tab in
@@ -116,8 +118,7 @@ extension BookingListView {
                         } else {
                             BookingItemView(arrBookings: $bookingViewModel.arrUpcomingBookings)
                         }
-                    }
-                    else if (tab.title == BookingFilter.ongoing.rawValue.uppercased()) {
+                    } else if (tab.title == BookingFilter.ongoing.rawValue.uppercased()) {
                         if bookingViewModel.arrOnGoingBookings.isEmpty {
                             Text("No Data Found")
                                 .font(appFont(type: .poppinsRegular, size: 17))
@@ -125,8 +126,7 @@ extension BookingListView {
                         } else {
                             BookingItemView(arrBookings: $bookingViewModel.arrOnGoingBookings)
                         }
-                    }
-                    else if (tab.title == BookingFilter.past.rawValue.uppercased()) {
+                    } else if (tab.title == BookingFilter.past.rawValue.uppercased()) {
                         if bookingViewModel.arrPastBookings.isEmpty {
                             Text("No Data Found")
                                 .font(appFont(type: .poppinsRegular, size: 17))
@@ -195,7 +195,12 @@ struct BookingItemView: View {
                                 
                                 Text(objBooking.status)
                                     .font(appFont(type: .poppinsRegular, size: 13))
-                                    .foregroundColor((objBooking.status == BookingStatus.approved.rawValue) ? AppColor.c27AAE1 : (objBooking.status == BookingStatus.waiting.rawValue) ? AppColor.cF1A341 : (objBooking.status == BookingStatus.rejected.rawValue) ? AppColor.cF06649 : (objBooking.status == BookingStatus.deleted.rawValue) ? AppColor.cBC2626 : (objBooking.status == BookingStatus.completed.rawValue) ? AppColor.c80C181 : AppColor.c27AAE1)
+                                    .foregroundColor((objBooking.status == BookingStatus.approved.rawValue)
+                                                     ? AppColor.c27AAE1 : (objBooking.status == BookingStatus.waiting.rawValue)
+                                                     ? AppColor.cF1A341 : (objBooking.status == BookingStatus.rejected.rawValue)
+                                                     ? AppColor.cF06649 : (objBooking.status == BookingStatus.deleted.rawValue)
+                                                     ? AppColor.cBC2626 : (objBooking.status == BookingStatus.completed.rawValue)
+                                                     ? AppColor.c80C181 : AppColor.c27AAE1)
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)

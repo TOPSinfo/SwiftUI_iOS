@@ -39,11 +39,20 @@ class BookingCalendarViewModel: ObservableObject {
             for booking in self.arrAllBookings {
                 print(booking.starttime)
                 
-                let endDate = Singletion.shared.convertStringToDate(strDate: booking.date, outputFormate: datePickerDateFormat)
+                let endDate = Singletion.shared.convertStringToDate(strDate: booking.date,
+                                                                    outputFormate: datePickerDateFormat)
                 
-                let currentDate = Singletion.shared.convertStringToDate(strDate: Singletion.shared.convertDateFormate(date: self.selectedDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash), outputFormate: datePickerDateFormatWithoutDash)
+                let currentDate = Singletion.shared.convertStringToDate(
+                    strDate: Singletion.shared.convertDateFormate(date: self.selectedDate,
+                                                                  currentFormate: datePickerSelectedFormat,
+                                                                  outputFormat: datePickerDateFormatWithoutDash),
+                    outputFormate: datePickerDateFormatWithoutDash)
                 
-                let bookingDate = Singletion.shared.convertStringToDate(strDate: Singletion.shared.convertDateFormate(date: endDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash), outputFormate: datePickerDateFormatWithoutDash)
+                let bookingDate = Singletion.shared.convertStringToDate(
+                    strDate: Singletion.shared.convertDateFormate(date: endDate,
+                                                                  currentFormate: datePickerSelectedFormat,
+                                                                  outputFormat: datePickerDateFormatWithoutDash),
+                    outputFormate: datePickerDateFormatWithoutDash)
                 
                 if bookingDate == currentDate {
                     self.arrSelectedDayBookings.append(booking)

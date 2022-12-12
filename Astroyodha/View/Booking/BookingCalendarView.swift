@@ -19,7 +19,7 @@ struct BookingCalendarView: View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
             VStack {
-                ZStack (alignment: .top) {
+                ZStack(alignment: .top) {
                     CalendarViewRepresentable(selectedDate: $viewModel.selectedDate, pageCurrent: $viewModel.crntPage)
                         .frame(height: UIScreen.main.bounds.height * 0.4)
                     
@@ -209,7 +209,7 @@ extension BookingCalendarView {
     
     // MARK: - Selected Date Event View
     private var selectedDateEventsView: some View {
-        GeometryReader { g in
+        GeometryReader { geometry in
             ScrollView(showsIndicators: false) {
                 ForEach(0..<viewModel.bookings.count, id: \.self) { index in
                     let objBooking = viewModel.bookings[index]
@@ -251,7 +251,7 @@ extension BookingCalendarView {
                 }
                 .padding(.vertical, 12)
             }
-            .frame(width: g.size.width, height: g.size.height + 49, alignment: .center)
+            .frame(width: geometry.size.width, height: geometry.size.height + 49, alignment: .center)
             .background(AppColor.cFAFAFA)
         }
     }

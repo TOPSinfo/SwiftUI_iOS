@@ -19,7 +19,7 @@ struct AddEventView: View {
     @State var uiTabarController: UITabBarController?
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel = BookingAstrologerViewModel()
-    var selectedAstrologer : AstrologerGridItmeVM?
+    var selectedAstrologer: AstrologerGridItmeVM?
     
     var body: some View {
         ZStack {
@@ -111,7 +111,7 @@ extension AddEventView {
             Text(selectedAstrologer!.name)
                 .bold()
                 .font(appFont(type: .poppinsRegular, size: 18))
-                .padding(.trailing,50)
+                .padding(.trailing, 50)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -185,7 +185,7 @@ extension AddEventView {
             .accentColor(AppColor.c242424)
         }
         .padding(30)
-        .frame(maxWidth: .infinity, maxHeight: 50 ,alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: 50, alignment: .leading)
     }
     
     // MARK: - Booking Notification Duration

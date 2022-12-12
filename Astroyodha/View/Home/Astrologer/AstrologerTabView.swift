@@ -35,7 +35,11 @@ struct AstrologerTabView: View {
                                        unSelectedImage: "tabProfile")
         
         let tabBarView = SwiftUITabBarController(tabItems: [bookingVC, profileVC],
-                                                 configuration: .constant(SSTabConfiguration(waveHeight: 25, selectedTabTintColor: currentUserType.themeUIColor, unselectedTabTintColor: AppUIColor.c999999, shadowColor: AppUIColor.cF2F2F7)),
+                                                 configuration: .constant(SSTabConfiguration(
+                                                    waveHeight: 25,
+                                                    selectedTabTintColor: currentUserType.themeUIColor,
+                                                    unselectedTabTintColor: AppUIColor.c999999,
+                                                    shadowColor: AppUIColor.cF2F2F7)),
                                                  isTabBarHidden: self.$isTabBarHidden)
         return tabBarView
     }

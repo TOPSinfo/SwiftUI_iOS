@@ -73,8 +73,8 @@ extension LoginView {
             Text(strEnterMobileNumberToCreateAccountText)
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
-                .frame(width: 350, height: 50 ,alignment: .center)
-                .padding(.bottom,10)
+                .frame(width: 350, height: 50, alignment: .center)
+                .padding(.bottom, 10)
         }
     }
     

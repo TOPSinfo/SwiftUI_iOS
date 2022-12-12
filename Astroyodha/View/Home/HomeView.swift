@@ -212,14 +212,14 @@ extension HomeView {
                       content: {
                 ForEach(vms,
                         content: { vm in
-                    UserHomeUpcomingItemView(vm: vm)
+                    userHomeUpcomingItemView(vm: vm)
                 })
             })
         }
     }
     
     // MARK: - Upcoming Item View
-    private func UserHomeUpcomingItemView(vm: HomeUserUpcomingItemVM) -> some View {
+    private func userHomeUpcomingItemView(vm: HomeUserUpcomingItemVM) -> some View {
         NavigationLink(destination: {
             UpcomingView()
         },

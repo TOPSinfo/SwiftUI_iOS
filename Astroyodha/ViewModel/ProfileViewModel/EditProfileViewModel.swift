@@ -114,19 +114,23 @@ class EditProfileViewModel: ObservableObject {
             // ASTROLOGER
             
             // LANGUAGE
-            (self.objLoggedInUser?.languages ?? []).isEmpty ? (self.strLanguage = "Language") : (self.strLanguage = Singletion.shared.convertUserLanguagesIntoString(objLoggedInUser: self.objLoggedInUser!))
+            (self.objLoggedInUser?.languages ?? []).isEmpty
+            ? (self.strLanguage = "Language") : (self.strLanguage = Singletion.shared.convertUserLanguagesIntoString(objLoggedInUser: self.objLoggedInUser!))
             self.arrLanguages = Singletion.shared.arrLanguage
             
             // ASTROLOGY
-            (self.objLoggedInUser?.speciality ?? []).isEmpty ? (self.strAstrology = "Astrology Type") : (self.strAstrology =  Singletion.shared.convertUserAstrologyIntoString(objLoggedInUser: self.objLoggedInUser!))
+            (self.objLoggedInUser?.speciality ?? []).isEmpty
+            ? (self.strAstrology = "Astrology Type") : (self.strAstrology =  Singletion.shared.convertUserAstrologyIntoString(objLoggedInUser: self.objLoggedInUser!))
             
             self.arrAstrology = Singletion.shared.arrAstrology
             
             // PRICE
-            (self.objLoggedInUser?.price ?? 0) <= 0 ? (self.strPrice = "") : (self.strPrice = "\(self.objLoggedInUser?.price ?? 0)")
+            (self.objLoggedInUser?.price ?? 0) <= 0
+            ? (self.strPrice = "") : (self.strPrice = "\(self.objLoggedInUser?.price ?? 0)")
             
             // EXPERIENCE
-            (self.objLoggedInUser?.experience ?? 0) <= 0 ? (self.strExperience = "") : (self.strExperience =  "\(self.objLoggedInUser?.experience ?? 0)")
+            (self.objLoggedInUser?.experience ?? 0) <= 0
+            ? (self.strExperience = "") : (self.strExperience =  "\(self.objLoggedInUser?.experience ?? 0)")
             
             // ABOUT YOU
             self.strAbout = self.objLoggedInUser?.aboutYou ?? ""
@@ -135,7 +139,9 @@ class EditProfileViewModel: ObservableObject {
     
     // MARK: - Upload Profile Photo
     func uploadProfileImage(dictUser: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
-        firebase.uploadProfileImage(imgPhoto: pickedImage, dict: dictUser, isUser: (currentUserType == .user) ? true : false) { isCompleted in
+        firebase.uploadProfileImage(imgPhoto: pickedImage,
+                                    dict: dictUser,
+                                    isUser: (currentUserType == .user) ? true : false) { isCompleted in
             Singletion.shared.hideProgress()
             if isCompleted {
                 self.displayAlertWith(message: strProfileUpdated)
@@ -148,7 +154,8 @@ class EditProfileViewModel: ObservableObject {
     }
     
     // MARK: - Update User Data
-    func updateUserData(dictUser: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func updateUserData(dictUser: [String: Any],
+                        completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.updateUserData(dict: dictUser) { isCompleted in
             if isCompleted {
                 self.displayAlertWith(message: strProfileUpdated)
@@ -159,7 +166,8 @@ class EditProfileViewModel: ObservableObject {
     }
     
     // MARK: - Update Astrologer Data
-    func updateAstrologerData(dictAstrologer: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func updateAstrologerData(dictAstrologer: [String: Any],
+                              completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.updateAstrologerData(dict: dictAstrologer) { isCompleted in
             if isCompleted {
                 self.displayAlertWith(message: strProfileUpdated)
@@ -212,7 +220,9 @@ class EditProfileViewModel: ObservableObject {
     
     // MARK: - Astrologer Validation
     func isAstrologerValidate() -> Bool {
-        let strBirthDate = Singletion.shared.convertDateFormate(date: datePickerBirthDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash)
+        let strBirthDate = Singletion.shared.convertDateFormate(date: datePickerBirthDate,
+                                                                currentFormate: datePickerSelectedFormat,
+                                                                outputFormat: datePickerDateFormatWithoutDash)
         
         if strFullName.isEmpty {
             self.displayAlertWith(message: strEnterFullName)

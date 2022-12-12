@@ -49,25 +49,43 @@ class TimeSlotViewModel: ObservableObject {
     
     // MARK: - Time Slot Validation
     func isValideTimeSlot(completion: @escaping (_ isCompleted: Bool) -> Void) {
-        let strStartDate = Singletion.shared.convertDateFormate(date: datePickerStartDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormat)
+        let strStartDate = Singletion.shared.convertDateFormate(date: datePickerStartDate,
+                                                                currentFormate: datePickerSelectedFormat,
+                                                                outputFormat: datePickerDateFormat)
 
-        let strEndDate = Singletion.shared.convertDateFormate(date: datePickerEndDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormat)
+        let strEndDate = Singletion.shared.convertDateFormate(date: datePickerEndDate,
+                                                              currentFormate: datePickerSelectedFormat,
+                                                              outputFormat: datePickerDateFormat)
 
-        let strStartTime = Singletion.shared.convertDateFormate(date: timePickerStartTime, currentFormate: datePickerSelectedFormat, outputFormat: datePickertimeFormat)
+        let strStartTime = Singletion.shared.convertDateFormate(date: timePickerStartTime,
+                                                                currentFormate: datePickerSelectedFormat,
+                                                                outputFormat: datePickertimeFormat)
 
-        let strEndTime = Singletion.shared.convertDateFormate(date: timePickerEndTime, currentFormate: datePickerSelectedFormat, outputFormat: datePickertimeFormat)
+        let strEndTime = Singletion.shared.convertDateFormate(date: timePickerEndTime,
+                                                              currentFormate: datePickerSelectedFormat,
+                                                              outputFormat: datePickertimeFormat)
         
         // CHECK THE CURRENT SELECTED TIME SLOT OPTION
         if currentTimeSlot == .repeatOption {
             // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
-            let isValidRepeat = self.isValidRepeateSelection(strStartDate: strStartDate, strEndDate: strEndDate, strStartTime: strStartTime, strEndTime: strEndTime)
+            let isValidRepeat = self.isValidRepeateSelection(strStartDate: strStartDate,
+                                                             strEndDate: strEndDate,
+                                                             strStartTime: strStartTime,
+                                                             strEndTime: strEndTime)
             
             if isValidRepeat {
                 if let userUID = Auth.auth().currentUser?.uid {
                     let randomDocumentID: String = Singletion.shared.randomAlphaNumericString(length: 20)
                     print(randomDocumentID)
                     
-                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: strStartDate, startTime: strStartTime, endDate: strEndDate, endTime: strEndTime, repeatDays: [], timeslotid: randomDocumentID, type: currentTimeSlot.rawValue, uid: userUID)
+                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: strStartDate,
+                                                                    startTime: strStartTime,
+                                                                    endDate: strEndDate,
+                                                                    endTime: strEndTime,
+                                                                    repeatDays: [],
+                                                                    timeslotid: randomDocumentID,
+                                                                    type: currentTimeSlot.rawValue,
+                                                                    uid: userUID)
                     
                     // ADD DATA INTO DATABASE
                     self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
@@ -75,8 +93,7 @@ class TimeSlotViewModel: ObservableObject {
                     }
                 }
             }
-        }
-        else if currentTimeSlot == .weeklyOption {
+        } else if currentTimeSlot == .weeklyOption {
             // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
             let isValidWeekly = self.isValideWeeklySelection(strStartTime: strStartTime, strEndTime: strEndTime)
             
@@ -91,24 +108,39 @@ class TimeSlotViewModel: ObservableObject {
                     let randomDocumentID: String = Singletion.shared.randomAlphaNumericString(length: 20)
                     print(randomDocumentID)
                     
-                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: "", startTime: strStartTime, endDate: "", endTime: strEndTime, repeatDays: arrName, timeslotid: randomDocumentID, type: currentTimeSlot.rawValue, uid: userUID)
+                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: "",
+                                                                    startTime: strStartTime,
+                                                                    endDate: "",
+                                                                    endTime: strEndTime,
+                                                                    repeatDays: arrName,
+                                                                    timeslotid: randomDocumentID,
+                                                                    type: currentTimeSlot.rawValue,
+                                                                    uid: userUID)
                     
                     self.addTimeSlotData(objTimeSlot: objTimeSlot){ isCompleted in
                         completion(isCompleted)
                     }
                 }
             }
-        }
-        else if currentTimeSlot == .customOption {
+        } else if currentTimeSlot == .customOption {
             // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
-            let isValidCustom = self.isValidCustomSelection(strStartDate: strStartDate, strStartTime: strStartTime, strEndTime: strEndTime)
+            let isValidCustom = self.isValidCustomSelection(strStartDate: strStartDate,
+                                                            strStartTime: strStartTime,
+                                                            strEndTime: strEndTime)
             
-            if(isValidCustom) {
+            if isValidCustom {
                 if let userUID = Auth.auth().currentUser?.uid {
                     let randomDocumentID: String = Singletion.shared.randomAlphaNumericString(length: 20)
                     print(randomDocumentID)
                     
-                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: strStartDate, startTime: strStartTime, endDate: "", endTime: strEndTime, repeatDays: [], timeslotid: randomDocumentID, type: currentTimeSlot.rawValue, uid: userUID)
+                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: strStartDate,
+                                                                    startTime: strStartTime,
+                                                                    endDate: "",
+                                                                    endTime: strEndTime,
+                                                                    repeatDays: [],
+                                                                    timeslotid: randomDocumentID,
+                                                                    type: currentTimeSlot.rawValue,
+                                                                    uid: userUID)
                     
                     self.addTimeSlotData(objTimeSlot: objTimeSlot){ isCompleted in
                         completion(isCompleted)
@@ -123,33 +155,26 @@ class TimeSlotViewModel: ObservableObject {
         if strStartDate.isEmpty {
             self.displayAlertWith(message: strSelectDate)
             return false
-        }
-        else if strEndDate.isEmpty {
+        } else if strEndDate.isEmpty {
             self.displayAlertWith(message: strSelectDate)
             return false
-        }
-        else if strStartTime.isEmpty {
+        } else if strStartTime.isEmpty {
             self.displayAlertWith(message: strSelectStartTime)
             return false
-        }
-        else if strEndTime.isEmpty {
+        } else if strEndTime.isEmpty {
             self.displayAlertWith(message: strSelectEndTime)
             return false
-        }
-        else {
+        } else {
             if strStartDate == strEndDate {
                 self.displayAlertWith(message: strSelectEndDateGreaterThanStartDate)
                 return false
-            }
-            else if datePickerEndDate < datePickerStartDate {
+            } else if datePickerEndDate < datePickerStartDate {
                 self.displayAlertWith(message: strSelectEndDateGreaterThanStartDate)
                 return false
-            }
-            else if strStartTime == strEndTime {
+            } else if strStartTime == strEndTime {
                 self.displayAlertWith(message: strSelectEndTimeGreaterThanStartTime)
                 return false
-            }
-            else {
+            } else {
                 return true
             }
         }
@@ -162,21 +187,17 @@ class TimeSlotViewModel: ObservableObject {
         if selectedDaysCount <= 0 {
             self.displayAlertWith(message: strSelectDays)
             return false
-        }
-        else if strStartTime.isEmpty {
+        } else if strStartTime.isEmpty {
             self.displayAlertWith(message: strSelectStartTime)
             return false
-        }
-        else if strEndTime.isEmpty {
+        } else if strEndTime.isEmpty {
             self.displayAlertWith(message: strSelectEndTime)
             return false
-        }
-        else {
+        } else {
             if strStartTime == strEndTime {
                 self.displayAlertWith(message: strSelectEndTimeGreaterThanStartTime)
                 return false
-            }
-            else {
+            } else {
                 return true
             }
         }
@@ -187,21 +208,17 @@ class TimeSlotViewModel: ObservableObject {
         if strStartDate.isEmpty {
             self.displayAlertWith(message: strSelectDate)
             return false
-        }
-        else if strStartTime.isEmpty {
+        } else if strStartTime.isEmpty {
             self.displayAlertWith(message: strSelectStartTime)
             return false
-        }
-        else if strEndTime.isEmpty {
+        } else if strEndTime.isEmpty {
             self.displayAlertWith(message: strSelectEndTime)
             return false
-        }
-        else {
+        } else {
             if strStartTime == strEndTime {
                 self.displayAlertWith(message: strSelectEndTimeGreaterThanStartTime)
                 return false
-            }
-            else {
+            } else {
                 return true
             }
         }
@@ -212,8 +229,7 @@ class TimeSlotViewModel: ObservableObject {
         arrRepeat[index].isSelected.toggle()
         if index == 0 {
             currentTimeSlot = .repeatOption
-        }
-        else if index == 1 {
+        } else if index == 1 {
             currentTimeSlot = .weeklyOption
         } else {
             currentTimeSlot = .customOption
@@ -223,7 +239,8 @@ class TimeSlotViewModel: ObservableObject {
     }
     
     // MARK: - Add TimeSlot Data
-    private func addTimeSlotData(objTimeSlot: AppointmentTimeSlotModel, completion: @escaping (_ isCompleted: Bool) -> Void) {
+    private func addTimeSlotData(objTimeSlot: AppointmentTimeSlotModel,
+                                 completion: @escaping (_ isCompleted: Bool) -> Void) {
         Singletion.shared.showDefaultProgress()
         firebase.addAstrologerTimeSlotData(objSlot: objTimeSlot) { isCompleted in
             if isCompleted {

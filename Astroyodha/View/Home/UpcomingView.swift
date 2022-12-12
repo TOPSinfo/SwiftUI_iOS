@@ -10,7 +10,6 @@ import Introspect
 
 // MARK: - View
 struct UpcomingView: View {
-    
     @State var uiTabarController: UITabBarController?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     

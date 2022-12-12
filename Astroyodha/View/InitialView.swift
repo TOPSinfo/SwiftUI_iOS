@@ -29,15 +29,17 @@ struct InitialView: View {
                 
                 Text(strAstroYodha)
                     .multilineTextAlignment(.center)
-                    .frame(width: 350, height: 50 ,alignment: .center)
-                    .padding(.bottom,10)
+                    .frame(width: 350, height: 50, alignment: .center)
+                    .padding(.bottom, 10)
                 
                 VStack {
                     Button(action: {
                         btnAstrologerClicked()
-                    }){Text(strLoginToAstrologer)}
+                    }){
+                        Text(strLoginToAstrologer)
+                    }
                     .buttonStyle(buttonAstrologerStyle())
-                    .padding(.bottom,10)
+                    .padding(.bottom, 10)
                     NavigationLink(
                         destination: LoginView(),
                         isActive: $isAstro) {EmptyView()}
@@ -45,7 +47,9 @@ struct InitialView: View {
                 VStack {
                     Button(action: {
                         btnUserLoginClicked()
-                    }){ Text(strLoginToUser)}
+                    }){
+                        Text(strLoginToUser)
+                    }
                     .buttonStyle(buttonLoginUserStyle())
                     NavigationLink(
                         destination: LoginView(),
