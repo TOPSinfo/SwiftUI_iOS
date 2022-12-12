@@ -16,7 +16,6 @@ struct BookingObject {
     var category: String = ""
     let rate: String
     
-    
     init(date: String, message: String, timing: String, status: String, category: String, rate: String) {
         self.date = date
         self.titleMessage = message

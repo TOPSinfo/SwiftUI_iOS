@@ -47,5 +47,4 @@ struct AppUIColor {
     static let cE1F3FF = UIColor(named: "cE1F3FF")! // Astrologer Light Button Color
     static let cBC2626 = UIColor(named: "cBC2626")! // Delete Color
     static let cF3F3F3 = UIColor(named: "cF3F3F3")! // Delete Color
-    
 }

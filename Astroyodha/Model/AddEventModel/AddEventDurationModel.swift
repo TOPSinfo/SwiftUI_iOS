@@ -14,11 +14,10 @@ enum AddEventDuration: Int, Identifiable, CaseIterable {
     case thirty = 30
     case fourtyFive = 45
     case sixty = 60
-    
     var id: RawValue { rawValue }
     
-    var displayTitle: String{
-        switch self{
+    var displayTitle: String {
+        switch self {
         case .fifteen : return "15 minutes"
         case .thirty : return "30 minutes"
         case .fourtyFive : return "45 minutes"

@@ -8,7 +8,7 @@
 import Foundation
 
 class BookingAstrologerModel {
-    var allowextend : String
+    var allowextend: String
     var amount: Int
     var astrologercharge: Int
     var astrologerid: String
@@ -40,7 +40,7 @@ class BookingAstrologerModel {
     var userprofileimage: String
     var year: String
     
-    init(allowextend: String,amount: Int, astrologercharge: Int, astrologerid: String, astrologername: String,birthdate: String,birthplace: String,birthtime: String,bookingid: String,createdat: Date,date: String,description: String,endtime: Date,extendtime: Int,fullName: String,kundali: String,kundalipath: String,month: String,notificationmin: String,notify: String, paymentstatus: String,paymenttype: String,photo: String,starttime: Date,status: String,transactionid: String,uid: String,userbirthdate: String,username: String,userprofileimage: String,year: String ) {
+    init(allowextend: String, amount: Int, astrologercharge: Int, astrologerid: String, astrologername: String, birthdate: String, birthplace: String, birthtime: String, bookingid: String, createdat: Date, date: String, description: String, endtime: Date, extendtime: Int, fullName: String, kundali: String, kundalipath: String, month: String, notificationmin: String, notify: String, paymentstatus: String, paymenttype: String, photo: String, starttime: Date, status: String, transactionid: String, uid: String, userbirthdate: String, username: String, userprofileimage: String, year: String) {
         self.allowextend = allowextend
         self.amount = amount
         self.astrologercharge = astrologercharge
