@@ -128,8 +128,8 @@ struct CalendarViewRepresentable: UIViewRepresentable {
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
             var eventCount = 0
             Singletion.shared.arrBookingDates.forEach { eventDate in
-                if eventDate.formatted(date: .complete, time: .omitted) == date.formatted(date: .complete, time: .omitted){
-                    eventCount += 1;
+                if eventDate.formatted(date: .complete, time: .omitted) == date.formatted(date: .complete, time: .omitted) {
+                    eventCount += 1
                 }
             }
             return eventCount

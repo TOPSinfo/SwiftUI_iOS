@@ -50,7 +50,7 @@ struct InitialView: View {
                     }) {
                         Text(strLoginToUser)
                     }
-                    .buttonStyle(buttonLoginUserStyle())
+                    .buttonStyle(ButtonLoginUserStyle())
                     NavigationLink(
                         destination: LoginView(),
                         isActive: $isUser) {EmptyView()}
@@ -89,7 +89,7 @@ struct ButtonAstrologerStyle: ButtonStyle {
             .cornerRadius(8)
     }
 }
-struct buttonLoginUserStyle: ButtonStyle {
+struct ButtonLoginUserStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.headline.bold())

@@ -152,7 +152,7 @@ extension HomeView {
             
             GeometryReader { geometry in
                 HStack {
-                    //Information
+                    // Information
                     VStack(alignment: .leading, spacing: 6.6) {
                         Spacer()
                             .frame(minHeight: 31, maxHeight: 57.3)

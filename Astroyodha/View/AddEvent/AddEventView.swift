@@ -8,7 +8,7 @@
 import SwiftUI
 import AlertToast
 
-enum cameraSheet: Identifiable {
+enum CameraSheet: Identifiable {
     case first, second
     var id: Int {
         hashValue

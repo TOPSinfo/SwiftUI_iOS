@@ -271,14 +271,12 @@ extension EditProfileView {
                 .colorMultiply(viewModel.isEmailChange ? currentUserType.themeColor : AppColor.c999999)
                 .padding(.trailing, 10)
             
-            //TEXTFIELD DID CHAGNE METHOD
             TextField("Email Address", text: $viewModel.strEmail, onEditingChanged: { (editingChanged) in
                 if editingChanged {
                     viewModel.isEmailChange = true
                 } else {
                     viewModel.isEmailChange = false
                 }
-                
             })
                 .font(appFont(type: .poppinsRegular, size: 17))
                 .keyboardType(.emailAddress)

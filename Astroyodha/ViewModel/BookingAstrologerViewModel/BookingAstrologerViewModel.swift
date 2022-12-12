@@ -29,7 +29,7 @@ class BookingAstrologerViewModel: ObservableObject {
     @Published var showImagePicker = false
     @Published var actionSheet: Bool = false
     @Published var actionSheetOption : ActionSheetOption = .gallery
-    @Published var cameraSheet: cameraSheet?
+    @Published var cameraSheet: CameraSheet?
 
     var arrDuration = ["15 minutes", "30 minutes", "45 minutes", "60 minutes"]
     var arrNotification = ["5 minutes before", "10 minutes before", "15 minutes before", "30 minutes before", "1 hour before", "1 hour after"]

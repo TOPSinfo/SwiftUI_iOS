@@ -55,7 +55,7 @@ class FirebaseService: ObservableObject {
     
     // MARK: - Verify Phone Number And Send Otp
     func verifyNumberAndSendOTP(phone: String,
-                                completion: @escaping (_ isCompleted: Bool, _ error: Error? , _ id: String) -> Void) {
+                                completion: @escaping (_ isCompleted: Bool, _ error: Error?, _ id: String) -> Void) {
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { ID, err in
             if err != nil {
                 Singletion.shared.hideProgress()

@@ -118,7 +118,7 @@ extension BookingListView {
                         } else {
                             BookingItemView(arrBookings: $bookingViewModel.arrUpcomingBookings)
                         }
-                    } else if (tab.title == BookingFilter.ongoing.rawValue.uppercased()) {
+                    } else if tab.title == BookingFilter.ongoing.rawValue.uppercased() {
                         if bookingViewModel.arrOnGoingBookings.isEmpty {
                             Text("No Data Found")
                                 .font(appFont(type: .poppinsRegular, size: 17))
@@ -126,7 +126,7 @@ extension BookingListView {
                         } else {
                             BookingItemView(arrBookings: $bookingViewModel.arrOnGoingBookings)
                         }
-                    } else if (tab.title == BookingFilter.past.rawValue.uppercased()) {
+                    } else if tab.title == BookingFilter.past.rawValue.uppercased() {
                         if bookingViewModel.arrPastBookings.isEmpty {
                             Text("No Data Found")
                                 .font(appFont(type: .poppinsRegular, size: 17))
