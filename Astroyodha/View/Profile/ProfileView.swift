@@ -28,7 +28,7 @@ struct ProfileView: View {
                 
                 GeometryReader { g in
                     ScrollView(showsIndicators: false) {
-                        VStack (spacing: 0) {
+                        VStack(spacing: 0) {
                             profilePhotoView
                                 .padding(.vertical, 20)
                             
@@ -104,7 +104,7 @@ struct OptionsFirstSectionView: View {
                     }
                     print("Tapped at \(index)")
                 } label: {
-                    VStack (alignment: .leading, spacing: 0) {
+                    VStack(alignment: .leading, spacing: 0) {
                         HStack {
                             Image(option.image)
                                 .resizable()
@@ -160,7 +160,7 @@ struct OptionsSecondSectionView: View {
                         }
                         print("Tapped at \(index)")
                     } label: {
-                        VStack (alignment: .leading, spacing: 0) {
+                        VStack(alignment: .leading, spacing: 0) {
                             HStack {
                                 Image(option.image)
                                     .resizable()
@@ -257,7 +257,7 @@ extension ProfileView {
     
     //Edit Profile Icon View
     private var editProfilePhotoView: some View {
-        VStack (spacing: 0) {
+        VStack(spacing: 0) {
             Button {
                 viewModel.showEditProfile = true
             } label: {
@@ -276,7 +276,7 @@ extension ProfileView {
     // MARK: - Rating And Consult View
     private var ratingAndConsultView: some View {
         HStack {
-            VStack (spacing: 4) {
+            VStack(spacing: 4) {
                 Text(String(format: "%.1f", viewModel.objLoggedInUser?.rating ?? 0.0))
                     .font(appFont(type: .poppinsRegular, size: 20))
                 Text("Rating")
@@ -288,7 +288,7 @@ extension ProfileView {
             
             AppColor.cF3F3F3.opacity(1.0).frame(width: 8 / UIScreen.main.scale)
             
-            VStack (spacing: 5) {
+            VStack(spacing: 5) {
                 Text("0")
                     .font(.title3)
                 Text("Consults")
@@ -302,7 +302,7 @@ extension ProfileView {
     
     //Date of Birth
     private var dateOfBirthView: some View {
-        VStack (spacing: 4) {
+        VStack(spacing: 4) {
             Image("imgDOB")
                 .resizable()
                 .renderingMode(.template)

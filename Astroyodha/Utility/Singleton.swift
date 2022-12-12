@@ -293,7 +293,7 @@ class Singletion {
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         if(phone.count>=4 && phone.count<=12){
             return phoneTest.evaluate(with: phone)
-        }else{
+        } else {
             return false
         }
     }

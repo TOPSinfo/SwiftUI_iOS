@@ -35,7 +35,7 @@ struct EditProfileView: View {
                         profilePhotoView
                         
                         if (currentUserType == .user) {
-                            VStack (spacing: 20) {
+                            VStack(spacing: 20) {
                                 fullNameTextFieldView
                                 mobileNumberTextFieldView
                                 emailTextFieldView
@@ -46,8 +46,8 @@ struct EditProfileView: View {
                             }
                         }
                         else {
-                            VStack (alignment: .leading, spacing: 0) {
-                                VStack (alignment: .leading, spacing: 20) {
+                            VStack(alignment: .leading, spacing: 0) {
+                                VStack(alignment: .leading, spacing: 20) {
                                     Text("Basic Details")
                                         .font(appFont(type: .poppinsMedium, size: 20))
                                         .foregroundColor(AppColor.c242424)
@@ -65,7 +65,7 @@ struct EditProfileView: View {
                                     .padding(.horizontal)
                                     .padding(.vertical, 25)
                                 
-                                VStack (alignment: .leading, spacing: 20) {
+                                VStack(alignment: .leading, spacing: 20) {
                                     languageTextView
                                     astrologyTextView
                                     priceTextFieldView
@@ -559,7 +559,7 @@ extension EditProfileView {
             Color.black.opacity(0.75)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack (alignment: .leading) {
+            VStack(alignment: .leading) {
                 ForEach(0..<viewModel.arrLanguages.count) { index in
                     let objLanguage = viewModel.arrLanguages[index]
                     
@@ -633,7 +633,7 @@ extension EditProfileView {
             Color.black.opacity(0.75)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack (alignment: .leading) {
+            VStack(alignment: .leading) {
                 ForEach(0..<viewModel.arrAstrology.count) { index in
                     let objAstrology = viewModel.arrAstrology[index]
                     
@@ -809,7 +809,7 @@ extension EditProfileView {
                     .padding(.vertical, 2)
                 
                 HStack (alignment: .center, spacing: 0) {
-                    VStack (alignment: .center, spacing: 2) {
+                    VStack(alignment: .center, spacing: 2) {
                         Text(objAppointment.startTime)
                         Text("To")
                         Text(objAppointment.endTime)
@@ -818,7 +818,7 @@ extension EditProfileView {
                     .foregroundColor(AppColor.c999999)
                     .padding()
                     
-                    VStack (alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: 2) {
                         Text("Appointment Slot \(index + 1)")
                             .font(appFont(type: .poppinsMedium, size: 17))
                             .foregroundColor(AppColor.c999999)

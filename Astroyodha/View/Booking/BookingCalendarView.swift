@@ -231,7 +231,7 @@ extension BookingCalendarView {
                                     .frame(width: 32)
                             }
                         
-                        VStack (alignment: .leading, spacing: 3) {
+                        VStack(alignment: .leading, spacing: 3) {
                             Text("Your Appointment with \((currentUserType == .user) ? objBooking.astrologername : objBooking.username)")
                                 .lineLimit(2)
                                 .font(appFont(type: .poppinsMedium, size: 15))

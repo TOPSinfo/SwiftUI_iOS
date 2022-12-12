@@ -67,7 +67,6 @@
 		E74285632924C52300B11EE4 /* CITTopTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74285552924C52300B11EE4 /* CITTopTabBarView.swift */; };
 		E75FB067291BE47C005B7487 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75FB066291BE47C005B7487 /* ImagePickerView.swift */; };
 		E76FCD0C29278DAA00D03BC3 /* Common+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76FCD0B29278DAA00D03BC3 /* Common+Extension.swift */; };
-		E7738EA329011D3A00762D60 /* AddEventDurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7738EA229011D3A00762D60 /* AddEventDurationModel.swift */; };
 		E7738EEE2901708700762D60 /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7738EED2901708700762D60 /* imagePicker.swift */; };
 		E77A01C42911162B00F4CCA3 /* DeviceModelsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A01C32911162B00F4CCA3 /* DeviceModelsList.swift */; };
 		E77B83CE28C73DD900018D63 /* UpcomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77B83CD28C73DD900018D63 /* UpcomingView.swift */; };
@@ -170,7 +169,6 @@
 		E74285552924C52300B11EE4 /* CITTopTabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CITTopTabBarView.swift; sourceTree = "<group>"; };
 		E75FB066291BE47C005B7487 /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		E76FCD0B29278DAA00D03BC3 /* Common+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Common+Extension.swift"; sourceTree = "<group>"; };
-		E7738EA229011D3A00762D60 /* AddEventDurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventDurationModel.swift; sourceTree = "<group>"; };
 		E7738EED2901708700762D60 /* imagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
 		E77A01C32911162B00F4CCA3 /* DeviceModelsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelsList.swift; sourceTree = "<group>"; };
 		E77B83CD28C73DD900018D63 /* UpcomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingView.swift; sourceTree = "<group>"; };
@@ -437,7 +435,6 @@
 		E7738EA129011D1900762D60 /* AddEventModel */ = {
 			isa = PBXGroup;
 			children = (
-				E7738EA229011D3A00762D60 /* AddEventDurationModel.swift */,
 			);
 			path = AddEventModel;
 			sourceTree = "<group>";
@@ -828,7 +825,6 @@
 				769A1F2928BDDA8F00D80E40 /* AstroyodhaApp.swift in Sources */,
 				E74285562924C52300B11EE4 /* CITTopTabBarWidthMode.swift in Sources */,
 				E742855E2924C52300B11EE4 /* CITTopTabBarDisplayMode.swift in Sources */,
-				E7738EA329011D3A00762D60 /* AddEventDurationModel.swift in Sources */,
 				E77A01C42911162B00F4CCA3 /* DeviceModelsList.swift in Sources */,
 				E7B37F9B2918CEAF00295B72 /* CMSViewModel.swift in Sources */,
 				E7E8694628C606E600706D15 /* Constants.swift in Sources */,

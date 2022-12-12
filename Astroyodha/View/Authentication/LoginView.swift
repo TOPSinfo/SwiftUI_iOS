@@ -58,7 +58,7 @@ extension LoginView {
     
     // MARK: - Header Text content View
     private var headerContentView: some View {
-        VStack () {
+        VStack {
             Image("imgLoginPhone")
                 .resizable()
                 .frame(width: 130, height: 130)

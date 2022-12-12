@@ -105,7 +105,7 @@ extension TimeSlotView {
             Color.black.opacity(0.75)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack (alignment: .leading) {
+            VStack(alignment: .leading) {
                 ForEach(0..<viewModel.arrRepeat.count, id: \.self) { index in
                     let objRepeat = viewModel.arrRepeat[index]
                     
@@ -140,13 +140,13 @@ extension TimeSlotView {
     
     // MARK: - Start Date View
     private var startDateView: some View {
-        VStack (alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(viewModel.strStartDateTitle)
                 .font(appFont(type: .poppinsMedium, size: 17))
                 .foregroundColor(AppColor.c999999)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            VStack (alignment: .leading) {
+            VStack(alignment: .leading) {
                 DatePicker("", selection: $viewModel.datePickerStartDate, in: Date()..., displayedComponents: .date)
                     .labelsHidden()
                     .clipped()
@@ -156,7 +156,7 @@ extension TimeSlotView {
     }
     // MARK: - End Date View
     private var endDateView: some View {
-        VStack (alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(viewModel.strEndDateTitle)
                 .font(appFont(type: .poppinsMedium, size: 17))
                 .foregroundColor(AppColor.c999999)
@@ -173,7 +173,7 @@ extension TimeSlotView {
     
     // MARK: - Start Time View
     private var startTimeView: some View {
-        VStack (alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(viewModel.strStartTimeTitle)
                 .font(appFont(type: .poppinsMedium, size: 17))
                 .foregroundColor(AppColor.c999999)
@@ -190,7 +190,7 @@ extension TimeSlotView {
     
     // MARK: - End Time View
     private var endTimeView: some View {
-        VStack (alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(viewModel.strEndTimeTitle)
                 .font(appFont(type: .poppinsMedium, size: 17))
                 .foregroundColor(AppColor.c999999)
@@ -276,7 +276,7 @@ extension TimeSlotView {
                 endDateView
             }
             else  if (viewModel.currentTimeSlot == .customOption) {
-                VStack (alignment: .leading, spacing: 5) {
+                VStack(alignment: .leading, spacing: 5) {
                     HStack {
                         Text("")
                     }

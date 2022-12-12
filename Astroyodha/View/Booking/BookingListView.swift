@@ -167,7 +167,7 @@ struct BookingItemView: View {
                                     .foregroundColor(.white)
                             }
                         
-                        VStack (alignment: .leading, spacing: 5) {
+                        VStack(alignment: .leading, spacing: 5) {
                             Text("Your Appointment with \((currentUserType == .user) ? objBooking.astrologername : objBooking.username)")
                                 .lineLimit(2)
                                 .font(appFont(type: .poppinsRegular, size: 15))

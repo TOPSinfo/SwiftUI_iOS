@@ -12,7 +12,7 @@ class UserModel: Codable {
     var birthplace: String
     var birthtime: String
     var createdat: Date
-    var devicedetails : String
+    var devicedetails: String
     var email: String
     var fullname: String
     var imagepath: String
@@ -79,7 +79,6 @@ struct LoginDataCache {
         UserDefaults.standard.removeObject(forKey: key)
     }
 }
-
 
 struct AppointmentTimeSlotModel {
     var startDate: String

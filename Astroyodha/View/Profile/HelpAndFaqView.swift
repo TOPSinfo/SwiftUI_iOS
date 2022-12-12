@@ -65,7 +65,7 @@ extension HelpAndFaqView {
     //HELP AND FAQ LIST VIEW
     private var listView: some View {
         List(viewModel.arrHelpFaqData) { responseData in
-            VStack (alignment: .leading) {
+            VStack(alignment: .leading) {
                 HStack {
                     Text(responseData.titleText)
                         .font(appFont(type: .poppinsRegular, size: 17))

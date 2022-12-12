@@ -16,7 +16,7 @@ struct AstrologerGridItmeVM: Identifiable {
     let uid: String
     let ratting: Float
     let address: String
-    let imageAstro : String
+    let imageAstro: String
     let speciality: [String]
     
     init(name: String, price: Int, uid: String, ratting: Float, address: String, imageAstro: String, speciality: [String]) {
@@ -29,7 +29,6 @@ struct AstrologerGridItmeVM: Identifiable {
         self.speciality = speciality
     }
 }
-
 
 // MARK: - Banner
 struct HomeBannerVM {
