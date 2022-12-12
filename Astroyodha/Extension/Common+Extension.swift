@@ -79,7 +79,7 @@ struct NavigationBarModifier: ViewModifier {
     }
     
     func body(content: Content) -> some View {
-        ZStack{
+        ZStack {
             content
             VStack {
                 GeometryReader { geometry in
@@ -130,7 +130,7 @@ extension Date {
     
     static func getCurrentDate(dateFormate: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = dateFormate //"dd/MM/yyyy HH:mm:ss"
+        dateFormatter.dateFormat = dateFormate
         return dateFormatter.string(from: Date())
     }
     
@@ -206,11 +206,11 @@ extension Double {
 
 // MARK: - STRING EXTENSION
 extension String {
-    func stringAt(_ i: Int) -> String {
-        return String(Array(self)[i])
+    func stringAt(_ index: Int) -> String {
+        return String(Array(self)[index])
     }
     
-    func charAt(_ i: Int) -> Character {
-        return Array(self)[i]
+    func charAt(_ index: Int) -> Character {
+        return Array(self)[index]
     }
 }

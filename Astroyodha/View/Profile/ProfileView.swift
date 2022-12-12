@@ -208,7 +208,7 @@ struct OptionsSecondSectionView: View {
     // MARK: -  Logout user. Remove stored data and redirect user to Initial Screen
     func removeLocallyStoredDataAndLogoutFromFirebaseAndRedirectToIntroScreen() {
         LoginDataCache.remove()
-        UserDefaults.standard.set(false, forKey: userDefault.isUserLoggedIn)
+        UserDefaults.standard.set(false, forKey: UserDefaultKey.isUserLoggedIn)
         Singletion.shared.clearUserObject()
         
         // Logout from Firebase

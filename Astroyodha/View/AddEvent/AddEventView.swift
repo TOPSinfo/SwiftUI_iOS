@@ -22,7 +22,7 @@ struct AddEventView: View {
     var selectedAstrologer : AstrologerGridItmeVM?
     
     var body: some View {
-        ZStack{
+        ZStack {
             ScrollView(showsIndicators: false) {
                 VStack {
                     Spacer()

@@ -30,7 +30,6 @@ struct AppColor {
 
 struct AppUIColor {
     static let white = UIColor.white
-    
     static let c242424 = UIColor(named: "c242424")! // Black
     static let c333333 = UIColor(named: "c333333")! // Charcol
     static let c999999 = UIColor(named: "c999999")! // Gray

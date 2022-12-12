@@ -44,8 +44,8 @@ class FirebaseService: ObservableObject {
             if err != nil {
                 completion(false)
             } else {
-                UserDefaults.standard.set(ID, forKey: userDefault.strVerificationID)
-                UserDefaults.standard.set(strPhoneNumber, forKey: userDefault.strPhoneNumber)
+                UserDefaults.standard.set(ID, forKey: UserDefaultKey.strVerificationID)
+                UserDefaults.standard.set(strPhoneNumber, forKey: UserDefaultKey.strPhoneNumber)
                 completion(true)
             }
         }
@@ -61,8 +61,8 @@ class FirebaseService: ObservableObject {
             }
             
             Singletion.shared.hideProgress()
-            UserDefaults.standard.set(ID, forKey: userDefault.strVerificationID)
-            UserDefaults.standard.set(phone, forKey: userDefault.strPhoneNumber)
+            UserDefaults.standard.set(ID, forKey: UserDefaultKey.strVerificationID)
+            UserDefaults.standard.set(phone, forKey: UserDefaultKey.strPhoneNumber)
             
             completion(true, nil, (ID ?? ""))
         }
@@ -76,7 +76,7 @@ class FirebaseService: ObservableObject {
                 completion(false, err, nil)
                 return
             } else {
-                UserDefaults.standard.set(true, forKey: userDefault.isUserLoggedIn)
+                UserDefaults.standard.set(true, forKey: UserDefaultKey.isUserLoggedIn)
                 objUser.uid = authResult!.user.uid
                 objUser.token = authResult!.user.refreshToken ?? ""
                 completion(true, err, authResult)

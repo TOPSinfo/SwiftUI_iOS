@@ -105,7 +105,7 @@ class OTPVerificationViewModel: ObservableObject {
     func firebaseOtpVerification() {
         UIApplication.shared.dismissKeyboard()
         Singletion.shared.showDefaultProgress()
-        guard let verificationID = UserDefaults.standard.object(forKey: userDefault.strVerificationID) as? String else {
+        guard let verificationID = UserDefaults.standard.object(forKey: UserDefaultKey.strVerificationID) as? String else {
             Singletion.shared.hideProgress()
             return
         }
@@ -117,7 +117,7 @@ class OTPVerificationViewModel: ObservableObject {
         self.firebase.verifyOTP(credential: credential) { isCompleted, error, authResult  in
             if(isCompleted) {
                 self.isValidationPass = true
-                UserDefaults.standard.set(true, forKey: userDefault.isUserLoggedIn)
+                UserDefaults.standard.set(true, forKey: UserDefaultKey.isUserLoggedIn)
                 
                 // store data in object
                 if let result = authResult {
@@ -143,7 +143,7 @@ class OTPVerificationViewModel: ObservableObject {
     func firebaseResendOTP() {
         UIApplication.shared.dismissKeyboard()
         Singletion.shared.showDefaultProgress()
-        guard let phone = UserDefaults.standard.object(forKey: userDefault.strPhoneNumber) as? String else {
+        guard let phone = UserDefaults.standard.object(forKey: UserDefaultKey.strPhoneNumber) as? String else {
             return
         }
         
