@@ -10,35 +10,30 @@ import SwiftUI
 
 class BookingAstrologerViewModel: ObservableObject {
     @Published var astrologerBookingList = [BookingAstrologerModel]()
-    
     @Published var strAlertMessage = ""
-    
     @Published var strDetails = ""
     @Published var strFullName = ""
     @Published var strPlaceOfBirth = ""
-    
     @Published var strDurationSelection = "15 minutes"
     @Published var strPaymentModeText = "Select payment mode"
     @Published var strNotificationSelection = "5 minutes before"
     @Published var strPaymentModeSelection = "Pay with wallet"
-    
     @Published var datePicker = Date()
     @Published var datePickerBirthDate = Date()
     @Published var timePicker = Date()
     @Published var timePickerBirth = Date()
     @Published var pickedImage = UIImage(named: "imgUploadImage")!
     @Published var pickedImageKundali = UIImage(named: "imgUploadImage")!
-    
     @Published var showToast = false
     @Published var isCameraSelected = false
     @Published var showImagePicker = false
     @Published var actionSheet: Bool = false
     @Published var actionSheetOption : ActionSheetOption = .gallery
     @Published var cameraSheet: cameraSheet?
-    
+
     var arrDuration = ["15 minutes", "30 minutes", "45 minutes", "60 minutes"]
-    var arrNotification = ["5 minutes before","10 minutes before","15 minutes before","30 minutes before","1 hour before","1 hour after"]
-    var arrPaymentOption = ["Pay with wallet","Pay with online"]
+    var arrNotification = ["5 minutes before", "10 minutes before", "15 minutes before", "30 minutes before", "1 hour before", "1 hour after"]
+    var arrPaymentOption = ["Pay with wallet", "Pay with online"]
     
     var dateRange: ClosedRange<Date> {
         let TenDaysAfter = Calendar.current.date(byAdding: .day, value: +10, to: Date())!

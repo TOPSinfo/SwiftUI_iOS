@@ -259,7 +259,9 @@ extension SignupView {
                     .frame(maxWidth: .infinity)
                     .background(RoundedRectangle(cornerRadius: 5).fill(currentUserType.themeColor))
             }).padding()
-            NavigationLink(destination: OTPVerificationView(isFromLogin: false),isActive: $signUpViewModel.isUserSignUp) {EmptyView()}
+            NavigationLink(
+                destination: OTPVerificationView(isFromLogin: false),
+                isActive: $signUpViewModel.isUserSignUp) {EmptyView()}
         }
     }
     

@@ -15,50 +15,35 @@ class EditProfileViewModel: ObservableObject {
     @Published var strPhoneNumber: String = ""
     @Published var isEmailChange: Bool = false
     @Published var strEmail: String = ""
-    
     @Published var isDatePickerVisible: Bool = false
     @Published var datePickerBirthDate = Date()
-    
     @Published var isTimePickerVisible: Bool = false
     @Published var datePickerTime = Date()
-    
     @Published var isBirthPlaceChange: Bool = false
     @Published var strBirthPlace: String = ""
-    
     @Published var showToast: Bool = false
     @Published var strAlertMessage: String = ""
-    
     @Published var isLanguageVisible: Bool = false
     @Published var strLanguage: String = ""
-    
     @Published var isAstrologyVisible: Bool = false
     @Published var strAstrology: String = ""
-    
     @Published var isPriceChange: Bool = false
     @Published var strPrice: String = ""
-    
     @Published var isExperienceChange: Bool = false
     @Published var strExperience: String = ""
-    
     @Published var isAboutChange: Bool = false
     @Published var strAbout: String = ""
-    
     @Published var isAppointmentTapped: Bool = false
-    
     @Published var showImagePicker: Bool = false
     @Published var pickedImage = UIImage(named: "imgProfile")!
     @Published var isCameraSelected = false
     @Published var actionSheet: Bool = false
     @Published var actionSheetOption : ActionSheetOption = .gallery
-    
     @Published var isImageChanged: Bool = false
-    
     @Published var arrAppointments: [AppointmentTimeSlotModel] = []
-    
-    var firebase: FirebaseService = FirebaseService()
-    
     @Published var arrLanguages: [LanguageObject] = []
     @Published var arrAstrology: [AstrologyObject] = []
+    var firebase: FirebaseService = FirebaseService()
     
     init() {
         self.objLoggedInUser = Singletion.shared.objLoggedInUser
@@ -97,11 +82,17 @@ class EditProfileViewModel: ObservableObject {
         
         switch actionSheetOption {
         case .camera:
-            return ActionSheet(title: Text("Options"), message: Text("Select one option"), buttons: [cameraButton, gallaryButton, cancelButton])
+            return ActionSheet(
+                title: Text("Options"),
+                message: Text("Select one option"),
+                buttons: [cameraButton, gallaryButton, cancelButton])
             
             
         case .gallery:
-            return ActionSheet(title: Text("Options"), message: Text("Select one option"), buttons: [cameraButton, gallaryButton, cancelButton])
+            return ActionSheet(
+                title: Text("Options"),
+                message: Text("Select one option"),
+                buttons: [cameraButton, gallaryButton, cancelButton])
         }
     }
     
@@ -113,8 +104,12 @@ class EditProfileViewModel: ObservableObject {
             self.strEmail = self.objLoggedInUser?.email ?? ""
             self.strBirthPlace = (self.objLoggedInUser?.birthplace ?? "")
             
-            self.datePickerBirthDate = Singletion.shared.getDateMonthYearFromDate(birthDate: (self.objLoggedInUser?.birthdate ?? ""), inputFormat: datePickerDateFormatWithoutDash)
-            self.datePickerTime = Singletion.shared.getDateMonthYearFromDate(birthDate: (self.objLoggedInUser?.birthtime ?? ""), inputFormat: datePickertimeFormat)
+            self.datePickerBirthDate = Singletion.shared.getDateMonthYearFromDate(
+                birthDate: (self.objLoggedInUser?.birthdate ?? ""),
+                inputFormat: datePickerDateFormatWithoutDash)
+            self.datePickerTime = Singletion.shared.getDateMonthYearFromDate(
+                birthDate: (self.objLoggedInUser?.birthtime ?? ""),
+                inputFormat: datePickertimeFormat)
             
             // ASTROLOGER
             

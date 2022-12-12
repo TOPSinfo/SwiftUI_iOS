@@ -785,7 +785,9 @@ extension EditProfileView {
                     .frame(width: 25)
                     .padding(.horizontal)
             }
-            NavigationLink(destination: TimeSlotView(), isActive: $viewModel.isAppointmentTapped) { EmptyView()}
+            NavigationLink(
+                destination: TimeSlotView(),
+                isActive: $viewModel.isAppointmentTapped) { EmptyView()}
         }
     }
     

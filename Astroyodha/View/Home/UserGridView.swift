@@ -38,7 +38,9 @@ struct UserGridView: View {
                         }
                         .padding(.all, 26.6)
                         
-                        NavigationLink(destination: AddEventView(selectedAstrologer: viewModel.selectAstrologer), isActive: $viewModel.isAddEvent) {EmptyView()}
+                        NavigationLink(
+                            destination: AddEventView(selectedAstrologer: viewModel.selectAstrologer),
+                            isActive: $viewModel.isAddEvent) {EmptyView()}
                     }
                 }
                 .frame(width: g.size.width, height: g.size.height + 49, alignment: .center)

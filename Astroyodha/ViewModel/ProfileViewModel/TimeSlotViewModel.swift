@@ -57,7 +57,7 @@ class TimeSlotViewModel: ObservableObject {
 
         let strEndTime = Singletion.shared.convertDateFormate(date: timePickerEndTime, currentFormate: datePickerSelectedFormat, outputFormat: datePickertimeFormat)
         
-        //CHECK THE CURRENT SELECTED TIME SLOT OPTION
+        // CHECK THE CURRENT SELECTED TIME SLOT OPTION
         if (currentTimeSlot == .repeatOption) {
             //IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
             let isValidRepeat = self.isValidRepeateSelection(strStartDate: strStartDate, strEndDate: strEndDate, strStartTime: strStartTime, strEndTime: strEndTime)
@@ -77,7 +77,7 @@ class TimeSlotViewModel: ObservableObject {
             }
         }
         else if (currentTimeSlot == .weeklyOption) {
-            //IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
+            // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
             let isValidWeekly = self.isValideWeeklySelection(strStartTime: strStartTime, strEndTime: strEndTime)
             
             if(isValidWeekly) {
@@ -100,7 +100,7 @@ class TimeSlotViewModel: ObservableObject {
             }
         }
         else if (currentTimeSlot == .customOption) {
-            //IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
+            // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
             let isValidCustom = self.isValidCustomSelection(strStartDate: strStartDate, strStartTime: strStartTime, strEndTime: strEndTime)
             
             if(isValidCustom) {

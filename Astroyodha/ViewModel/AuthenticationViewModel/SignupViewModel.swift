@@ -15,7 +15,6 @@ class SignupViewModel: ObservableObject {
     @Published var strEmail = ""
     @Published var selectedCountryCode = "+91"
     @Published var selectedCountry = "Afghanistan"
-    
     @Published var checkState: Bool = false
     @Published var isFirstNameChange = false
     @Published var isPhoneNumberChange = false

@@ -15,7 +15,6 @@ class HomeViewModel: ObservableObject {
                                 imageName: "astrologerAd")
 
     var astrolgerGridVMs: [AstrologerGridItmeVM] = []
-    
     let upcomingVMs = [
         HomeUserUpcomingItemVM(title: "Daily Horoscope",
                                imageName: "dailyHoroscope",
@@ -27,32 +26,23 @@ class HomeViewModel: ObservableObject {
                                imageName: "horoscopeMatching",
                                color: AppColor.cF1A341)
     ]
-    
     @Published var arrAstrologers: [AstrologerGridItmeVM] = []
     @Published var objLoggedInUser: UserModel?
-    
     let userViewModel = UserViewModel()
     var firebase: FirebaseService = FirebaseService()
-    
     @Published var isAddEvent = false
     @Published var astrologerGridVMs: [AstrologerGridItmeVM]?
     @Published var selectAstrologer : AstrologerGridItmeVM?
-    
-//    @Published var bookNowTap: VoidCallBack
-    
     var gridColumns = [
         GridItem(.flexible(minimum: 0, maximum: 500), spacing: 14),
         GridItem(.flexible(minimum: 0, maximum: 500), spacing: 14)
     ]
-    
     var columns = [
         GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 10.6),
         GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 10.6),
         GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 10.6),
     ]
-    
     @Published var isBookAppointmentTapped = false
-    
     
     init() {
         self.fetchCurrentUser()

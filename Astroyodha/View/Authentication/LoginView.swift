@@ -165,7 +165,9 @@ extension LoginView {
             
             Spacer()
             
-            NavigationLink(destination: OTPVerificationView(isFromLogin: true),isActive: self.$loginViewModel.isUserLoggedIn) {EmptyView()}
+            NavigationLink(
+                destination: OTPVerificationView(isFromLogin: true),
+                isActive: self.$loginViewModel.isUserLoggedIn) {EmptyView()}
         }
     }
     

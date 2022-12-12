@@ -118,14 +118,16 @@ struct OptionsFirstSectionView: View {
                         }
                         .padding(.vertical, 8)
                         .background(
-                            NavigationLink(destination: TransactionHistoryView(), isActive: $showTransactionHistoryView) { TransactionHistoryView()
-                            }
+                            NavigationLink(
+                                destination: TransactionHistoryView(),
+                                isActive: $showTransactionHistoryView) {EmptyView()}
                                 .frame(width: 0, height: 0)
                                 .hidden()
                         )
                         .background(
-                            NavigationLink(destination: HelpAndFaqView(), isActive: $showHelpAndFaqView) { EmptyView()
-                            }
+                            NavigationLink(
+                                destination: HelpAndFaqView(),
+                                isActive: $showHelpAndFaqView) {EmptyView()}
                                 .frame(width: 0, height: 0)
                                 .hidden()
                         )
@@ -174,7 +176,9 @@ struct OptionsSecondSectionView: View {
                             }
                             .padding(.vertical, 8)
                             .background(
-                                NavigationLink(destination: InitialView(), isActive: $showLogin) { EmptyView() }
+                                NavigationLink(
+                                    destination: InitialView(),
+                                    isActive: $showLogin) { EmptyView() }
                                     .frame(width: 0, height: 0)
                                     .hidden()
                             )
@@ -266,7 +270,9 @@ extension ProfileView {
                     .frame(width: 24, height: 24)
                     .padding(6)
             }
-            NavigationLink(destination: EditProfileView(), isActive: $viewModel.showEditProfile) { EmptyView()
+            NavigationLink(
+                destination: EditProfileView(),
+                isActive: $viewModel.showEditProfile) { EmptyView()
             }
             .frame(width: 0, height: 0)
             .hidden()

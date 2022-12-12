@@ -22,14 +22,14 @@ struct HomeView: View {
                 
                 backgroundView
                     .ignoresSafeArea()
-                GeometryReader { g in
+                GeometryReader { geometry in
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 0) {
                             headerView(notificationTap: {
                             }, objLoggedInUser: vm.objLoggedInUser)
                             Spacer()
                                 .frame(height: 29)
-                            HomeGridView(astrologerGridVMs: Array(vm.arrAstrologers.prefix(4)))
+                            homeGridView(astrologerGridVMs: Array(vm.arrAstrologers.prefix(4)))
                             Spacer()
                                 .frame(height: 26)
                             HomeBannerView(bannerVM: vm.bannerVM,
@@ -47,7 +47,7 @@ struct HomeView: View {
                         }
                         .padding(.horizontal, 26)
                     }
-                    .frame(width: g.size.width, height: g.size.height + 49, alignment: .center)
+                    .frame(width: geometry.size.width, height: geometry.size.height + 49, alignment: .center)
                 }
             }
             .navigationTitle("")
@@ -103,7 +103,7 @@ extension HomeView {
     }
     
     // MARK: - Grid View
-    private func HomeGridView(astrologerGridVMs: [AstrologerGridItmeVM]?) -> some View {
+    private func homeGridView(astrologerGridVMs: [AstrologerGridItmeVM]?) -> some View {
         VStack(spacing: 13) {
             HStack(spacing: 0) {
                 Text(currentUserType == .user ? "Astrologers" : "Users")
@@ -136,7 +136,9 @@ extension HomeView {
                     Text("Something went wrong..")
                 }
             })
-            NavigationLink(destination: AddEventView(selectedAstrologer: vm.selectAstrologer), isActive: $vm.isAddEvent) {EmptyView()}
+            NavigationLink(
+                destination: AddEventView(selectedAstrologer: vm.selectAstrologer),
+                isActive: $vm.isAddEvent) {EmptyView()}
         }
     }
     
@@ -176,7 +178,9 @@ extension HomeView {
                                 )
                         })
                         
-                        NavigationLink(destination: UserGridView(), isActive: $vm.isBookAppointmentTapped) {EmptyView()}
+                        NavigationLink(
+                            destination: UserGridView(),
+                            isActive: $vm.isBookAppointmentTapped) {EmptyView()}
                     }
                     .frame(maxWidth: .infinity)
                     .padding(EdgeInsets(top: 13.3,
@@ -279,11 +283,9 @@ struct AstrologerGridItemView: View {
                         Spacer()
                             .frame(width: 3.3)
                         Image("verified")
-                        //.resizable()
                             .scaledToFit()
                         Spacer()
                         Image("rating")
-                        //.resizable()
                             .scaledToFit()
                         Spacer()
                             .frame(width: 3.3)

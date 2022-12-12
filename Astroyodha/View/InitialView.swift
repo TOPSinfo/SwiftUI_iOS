@@ -38,14 +38,18 @@ struct InitialView: View {
                     }){Text(strLoginToAstrologer)}
                     .buttonStyle(buttonAstrologerStyle())
                     .padding(.bottom,10)
-                    NavigationLink(destination: LoginView(), isActive: $isAstro) {EmptyView()}
+                    NavigationLink(
+                        destination: LoginView(),
+                        isActive: $isAstro) {EmptyView()}
                 }
                 VStack {
                     Button(action: {
                         btnUserLoginClicked()
                     }){ Text(strLoginToUser)}
                     .buttonStyle(buttonLoginUserStyle())
-                    NavigationLink(destination: LoginView(), isActive: $isUser) {EmptyView()}
+                    NavigationLink(
+                        destination: LoginView(),
+                        isActive: $isUser) {EmptyView()}
                 }
             }
             .padding(.horizontal, 60)

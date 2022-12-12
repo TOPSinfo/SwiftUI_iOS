@@ -34,7 +34,9 @@ struct BookingListView: View {
                 
                 swipableTopTabBarView
                     .edgesIgnoringSafeArea(.all)
-                NavigationLink(destination: BookingCalendarView(), isActive: self.$bookingViewModel.isCalendarTapped) {EmptyView()}
+                NavigationLink(
+                    destination: BookingCalendarView(),
+                    isActive: self.$bookingViewModel.isCalendarTapped) {EmptyView()}
                 
                 navigationBarView
                     .navigationBarBackButtonHidden(true)
