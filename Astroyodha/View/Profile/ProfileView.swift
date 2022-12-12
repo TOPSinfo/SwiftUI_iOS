@@ -32,7 +32,7 @@ struct ProfileView: View {
                             profilePhotoView
                                 .padding(.vertical, 20)
                             
-                            if (currentUserType == .astrologer) {
+                            if currentUserType == .astrologer {
                                 Singletion.shared.addDivider(color: AppColor.cF3F3F3, opacityValue: 1.0, height: 14)
                                 ratingAndConsultView
                             }
@@ -232,10 +232,6 @@ extension ProfileView {
     private var profilePhotoView: some View {
         VStack {
             WebImage(url: URL(string: viewModel.objLoggedInUser?.profileimage ?? ""))
-                .onSuccess { image, data, cacheType in
-                    // Success
-                    // Note: Data exist only when queried from disk cache or network. Use `.queryMemoryData` if you really need data
-                }
                 .resizable()
                 .placeholder {
                     Image("imgProfile")

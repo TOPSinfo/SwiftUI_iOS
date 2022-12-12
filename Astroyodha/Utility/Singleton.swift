@@ -239,10 +239,10 @@ class Singletion {
         
         let currentDate = convertStringToDate(strDate: self.convertDateFormate(date: Date(), currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash), outputFormate: datePickerDateFormatWithoutDash)
         
-        if (startDate > currentDate) {
+        if startDate > currentDate {
             currentBooking = .upcoming
         }
-        else if (startDate < currentDate) {
+        else if startDate < currentDate {
             currentBooking = .past
         }
         else {
@@ -265,7 +265,7 @@ class Singletion {
         let startDateWords = startDate.components(separatedBy: ["-"])
         let endDateWords = endDate.components(separatedBy: ["-"])
         
-        if (endDate.isEmpty) {
+        if endDate.isEmpty {
             let strStart = startDateWords[0] + " " + startDateWords[1]
             return strStart
         } else {

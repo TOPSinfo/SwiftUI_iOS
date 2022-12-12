@@ -52,7 +52,7 @@ struct OTPVerificationView_Previews: PreviewProvider {
 extension OTPVerificationView {
     // MARK: - Back Button View
     private var backButtonView: some View {
-        VStack{
+        VStack {
             Button(action: {
                 print("Back Button Clicked...")
                 self.presentationMode.wrappedValue.dismiss()
@@ -115,17 +115,18 @@ extension OTPVerificationView {
         return Text(text)
             .font(.title)
             .frame(width: textBoxWidth, height: textBoxHeight)
-            .background(VStack{
-                Spacer()
-                RoundedRectangle(cornerRadius: 1)
-                    .frame(height: 0.5)
-            })
+            .background(
+                VStack {
+                    Spacer()
+                    RoundedRectangle(cornerRadius: 1)
+                        .frame(height: 0.5)
+                })
             .padding(paddingOfBox)
     }
     
     // MARK: - Verify/Resend Buttton View
     private var verifyAndResentOTPView: some View {
-        VStack{
+        VStack {
             HStack {
                 Button(action: {
                     if otpViewModel.isValidate() {

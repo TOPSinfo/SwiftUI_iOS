@@ -56,7 +56,7 @@ struct TimeSlotView: View {
                 }.navigationBarBackButtonHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
             
-            if (viewModel.isRepeatPopupShow) {
+            if viewModel.isRepeatPopupShow {
                 repeatPopupView
             }
         }
@@ -86,7 +86,7 @@ extension TimeSlotView {
     private var saveButtonView: some View {
         Button(action: {
             viewModel.isValideTimeSlot { isCompleted in
-                if (isCompleted) {
+                if isCompleted {
                     self.presentationMode.wrappedValue.dismiss()
                 }
             }
@@ -268,14 +268,14 @@ extension TimeSlotView {
                 startDateView
             }
             
-            if (viewModel.currentTimeSlot == .weeklyOption) {
+            if viewModel.currentTimeSlot == .weeklyOption {
                 weekDaysView
             }
             
-            if (viewModel.currentTimeSlot == .repeatOption) {
+            if viewModel.currentTimeSlot == .repeatOption {
                 endDateView
             }
-            else  if (viewModel.currentTimeSlot == .customOption) {
+            else if viewModel.currentTimeSlot == .customOption {
                 VStack(alignment: .leading, spacing: 5) {
                     HStack {
                         Text("")

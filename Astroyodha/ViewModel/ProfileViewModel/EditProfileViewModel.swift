@@ -52,7 +52,7 @@ class EditProfileViewModel: ObservableObject {
     
     // MARK: - Image Picker
     func imagePickerview() -> some View {
-        if (isCameraSelected) {
+        if isCameraSelected {
             return ImagePickerView(sourceType: .camera) { image in
                 self.pickedImage = image
                 self.isImageChanged = true
@@ -137,7 +137,7 @@ class EditProfileViewModel: ObservableObject {
     func uploadProfileImage(dictUser: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.uploadProfileImage(imgPhoto: pickedImage, dict: dictUser, isUser: (currentUserType == .user) ? true : false) { isCompleted in
             Singletion.shared.hideProgress()
-            if (isCompleted) {
+            if isCompleted {
                 self.displayAlertWith(message: strProfileUpdated)
                 Singletion.shared.hideProgress()
             } else {
@@ -150,7 +150,7 @@ class EditProfileViewModel: ObservableObject {
     // MARK: - Update User Data
     func updateUserData(dictUser: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.updateUserData(dict: dictUser) { isCompleted in
-            if (isCompleted) {
+            if isCompleted {
                 self.displayAlertWith(message: strProfileUpdated)
                 Singletion.shared.hideProgress()
             }
@@ -161,7 +161,7 @@ class EditProfileViewModel: ObservableObject {
     // MARK: - Update Astrologer Data
     func updateAstrologerData(dictAstrologer: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.updateAstrologerData(dict: dictAstrologer) { isCompleted in
-            if (isCompleted) {
+            if isCompleted {
                 self.displayAlertWith(message: strProfileUpdated)
                 Singletion.shared.hideProgress()
             }
@@ -179,7 +179,7 @@ class EditProfileViewModel: ObservableObject {
     // MARK: - Delete Timeslot Data
     func deleteTimeSlotData(objAppointment: AppointmentTimeSlotModel) {
         firebase.deleteAstrologerTimeSlotData(objSlot: objAppointment) { isCompleted in
-            if (isCompleted) {
+            if isCompleted {
                 if let index = self.arrAppointments.firstIndex(where: {$0.timeslotid == objAppointment.timeslotid}) {
                     self.arrAppointments.remove(at: index)
                 }

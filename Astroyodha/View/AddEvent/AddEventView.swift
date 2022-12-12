@@ -78,7 +78,7 @@ extension AddEventView {
     private var saveButtonView: some View {
         Button(action: {
             viewModel.addBookingData(selectedAstrologer: selectedAstrologer) { isCompleted in
-                if (isCompleted) {
+                if isCompleted {
                     self.presentationMode.wrappedValue.dismiss()
                 }
             }

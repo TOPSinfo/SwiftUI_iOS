@@ -10,7 +10,7 @@ import Firebase
 import AlertToast
 
 struct SignupView: View {
-
+    
     @StateObject private var signUpViewModel = SignupViewModel()
     @Environment(\.presentationMode) var presentationMode
     
@@ -46,10 +46,10 @@ struct SignupView: View {
 
 // MARK: - CREATE ANIMATED CHECK BOX
 struct setCheckBox: View {
-    @Binding var trimVal : CGFloat
-    @Binding var isCheckBoxTrue : Bool
+    @Binding var trimVal: CGFloat
+    @Binding var isCheckBoxTrue: Bool
     
-    var animatableData: CGFloat{
+    var animatableData: CGFloat {
         get {trimVal}
         set {trimVal = newValue }
     }
@@ -80,15 +80,17 @@ struct SignupView_Previews: PreviewProvider {
 // MARK: - COMPONENTS
 extension SignupView {
     private var backButtonView: some View {
-        VStack{
+        VStack {
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image(currentUserType == .user ? "imgBack" : "imgBackAstro")
                     .resizable()
                     .frame(width: 40, height: 40)
-            }).padding(.top, 15)
-        }.padding(.trailing, UIScreen.main.bounds.width - 60)
+            })
+                .padding(.top, 15)
+        }
+        .padding(.trailing, UIScreen.main.bounds.width - 60)
     }
     
     // MARK: - Create Account Title View

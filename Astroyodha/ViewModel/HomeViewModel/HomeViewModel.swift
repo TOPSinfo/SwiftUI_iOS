@@ -40,13 +40,13 @@ class HomeViewModel: ObservableObject {
     var columns = [
         GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 10.6),
         GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 10.6),
-        GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 10.6),
+        GridItem(.flexible(minimum: 0, maximum: .infinity), spacing: 10.6)
     ]
     @Published var isBookAppointmentTapped = false
     
     init() {
         self.fetchCurrentUser()
-        if (currentUserType == .user) {
+        if currentUserType == .user {
             self.fetchAllAstrologers()
         }
     }

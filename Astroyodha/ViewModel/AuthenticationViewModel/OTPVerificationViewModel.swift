@@ -93,7 +93,7 @@ class OTPVerificationViewModel: ObservableObject {
             self.objLoggedInUser = user
             Singletion.shared.objLoggedInUser = user
             
-            if (user.usertype == "user") {
+            if user.usertype == "user" {
                 UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(rootView: UserTabView())
             } else {
                 UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(rootView: AstrologerTabView())
@@ -148,7 +148,7 @@ class OTPVerificationViewModel: ObservableObject {
         }
         
         self.firebase.verifyNumberAndSendOTP(phone: phone) { isCompleted, error, id in
-            if (isCompleted) {
+            if isCompleted {
                 self.id = id
                 self.isResendOTP = false
                 self.timeRemaining = 10

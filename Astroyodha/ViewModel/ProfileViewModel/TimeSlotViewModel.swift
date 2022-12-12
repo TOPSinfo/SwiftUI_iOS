@@ -58,8 +58,8 @@ class TimeSlotViewModel: ObservableObject {
         let strEndTime = Singletion.shared.convertDateFormate(date: timePickerEndTime, currentFormate: datePickerSelectedFormat, outputFormat: datePickertimeFormat)
         
         // CHECK THE CURRENT SELECTED TIME SLOT OPTION
-        if (currentTimeSlot == .repeatOption) {
-            //IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
+        if currentTimeSlot == .repeatOption {
+            // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
             let isValidRepeat = self.isValidRepeateSelection(strStartDate: strStartDate, strEndDate: strEndDate, strStartTime: strStartTime, strEndTime: strEndTime)
             
             if isValidRepeat {
@@ -69,14 +69,14 @@ class TimeSlotViewModel: ObservableObject {
                     
                     let objTimeSlot = AppointmentTimeSlotModel.init(startDate: strStartDate, startTime: strStartTime, endDate: strEndDate, endTime: strEndTime, repeatDays: [], timeslotid: randomDocumentID, type: currentTimeSlot.rawValue, uid: userUID)
                     
-                    //ADD DATA INTO DATABASE
+                    // ADD DATA INTO DATABASE
                     self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
                         completion(isCompleted)
                     }
                 }
             }
         }
-        else if (currentTimeSlot == .weeklyOption) {
+        else if currentTimeSlot == .weeklyOption {
             // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
             let isValidWeekly = self.isValideWeeklySelection(strStartTime: strStartTime, strEndTime: strEndTime)
             
@@ -99,7 +99,7 @@ class TimeSlotViewModel: ObservableObject {
                 }
             }
         }
-        else if (currentTimeSlot == .customOption) {
+        else if currentTimeSlot == .customOption {
             // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
             let isValidCustom = self.isValidCustomSelection(strStartDate: strStartDate, strStartTime: strStartTime, strEndTime: strEndTime)
             
@@ -120,32 +120,32 @@ class TimeSlotViewModel: ObservableObject {
     
     // MARK: - Repeat Action Validation
     func isValidRepeateSelection(strStartDate: String, strEndDate: String, strStartTime: String, strEndTime: String) -> Bool {
-        if (strStartDate.isEmpty) {
+        if strStartDate.isEmpty {
             self.displayAlertWith(message: strSelectDate)
             return false
         }
-        else if (strEndDate.isEmpty) {
+        else if strEndDate.isEmpty {
             self.displayAlertWith(message: strSelectDate)
             return false
         }
-        else if (strStartTime.isEmpty) {
+        else if strStartTime.isEmpty {
             self.displayAlertWith(message: strSelectStartTime)
             return false
         }
-        else if (strEndTime.isEmpty) {
+        else if strEndTime.isEmpty {
             self.displayAlertWith(message: strSelectEndTime)
             return false
         }
         else {
-            if (strStartDate == strEndDate) {
+            if strStartDate == strEndDate {
                 self.displayAlertWith(message: strSelectEndDateGreaterThanStartDate)
                 return false
             }
-            else if (datePickerEndDate < datePickerStartDate) {
+            else if datePickerEndDate < datePickerStartDate {
                 self.displayAlertWith(message: strSelectEndDateGreaterThanStartDate)
                 return false
             }
-            else if (strStartTime == strEndTime) {
+            else if strStartTime == strEndTime {
                 self.displayAlertWith(message: strSelectEndTimeGreaterThanStartTime)
                 return false
             }
@@ -159,20 +159,20 @@ class TimeSlotViewModel: ObservableObject {
     func isValideWeeklySelection(strStartTime: String, strEndTime: String) -> Bool {
         let selectedDaysCount = arrDays.filter({ $0.isSelected == true }).count
         
-        if (selectedDaysCount <= 0) {
+        if selectedDaysCount <= 0 {
             self.displayAlertWith(message: strSelectDays)
             return false
         }
-        else if (strStartTime.isEmpty) {
+        else if strStartTime.isEmpty {
             self.displayAlertWith(message: strSelectStartTime)
             return false
         }
-        else if (strEndTime.isEmpty) {
+        else if strEndTime.isEmpty {
             self.displayAlertWith(message: strSelectEndTime)
             return false
         }
         else {
-            if (strStartTime == strEndTime) {
+            if strStartTime == strEndTime {
                 self.displayAlertWith(message: strSelectEndTimeGreaterThanStartTime)
                 return false
             }
@@ -184,20 +184,20 @@ class TimeSlotViewModel: ObservableObject {
     
     // MARK: - Custom Action Validation
     func isValidCustomSelection(strStartDate: String, strStartTime: String, strEndTime: String) -> Bool {
-        if (strStartDate.isEmpty) {
+        if strStartDate.isEmpty {
             self.displayAlertWith(message: strSelectDate)
             return false
         }
-        else if (strStartTime.isEmpty) {
+        else if strStartTime.isEmpty {
             self.displayAlertWith(message: strSelectStartTime)
             return false
         }
-        else if (strEndTime.isEmpty) {
+        else if strEndTime.isEmpty {
             self.displayAlertWith(message: strSelectEndTime)
             return false
         }
         else {
-            if (strStartTime == strEndTime) {
+            if strStartTime == strEndTime {
                 self.displayAlertWith(message: strSelectEndTimeGreaterThanStartTime)
                 return false
             }
@@ -210,10 +210,10 @@ class TimeSlotViewModel: ObservableObject {
     func changeTimeSlotRepeatSelection(index: Int) {
         arrRepeat.indices.forEach { arrRepeat[$0].isSelected = false }
         arrRepeat[index].isSelected.toggle()
-        if (index == 0) {
+        if index == 0 {
             currentTimeSlot = .repeatOption
         }
-        else if (index == 1) {
+        else if index == 1 {
             currentTimeSlot = .weeklyOption
         } else {
             currentTimeSlot = .customOption
@@ -226,7 +226,7 @@ class TimeSlotViewModel: ObservableObject {
     private func addTimeSlotData(objTimeSlot: AppointmentTimeSlotModel, completion: @escaping (_ isCompleted: Bool) -> Void) {
         Singletion.shared.showDefaultProgress()
         firebase.addAstrologerTimeSlotData(objSlot: objTimeSlot) { isCompleted in
-            if(isCompleted) {
+            if isCompleted {
                 Singletion.shared.hideProgress()
             } else {
                 Singletion.shared.hideProgress()

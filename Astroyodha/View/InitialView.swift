@@ -73,7 +73,6 @@ struct InitialView: View {
     }
 }
 
-
 // MARK:- BUTTON STYLE
 struct buttonAstrologerStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {

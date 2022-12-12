@@ -32,7 +32,7 @@ struct HomeView: View {
                             homeGridView(astrologerGridVMs: Array(vm.arrAstrologers.prefix(4)))
                             Spacer()
                                 .frame(height: 26)
-                            HomeBannerView(bannerVM: vm.bannerVM,
+                            homeBannerView(bannerVM: vm.bannerVM,
                                            bookAppointmentTap: {
                             })
                             
@@ -143,7 +143,7 @@ extension HomeView {
     }
     
     // MARK: - Banner View
-    private func HomeBannerView(bannerVM: HomeBannerVM, bookAppointmentTap: VoidCallBack) -> some View {
+    private func homeBannerView(bannerVM: HomeBannerVM, bookAppointmentTap: VoidCallBack) -> some View {
         ZStack(alignment: .bottom) {
             // Orange view
             RoundedRectangle(cornerRadius: 6.6)
@@ -253,10 +253,6 @@ struct AstrologerGridItemView: View {
                 VStack {
                     // Image
                     WebImage(url: URL(string: vm.imageAstro))
-                        .onSuccess { image, data, cacheType in
-                            // Success
-                            // Note: Data exist only when queried from disk cache or network. Use `.queryMemoryData` if you really need data
-                        }
                         .resizable()
                         .placeholder {
                             Image("imgPlaceHolder1")

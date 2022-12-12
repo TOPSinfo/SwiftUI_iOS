@@ -34,7 +34,7 @@ struct EditProfileView: View {
                     VStack(spacing: 5) {
                         profilePhotoView
                         
-                        if (currentUserType == .user) {
+                        if currentUserType == .user {
                             VStack(spacing: 20) {
                                 fullNameTextFieldView
                                 mobileNumberTextFieldView
@@ -75,7 +75,7 @@ struct EditProfileView: View {
                                 
                                 VStack {
                                     appointmentTitleView
-                                    if (viewModel.arrAppointments.isEmpty) {
+                                    if viewModel.arrAppointments.isEmpty {
                                         noAppointmentSlotView
                                     } else {
                                         appointmentSlotListView
@@ -107,11 +107,11 @@ struct EditProfileView: View {
                 .navigationBarBackButtonHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
             
-            if (viewModel.isLanguageVisible) {
+            if viewModel.isLanguageVisible {
                 languagePopupView
             }
             
-            if (viewModel.isAstrologyVisible) {
+            if viewModel.isAstrologyVisible {
                 astrologyPopupView
             }
         }
@@ -185,7 +185,7 @@ extension EditProfileView {
                 .font(appFont(type: .poppinsBold, size: 20))
                 .bold()
             
-            if (currentUserType == .user) {
+            if currentUserType == .user {
                 Text((viewModel.objLoggedInUser?.birthplace ?? "").isEmpty ? "-" : (viewModel.objLoggedInUser?.birthplace ?? "-"))
                     .font(appFont(type: .poppinsRegular, size: 16))
                     .foregroundColor(AppColor.c999999)
@@ -230,7 +230,9 @@ extension EditProfileView {
         .frame(height: 50)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(viewModel.isFullNameChange ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(viewModel.isFullNameChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -281,7 +283,9 @@ extension EditProfileView {
         }
         .frame(height: 50)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(viewModel.isEmailChange ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(viewModel.isEmailChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -353,7 +357,9 @@ extension EditProfileView {
         }
         .frame(height: 50)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(viewModel.isBirthPlaceChange ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(viewModel.isBirthPlaceChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
         .padding(.bottom, 20)
     }
@@ -381,16 +387,16 @@ extension EditProfileView {
                 
                 Singletion.shared.showDefaultProgress()
                 
-                if (viewModel.isImageChanged) {
+                if viewModel.isImageChanged {
                     viewModel.uploadProfileImage(dictUser: dictUser) { isCompleted in
-                        if(isCompleted) {
+                        if isCompleted {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
                 }
                 else {
                     viewModel.updateUserData(dictUser: dictUser) { isCompleted in
-                        if(isCompleted) {
+                        if isCompleted {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
@@ -494,7 +500,9 @@ extension EditProfileView {
         .frame(height: 50)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(viewModel.isPriceChange ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(viewModel.isPriceChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -520,7 +528,9 @@ extension EditProfileView {
         .frame(height: 50)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(viewModel.isExperienceChange ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(viewModel.isExperienceChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -549,7 +559,9 @@ extension EditProfileView {
         .frame(height: 120)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(viewModel.isAboutChange ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(viewModel.isAboutChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     

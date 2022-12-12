@@ -83,7 +83,7 @@ extension BookingListView {
                                 .frame(width: 22, height: 22)
                         }
                         
-                        if (currentUserType == .user) {
+                        if currentUserType == .user {
                             NavigationLink(destination: {
                                 UserGridView()
                             },
@@ -109,7 +109,7 @@ extension BookingListView {
                 ForEach(Array(bookingViewModel.tabs.enumerated()), id: \.offset) { offset, tab in
                     
                     if (tab.title == BookingFilter.upcoming.rawValue.uppercased()) {
-                        if (bookingViewModel.arrUpcomingBookings.isEmpty) {
+                        if bookingViewModel.arrUpcomingBookings.isEmpty {
                             Text("No Data Found")
                                 .font(appFont(type: .poppinsRegular, size: 17))
                                 .foregroundColor(AppColor.c242424)
@@ -118,7 +118,7 @@ extension BookingListView {
                         }
                     }
                     else if (tab.title == BookingFilter.ongoing.rawValue.uppercased()) {
-                        if (bookingViewModel.arrOnGoingBookings.isEmpty) {
+                        if bookingViewModel.arrOnGoingBookings.isEmpty {
                             Text("No Data Found")
                                 .font(appFont(type: .poppinsRegular, size: 17))
                                 .foregroundColor(AppColor.c242424)
@@ -127,7 +127,7 @@ extension BookingListView {
                         }
                     }
                     else if (tab.title == BookingFilter.past.rawValue.uppercased()) {
-                        if (bookingViewModel.arrPastBookings.isEmpty) {
+                        if bookingViewModel.arrPastBookings.isEmpty {
                             Text("No Data Found")
                                 .font(appFont(type: .poppinsRegular, size: 17))
                                 .foregroundColor(AppColor.c242424)
@@ -159,8 +159,17 @@ struct BookingItemView: View {
                     
                     HStack (alignment: .center, spacing: 10) {
                         Rectangle()
-                            .fill((objBooking.status == BookingStatus.approved.rawValue) ? AppColor.c27AAE1 : (objBooking.status == BookingStatus.waiting.rawValue) ? AppColor.cF1A341 : (objBooking.status == BookingStatus.rejected.rawValue) ? AppColor.cF06649 : (objBooking.status == BookingStatus.deleted.rawValue) ? AppColor.cBC2626 : (objBooking.status == BookingStatus.completed.rawValue) ? AppColor.c80C181 : AppColor.c27AAE1)
-                            .frame(width: UIScreen.main.bounds.width * 0.25, height: UIScreen.main.bounds.width * 0.28, alignment: .center)
+                            .fill(
+                                (objBooking.status == BookingStatus.approved.rawValue)
+                                ? AppColor.c27AAE1 : (objBooking.status == BookingStatus.waiting.rawValue)
+                                ? AppColor.cF1A341 : (objBooking.status == BookingStatus.rejected.rawValue)
+                                ? AppColor.cF06649 : (objBooking.status == BookingStatus.deleted.rawValue)
+                                ? AppColor.cBC2626 : (objBooking.status == BookingStatus.completed.rawValue)
+                                ? AppColor.c80C181 : AppColor.c27AAE1)
+                            .frame(
+                                width: UIScreen.main.bounds.width * 0.25,
+                                height: UIScreen.main.bounds.width * 0.28,
+                                alignment: .center)
                             .cornerRadius(10, corners: [.topLeft, .bottomLeft])
                             .overlay {
                                 Text(dateWords[0] + "\n" + dateWords[1])

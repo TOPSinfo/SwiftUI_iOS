@@ -61,10 +61,10 @@ class SignupViewModel: ObservableObject {
         } else if strPhoneNumber.isEmpty {
             self.displayAlertWith(message: strEnterPhoneNumber)
             return false
-        }else if !Singletion.shared.isValidPhone(phone: "\(strPhoneNumber)") {
+        } else if !Singletion.shared.isValidPhone(phone: "\(strPhoneNumber)") {
             self.displayAlertWith(message: strEnterValidPhoneNumber)
             return false
-        }  else if strEmail.isEmpty {
+        } else if strEmail.isEmpty {
             self.displayAlertWith(message: strEnterEmail)
             return false
         } else if !Singletion.shared.isValidEmail(strEmail) {

@@ -101,13 +101,13 @@ class FirebaseService: ObservableObject {
                     if err == nil && url != nil {
                         print("URL ==> \(url!.absoluteString)")
                         
-                        if (isUser) {
+                        if isUser {
                             var dictUser: [String: Any] = dict
                             dictUser["imagepath"] = userPhotoPath
                             dictUser["profileimage"] = url?.absoluteString ?? ""
                             
                             self.updateUserData(dict: dictUser) { isCompleted in
-                                if (isCompleted) {
+                                if isCompleted {
                                     completion(true)
                                 }
                             }
@@ -118,7 +118,7 @@ class FirebaseService: ObservableObject {
                             dictAstrologer["profileimage"] = url?.absoluteString ?? ""
                             
                             self.updateAstrologerData(dict: dictAstrologer) { isCompleted in
-                                if (isCompleted) {
+                                if isCompleted {
                                     completion(true)
                                 }
                             }
@@ -442,7 +442,7 @@ class FirebaseService: ObservableObject {
         var comparingFieldKey = ""
         if let userUID = Auth.auth().currentUser?.uid {
             
-            if (currentUserType == .user) {
+            if currentUserType == .user {
                 comparingFieldKey = "uid"
             } else {
                 comparingFieldKey = "astrologerid"
@@ -512,13 +512,13 @@ class FirebaseService: ObservableObject {
                                 let endDate = Singletion.shared.convertStringToDate(strDate: booking.date, outputFormate: datePickerDateFormat)
                                 let status = Singletion.shared.compareDate(date: endDate)
                                 
-                                if (status == .upcoming) {
+                                if status == .upcoming {
                                     arrUpcomingBookings.append(booking)
                                 }
-                                else if (status == .ongoing) {
+                                else if status == .ongoing {
                                     arrOnGoingBookings.append(booking)
                                 }
-                                else if (status == .past) {
+                                else if status == .past {
                                     arrPastBookings.append(booking)
                                 }
                             }
@@ -534,7 +534,7 @@ class FirebaseService: ObservableObject {
         var comparingFieldKey = ""
         if let userUID = Auth.auth().currentUser?.uid {
             
-            if (currentUserType == .user) {
+            if currentUserType == .user {
                 comparingFieldKey = "uid"
             } else {
                 comparingFieldKey = "astrologerid"
@@ -604,7 +604,7 @@ class FirebaseService: ObservableObject {
                                 
                                 let bookingDate = Singletion.shared.convertStringToDate(strDate: Singletion.shared.convertDateFormate(date: endDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash), outputFormate: datePickerDateFormatWithoutDash)
                                 
-                                if (bookingDate == currentDate) {
+                                if bookingDate == currentDate {
                                     arrSelectedDayBookings.append(booking)
                                 }
                             }

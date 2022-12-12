@@ -62,7 +62,7 @@ struct UserGridView: View {
             }
         }
         .onAppear(perform: {
-            if (currentUserType == .user) {
+            if currentUserType == .user {
                 viewModel.fetchAllAstrologers()
             }
         })

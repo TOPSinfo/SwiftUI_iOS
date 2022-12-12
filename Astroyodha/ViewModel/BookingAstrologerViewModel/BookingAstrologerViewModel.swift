@@ -45,7 +45,7 @@ class BookingAstrologerViewModel: ObservableObject {
     
     // MARK: - Image Picker
     func imagePickerView() -> some View {
-        if (isCameraSelected) {
+        if isCameraSelected {
             return ImagePickerView(sourceType: .camera) { image in
                 if self.cameraSheet == .first {
                     self.pickedImage = image
@@ -202,7 +202,7 @@ class BookingAstrologerViewModel: ObservableObject {
     }
     
     func changePhotoSelection(isKundaliPhoto: Bool) {
-        if (!isKundaliPhoto) {
+        if !isKundaliPhoto {
             cameraSheet = .first
         } else {
             cameraSheet = .second

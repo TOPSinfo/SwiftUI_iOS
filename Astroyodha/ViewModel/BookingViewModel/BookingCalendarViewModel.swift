@@ -45,7 +45,7 @@ class BookingCalendarViewModel: ObservableObject {
                 
                 let bookingDate = Singletion.shared.convertStringToDate(strDate: Singletion.shared.convertDateFormate(date: endDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash), outputFormate: datePickerDateFormatWithoutDash)
                 
-                if (bookingDate == currentDate) {
+                if bookingDate == currentDate {
                     self.arrSelectedDayBookings.append(booking)
                 }
             }
