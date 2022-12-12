@@ -41,7 +41,7 @@ struct UpcomingView_Previews: PreviewProvider {
 }
 
 extension UpcomingView {
-    //MARK: - Back Button View
+    // MARK: - Back Button View
     private var backButton: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -51,7 +51,7 @@ extension UpcomingView {
         })
     }
     
-    //MARK: - Content View
+    // MARK: - Content View
     private var contentView: some View {
         VStack(spacing: 0) {
             Image("upcomingImage")

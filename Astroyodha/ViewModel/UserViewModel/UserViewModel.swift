@@ -14,7 +14,7 @@ class UserViewModel: ObservableObject {
     // Reference to the Database
     let db = Firestore.firestore()
     
-    //MARK: - Get Current User Data
+    // MARK: - Get Current User Data
     func fetchCurrentUserData(completion: @escaping (_ user: UserModel) -> Void) {
         if let userUID = Auth.auth().currentUser?.uid {
             
@@ -63,7 +63,7 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Get Language Data
+    // MARK: - Get Language Data
     func fetchLanguage() {
         db.collection("language").getDocuments { snapshot, error in
             if error == nil {
@@ -83,7 +83,7 @@ class UserViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Get Astrology Data
+    // MARK: - Get Astrology Data
     func fetchAstrology() {
         db.collection("speciality").getDocuments { snapshot, error in
             if error == nil {

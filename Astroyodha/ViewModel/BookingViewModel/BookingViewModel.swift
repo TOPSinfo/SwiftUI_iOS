@@ -46,7 +46,7 @@ class BookingViewModel: ObservableObject {
         fetchBookingList()
     }
     
-    //MARK: - Fetch Booking List
+    // MARK: - Fetch Booking List
     func fetchBookingList() {
         firebase.fetchBookingsData { upcomingData, ongoingData, pastData in
             self.arrAllBookings.removeAll()

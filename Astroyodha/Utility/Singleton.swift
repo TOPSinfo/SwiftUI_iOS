@@ -61,7 +61,7 @@ class Singletion {
     /*
      I am giving Vastu, Tarot, Psychic services then we are converting custom model data to single string to display in user profile screen
      */
-    //MARK: - Convert User Astrology into Single String
+    // MARK: - Convert User Astrology into Single String
     func convertUserAstrologyIntoString(objLoggedInUser: UserModel) -> String {
         Singletion.shared.arrAstrology.indices.forEach { Singletion.shared.arrAstrology[$0].isSelected = false }
         var arrAstrology: [AstrologyObject] = []
@@ -87,7 +87,7 @@ class Singletion {
     /*
      To show the astrologer astrology services in User Dashboard
      */
-    //MARK: - Convert Astrologer Astrology into Single String
+    // MARK: - Convert Astrologer Astrology into Single String
     func getAstrologerSpecialityIntoString(speciality: [String]) -> String {
         Singletion.shared.arrAstrology.indices.forEach { Singletion.shared.arrAstrology[$0].isSelected = false }
         var arrAstrology: [AstrologyObject] = []
@@ -108,7 +108,7 @@ class Singletion {
     /*
      To show the astrologer languages in User Profile
      */
-    //MARK: - Convert Astrologer Languages into Single String
+    // MARK: - Convert Astrologer Languages into Single String
     func convertUserLanguagesIntoString(objLoggedInUser: UserModel) -> String {
         Singletion.shared.arrLanguage.indices.forEach { Singletion.shared.arrLanguage[$0].isSelected = false }
         var arrLanguages: [LanguageObject] = []
@@ -131,7 +131,7 @@ class Singletion {
         return strLanguage
     }
     
-    //MARK: - Share Dialog
+    // MARK: - Share Dialog
     func showActivityPopup() {
         let shareActivity = UIActivityViewController(activityItems: [shareLink], applicationActivities: nil)
         if let vc = UIApplication.shared.currentUIWindow()?.rootViewController{
@@ -142,12 +142,12 @@ class Singletion {
         }
     }
     
-    //MARK: - Divider
+    // MARK: - Divider
     func addDivider(color: Color, opacityValue: Double, height: CGFloat) -> some View {
         return color.opacity(opacityValue).frame(height: height / UIScreen.main.scale)
     }
     
-    //MARK: - Date Fuctions
+    // MARK: - Date Fuctions
     /*
      Convert string date to any format. You just need to pass the 3 Params
      1. String Date
@@ -276,7 +276,7 @@ class Singletion {
         }
     }
     
-    //MARK: - Email Validation
+    // MARK: - Email Validation
     func isValidEmail(_ string: String) -> Bool {
         if string.count > 100 {
             return false
@@ -287,7 +287,7 @@ class Singletion {
         return emailPredicate.evaluate(with: string)
     }
     
-    //MARK: - Phone Number Validation
+    // MARK: - Phone Number Validation
     func isValidPhone(phone: String) -> Bool {
         let phoneRegex = "^[0-9+]{0,1}+[0-9]{5,16}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
@@ -298,7 +298,7 @@ class Singletion {
         }
     }
     
-    //MARK: - SVProgressHUD -
+    // MARK: - SVProgressHUD -
     func customizationSVProgressHUD() {
         SVProgressHUD.setDefaultMaskType(.black)
     }
@@ -315,12 +315,12 @@ class Singletion {
         SVProgressHUD.dismiss()
     }
     
-    //MARK: - Clear User Object
+    // MARK: - Clear User Object
     func clearUserObject() {
         objUser = UserModel.init(birthdate: "", birthplace: "", birthtime: "", createdat: Date(), devicedetails: "", email: "", fullname: "", imagepath: "", isOnline: false, lastupdatetime: Date(), phone: "", profileimage: "", socialid: "", socialtype: "", token: "", uid: "", usertype: "", walletbalance: 0)
     }
     
-    //MARK: - Generate Random Alpha Numeric String Id For Firebase Document Id
+    // MARK: - Generate Random Alpha Numeric String Id For Firebase Document Id
     func randomAlphaNumericString(length: Int) -> String {
         let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let allowedCharsCount = UInt32(allowedChars.count)

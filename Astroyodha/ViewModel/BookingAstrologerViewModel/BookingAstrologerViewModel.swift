@@ -48,7 +48,7 @@ class BookingAstrologerViewModel: ObservableObject {
     
     var firebase: FirebaseService = FirebaseService()
     
-    //MARK: - Image Picker
+    // MARK: - Image Picker
     func imagePickerView() -> some View {
         if (isCameraSelected) {
             return ImagePickerView(sourceType: .camera) { image in
@@ -69,7 +69,7 @@ class BookingAstrologerViewModel: ObservableObject {
         }
     }
     
-    //MARK: - ACTION SHEET
+    // MARK: - ACTION SHEET
     func showActionSheet() -> ActionSheet {
         let cameraButton: ActionSheet.Button = .default(Text("Camera")) {
             self.isCameraSelected = true
@@ -90,7 +90,7 @@ class BookingAstrologerViewModel: ObservableObject {
         }
     }
     
-    //MARK: - BUTTON ACTION FOR PAYMENT MODE
+    // MARK: - BUTTON ACTION FOR PAYMENT MODE
     func cancelPaymentMode() {
         strPaymentModeText = "Select payment mode"
     }
@@ -124,13 +124,13 @@ class BookingAstrologerViewModel: ObservableObject {
         return true
     }
     
-    //MARK: - Set Alert Message
+    // MARK: - Set Alert Message
     func displayAlertWith(message: String) {
         strAlertMessage = message
         showToast.toggle()
     }
     
-    //MARK: SET BOOKING DATA TO FIREBASE
+    // MARK: SET BOOKING DATA TO FIREBASE
     func addBookingData(selectedAstrologer: AstrologerGridItmeVM?, completion: @escaping (_ isCompleted: Bool) -> Void) {
         if isValidate() {
             UIApplication.shared.dismissKeyboard()

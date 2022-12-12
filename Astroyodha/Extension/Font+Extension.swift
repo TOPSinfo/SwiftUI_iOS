@@ -28,10 +28,10 @@ public enum AppFont: String {
     case poppinsBlackItalic = "Poppins-BlackItalic"
 }
 
-public func appFont(type: AppFont, size: CGFloat)-> Font {
+public func appFont(type: AppFont, size: CGFloat) -> Font {
     return Font.custom(type.rawValue, size: size)
 }
 
-public func appUIFont(type: AppFont, size: CGFloat)-> UIFont {
+public func appUIFont(type: AppFont, size: CGFloat) -> UIFont {
     return UIFont.init(name: type.rawValue, size: size)!
 }

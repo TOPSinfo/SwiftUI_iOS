@@ -78,7 +78,7 @@ class SignupViewModel: ObservableObject {
         return true
     }
     
-    //MARK: - Set Alert Message
+    // MARK: - Set Alert Message
     func displayAlertWith(message: String) {
         strAlertMessage = message
         showToast.toggle()

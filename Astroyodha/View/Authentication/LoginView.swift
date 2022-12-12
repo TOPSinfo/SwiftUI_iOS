@@ -39,9 +39,9 @@ struct LoginView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension LoginView {
-    //MARK: - Back Button View
+    // MARK: - Back Button View
     private var backButtonView: some View {
         VStack {
             Button(action: {
@@ -56,7 +56,7 @@ extension LoginView {
         .padding(.trailing, UIScreen.main.bounds.width - 60)
     }
     
-    //MARK: - Header Text content View
+    // MARK: - Header Text content View
     private var headerContentView: some View {
         VStack () {
             Image("imgLoginPhone")
@@ -78,7 +78,7 @@ extension LoginView {
         }
     }
     
-    //MARK: - Country Code Menu View
+    // MARK: - Country Code Menu View
     private var countryCodeMenuView: some View {
         HStack {
             Menu {
@@ -125,7 +125,7 @@ extension LoginView {
         .padding(5)
     }
     
-    //MARK: - Phone Number View
+    // MARK: - Phone Number View
     private var phoneNumberView: some View {
         TextField("Phone Number", text: $loginViewModel.strPhoneNumber, onEditingChanged: { (editingChanged) in
             if editingChanged {
@@ -140,7 +140,7 @@ extension LoginView {
             .keyboardType(.phonePad)
     }
     
-    //MARK: - Login Button View
+    // MARK: - Login Button View
     private var loginButtonView: some View {
         VStack(spacing: 0) {
             Button(action: {

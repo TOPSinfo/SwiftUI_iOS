@@ -14,14 +14,14 @@ let pathKundali = "images/bookings/\(TimeInterval(timestamp))_Kundali.jpg"
 
 var isTestingModeOn = false
 
-//MARK: - Date formate
+// MARK: - Date formate
 let backendDateFormat: String = "yyyy-MM-dd'T'HH:mm:ssZ"
 let datePickerSelectedFormat: String = "yyyy-MM-dd HH:mm:ss Z"
 let datePickerDateFormat: String = "dd-MMM-yyyy"
 let datePickerDateFormatWithoutDash: String = "dd MMM yyyy"
 let datePickertimeFormat: String = "hh:mm a"
 
-//MARK: - Share Link
+// MARK: - Share Link
 let shareLink: String = "Hi, Check out AstroYodha at: https://play.google.com/store/apps/details?id=com.astroyodha"
 
 // MARK: - Type alias

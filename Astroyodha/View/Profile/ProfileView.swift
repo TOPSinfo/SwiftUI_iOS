@@ -76,7 +76,7 @@ struct ProfileView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - FIRST OPTION VIEW
+// MARK: - FIRST OPTION VIEW
 struct OptionsFirstSectionView: View {
     @Binding var arrOptions: [ProfileOption]
     @State var showTransactionHistoryView: Bool = false
@@ -138,7 +138,7 @@ struct OptionsFirstSectionView: View {
     }
 }
 
-//MARK: - SECOND OPTION VIEW
+// MARK: - SECOND OPTION VIEW
 struct OptionsSecondSectionView: View {
     @Binding var arrOptions: [ProfileOption]
     
@@ -190,7 +190,7 @@ struct OptionsSecondSectionView: View {
         .buttonStyle(PlainButtonStyle())
     }
     
-    //MARK: - Logout Confirmation Alert
+    // MARK: - Logout Confirmation Alert
     func showAlert() -> Alert {
         return Alert (
             title: Text(""),
@@ -205,7 +205,7 @@ struct OptionsSecondSectionView: View {
         )
     }
     
-    //MARK: -  Logout user. Remove stored data and redirect user to Initial Screen
+    // MARK: -  Logout user. Remove stored data and redirect user to Initial Screen
     func removeLocallyStoredDataAndLogoutFromFirebaseAndRedirectToIntroScreen() {
         LoginDataCache.remove()
         UserDefaults.standard.set(false, forKey: userDefault.isUserLoggedIn)
@@ -222,7 +222,7 @@ struct OptionsSecondSectionView: View {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension ProfileView {
     // Profile Photo View
     private var profilePhotoView: some View {
@@ -273,7 +273,7 @@ extension ProfileView {
         }
     }
     
-    //MARK: - Rating And Consult View
+    // MARK: - Rating And Consult View
     private var ratingAndConsultView: some View {
         HStack {
             VStack (spacing: 4) {

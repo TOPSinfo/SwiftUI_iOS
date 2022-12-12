@@ -65,7 +65,7 @@ class EditProfileViewModel: ObservableObject {
         self.getTimeslotList()
     }
     
-    //MARK: - Image Picker
+    // MARK: - Image Picker
     func imagePickerview() -> some View {
         if (isCameraSelected) {
             return ImagePickerView(sourceType: .camera) { image in
@@ -81,7 +81,7 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Photo Selection Action Sheet
+    // MARK: - Photo Selection Action Sheet
     func showActionSheet() -> ActionSheet {
         let cameraButton: ActionSheet.Button = .default(Text("Camera")) {
             self.isCameraSelected = true
@@ -105,7 +105,7 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Set User Data
+    // MARK: - Set User Data
     func setUserData() {
         DispatchQueue.main.async {
             self.strFullName = self.objLoggedInUser?.fullname ?? ""
@@ -138,7 +138,7 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Upload Profile Photo
+    // MARK: - Upload Profile Photo
     func uploadProfileImage(dictUser: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.uploadProfileImage(imgPhoto: pickedImage, dict: dictUser, isUser: (currentUserType == .user) ? true : false) { isCompleted in
             Singletion.shared.hideProgress()
@@ -152,7 +152,7 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Update User Data
+    // MARK: - Update User Data
     func updateUserData(dictUser: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.updateUserData(dict: dictUser) { isCompleted in
             if (isCompleted) {
@@ -163,7 +163,7 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Update Astrologer Data
+    // MARK: - Update Astrologer Data
     func updateAstrologerData(dictAstrologer: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.updateAstrologerData(dict: dictAstrologer) { isCompleted in
             if (isCompleted) {
@@ -174,14 +174,14 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Get Appointment TimeSlots
+    // MARK: - Get Appointment TimeSlots
     func getTimeslotList() {
         firebase.getUserTimeSlots { appointments in
             self.arrAppointments = appointments
         }
     }
     
-    //MARK: - Delete Timeslot Data
+    // MARK: - Delete Timeslot Data
     func deleteTimeSlotData(objAppointment: AppointmentTimeSlotModel) {
         firebase.deleteAstrologerTimeSlotData(objSlot: objAppointment) { isCompleted in
             if (isCompleted) {
@@ -197,7 +197,7 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     
-    //MARK: - User Validation
+    // MARK: - User Validation
     func isUserValidate() -> Bool {
         if strFullName.isEmpty {
             self.displayAlertWith(message: strEnterFullName)
@@ -215,7 +215,7 @@ class EditProfileViewModel: ObservableObject {
         return true
     }
     
-    //MARK: - Astrologer Validation
+    // MARK: - Astrologer Validation
     func isAstrologerValidate() -> Bool {
         let strBirthDate = Singletion.shared.convertDateFormate(date: datePickerBirthDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash)
         
@@ -241,7 +241,7 @@ class EditProfileViewModel: ObservableObject {
         return true
     }
     
-    //MARK: - Set Alert Message
+    // MARK: - Set Alert Message
     func displayAlertWith(message: String) {
         strAlertMessage = message
         showToast.toggle()

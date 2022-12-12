@@ -69,9 +69,9 @@ struct TimeSlotView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension TimeSlotView {
-    //MARK: - Back Button View
+    // MARK: - Back Button View
     private var backButtonView: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -82,7 +82,7 @@ extension TimeSlotView {
         })
     }
     
-    //MARK: - Save Button View
+    // MARK: - Save Button View
     private var saveButtonView: some View {
         Button(action: {
             viewModel.isValideTimeSlot { isCompleted in
@@ -99,7 +99,7 @@ extension TimeSlotView {
         })
     }
     
-    //MARK: - Repeat Options Popup View
+    // MARK: - Repeat Options Popup View
     private var repeatPopupView: some View {
         ZStack {
             Color.black.opacity(0.75)
@@ -138,7 +138,7 @@ extension TimeSlotView {
         }
     }
     
-    //MARK: - Start Date View
+    // MARK: - Start Date View
     private var startDateView: some View {
         VStack (alignment: .leading, spacing: 5) {
             Text(viewModel.strStartDateTitle)
@@ -154,7 +154,7 @@ extension TimeSlotView {
             }
         }
     }
-    //MARK: - End Date View
+    // MARK: - End Date View
     private var endDateView: some View {
         VStack (alignment: .leading, spacing: 5) {
             Text(viewModel.strEndDateTitle)
@@ -171,7 +171,7 @@ extension TimeSlotView {
         }
     }
     
-    //MARK: - Start Time View
+    // MARK: - Start Time View
     private var startTimeView: some View {
         VStack (alignment: .leading, spacing: 5) {
             Text(viewModel.strStartTimeTitle)
@@ -188,7 +188,7 @@ extension TimeSlotView {
         }
     }
     
-    //MARK: - End Time View
+    // MARK: - End Time View
     private var endTimeView: some View {
         VStack (alignment: .leading, spacing: 5) {
             Text(viewModel.strEndTimeTitle)
@@ -205,7 +205,7 @@ extension TimeSlotView {
         }
     }
     
-    //MARK: - Week Days View
+    // MARK: - Week Days View
     private var weekDaysView: some View {
         HStack {
             ForEach(0..<viewModel.arrDays.count, id: \.self) { index in
@@ -227,7 +227,7 @@ extension TimeSlotView {
         .frame(width: UIScreen.main.bounds.width - 40, height: 70)
     }
     
-    //MARK: -  Repeat Dropdown Popup View
+    // MARK: -  Repeat Dropdown Popup View
     private var repeatDropdownPopupView: some View {
         Button {
             viewModel.isRepeatPopupShow.toggle()
@@ -256,7 +256,7 @@ extension TimeSlotView {
         }
     }
     
-    //MARK: - Start/End Date View
+    // MARK: - Start/End Date View
     private var startEndDateView: some View {
         HStack {
             if (viewModel.currentTimeSlot == .repeatOption || viewModel.currentTimeSlot == .customOption) {
@@ -297,7 +297,7 @@ extension TimeSlotView {
         .padding()
     }
     
-    //MARK: - Start/End Time View
+    // MARK: - Start/End Time View
     private var startEndTimeView: some View {
         HStack {
             Image("imgBirthTime")

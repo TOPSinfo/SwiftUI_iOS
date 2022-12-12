@@ -48,9 +48,9 @@ struct OTPVerificationView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension OTPVerificationView {
-    //MARK: - Back Button View
+    // MARK: - Back Button View
     private var backButtonView: some View {
         VStack{
             Button(action: {
@@ -64,7 +64,7 @@ extension OTPVerificationView {
         }.padding(.trailing, UIScreen.main.bounds.width - 60)
     }
     
-    //MARK: - Header Content View
+    // MARK: - Header Content View
     private var headerView: some View {
         VStack {
             Image("imgLoginPhone")
@@ -86,7 +86,7 @@ extension OTPVerificationView {
         }
     }
     
-    //MARK: - OTP Field View
+    // MARK: - OTP Field View
     private var oTPTextField: some View {
         VStack {
             ZStack {
@@ -110,7 +110,7 @@ extension OTPVerificationView {
         }
     }
     
-    //MARK: - OTP Text
+    // MARK: - OTP Text
     private func otpText(text: String) -> some View {
         return Text(text)
             .font(.title)
@@ -123,7 +123,7 @@ extension OTPVerificationView {
             .padding(paddingOfBox)
     }
     
-    //MARK: - Verify/Resend Buttton View
+    // MARK: - Verify/Resend Buttton View
     private var verifyAndResentOTPView: some View {
         VStack{
             HStack {
@@ -160,7 +160,7 @@ extension OTPVerificationView {
         }
     }
     
-    //MARK: - Timer Label View
+    // MARK: - Timer Label View
     private var timerLabelView: some View {
         Text("Resend OTP available in \(otpViewModel.timeRemaining)")
             .foregroundColor(AppColor.c80C181)

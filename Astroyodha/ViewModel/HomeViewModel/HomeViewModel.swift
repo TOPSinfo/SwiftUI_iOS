@@ -61,14 +61,14 @@ class HomeViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Get Astrologer List
+    // MARK: - Get Astrologer List
     func fetchAllAstrologers() {
         firebase.fetchAllAstrologer { arrData in
             self.arrAstrologers = arrData
         }
     }
     
-    //MARK: - Get Current User
+    // MARK: - Get Current User
     func fetchCurrentUser() {
         userViewModel.fetchCurrentUserData(completion: { user in
             self.objLoggedInUser = user

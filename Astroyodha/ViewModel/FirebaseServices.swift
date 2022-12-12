@@ -16,7 +16,7 @@ class FirebaseService: ObservableObject {
     var strPhotoURL: String = ""
     var strKundaliURL: String = ""
     
-    //MARK: - Check For Mobile Number Exist Or Not While SignIn/SignUp
+    // MARK: - Check For Mobile Number Exist Or Not While SignIn/SignUp
     func checkMobileNumberIsExistOrNot(strPhoneNumber: String, completion: @escaping (_ isCompleted: Bool) -> Void) {
         Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
         
@@ -36,7 +36,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Login User
+    // MARK: - Login User
     func loginUser(strPhoneNumber: String, completion: @escaping (_ isCompleted: Bool) -> Void) {
         Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
         PhoneAuthProvider.provider().verifyPhoneNumber(strPhoneNumber, uiDelegate: nil) { ID, err in
@@ -51,7 +51,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Verify Phone Number And Send Otp
+    // MARK: - Verify Phone Number And Send Otp
     func verifyNumberAndSendOTP(phone: String, completion: @escaping (_ isCompleted: Bool, _ error: Error? , _ id: String) -> Void) {
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { ID, err in
             if err != nil {
@@ -68,7 +68,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Verify User Entered Otp
+    // MARK: - Verify User Entered Otp
     func verifyOTP(credential: PhoneAuthCredential, completion: @escaping (_ isCompleted: Bool, _ error: Error?, _ authResult: AuthDataResult?) -> Void) {
         Auth.auth().signIn(with: credential) { (authResult, err) in
             if err != nil {
@@ -84,7 +84,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Update User/Astrologer Profile Photo
+    // MARK: - Update User/Astrologer Profile Photo
     func uploadProfileImage(imgPhoto: UIImage, dict: [String: Any], isUser: Bool, completion: @escaping (_ isCompleted: Bool) -> Void) {
         guard (Auth.auth().currentUser?.uid) != nil else{return}
         
@@ -129,7 +129,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Update User Profile Data
+    // MARK: - Update User Profile Data
     func updateUserData(dict: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
         let userUID = Auth.auth().currentUser?.uid ?? ""
         db.collection("user").whereField("uid", isEqualTo: userUID).getDocuments() { (querySnapshot, err) in
@@ -161,7 +161,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Update Astroloer Profile Data
+    // MARK: - Update Astroloer Profile Data
     func updateAstrologerData(dict: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
         let userUID = Auth.auth().currentUser?.uid ?? ""
         db.collection("user").whereField("uid", isEqualTo: userUID).getDocuments() { (querySnapshot, err) in
@@ -196,7 +196,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Add User Data
+    // MARK: - Add User Data
     func addUserData() {
         let newUserReference = self.db.collection("user").document(objUser.uid)
         newUserReference.setData(["birthdate":objUser.birthdate,
@@ -224,7 +224,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Add Astrologer Data
+    // MARK: - Add Astrologer Data
     func addAstrologerData() {
         let objDefaultAstrology = Singletion.shared.arrAstrology.first { $0.name == "Vedic" }
         print(objDefaultAstrology?.id ?? "")
@@ -255,7 +255,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Add Astrologer Timeslot Data
+    // MARK: - Add Astrologer Timeslot Data
     func addAstrologerTimeSlotData(objSlot: AppointmentTimeSlotModel, completion: @escaping (_ isCompleted: Bool) -> Void) {
         let timeSlotReference = self.db.collection("user").document(objSlot.uid).collection("timeslot").document(objSlot.timeslotid)
         
@@ -280,7 +280,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Get User TimeSlot Data
+    // MARK: - Get User TimeSlot Data
     func getUserTimeSlots(completion: @escaping (_ appointments: [AppointmentTimeSlotModel]) -> Void) {
         if let userUID = Auth.auth().currentUser?.uid {
             db.collection("user").document(userUID).collection("timeslot").getDocuments { timeslotSnapshot, error in
@@ -309,7 +309,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Delete Astrologer TimeSlot Data
+    // MARK: - Delete Astrologer TimeSlot Data
     func deleteAstrologerTimeSlotData(objSlot: AppointmentTimeSlotModel, completion: @escaping (_ isCompleted: Bool) -> Void) {
         let timeSlotReference = self.db.collection("user").document(objSlot.uid).collection("timeslot")
         timeSlotReference.document(objSlot.timeslotid).delete() { err in
@@ -324,7 +324,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Upload Add Event Attachment
+    // MARK: - Upload Add Event Attachment
     func uploadImage(imageProfile: UIImage, imageKundali: UIImage, timeslotid: String, completion: @escaping (_ isCompleted: Bool) -> Void)  {
         
         guard (Auth.auth().currentUser?.uid) != nil else{return}
@@ -363,7 +363,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Add Booking Data
+    // MARK: - Add Booking Data
     func addBooking(timeSloat: String, completion: @escaping (_ isCompleted: Bool) -> Void) {
         // Add a data to a collection
         let timeSlotReference = self.db.collection("bookinghistory").document(timeSloat)
@@ -410,7 +410,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Get All Astrologers
+    // MARK: - Get All Astrologers
     func fetchAllAstrologer(completion: @escaping (_ arrData: [AstrologerGridItmeVM]) -> Void) {
         db.collection("user").whereField("usertype", isEqualTo: "astrologer")
             .addSnapshotListener { querySnapshot, error in
@@ -437,7 +437,7 @@ class FirebaseService: ObservableObject {
             }
     }
     
-    //MARK: - Fetch Booking Data
+    // MARK: - Fetch Booking Data
     func fetchBookingsData(completion: @escaping (_ upcomingData: [BookingAstrologerModel], _ ongoingData: [BookingAstrologerModel], _ pastData: [BookingAstrologerModel]) -> Void) {
         var comparingFieldKey = ""
         if let userUID = Auth.auth().currentUser?.uid {
@@ -529,7 +529,7 @@ class FirebaseService: ObservableObject {
         }
     }
     
-    //MARK: - Fetch Particular Date Booking Data
+    // MARK: - Fetch Particular Date Booking Data
     func fetchSelectedDateBookings(selectedDate: Date, completion: @escaping (_ bookingsData: [BookingAstrologerModel]) -> Void) {
         var comparingFieldKey = ""
         if let userUID = Auth.auth().currentUser?.uid {

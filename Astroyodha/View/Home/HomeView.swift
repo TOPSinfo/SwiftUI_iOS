@@ -70,7 +70,7 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension HomeView {
     private var backgroundView: some View {
         VStack {
@@ -81,7 +81,7 @@ extension HomeView {
         }
     }
     
-    //MARK: - Welcome View
+    // MARK: - Welcome View
     private func headerView(notificationTap: VoidCallBack, objLoggedInUser: UserModel?) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
@@ -102,7 +102,7 @@ extension HomeView {
         }
     }
     
-    //MARK: - Grid View
+    // MARK: - Grid View
     private func HomeGridView(astrologerGridVMs: [AstrologerGridItmeVM]?) -> some View {
         VStack(spacing: 13) {
             HStack(spacing: 0) {
@@ -140,7 +140,7 @@ extension HomeView {
         }
     }
     
-    //MARK: - Banner View
+    // MARK: - Banner View
     private func HomeBannerView(bannerVM: HomeBannerVM, bookAppointmentTap: VoidCallBack) -> some View {
         ZStack(alignment: .bottom) {
             // Orange view
@@ -196,7 +196,7 @@ extension HomeView {
         .frame(height: 173.3)
     }
     
-    //MARK: - Upcoming Content View
+    // MARK: - Upcoming Content View
     private func UserHomeUpcomingView(vms: [HomeUserUpcomingItemVM]) -> some View {
         VStack(alignment: .leading, spacing: 13.3) {
             Text("Upcoming")
@@ -214,7 +214,7 @@ extension HomeView {
         }
     }
     
-    //MARK: - Upcoming Item View
+    // MARK: - Upcoming Item View
     private func UserHomeUpcomingItemView(vm: HomeUserUpcomingItemVM) -> some View {
         NavigationLink(destination: {
             UpcomingView()

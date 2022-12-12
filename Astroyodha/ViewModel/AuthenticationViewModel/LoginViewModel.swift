@@ -43,7 +43,7 @@ class LoginViewModel: ObservableObject {
         })
     }
     
-    //MARK: - Phone Number Validation
+    // MARK: - Phone Number Validation
     func isValidate() -> Bool {
         if strPhoneNumber.isEmpty {
             displayAlertWith(message: strEnterPhoneNumber)
@@ -56,7 +56,7 @@ class LoginViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Set Alert Message
+    // MARK: - Set Alert Message
     func displayAlertWith(message: String) {
         strAlertMessage = message
         showToast.toggle()

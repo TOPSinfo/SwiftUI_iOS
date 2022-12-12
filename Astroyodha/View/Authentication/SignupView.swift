@@ -77,7 +77,7 @@ struct SignupView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension SignupView {
     private var backButtonView: some View {
         VStack{
@@ -91,7 +91,7 @@ extension SignupView {
         }.padding(.trailing, UIScreen.main.bounds.width - 60)
     }
     
-    //MARK: - Create Account Title View
+    // MARK: - Create Account Title View
     private var createAccountTitleView: some View {
         Text(strCreateAnAccount)
             .font(.title)
@@ -101,7 +101,7 @@ extension SignupView {
             .padding(.all)
     }
     
-    //MARK: - First Name View
+    // MARK: - First Name View
     private var firstNameView: some View {
         HStack {
             Image("imgUser")
@@ -126,7 +126,7 @@ extension SignupView {
         
     }
     
-    //MARK: - Country Code Menu View
+    // MARK: - Country Code Menu View
     private var countryCodeMenuView: some View {
         HStack {
             Menu {
@@ -171,7 +171,7 @@ extension SignupView {
         .padding(.horizontal)
     }
     
-    //MARK: - Phone Number View
+    // MARK: - Phone Number View
     private var phoneNumberView: some View {
         TextField("Phone Number", text: $signUpViewModel.strPhoneNumber, onEditingChanged: { (editingChanged) in
             if editingChanged {
@@ -186,7 +186,7 @@ extension SignupView {
             .keyboardType(.phonePad)
     }
     
-    //MARK: - Email View
+    // MARK: - Email View
     private var emailView: some View {
         HStack {
             Image("imgMail")
@@ -210,7 +210,7 @@ extension SignupView {
         .padding(.horizontal)
     }
     
-    //MARK: - Agreement View
+    // MARK: - Agreement View
     private var agreementView: some View {
         HStack {
             Button(action: {
@@ -236,7 +236,7 @@ extension SignupView {
         }
     }
     
-    //MARK: - Create Account Button View
+    // MARK: - Create Account Button View
     private var createAccountView: some View {
         HStack {
             Button(action: {
@@ -263,7 +263,7 @@ extension SignupView {
         }
     }
     
-    //MARK: - Already Have An Account View
+    // MARK: - Already Have An Account View
     private var alreadyHaveAnAccountView: some View {
         HStack {
             Text(strAlreadyAccount)

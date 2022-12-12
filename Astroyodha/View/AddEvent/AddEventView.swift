@@ -72,9 +72,9 @@ struct AddEventView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension AddEventView {
-    //MARK: - Save Button View
+    // MARK: - Save Button View
     private var saveButtonView: some View {
         Button(action: {
             viewModel.addBookingData(selectedAstrologer: selectedAstrologer) { isCompleted in
@@ -91,7 +91,7 @@ extension AddEventView {
         })
     }
     
-    //MARK: - Cancle Button View
+    // MARK: - Cancle Button View
     var cancleButtonView: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -101,7 +101,7 @@ extension AddEventView {
         })
     }
     
-    //MARK: - User Name View
+    // MARK: - User Name View
     private var userNameView: some View {
         VStack(spacing: 5) {
             Text(strAstrologerName)
@@ -117,7 +117,7 @@ extension AddEventView {
     }
 }
 
-//MARK: - BOOKING DETAIL SECTION COMPONENTS
+// MARK: - BOOKING DETAIL SECTION COMPONENTS
 extension AddEventView {
     private var bookingDetailSectionView: some View {
         VStack(spacing: 0) {
@@ -128,7 +128,7 @@ extension AddEventView {
         }
     }
     
-    //MARK: - Add Details View
+    // MARK: - Add Details View
     private var addDetailTextFieldView: some View {
         HStack {
             Image(systemName: "text.alignleft").foregroundColor(.gray).padding(10)
@@ -138,7 +138,7 @@ extension AddEventView {
         .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
     }
     
-    //MARK: - Booking Date Picker
+    // MARK: - Booking Date Picker
     private var bookingDatePickerView: some View {
         HStack(spacing: 10) {
             Image(systemName: "calendar").foregroundColor(.gray).padding(10)
@@ -158,7 +158,7 @@ extension AddEventView {
         }
     }
     
-    //MARK: - Booking Time Picker
+    // MARK: - Booking Time Picker
     private var bookingTimePickerView: some View {
         HStack {
             Image(systemName: "clock").foregroundColor(.gray).padding(10)
@@ -174,7 +174,7 @@ extension AddEventView {
         .frame(height: 50)
     }
     
-    //MARK: - Booking Time Dropdown View
+    // MARK: - Booking Time Dropdown View
     private var bookingTimeDropdownView: some View {
         HStack {
             Picker("Event Duration", selection: $viewModel.strDurationSelection) {
@@ -188,7 +188,7 @@ extension AddEventView {
         .frame(maxWidth: .infinity, maxHeight: 50 ,alignment: .leading)
     }
     
-    //MARK: - Booking Notification Duration
+    // MARK: - Booking Notification Duration
     private var bookingNotificationDurationView: some View {
         HStack {
             Image(systemName: "bell").foregroundColor(.gray).padding(10)
@@ -206,7 +206,7 @@ extension AddEventView {
     }
 }
 
-//MARK: - PERSON DETAIL COMPONENTS
+// MARK: - PERSON DETAIL COMPONENTS
 extension AddEventView {
     private var personDetailsView: some View {
         VStack(spacing: 0) {
@@ -220,7 +220,7 @@ extension AddEventView {
         }
     }
     
-    //MARK: - Person Detail Title View
+    // MARK: - Person Detail Title View
     private var personDetailTitleView: some View {
         HStack {
             Text("Person Details")
@@ -233,7 +233,7 @@ extension AddEventView {
         .background(AppColor.cFAFAFA)
     }
     
-    //MARK: - Upload Photo View
+    // MARK: - Upload Photo View
     private var uploadPhotoView: some View {
         HStack {
             Image(uiImage: viewModel.pickedImage)
@@ -253,7 +253,7 @@ extension AddEventView {
         .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
     }
     
-    //MARK: - Full Name View
+    // MARK: - Full Name View
     private var fullNameView: some View {
         HStack {
             Image(systemName: "person")
@@ -265,7 +265,7 @@ extension AddEventView {
         .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
     }
     
-    //MARK: - Birth Date and Time View
+    // MARK: - Birth Date and Time View
     private var personBirthDateAndBirthTimeView: some View {
         HStack(spacing: 10) {
             personBirthDateView
@@ -275,7 +275,7 @@ extension AddEventView {
         .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
     }
     
-    //MARK: - Person BirthDate View
+    // MARK: - Person BirthDate View
     private var personBirthDateView: some View {
         HStack {
             Image(systemName: "gift").foregroundColor(.gray).padding(10)
@@ -287,7 +287,7 @@ extension AddEventView {
         }
     }
     
-    //MARK: - Person BirthTime View
+    // MARK: - Person BirthTime View
     private var personBirthTimeView: some View {
         HStack {
             Image(systemName: "clock").foregroundColor(.gray).padding(10)
@@ -298,7 +298,7 @@ extension AddEventView {
         }
     }
     
-    //MARK: - Person BirthPlace View
+    // MARK: - Person BirthPlace View
     private var personBirthPlaceView: some View {
         HStack {
             Image(systemName: "mappin.and.ellipse").foregroundColor(.gray).padding(10)
@@ -308,7 +308,7 @@ extension AddEventView {
         .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
     }
     
-    //MARK: - Upload Kundali View
+    // MARK: - Upload Kundali View
     private var uploadKundaliView: some View {
         HStack {
             Image(uiImage: viewModel.pickedImageKundali)
@@ -329,9 +329,9 @@ extension AddEventView {
     }
 }
 
-//MARK: - PAYMENT MODE COMPONENTS
+// MARK: - PAYMENT MODE COMPONENTS
 extension AddEventView {
-    //MARK: - Payment Mode Title View
+    // MARK: - Payment Mode Title View
     private var paymentModeDetailTitleView: some View {
         HStack {
             Text("Payment Mode Details")
@@ -344,7 +344,7 @@ extension AddEventView {
         .background(AppColor.cFAFAFA)
     }
     
-    //MARK: - Payment Mode Menu View
+    // MARK: - Payment Mode Menu View
     private var paymentModeMenuView: some View {
         HStack {
             Image("tabWallet").foregroundColor(.gray).padding(10)

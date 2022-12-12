@@ -7,9 +7,7 @@
 
 import Foundation
 
-
-struct userDefault{
-    
+struct userDefault {
     static let strVerificationID = "strVerificationID"
     static let strPhoneNumber = "strPhoneNumber"
     static let isUserLoggedIn = "isUserLoggedIn"

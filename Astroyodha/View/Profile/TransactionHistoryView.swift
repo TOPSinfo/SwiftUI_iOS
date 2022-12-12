@@ -46,7 +46,7 @@ struct TransactionHistoryView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension TransactionHistoryView {
     private var backButtonView: some View {
         Button(action: {

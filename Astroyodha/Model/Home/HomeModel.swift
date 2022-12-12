@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-//MARK: - IDENTIFIABLE ASTROLOGER
+// MARK: - IDENTIFIABLE ASTROLOGER
 struct AstrologerGridItmeVM: Identifiable {
     let id = UUID()
     let name: String

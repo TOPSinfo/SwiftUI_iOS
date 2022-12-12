@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-//MARK: - NOTIFICATION CENTER EXTENSION
+// MARK: - NOTIFICATION CENTER EXTENSION
 extension NSNotification {
     static let dateSelection = Notification.Name.init("dateSelection")
 }
 
-//MARK: - UIAPPLICATION EXTENSION
+// MARK: - UIAPPLICATION EXTENSION
 extension UIApplication {
     func dismissKeyboard() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -47,7 +47,7 @@ extension UIApplication {
     }
 }
 
-//MARK: - VIEW EXTENSION
+// MARK: - VIEW EXTENSION
 extension View {
     func navigationBarColor(backgroundColor: Color, titleColor: UIColor?) -> some View {
         self.modifier(NavigationBarModifier(backgroundColor: backgroundColor, titleColor: titleColor))
@@ -114,7 +114,7 @@ struct CornerRadiusStyle: ViewModifier {
     }
 }
 
-//MARK: - DATE EXTENSION
+// MARK: - DATE EXTENSION
 extension Date {
     func adding(minutes: Int) -> Date {
         Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
@@ -189,7 +189,7 @@ extension Date {
         }
 }
 
-//MARK: - DOUBLE EXTENSION
+// MARK: - DOUBLE EXTENSION
 extension Double {
     var threeDigits: Double {
         return (self * 1000).rounded(.toNearestOrEven) / 1000
@@ -204,7 +204,7 @@ extension Double {
     }
 }
 
-//MARK: - STRING EXTENSION
+// MARK: - STRING EXTENSION
 extension String {
     func stringAt(_ i: Int) -> String {
         return String(Array(self)[i])

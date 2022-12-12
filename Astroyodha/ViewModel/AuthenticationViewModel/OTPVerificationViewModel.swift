@@ -87,7 +87,7 @@ class OTPVerificationViewModel: ObservableObject {
         return true
     }
     
-    //MARK: - Fetch Current User Data After OTP Verification Done
+    // MARK: - Fetch Current User Data After OTP Verification Done
     func fetchCurrentUser() {
         userViewModel.fetchCurrentUserData(completion: { user in
             self.objLoggedInUser = user
@@ -101,7 +101,7 @@ class OTPVerificationViewModel: ObservableObject {
         })
     }
     
-    //MARK: - Firebase Otp Verification
+    // MARK: - Firebase Otp Verification
     func firebaseOtpVerification() {
         UIApplication.shared.dismissKeyboard()
         Singletion.shared.showDefaultProgress()
@@ -139,7 +139,7 @@ class OTPVerificationViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Resend Otp
+    // MARK: - Resend Otp
     func firebaseResendOTP() {
         UIApplication.shared.dismissKeyboard()
         Singletion.shared.showDefaultProgress()
@@ -162,7 +162,7 @@ class OTPVerificationViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Set Alert Message
+    // MARK: - Set Alert Message
     func displayAlertWith(message: String) {
         strAlertMessage = message
         showToast.toggle()

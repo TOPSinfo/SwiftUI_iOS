@@ -14,7 +14,7 @@ class HelpAndFaqViewModel: ObservableObject {
         fetchHelpAndFaqData()
     }
     
-    //MARK: - Fetch Help And Faq Data
+    // MARK: - Fetch Help And Faq Data
     func fetchHelpAndFaqData() {
         let viewModel = CMSViewModel()
         viewModel.fetchCMSData(completion: { arrData in
@@ -22,7 +22,7 @@ class HelpAndFaqViewModel: ObservableObject {
         })
     }
     
-    //MARK: - Collaps All Section Before Expanding The Selected Section
+    // MARK: - Collaps All Section Before Expanding The Selected Section
     func collapsAllHelpAndFaqSections() {
         self.arrHelpFaqData.forEach { $0.isExpanded = false }
     }

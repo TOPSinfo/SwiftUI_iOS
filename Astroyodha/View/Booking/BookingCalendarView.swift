@@ -62,7 +62,7 @@ struct BookingCalendarView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - CALENDAR VIEW (WE HAVE USED SWIFT LIBRARY CODE INTO SWIFTUI THROUGH UIViewRepresentable)
+// MARK: - CALENDAR VIEW (WE HAVE USED SWIFT LIBRARY CODE INTO SWIFTUI THROUGH UIViewRepresentable)
 struct CalendarViewRepresentable: UIViewRepresentable {
     typealias UIViewType = FSCalendar
     
@@ -140,9 +140,9 @@ struct CalendarViewRepresentable: UIViewRepresentable {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension BookingCalendarView {
-    //MARK: - Navigation View
+    // MARK: - Navigation View
     private var navigationView: some View {
         Text("")
             .navigationBarItems(leading: Text("Calendar"))
@@ -158,7 +158,7 @@ extension BookingCalendarView {
             }
     }
     
-    //MARK: - Back Button View
+    // MARK: - Back Button View
     private var backButtonView: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -169,7 +169,7 @@ extension BookingCalendarView {
         })
     }
     
-    //MARK: - Next Previous Month Action view
+    // MARK: - Next Previous Month Action view
     private var nextPreviousMonthView: some View {
         HStack (alignment: .top) {
             Button {
@@ -198,7 +198,7 @@ extension BookingCalendarView {
         }
     }
     
-    //MARK: - Selected date View
+    // MARK: - Selected date View
     private var selectedDateView: some View {
         Text(viewModel.strSelectedDate + " Events")
             .font(appFont(type: .poppinsBold, size: 15))
@@ -207,7 +207,7 @@ extension BookingCalendarView {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     
-    //MARK: - Selected Date Event View
+    // MARK: - Selected Date Event View
     private var selectedDateEventsView: some View {
         GeometryReader { g in
             ScrollView(showsIndicators: false) {

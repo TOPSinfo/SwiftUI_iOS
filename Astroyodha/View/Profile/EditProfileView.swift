@@ -134,9 +134,9 @@ struct UserEditProfileView_Previews: PreviewProvider {
 }
 
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension EditProfileView {
-    //MARK: - Back Button View
+    // MARK: - Back Button View
     private var backButtonView: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -147,7 +147,7 @@ extension EditProfileView {
         })
     }
     
-    //MARK: - Profile Photo view
+    // MARK: - Profile Photo view
     private var profilePhotoView: some View {
         VStack {
             if(viewModel.isImageChanged) {
@@ -200,7 +200,7 @@ extension EditProfileView {
         }
     }
     
-    //MARK: - Edit Profile Icon View
+    // MARK: - Edit Profile Icon View
     private var editProfilePhotoView: some View {
         Button {
             viewModel.actionSheet.toggle()
@@ -212,7 +212,7 @@ extension EditProfileView {
         }
     }
     
-    //MARK: - Full name View
+    // MARK: - Full name View
     private var fullNameTextFieldView: some View {
         HStack {
             Image("imgFullname")
@@ -234,7 +234,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Mobile Number View
+    // MARK: - Mobile Number View
     private var mobileNumberTextFieldView: some View {
         HStack {
             Image("imgMobileNumber")
@@ -257,7 +257,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Email Address View
+    // MARK: - Email Address View
     private var emailTextFieldView: some View {
         HStack {
             Image("imgEmailAddress")
@@ -285,7 +285,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Date of Birth View
+    // MARK: - Date of Birth View
     private var dateOfBirthTextView: some View {
         HStack {
             Image("imgDOB")
@@ -309,7 +309,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Time of Birth view
+    // MARK: - Time of Birth view
     private var timeOfBirthTextView: some View {
         HStack {
             Image("imgBirthTime")
@@ -333,7 +333,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Place of Birth view
+    // MARK: - Place of Birth view
     private var birthPlaceTextView: some View {
         HStack {
             Image("imgBirthPlace")
@@ -358,7 +358,7 @@ extension EditProfileView {
         .padding(.bottom, 20)
     }
     
-    //MARK: - User Submit Button View
+    // MARK: - User Submit Button View
     private var userEditProfileSubmitView: some View {
         Button(action: {
             let strBirthDate = Singletion.shared.convertDateFormate(date: viewModel.datePickerBirthDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash)
@@ -409,7 +409,7 @@ extension EditProfileView {
             .padding(.horizontal, 15)
     }
     
-    //MARK: - Language View
+    // MARK: - Language View
     private var languageTextView: some View {
         HStack {
             Image("imgLanguage")
@@ -442,7 +442,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Astrology View
+    // MARK: - Astrology View
     private var astrologyTextView: some View {
         HStack {
             Image("imgAstrologyType")
@@ -472,7 +472,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Price View
+    // MARK: - Price View
     private var priceTextFieldView: some View {
         HStack {
             Image("imgPrice")
@@ -498,7 +498,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Experience View
+    // MARK: - Experience View
     private var experienceTextFieldView: some View {
         HStack {
             Image("imgExperience")
@@ -524,7 +524,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - About You View
+    // MARK: - About You View
     private var aboutYouTextView: some View {
         HStack (alignment: .top) {
             Image("imgAboutYou")
@@ -553,7 +553,7 @@ extension EditProfileView {
         .padding(.horizontal)
     }
     
-    //MARK: - Language Popup View
+    // MARK: - Language Popup View
     private var languagePopupView: some View {
         ZStack {
             Color.black.opacity(0.75)
@@ -627,7 +627,7 @@ extension EditProfileView {
         }
     }
     
-    //MARK: - Astrology Popup View
+    // MARK: - Astrology Popup View
     private var astrologyPopupView: some View {
         ZStack {
             Color.black.opacity(0.75)
@@ -702,7 +702,7 @@ extension EditProfileView {
         }
     }
     
-    //MARK: - Astrologer Submit View
+    // MARK: - Astrologer Submit View
     private var atrologerEditProfileSubmitView: some View {
         Button(action: {
             let strBirthDate = Singletion.shared.convertDateFormate(date: viewModel.datePickerBirthDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash)
@@ -765,7 +765,7 @@ extension EditProfileView {
             .padding(.top, 30)
     }
     
-    //MARK: - Appointment Title View
+    // MARK: - Appointment Title View
     private var appointmentTitleView: some View {
         HStack {
             Text("Appointment Slot")
@@ -789,14 +789,14 @@ extension EditProfileView {
         }
     }
     
-    //MARK: - No TimeSlot View
+    // MARK: - No TimeSlot View
     private var noAppointmentSlotView: some View {
         Text("Time slot not added.")
             .font(appFont(type: .poppinsMedium, size: 18))
             .foregroundColor(AppColor.c999999)
     }
     
-    //MARK: - Appointment Slot List View
+    // MARK: - Appointment Slot List View
     private var appointmentSlotListView: some View {
         ForEach(viewModel.arrAppointments.indices, id: \.self) { index in
             let objAppointment: AppointmentTimeSlotModel = viewModel.arrAppointments[index]

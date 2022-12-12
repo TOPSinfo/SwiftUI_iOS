@@ -57,7 +57,7 @@ struct BookingListView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - COMPONENTS
+// MARK: - COMPONENTS
 extension BookingListView {
     //Navigaiton Bar
     private var navigationBarView: some View {
@@ -141,7 +141,7 @@ extension BookingListView {
     }
 }
 
-//MARK: - BOOKING ITEM VIEW
+// MARK: - BOOKING ITEM VIEW
 struct BookingItemView: View {
     @Binding var arrBookings: [BookingAstrologerModel]
     

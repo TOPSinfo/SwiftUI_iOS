@@ -27,7 +27,7 @@ class BookingCalendarViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Fetch Bookings
+    // MARK: - Fetch Bookings
     func fetchBookingList() {
         firebase.fetchBookingsData { upcomingData, ongoingData, pastData in
             self.arrAllBookings.removeAll()
@@ -55,19 +55,19 @@ class BookingCalendarViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Fetch Selected Date Bookings
+    // MARK: - Fetch Selected Date Bookings
     func fetchSelectedDateBookings(dtSelected: Date) {
         firebase.fetchSelectedDateBookings(selectedDate: dtSelected) { bookingsData in
             self.bookings = bookingsData
         }
     }
     
-    //MARK: - Previous Month
+    // MARK: - Previous Month
     func moveToPreviousMonth() {
         self.crntPage = Calendar.current.date(byAdding: .month, value: -1, to: self.crntPage)!
     }
     
-    //MARK: - Next Month
+    // MARK: - Next Month
     func moveToNextMonth() {
         self.crntPage = Calendar.current.date(byAdding: .month, value: 1, to: self.crntPage)!
     }

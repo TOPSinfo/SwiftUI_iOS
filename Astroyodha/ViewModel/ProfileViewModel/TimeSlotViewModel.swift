@@ -47,7 +47,7 @@ class TimeSlotViewModel: ObservableObject {
         arrRepeat[0].isSelected = true
     }
     
-    //MARK: - Time Slot Validation
+    // MARK: - Time Slot Validation
     func isValideTimeSlot(completion: @escaping (_ isCompleted: Bool) -> Void) {
         let strStartDate = Singletion.shared.convertDateFormate(date: datePickerStartDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormat)
 
@@ -118,7 +118,7 @@ class TimeSlotViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Repeat Action Validation
+    // MARK: - Repeat Action Validation
     func isValidRepeateSelection(strStartDate: String, strEndDate: String, strStartTime: String, strEndTime: String) -> Bool {
         if (strStartDate.isEmpty) {
             self.displayAlertWith(message: strSelectDate)
@@ -155,7 +155,7 @@ class TimeSlotViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Weekly Action Validation
+    // MARK: - Weekly Action Validation
     func isValideWeeklySelection(strStartTime: String, strEndTime: String) -> Bool {
         let selectedDaysCount = arrDays.filter({ $0.isSelected == true }).count
         
@@ -182,7 +182,7 @@ class TimeSlotViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Custom Action Validation
+    // MARK: - Custom Action Validation
     func isValidCustomSelection(strStartDate: String, strStartTime: String, strEndTime: String) -> Bool {
         if (strStartDate.isEmpty) {
             self.displayAlertWith(message: strSelectDate)
@@ -222,7 +222,7 @@ class TimeSlotViewModel: ObservableObject {
         isRepeatPopupShow.toggle()
     }
     
-    //MARK: - Add TimeSlot Data
+    // MARK: - Add TimeSlot Data
     private func addTimeSlotData(objTimeSlot: AppointmentTimeSlotModel, completion: @escaping (_ isCompleted: Bool) -> Void) {
         Singletion.shared.showDefaultProgress()
         firebase.addAstrologerTimeSlotData(objSlot: objTimeSlot) { isCompleted in
@@ -235,7 +235,7 @@ class TimeSlotViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Set Alert Message
+    // MARK: - Set Alert Message
     func displayAlertWith(message: String) {
         strAlertMessage = message
         showToast.toggle()

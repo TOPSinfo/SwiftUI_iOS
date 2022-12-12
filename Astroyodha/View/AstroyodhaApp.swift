@@ -53,7 +53,7 @@ struct AstroyodhaApp: App {
     }
 }
 
-//MARK: - Functions
+// MARK: - Functions
 extension AstroyodhaApp {
     //Global variable to identify wether user is Astrologer or User
     private func configure(isUser: Bool) {
@@ -65,7 +65,7 @@ extension AstroyodhaApp {
     }
 }
 
-//MARK: - APP DELEGATE
+// MARK: - APP DELEGATE
 class AppDelegate: NSObject, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
