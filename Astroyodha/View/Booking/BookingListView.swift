@@ -61,7 +61,7 @@ struct BookingListView_Previews: PreviewProvider {
 
 // MARK: - COMPONENTS
 extension BookingListView {
-    //Navigaiton Bar
+    // Navigaiton Bar
     private var navigationBarView: some View {
         Text("")
             .navigationBarItems(leading: Text("My Bookings"))
@@ -100,7 +100,7 @@ extension BookingListView {
             }
     }
     
-    //Top TabBar
+    // Top TabBar
     private var swipableTopTabBarView: some View {
         VStack {
             CITTopTabBarView(selectedTab: $bookingViewModel.selectedTab,
@@ -108,7 +108,7 @@ extension BookingListView {
                              config: bookingViewModel.config)
             
             TabView(selection: $bookingViewModel.selectedTab) {
-                ForEach(Array(bookingViewModel.tabs.enumerated()), id: \.offset) { offset, tab in
+                ForEach(Array(bookingViewModel.tabs.enumerated()), id: \.offset) { _, tab in
                     
                     if (tab.title == BookingFilter.upcoming.rawValue.uppercased()) {
                         if bookingViewModel.arrUpcomingBookings.isEmpty {

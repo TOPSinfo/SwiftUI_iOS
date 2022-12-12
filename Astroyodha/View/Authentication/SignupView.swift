@@ -45,7 +45,7 @@ struct SignupView: View {
 }
 
 // MARK: - CREATE ANIMATED CHECK BOX
-struct setCheckBox: View {
+struct SetCheckBox: View {
     @Binding var trimVal: CGFloat
     @Binding var isCheckBoxTrue: Bool
     
@@ -123,7 +123,9 @@ extension SignupView {
         .frame(height: 50)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(signUpViewModel.isFirstNameChange ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(signUpViewModel.isFirstNameChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
         
     }
@@ -169,7 +171,9 @@ extension SignupView {
         .frame(height: 50)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(signUpViewModel.isPhoneNumberChange ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(signUpViewModel.isPhoneNumberChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -208,7 +212,9 @@ extension SignupView {
         }
         .frame(height: 50)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(signUpViewModel.isChangeEmail ? currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(signUpViewModel.isChangeEmail ? currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -227,8 +233,8 @@ extension SignupView {
                         signUpViewModel.isChecked.toggle()
                     }
                 }
-            }){
-                setCheckBox(trimVal: $signUpViewModel.trimVal, isCheckBoxTrue: $signUpViewModel.isChecked)
+            }) {
+                SetCheckBox(trimVal: $signUpViewModel.trimVal, isCheckBoxTrue: $signUpViewModel.isChecked)
             }
             
             Text("I agree to the [terms & conditions](https://online-testing.com/Terms) and [Privacy policy](https://online-testing.com/Privacy)")

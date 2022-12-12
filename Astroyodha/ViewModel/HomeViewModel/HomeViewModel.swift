@@ -32,7 +32,7 @@ class HomeViewModel: ObservableObject {
     var firebase: FirebaseService = FirebaseService()
     @Published var isAddEvent = false
     @Published var astrologerGridVMs: [AstrologerGridItmeVM]?
-    @Published var selectAstrologer : AstrologerGridItmeVM?
+    @Published var selectAstrologer: AstrologerGridItmeVM?
     var gridColumns = [
         GridItem(.flexible(minimum: 0, maximum: 500), spacing: 14),
         GridItem(.flexible(minimum: 0, maximum: 500), spacing: 14)

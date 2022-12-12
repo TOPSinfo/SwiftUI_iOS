@@ -25,7 +25,7 @@ let datePickertimeFormat: String = "hh:mm a"
 let shareLink: String = "Hi, Check out AstroYodha at: https://play.google.com/store/apps/details?id=com.astroyodha"
 
 // MARK: - Type alias
-typealias VoidCallBack = (()-> Void)
+typealias VoidCallBack = (() -> Void)
 
 // MARK: - Constants
 var currentUserType = UserType.astrologer

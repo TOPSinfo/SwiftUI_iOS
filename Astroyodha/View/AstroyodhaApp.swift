@@ -16,7 +16,7 @@ struct AstroyodhaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //Fetching common data on initial app launch
+            // Fetching common data on initial app launch
             let _ = Singletion.shared.getLanguageData()
             let _ = Singletion.shared.getAstrologyData()
             let _ = Singletion.shared.setDaysData()
@@ -55,7 +55,7 @@ struct AstroyodhaApp: App {
 
 // MARK: - Functions
 extension AstroyodhaApp {
-    //Global variable to identify wether user is Astrologer or User
+    // Global variable to identify wether user is Astrologer or User
     private func configure(isUser: Bool) {
         if isUser {
             currentUserType = .user

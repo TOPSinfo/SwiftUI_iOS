@@ -30,4 +30,3 @@ public enum CITTopTabBarDisplayMode: Equatable {
     case normal
     case atTopOfScreen(topPadding: CGFloat = 50)
 }
-

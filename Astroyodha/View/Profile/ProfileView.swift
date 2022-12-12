@@ -253,7 +253,7 @@ extension ProfileView {
         }
     }
     
-    //Edit Profile Icon View
+    // Edit Profile Icon View
     private var editProfilePhotoView: some View {
         VStack(spacing: 0) {
             Button {
@@ -300,7 +300,7 @@ extension ProfileView {
         .background(.white)
     }
     
-    //Date of Birth
+    // Date of Birth
     private var dateOfBirthView: some View {
         VStack(spacing: 4) {
             Image("imgDOB")

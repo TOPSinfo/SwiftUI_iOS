@@ -76,8 +76,7 @@ class UserViewModel: ObservableObject {
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 print(error!.localizedDescription)
             }
         }
@@ -96,8 +95,7 @@ class UserViewModel: ObservableObject {
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 // Handle the error
                 print(error!.localizedDescription)
             }

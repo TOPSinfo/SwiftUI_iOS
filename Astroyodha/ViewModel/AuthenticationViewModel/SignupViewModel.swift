@@ -22,7 +22,6 @@ class SignupViewModel: ObservableObject {
     @Published var isChecked = false
     @Published var isUserSignUp = false
     @Published var showToast = false
-    
     @Published var trimVal : CGFloat = 0
     var dropDownList = Country.countryNamesByCode()
     var firebase: FirebaseService = FirebaseService()
@@ -30,7 +29,7 @@ class SignupViewModel: ObservableObject {
     // Check wether the given Mobile number is exist or not and then do further steps
     func fireBaseSendOTPCode() {
         let phone = selectedCountryCode + strPhoneNumber
-        //check email already exist or not
+        // check email already exist or not
         firebase.checkMobileNumberIsExistOrNot(strPhoneNumber: phone, completion: { isCompleted in
             if !isCompleted {
                 // send otp for new user

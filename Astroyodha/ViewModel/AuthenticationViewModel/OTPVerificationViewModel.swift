@@ -153,8 +153,7 @@ class OTPVerificationViewModel: ObservableObject {
                 self.isResendOTP = false
                 self.timeRemaining = 10
                 self.displayAlertWith(message: strOtpSent)
-            }
-            else {
+            } else {
                 self.displayAlertWith(message: error?.localizedDescription ?? "")
                 self.isValidationPass = false
                 self.isResendOTP = true

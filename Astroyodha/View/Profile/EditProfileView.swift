@@ -255,7 +255,9 @@ extension EditProfileView {
         }
         .frame(height: 50)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -309,7 +311,9 @@ extension EditProfileView {
         .frame(height: 50)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -333,7 +337,9 @@ extension EditProfileView {
         .frame(height: 50)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -414,7 +420,8 @@ extension EditProfileView {
                 .fontWeight(.bold)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .background(RoundedRectangle(cornerRadius: 8).fill(currentUserType.themeColor))
+                .background(RoundedRectangle(cornerRadius: 8)
+                                .fill(currentUserType.themeColor))
         })
             .padding(.horizontal, 15)
     }
@@ -448,7 +455,9 @@ extension EditProfileView {
         }
         .frame(height: 50)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -478,7 +487,9 @@ extension EditProfileView {
         }
         .frame(minHeight: 50)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(.horizontal)
     }
     
@@ -775,7 +786,8 @@ extension EditProfileView {
                 .fontWeight(.bold)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .background(RoundedRectangle(cornerRadius: 8).fill(currentUserType.themeColor))
+                .background(RoundedRectangle(cornerRadius: 8)
+                                .fill(currentUserType.themeColor))
         })
             .padding(.horizontal, 15)
             .padding(.top, 30)
@@ -849,7 +861,7 @@ extension EditProfileView {
                     Spacer()
                     
                     Button {
-                        //DELETE PARTICULAR TIMESLOT
+                        // DELETE PARTICULAR TIMESLOT
                         viewModel.deleteTimeSlotData(objAppointment: objAppointment)
                     } label: {
                         Image("imgDelete")

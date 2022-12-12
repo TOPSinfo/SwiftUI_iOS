@@ -121,7 +121,9 @@ extension LoginView {
         .frame(height: 50)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(RoundedRectangle(cornerRadius: 5).stroke(loginViewModel.isTextFieldChange ?  currentUserType.themeColor : AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 5)
+                        .stroke(loginViewModel.isTextFieldChange ?  currentUserType.themeColor : AppColor.cDCDCDC,
+                                lineWidth: 1))
         .padding(5)
     }
     
@@ -159,7 +161,8 @@ extension LoginView {
                     .fontWeight(.bold)
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
-                    .background(RoundedRectangle(cornerRadius: 5).fill(currentUserType.themeColor))
+                    .background(RoundedRectangle(cornerRadius: 5)
+                                    .fill(currentUserType.themeColor))
             })
                 .padding(5)
             

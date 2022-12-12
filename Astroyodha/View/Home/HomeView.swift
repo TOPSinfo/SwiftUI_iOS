@@ -322,7 +322,8 @@ struct AstrologerGridItemView: View {
             .background(
                 RoundedRectangle(cornerRadius: 6.6)
                     .strokeBorder(AppColor.cCCCCCC, lineWidth: 1)
-                    .background(RoundedRectangle(cornerRadius: 6.6).fill(AppColor.cFFFFFF))
+                    .background(RoundedRectangle(cornerRadius: 6.6)
+                                    .fill(AppColor.cFFFFFF))
             )
         
     }

@@ -51,7 +51,7 @@ struct HelpAndFaqView_Previews: PreviewProvider {
 }
 
 extension HelpAndFaqView {
-    //BACK BUTTON
+    // BACK BUTTON
     private var backButtonView: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -62,7 +62,7 @@ extension HelpAndFaqView {
         })
     }
     
-    //HELP AND FAQ LIST VIEW
+    // HELP AND FAQ LIST VIEW
     private var listView: some View {
         List(viewModel.arrHelpFaqData) { responseData in
             VStack(alignment: .leading) {

@@ -59,7 +59,7 @@ class BookingCalendarViewModel: ObservableObject {
                 }
             }
             
-            //Initially Fetch current date Bookings
+            // Initially Fetch current date Bookings
             self.fetchSelectedDateBookings(dtSelected: self.selectedDate)
         }
     }

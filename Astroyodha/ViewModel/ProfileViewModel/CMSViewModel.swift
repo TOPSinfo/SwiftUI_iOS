@@ -22,9 +22,6 @@ struct CmsModel {
 }
 
 class CMSViewModel: ObservableObject {
-    //    @Published var cmsDataList = [CmsModel]()
-    
-    // Get a reference to the database
     let db = Firestore.firestore()
     
     func fetchCMSData(completion: @escaping ([HelpAndFaq]) -> Void) {
@@ -35,18 +32,12 @@ class CMSViewModel: ObservableObject {
                 } else {
                     if let snapshot = snapshot {
                         let arrData: [HelpAndFaq] = snapshot.documents.map { faqData in
-                            print(faqData["title"] as! String)
-                            print(faqData["answer"] as! String)
-                            
                             let objFAQ = HelpAndFaq.init(
-                                title: faqData["title"] as! String,
-                                description: faqData["answer"] as! String
+                                title: faqData["title"] as? String ?? "",
+                                description: faqData["answer"] as? String ?? ""
                             )
-                            
                             return objFAQ
                         }
-                        
-//                        Singletion.shared.hideProgress()
                         completion(arrData)
                     }
                 }

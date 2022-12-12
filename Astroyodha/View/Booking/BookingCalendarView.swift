@@ -42,15 +42,16 @@ struct BookingCalendarView: View {
             dateFormatter.dateFormat = viewModel.selectedDate.dateFormatWithSuffix()
             viewModel.strSelectedDate = dateFormatter.string(from: viewModel.selectedDate)
         }
-        //Get the user selected date through the Notification Center
+        // Get the user selected date through the Notification Center
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.dateSelection))
         { obj in
-            //Extracted selected date from the Dictionary and Fetch the selected date booking data
+            // Extracted selected date from the Dictionary and Fetch the selected date booking data
             if let userInfo = obj.userInfo, let info = userInfo["selectedDate"] {
-                let dtSelected = info as! Date
-                dateFormatter.dateFormat = dtSelected.dateFormatWithSuffix()
-                viewModel.strSelectedDate = dateFormatter.string(from: dtSelected)
-                viewModel.fetchSelectedDateBookings(dtSelected: dtSelected)
+                if let dtSelected = info as? Date {
+                    dateFormatter.dateFormat = dtSelected.dateFormatWithSuffix()
+                    viewModel.strSelectedDate = dateFormatter.string(from: dtSelected)
+                    viewModel.fetchSelectedDateBookings(dtSelected: dtSelected)
+                }
             }
         }
     }

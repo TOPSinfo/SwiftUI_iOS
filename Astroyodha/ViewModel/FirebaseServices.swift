@@ -327,8 +327,7 @@ class FirebaseService: ObservableObject {
             if let err = err {
                 print("Error removing document: \(err)")
                 completion(false)
-            }
-            else {
+            } else {
                 print("Document successfully removed!")
                 completion(true)
             }

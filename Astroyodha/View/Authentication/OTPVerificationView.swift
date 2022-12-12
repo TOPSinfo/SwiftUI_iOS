@@ -140,7 +140,8 @@ extension OTPVerificationView {
                         .fontWeight(.bold)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
-                        .background(RoundedRectangle(cornerRadius: 5).fill(currentUserType.themeColor))
+                        .background(RoundedRectangle(cornerRadius: 5)
+                                        .fill(currentUserType.themeColor))
                 }).padding()
             }
             
@@ -155,7 +156,8 @@ extension OTPVerificationView {
                         .fontWeight(.bold)
                         .frame(height: 50)
                         .frame(maxWidth: .infinity)
-                        .background(RoundedRectangle(cornerRadius: 5).fill(currentUserType.themeColor))
+                        .background(RoundedRectangle(cornerRadius: 5)
+                                        .fill(currentUserType.themeColor))
                 }).padding()
             }
         }

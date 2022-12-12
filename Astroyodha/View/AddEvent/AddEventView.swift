@@ -135,20 +135,26 @@ extension AddEventView {
             TextField("Add details", text: $viewModel.strDetails)
         }
         .frame(height: 50)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
     
     // MARK: - Booking Date Picker
     private var bookingDatePickerView: some View {
         HStack(spacing: 10) {
             Image(systemName: "calendar").foregroundColor(.gray).padding(10)
-            DatePicker(selection: $viewModel.datePicker, in: viewModel.dateRange, displayedComponents: .date) {
+            DatePicker(selection: $viewModel.datePicker,
+                       in: viewModel.dateRange,
+                       displayedComponents: .date) {
             }.id(viewModel.datePicker)
                 .labelsHidden()
             Spacer()
         }
         .frame(height: 50)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
     
     private var bookingTimeAndDurationView: some View {
@@ -202,7 +208,9 @@ extension AddEventView {
         }
         .frame(height: 50)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
 }
 
@@ -250,7 +258,9 @@ extension AddEventView {
             Spacer()
         }
         .frame(height: 50)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
     
     // MARK: - Full Name View
@@ -262,7 +272,9 @@ extension AddEventView {
             TextField("Full Name", text: $viewModel.strFullName)
         }
         .frame(height: 50)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
     
     // MARK: - Birth Date and Time View
@@ -272,14 +284,18 @@ extension AddEventView {
             personBirthTimeView
         }
         .frame(height: 50)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
     
     // MARK: - Person BirthDate View
     private var personBirthDateView: some View {
         HStack {
             Image(systemName: "gift").foregroundColor(.gray).padding(10)
-            DatePicker(selection: $viewModel.datePickerBirthDate, in: ...Date(), displayedComponents: .date) {
+            DatePicker(selection: $viewModel.datePickerBirthDate,
+                       in: ...Date(),
+                       displayedComponents: .date) {
             }
             .id(viewModel.datePickerBirthDate)
                 .labelsHidden()
@@ -305,7 +321,9 @@ extension AddEventView {
             TextField("Place Of Birth", text: $viewModel.strPlaceOfBirth)
         }
         .frame(height: 50)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
     
     // MARK: - Upload Kundali View
@@ -325,7 +343,9 @@ extension AddEventView {
             Spacer()
         }
         .frame(height: 50)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
 }
 
@@ -361,6 +381,8 @@ extension AddEventView {
                 .padding(.trailing)
         }
         .frame(height: 50)
-        .background(RoundedRectangle(cornerRadius: 1).stroke(AppColor.cDCDCDC, lineWidth: 1))
+        .background(RoundedRectangle(cornerRadius: 1)
+                        .stroke(AppColor.cDCDCDC,
+                                lineWidth: 1))
     }
 }

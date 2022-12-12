@@ -35,10 +35,10 @@ struct InitialView: View {
                 VStack {
                     Button(action: {
                         btnAstrologerClicked()
-                    }){
+                    }) {
                         Text(strLoginToAstrologer)
                     }
-                    .buttonStyle(buttonAstrologerStyle())
+                    .buttonStyle(ButtonAstrologerStyle())
                     .padding(.bottom, 10)
                     NavigationLink(
                         destination: LoginView(),
@@ -47,7 +47,7 @@ struct InitialView: View {
                 VStack {
                     Button(action: {
                         btnUserLoginClicked()
-                    }){
+                    }) {
                         Text(strLoginToUser)
                     }
                     .buttonStyle(buttonLoginUserStyle())
@@ -78,7 +78,7 @@ struct InitialView: View {
 }
 
 // MARK:- BUTTON STYLE
-struct buttonAstrologerStyle: ButtonStyle {
+struct ButtonAstrologerStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.headline.bold())
