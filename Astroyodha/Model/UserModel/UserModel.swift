@@ -33,7 +33,14 @@ class UserModel: Codable {
     var usertype: String
     var walletbalance: Int
     
-    init(birthdate: String, birthplace: String, birthtime: String, createdat: Date, devicedetails: String, email: String, fullname: String, imagepath: String, isOnline: Bool, lastupdatetime: Date, phone: String, price: Int? = 0, profileimage: String, rating: Float? = 0.0, socialid: String, socialtype: String, speciality: [String] = [], languages: [String] = [], aboutYou: String? = "", experience: Int? = 0, token: String, uid: String, usertype: String, walletbalance: Int) {
+    init(birthdate: String, birthplace: String, birthtime: String,
+         createdat: Date, devicedetails: String, email: String,
+         fullname: String, imagepath: String, isOnline: Bool,
+         lastupdatetime: Date, phone: String, price: Int? = 0,
+         profileimage: String, rating: Float? = 0.0, socialid: String,
+         socialtype: String, speciality: [String] = [], languages: [String] = [],
+         aboutYou: String? = "", experience: Int? = 0, token: String,
+         uid: String, usertype: String, walletbalance: Int) {
         self.birthdate = birthdate
         self.birthplace = birthplace
         self.birthtime = birthtime
@@ -90,7 +97,10 @@ struct AppointmentTimeSlotModel {
     var type: String
     var uid: String
     
-    init(startDate: String, startTime: String, endDate: String, endTime: String, repeatDays: [String], timeslotid: String, type: String, uid: String) {
+    init(startDate: String, startTime: String,
+         endDate: String, endTime: String,
+         repeatDays: [String], timeslotid: String,
+         type: String, uid: String) {
         self.startDate = startDate
         self.startTime = startTime
         self.endDate = endDate
