@@ -44,7 +44,6 @@ extension FirebaseService {
                 completion(false, err, "")
                 return
             }
-            
             Singletion.shared.hideProgress()
             defaults.set(ID, forKey: UserDefaultKey.strVerificationID)
             defaults.set(phone, forKey: UserDefaultKey.strPhoneNumber)

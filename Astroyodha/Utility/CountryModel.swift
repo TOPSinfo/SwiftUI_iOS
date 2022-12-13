@@ -29,15 +29,11 @@ struct Country: Hashable {
            let jsonPath = bundle.path(forResource: "Data/countryCodes", ofType: "json") {
             
             if let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)) {
-                
                 do {
-                    
-                    if let jsonObjects = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? NSArray {
-                        
+                    if let jsonObjects = try JSONSerialization.jsonObject(with: jsonData,
+                                                                          options: .allowFragments) as? NSArray {
                         for jsonObject in jsonObjects {
-                            
                             guard let countryObj = jsonObject as? NSDictionary else {  return countries }
-                            
                             guard let code = countryObj["code"] as? String,
                                     let phoneCode = countryObj["dial_code"] as? String,
                                     let name = countryObj["name"] as? String else {
@@ -48,11 +44,9 @@ struct Country: Hashable {
                             countries.append(country)
                         }
                     }
-                }
-                catch {
+                } catch {
                     print("Parsing country json failed.")
                 }
-                
             }
         } else {
             print("SwiftCountryPicker Bundle not able to locate.")
@@ -60,5 +54,4 @@ struct Country: Hashable {
         
         return countries
     }
-    
 }

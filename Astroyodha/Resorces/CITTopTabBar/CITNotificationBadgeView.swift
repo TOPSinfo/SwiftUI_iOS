@@ -34,8 +34,10 @@ public struct CITNotificationBadgeView: View {
             .font(badge.style.font)
             .foregroundColor(badge.style.textColor)
             .padding(.horizontal, badge.hasAmount ? 4 : 0)
-            .frame(minWidth: badge.style.size.width, minHeight: badge.style.size.height)
-            .frame(width: badge.hasAmount ? nil : badge.style.size.width, height: badge.hasAmount ? nil : badge.style.size.height)
+            .frame(minWidth: badge.style.size.width,
+                   minHeight: badge.style.size.height)
+            .frame(width: badge.hasAmount ? nil : badge.style.size.width,
+                   height: badge.hasAmount ? nil : badge.style.size.height)
             .padding(badge.style.contentInsets)
             .background(badge.style.color)
             .cornerRadius(.infinity)

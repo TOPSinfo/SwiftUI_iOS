@@ -22,7 +22,10 @@ struct AstroyodhaApp: App {
             let _ = Singletion.shared.setDaysData()
             let _ = Singletion.shared.setRepeatData()
             
-            // Code to check wether user is already logged in or not. If loggedin then directly redirect to dashboard screen otherwise redirect to Initial screen
+            /*
+             - Code to check wether user is already logged in or not.
+             - If loggedin then redirect to dashboard screen otherwise redirect to Initial screen
+             */
             let isLogin: Bool = defaults.bool(forKey: UserDefaultKey.isUserLoggedIn)
             if isLogin {
                 let objLoginDataCache = LoginDataCache.get()
@@ -68,7 +71,8 @@ extension AstroyodhaApp {
 // MARK: - APP DELEGATE
 class AppDelegate: NSObject, UIApplicationDelegate {
     var window: UIWindow?
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
         
@@ -77,6 +81,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
     }
 }

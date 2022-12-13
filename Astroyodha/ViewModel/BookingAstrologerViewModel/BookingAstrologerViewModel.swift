@@ -32,9 +32,9 @@ class BookingAstrologerViewModel: ObservableObject {
     @Published var cameraSheet: CameraSheet?
     
     var dateRange: ClosedRange<Date> {
-        let TenDaysAfter = Calendar.current.date(byAdding: .day, value: +10, to: Date())!
+        let tenDaysAfter = Calendar.current.date(byAdding: .day, value: +10, to: Date())!
         let currentDayBefore = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
-        return currentDayBefore...TenDaysAfter
+        return currentDayBefore...tenDaysAfter
     }
     
     var firebase: FirebaseService = FirebaseService()
@@ -112,8 +112,9 @@ class BookingAstrologerViewModel: ObservableObject {
         } else if strPlaceOfBirth.isEmpty {
             displayAlertWith(message: strAddBirthPlace)
             return false
+        } else {
+            return true
         }
-        return true
     }
     
     // MARK: - Set Alert Message

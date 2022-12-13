@@ -159,8 +159,7 @@ struct OptionsSecondSectionView: View {
                     Button {
                         if arrOptions[index].name == "Share app" {
                             Singletion.shared.showActivityPopup()
-                        }
-                        else if arrOptions[index].name == "Logout" {
+                        } else if arrOptions[index].name == "Logout" {
                             isAlertShow.toggle()
                         }
                         print("Tapped at \(index)")
@@ -222,7 +221,9 @@ struct OptionsSecondSectionView: View {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(rootView: NavigationView { InitialView() })
+            UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(
+                rootView: NavigationView { InitialView() }
+            )
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }

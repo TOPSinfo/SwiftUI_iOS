@@ -10,7 +10,6 @@ import Firebase
 import AlertToast
 
 struct SignupView: View {
-    
     @StateObject private var signUpViewModel = SignupViewModel()
     @Environment(\.presentationMode) var presentationMode
     

@@ -85,8 +85,6 @@ class EditProfileViewModel: ObservableObject {
                 title: Text("Options"),
                 message: Text("Select one option"),
                 buttons: [cameraButton, gallaryButton, cancelButton])
-            
-            
         case .gallery:
             return ActionSheet(
                 title: Text("Options"),
@@ -218,8 +216,9 @@ class EditProfileViewModel: ObservableObject {
         } else if !Singletion.shared.isValidEmail(strEmail) {
             self.displayAlertWith(message: strEnterValidEmail)
             return false
+        } else {
+            return true
         }
-        return true
     }
     
     // MARK: - Astrologer Validation
@@ -246,8 +245,9 @@ class EditProfileViewModel: ObservableObject {
         } else if strAbout.isEmpty {
             self.displayAlertWith(message: strEnterAboutYou)
             return false
+        } else {
+            return true
         }
-        return true
     }
     
     // MARK: - Set Alert Message

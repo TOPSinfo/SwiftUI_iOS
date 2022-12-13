@@ -72,8 +72,9 @@ class SignupViewModel: ObservableObject {
         } else if !isChecked {
             self.displayAlertWith(message: strAcceptPrivacyPolicy)
             return false
+        } else {
+            return true
         }
-        return true
     }
     
     // MARK: - Set Alert Message

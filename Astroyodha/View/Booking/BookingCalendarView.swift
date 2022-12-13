@@ -139,7 +139,9 @@ struct CalendarViewRepresentable: UIViewRepresentable {
             return eventCount
         }
         
-        func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        func calendar(_ calendar: FSCalendar,
+                      shouldSelect date: Date,
+                      at monthPosition: FSCalendarMonthPosition) -> Bool {
             return true
         }
     }

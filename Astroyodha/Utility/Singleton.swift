@@ -59,7 +59,8 @@ class Singletion {
     }
     
     /*
-     I am giving Vastu, Tarot, Psychic services then we are converting custom model data to single string to display in user profile screen
+     - I am giving Vastu, Tarot, Psychic services then
+     - We are converting custom model data to single string to display in user profile screen
      */
     // MARK: - Convert User Astrology into Single String
     func convertUserAstrologyIntoString(objLoggedInUser: UserModel) -> String {
