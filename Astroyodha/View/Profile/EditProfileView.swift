@@ -555,7 +555,7 @@ extension EditProfileView {
     
     // MARK: - About You View
     private var aboutYouTextView: some View {
-        HStack (alignment: .top) {
+        HStack(alignment: .top) {
             Image("imgAboutYou")
                 .resizable()
                 .scaledToFit()
@@ -611,7 +611,7 @@ extension EditProfileView {
                 }
                 .padding(.vertical, 8)
                 
-                HStack (spacing: 12) {
+                HStack(spacing: 12) {
                     Button {
                         viewModel.isLanguageVisible.toggle()
                     } label: {
@@ -685,7 +685,7 @@ extension EditProfileView {
                 }
                 .padding(.vertical, 8)
                 
-                HStack (spacing: 12) {
+                HStack(spacing: 12) {
                     Button {
                         viewModel.isAstrologyVisible.toggle()
                     } label: {
@@ -736,7 +736,9 @@ extension EditProfileView {
     // MARK: - Astrologer Submit View
     private var atrologerEditProfileSubmitView: some View {
         Button(action: {
-            let strBirthDate = Singletion.shared.convertDateFormate(date: viewModel.datePickerBirthDate, currentFormate: datePickerSelectedFormat, outputFormat: datePickerDateFormatWithoutDash)
+            let strBirthDate = Singletion.shared.convertDateFormate(date: viewModel.datePickerBirthDate,
+                                                                    currentFormate: datePickerSelectedFormat,
+                                                                    outputFormat: datePickerDateFormatWithoutDash)
             
             if viewModel.isAstrologerValidate() {
                 UIApplication.shared.dismissKeyboard()
@@ -842,7 +844,7 @@ extension EditProfileView {
                     .cornerRadius(8)
                     .padding(.vertical, 2)
                 
-                HStack (alignment: .center, spacing: 0) {
+                HStack(alignment: .center, spacing: 0) {
                     VStack(alignment: .center, spacing: 2) {
                         Text(objAppointment.startTime)
                         Text("To")
@@ -856,7 +858,9 @@ extension EditProfileView {
                         Text("Appointment Slot \(index + 1)")
                             .font(appFont(type: .poppinsMedium, size: 17))
                             .foregroundColor(AppColor.c999999)
-                        Text(objAppointment.repeatDays.isEmpty ? Singletion.shared.convertDateStringInSpecificFormat(startDate: objAppointment.startDate, endDate: objAppointment.endDate) : (objAppointment.repeatDays.map{String($0)}.joined(separator: ", ")))
+                        Text(objAppointment.repeatDays.isEmpty
+                             ? Singletion.shared.convertDateStringInSpecificFormat(startDate: objAppointment.startDate,
+                                                                                   endDate: objAppointment.endDate) : (objAppointment.repeatDays.map{String($0)}.joined(separator: ", ")))
                             .font(appFont(type: .poppinsRegular, size: 15))
                             .foregroundColor(AppColor.c999999)
                     }

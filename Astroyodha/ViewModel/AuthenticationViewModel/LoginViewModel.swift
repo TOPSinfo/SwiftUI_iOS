@@ -15,7 +15,6 @@ class LoginViewModel: ObservableObject {
     @Published var isTextFieldChange = false
     @Published var isUserLoggedIn = false
     @Published var showToast = false
-    
     var dropDownList = Country.countryNamesByCode()
     var firebase: FirebaseService = FirebaseService()
     

@@ -73,7 +73,7 @@ extension BookingListView {
                                 titleColor: .black)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack (spacing: 10) {
+                    HStack(spacing: 10) {
                         Button {
                             bookingViewModel.isCalendarTapped.toggle()
                         } label: {
@@ -111,7 +111,7 @@ extension BookingListView {
             TabView(selection: $bookingViewModel.selectedTab) {
                 ForEach(Array(bookingViewModel.tabs.enumerated()), id: \.offset) { _, tab in
                     
-                    if (tab.title == BookingFilter.upcoming.rawValue.uppercased()) {
+                    if tab.title == BookingFilter.upcoming.rawValue.uppercased() {
                         if bookingViewModel.arrUpcomingBookings.isEmpty {
                             Text("No Data Found")
                                 .font(appFont(type: .poppinsRegular, size: 17))
@@ -155,10 +155,14 @@ struct BookingItemView: View {
                     let objBooking = arrBookings[index]
                     let dateWords = objBooking.date.components(separatedBy: ["-"])
                     
-                    let startTime = Singletion.shared.convertDateFormate(date: objBooking.starttime, currentFormate: datePickerSelectedFormat, outputFormat: "hh:mm a")
-                    let endTime = Singletion.shared.convertDateFormate(date: objBooking.endtime, currentFormate: datePickerSelectedFormat, outputFormat: "hh:mm a")
+                    let startTime = Singletion.shared.convertDateFormate(date: objBooking.starttime,
+                                                                         currentFormate: datePickerSelectedFormat,
+                                                                         outputFormat: "hh:mm a")
+                    let endTime = Singletion.shared.convertDateFormate(date: objBooking.endtime,
+                                                                       currentFormate: datePickerSelectedFormat,
+                                                                       outputFormat: "hh:mm a")
                     
-                    HStack (alignment: .center, spacing: 10) {
+                    HStack(alignment: .center, spacing: 10) {
                         Rectangle()
                             .fill(
                                 (objBooking.status == BookingStatus.approved.rawValue)

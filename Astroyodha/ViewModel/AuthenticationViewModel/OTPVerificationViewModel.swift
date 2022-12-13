@@ -13,13 +13,15 @@ class OTPVerificationViewModel: ObservableObject {
     @Published var id = ""
     @Published var strAlertMessage = ""
     @Published var timeRemaining = 10
-    
     @Published var isFromLogin = false
     @Published var isFocused = false
     @Published var isValidationPass = false
     @Published var isResendOTP = false
     @Published var showToast = false
-    
+    @Published var borderColor: UIColor = .black
+    @Published var isTextFieldDisabled = false
+    @Published var showResendText = false
+    @Published var objLoggedInUser: UserModel?
     @Published var otpField = "" {
         didSet {
             guard otpField.count <= 6,
@@ -53,28 +55,18 @@ class OTPVerificationViewModel: ObservableObject {
         }
         return String(Array(otpField)[3])
     }
-    
     var otp5: String {
         guard otpField.count >= 5 else {
             return ""
         }
         return String(Array(otpField)[4])
     }
-    
     var otp6: String {
         guard otpField.count >= 6 else {
             return ""
         }
         return String(Array(otpField)[5])
     }
-    
-    @Published var borderColor: UIColor = .black
-    @Published var isTextFieldDisabled = false
-    var successCompletionHandler: (()->())?
-    
-    @Published var showResendText = false
-    
-    @Published var objLoggedInUser: UserModel?
     let userViewModel = UserViewModel()
     var firebase: FirebaseService = FirebaseService()
     

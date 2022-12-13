@@ -10,15 +10,12 @@ import Foundation
 class BookingCalendarViewModel: ObservableObject {
     @Published private(set) var arrAllBookings: [BookingAstrologerModel] = []
     @Published private(set) var arrSelectedDayBookings: [BookingAstrologerModel] = []
-    
     @Published var selectedDate: Date = Date()
     @Published var crntPage: Date = Date()
-    
-    var firebase: FirebaseService = FirebaseService()
     @Published var bookings: [BookingAstrologerModel] = []
     @Published var strSelectedDate: String = ""
-    
     @Published var dateFormatter = DateFormatter()
+    var firebase: FirebaseService = FirebaseService()
     
     init() {
         fetchBookingList()

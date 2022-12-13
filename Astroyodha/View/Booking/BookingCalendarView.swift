@@ -173,7 +173,7 @@ extension BookingCalendarView {
     
     // MARK: - Next Previous Month Action view
     private var nextPreviousMonthView: some View {
-        HStack (alignment: .top) {
+        HStack(alignment: .top) {
             Button {
                 viewModel.moveToPreviousMonth()
             } label: {
@@ -216,13 +216,19 @@ extension BookingCalendarView {
                 ForEach(0..<viewModel.bookings.count, id: \.self) { index in
                     let objBooking = viewModel.bookings[index]
                     
-                    let startTime = Singletion.shared.convertDateFormate(date: objBooking.starttime, currentFormate: datePickerSelectedFormat, outputFormat: "hh:mm a")
-                    let endTime = Singletion.shared.convertDateFormate(date: objBooking.endtime, currentFormate: datePickerSelectedFormat, outputFormat: "hh:mm a")
+                    let startTime = Singletion.shared.convertDateFormate(date: objBooking.starttime,
+                                                                         currentFormate: datePickerSelectedFormat,
+                                                                         outputFormat: "hh:mm a")
+                    let endTime = Singletion.shared.convertDateFormate(date: objBooking.endtime,
+                                                                       currentFormate: datePickerSelectedFormat,
+                                                                       outputFormat: "hh:mm a")
                     
-                    HStack (alignment: .center, spacing: 10) {
+                    HStack(alignment: .center, spacing: 10) {
                         Rectangle()
                             .fill(AppColor.c27AAE1)
-                            .frame(width: UIScreen.main.bounds.width * 0.17, height: UIScreen.main.bounds.width * 0.2, alignment: .center)
+                            .frame(width: UIScreen.main.bounds.width * 0.17,
+                                   height: UIScreen.main.bounds.width * 0.2,
+                                   alignment: .center)
                             .cornerRadius(10, corners: [.topLeft, .bottomLeft])
                             .overlay {
                                 Image("imgBookingApproval")

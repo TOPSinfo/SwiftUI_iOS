@@ -133,18 +133,25 @@ class Singletion {
     
     // MARK: - Share Dialog
     func showActivityPopup() {
-        let shareActivity = UIActivityViewController(activityItems: [shareLink], applicationActivities: nil)
+        let shareActivity = UIActivityViewController(activityItems: [shareLink],
+                                                     applicationActivities: nil)
         if let vc = UIApplication.shared.currentUIWindow()?.rootViewController {
             shareActivity.popoverPresentationController?.sourceView = vc.view
-            shareActivity.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height, width: 0, height: 0)
+            shareActivity.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2,
+                                                                             y: UIScreen.main.bounds.height,
+                                                                             width: 0,
+                                                                             height: 0)
             shareActivity.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
             vc.present(shareActivity, animated: true, completion: nil)
         }
     }
     
     // MARK: - Divider
-    func addDivider(color: Color, opacityValue: Double, height: CGFloat) -> some View {
-        return color.opacity(opacityValue).frame(height: height / UIScreen.main.scale)
+    func addDivider(color: Color,
+                    opacityValue: Double,
+                    height: CGFloat) -> some View {
+        return color.opacity(opacityValue)
+            .frame(height: height / UIScreen.main.scale)
     }
     
     // MARK: - Date Fuctions
@@ -155,7 +162,9 @@ class Singletion {
      3. Output Date Format
      */
     
-    func convertStringDateToRequestedFormated(strDate: String, inputFormat: String, outputFormat: String) -> String {
+    func convertStringDateToRequestedFormated(strDate: String,
+                                              inputFormat: String,
+                                              outputFormat: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = backendDateFormat
@@ -181,7 +190,9 @@ class Singletion {
      2. Input Date Format
      3. Output Date Format
      */
-    func convertDateFormate(date: Date, currentFormate: String, outputFormat: String) -> String {
+    func convertDateFormate(date: Date,
+                            currentFormate: String,
+                            outputFormat: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = currentFormate
         let myString = formatter.string(from: date)
@@ -201,7 +212,8 @@ class Singletion {
         return strOutput
     }
     
-    func getDateMonthYearFromDate(birthDate: String, inputFormat: String) -> Date {
+    func getDateMonthYearFromDate(birthDate: String,
+                                  inputFormat: String) -> Date {
         var outPutDate = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = inputFormat
@@ -220,7 +232,11 @@ class Singletion {
             let minute = dateFormatter.string(from: date)
             
             let calendar = Calendar(identifier: .gregorian)
-            let components = DateComponents(year: Int(year), month: Int(month), day: Int(day), hour: Int(hour), minute: Int(minute))
+            let components = DateComponents(year: Int(year),
+                                            month: Int(month),
+                                            day: Int(day),
+                                            hour: Int(hour),
+                                            minute: Int(minute))
             if let customDate = calendar.date(from: components) {
                 outPutDate = customDate
             }
@@ -257,7 +273,8 @@ class Singletion {
         return currentBooking
     }
     
-    func convertStringToDate(strDate: String, outputFormate: String) -> Date {
+    func convertStringToDate(strDate: String,
+                             outputFormate: String) -> Date {
         let dateFormatter = DateFormatter()
           dateFormatter.dateFormat = outputFormate
         if let date = dateFormatter.date(from:strDate) {
@@ -266,7 +283,8 @@ class Singletion {
         return Date()
     }
     
-    func convertDateStringInSpecificFormat(startDate: String, endDate: String) -> String {
+    func convertDateStringInSpecificFormat(startDate: String,
+                                           endDate: String) -> String {
         let startDateWords = startDate.components(separatedBy: ["-"])
         let endDateWords = endDate.components(separatedBy: ["-"])
         
@@ -321,7 +339,14 @@ class Singletion {
     
     // MARK: - Clear User Object
     func clearUserObject() {
-        objUser = UserModel.init(birthdate: "", birthplace: "", birthtime: "", createdat: Date(), devicedetails: "", email: "", fullname: "", imagepath: "", isOnline: false, lastupdatetime: Date(), phone: "", profileimage: "", socialid: "", socialtype: "", token: "", uid: "", usertype: "", walletbalance: 0)
+        objUser = UserModel.init(birthdate: "", birthplace: "",
+                                 birthtime: "", createdat: Date(),
+                                 devicedetails: "", email: "",
+                                 fullname: "", imagepath: "",
+                                 isOnline: false, lastupdatetime: Date(),
+                                 phone: "", profileimage: "",
+                                 socialid: "", socialtype: "",
+                                 token: "", uid: "", usertype: "", walletbalance: 0)
     }
     
     // MARK: - Generate Random Alpha Numeric String Id For Firebase Document Id
@@ -332,7 +357,8 @@ class Singletion {
 
         for _ in 0 ..< length {
             let randomNum = Int(arc4random_uniform(allowedCharsCount))
-            let randomIndex = allowedChars.index(allowedChars.startIndex, offsetBy: randomNum)
+            let randomIndex = allowedChars.index(allowedChars.startIndex,
+                                                 offsetBy: randomNum)
             let newCharacter = allowedChars[randomIndex]
             randomString += String(newCharacter)
         }

@@ -10,7 +10,6 @@ import Firebase
 import AlertToast
 
 struct OTPVerificationView: View {
-    
     @StateObject private var otpViewModel = OTPVerificationViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State var isFromLogin = false
@@ -92,7 +91,7 @@ extension OTPVerificationView {
     private var oTPTextField: some View {
         VStack {
             ZStack {
-                HStack (spacing: spaceBetweenBoxes) {
+                HStack(spacing: spaceBetweenBoxes) {
                     otpText(text: otpViewModel.otp1)
                     otpText(text: otpViewModel.otp2)
                     otpText(text: otpViewModel.otp3)

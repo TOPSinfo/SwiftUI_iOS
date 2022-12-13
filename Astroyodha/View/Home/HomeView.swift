@@ -116,7 +116,7 @@ extension HomeView {
                     UserGridView()
                 },
                                label: {
-                    if ((astrologerGridVMs ?? []).count > 4) {
+                    if (astrologerGridVMs ?? []).count > 4 {
                         Text("View All")
                             .font(appFont(type: .poppinsRegular, size: 12))
                             .foregroundColor(AppColor.c242424)
