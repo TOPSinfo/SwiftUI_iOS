@@ -80,7 +80,7 @@ class Singletion {
         let arrNames = arrAstrology.map({ (astrology: AstrologyObject) -> String in
             astrology.name
         })
-        let strAstrology = arrNames.map{String($0)}.joined(separator: ", ")
+        let strAstrology = arrNames.map { String($0) }.joined(separator: ", ")
         return strAstrology
     }
     
@@ -101,7 +101,7 @@ class Singletion {
         let arrNames = arrAstrology.map({ (astrology: AstrologyObject) -> String in
             astrology.name
         })
-        let strAstrology = arrNames.map{String($0)}.joined(separator: ", ")
+        let strAstrology = arrNames.map { String($0) }.joined(separator: ", ")
         return strAstrology
     }
     
@@ -127,7 +127,7 @@ class Singletion {
         let arrLang = arrLanguages.map({ (language: LanguageObject) -> String in
             language.name
         })
-        let strLanguage = arrLang.map{String($0)}.joined(separator: ", ")
+        let strLanguage = arrLang.map { String($0) }.joined(separator: ", ")
         return strLanguage
     }
     

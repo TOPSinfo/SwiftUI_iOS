@@ -141,7 +141,6 @@ class BookingAstrologerViewModel: ObservableObject {
             let strNotificationSelectionWitoutMin = String(strNotification.prefix(2))
             let finalTramNotification = strNotificationSelectionWitoutMin.trimmingCharacters(in: .whitespaces)
             
-            
             let strMyBirthDate = self.convertFrom(date: datePickerBirthDate,
                                                   fromFormat: datePickerDateFormat,
                                                   toOutputFormat: "dd MMM yyyy")

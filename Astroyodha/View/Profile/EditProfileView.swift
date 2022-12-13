@@ -643,7 +643,7 @@ extension EditProfileView {
                             language.name
                         })
                         
-                        viewModel.strLanguage = arrName.map{String($0)}.joined(separator: ", ")
+                        viewModel.strLanguage = arrName.map { String($0) }.joined(separator: ", ")
                         print(viewModel.strLanguage)
                         viewModel.isLanguageVisible.toggle()
                     } label: {
@@ -717,7 +717,7 @@ extension EditProfileView {
                             astrology.name
                         })
                         
-                        viewModel.strAstrology = arrName.map{ String($0) }.joined(separator: ", ")
+                        viewModel.strAstrology = arrName.map { String($0) }.joined(separator: ", ")
                         print(viewModel.strAstrology)
                         viewModel.isAstrologyVisible.toggle()
                     } label: {
@@ -872,7 +872,7 @@ extension EditProfileView {
                             .foregroundColor(AppColor.c999999)
                         Text(objAppointment.repeatDays.isEmpty
                              ? Singletion.shared.convertDateStringInSpecificFormat(startDate: objAppointment.startDate,
-                                                                                   endDate: objAppointment.endDate) : (objAppointment.repeatDays.map{String($0)}.joined(separator: ", ")))
+                                                                                   endDate: objAppointment.endDate) : (objAppointment.repeatDays.map { String($0) }.joined(separator: ", ")))
                             .font(appFont(type: .poppinsRegular, size: 15))
                             .foregroundColor(AppColor.c999999)
                     }

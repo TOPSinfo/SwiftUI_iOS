@@ -456,7 +456,7 @@ extension FirebaseService {
                         print("Error getting documents: \(err)")
                     } else {
                         if let snapshot = querySnapshot {
-                            let arrAllBookings: [BookingAstrologerModel] = snapshot.documents.map{  userData in
+                            let arrAllBookings: [BookingAstrologerModel] = snapshot.documents.map { userData in
                                 var createdAt: Date?
                                 var endTime: Date?
                                 var startTime: Date?

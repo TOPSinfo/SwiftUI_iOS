@@ -96,7 +96,7 @@ class TimeSlotViewModel: ObservableObject {
                     weekDay.name.lowercased()
                 })
                 
-                arrName = arrName.map { $0.capitalized}
+                arrName = arrName.map { $0.capitalized }
                 if let userUID = Auth.auth().currentUser?.uid {
                     let randomDocumentID: String = Singletion.shared.randomAlphaNumericString(length: 20)
                     print(randomDocumentID)
