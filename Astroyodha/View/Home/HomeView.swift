@@ -267,7 +267,8 @@ struct AstrologerGridItemView: View {
                         .indicator(.activity)
                         .scaledToFill()
                         .clipShape(RoundedRectangle(cornerRadius: 6.6))
-                        .frame(width: ((UIScreen.main.bounds.width / 2) - 50), height: ((UIScreen.main.bounds.width / 2) - 110))
+                        .frame(width: ((UIScreen.main.bounds.width / 2) - 50),
+                               height: ((UIScreen.main.bounds.width / 2) - 110))
                         .cornerRadius(10)
                     
                     Spacer()

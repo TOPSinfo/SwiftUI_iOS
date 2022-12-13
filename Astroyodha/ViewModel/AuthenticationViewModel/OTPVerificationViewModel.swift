@@ -86,9 +86,13 @@ class OTPVerificationViewModel: ObservableObject {
             Singletion.shared.objLoggedInUser = user
             
             if user.usertype == "user" {
-                UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(rootView: UserTabView())
+                UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(
+                    rootView: UserTabView()
+                )
             } else {
-                UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(rootView: AstrologerTabView())
+                UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(
+                    rootView: AstrologerTabView()
+                )
             }
         })
     }

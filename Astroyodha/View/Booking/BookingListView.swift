@@ -166,11 +166,16 @@ struct BookingItemView: View {
                         Rectangle()
                             .fill(
                                 (objBooking.status == BookingStatus.approved.rawValue)
-                                ? AppColor.c27AAE1 : (objBooking.status == BookingStatus.waiting.rawValue)
-                                ? AppColor.cF1A341 : (objBooking.status == BookingStatus.rejected.rawValue)
-                                ? AppColor.cF06649 : (objBooking.status == BookingStatus.deleted.rawValue)
-                                ? AppColor.cBC2626 : (objBooking.status == BookingStatus.completed.rawValue)
-                                ? AppColor.c80C181 : AppColor.c27AAE1)
+                                ? AppColor.c27AAE1
+                                : (objBooking.status == BookingStatus.waiting.rawValue)
+                                ? AppColor.cF1A341
+                                : (objBooking.status == BookingStatus.rejected.rawValue)
+                                ? AppColor.cF06649
+                                : (objBooking.status == BookingStatus.deleted.rawValue)
+                                ? AppColor.cBC2626
+                                : (objBooking.status == BookingStatus.completed.rawValue)
+                                ? AppColor.c80C181
+                                : AppColor.c27AAE1)
                             .frame(
                                 width: UIScreen.main.bounds.width * 0.25,
                                 height: UIScreen.main.bounds.width * 0.28,

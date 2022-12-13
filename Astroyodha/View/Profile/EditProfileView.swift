@@ -188,7 +188,9 @@ extension EditProfileView {
                 .bold()
             
             if currentUserType == .user {
-                Text((viewModel.objLoggedInUser?.birthplace ?? "").isEmpty ? "-" : (viewModel.objLoggedInUser?.birthplace ?? "-"))
+                Text((viewModel.objLoggedInUser?.birthplace ?? "").isEmpty
+                     ? "-"
+                     : (viewModel.objLoggedInUser?.birthplace ?? "-"))
                     .font(appFont(type: .poppinsRegular, size: 16))
                     .foregroundColor(AppColor.c999999)
             }

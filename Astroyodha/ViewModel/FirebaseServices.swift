@@ -81,7 +81,9 @@ extension FirebaseService {
 // MARK: - Verify User Entered Otp
 extension FirebaseService {
     func verifyOTP(credential: PhoneAuthCredential,
-                   completion: @escaping (_ isCompleted: Bool, _ error: Error?, _ authResult: AuthDataResult?) -> Void) {
+                   completion: @escaping (_ isCompleted: Bool,
+                                          _ error: Error?,
+                                          _ authResult: AuthDataResult?) -> Void) {
         Auth.auth().signIn(with: credential) { (authResult, err) in
             if err != nil {
                 Singletion.shared.hideProgress()
@@ -168,7 +170,9 @@ extension FirebaseService {
                             completion: @escaping (_ isCompleted: Bool) -> Void) {
         guard (Auth.auth().currentUser?.uid) != nil else{ return }
         
-        userPhotoPath = Singletion.shared.objLoggedInUser.imagepath.isEmpty ? userPhotoPath : Singletion.shared.objLoggedInUser.imagepath
+        userPhotoPath = Singletion.shared.objLoggedInUser.imagepath.isEmpty
+        ? userPhotoPath
+        : Singletion.shared.objLoggedInUser.imagepath
         
         let storageRefrance = Storage.storage().reference()
         guard let imageDataProfile = imgPhoto.jpegData(compressionQuality: 0.5) else { return }
@@ -629,10 +633,45 @@ extension FirebaseService {
                                 }
                             }
                             
+                            self.fetchDayBooking(selectedDate: selectedDate,
+                                                 arrAllBookings: arrAllBookings) { bookingsData in
+                                arrSelectedDayBookings = bookingsData
+                            }
                             completion(arrSelectedDayBookings)
                         }
                     }
                 }
+        }
+    }
+    
+    // MARK: - Filter data
+    func fetchDayBooking(selectedDate: Date,
+                         arrAllBookings: [BookingAstrologerModel],
+                         completion: @escaping (_ bookingsData: [BookingAstrologerModel]) -> Void) {
+        var arrSelectedDayBookings: [BookingAstrologerModel] = []
+        for booking in arrAllBookings {
+            print(booking.starttime)
+            
+            let endDate = Singletion.shared.convertStringToDate(strDate: booking.date,
+                                                                outputFormate: datePickerDateFormat)
+            
+            let currentDate = Singletion.shared.convertStringToDate(
+                strDate: Singletion.shared.convertDateFormate(date: selectedDate,
+                                                              currentFormate: datePickerSelectedFormat,
+                                                              outputFormat: datePickerDateFormatWithoutDash),
+                outputFormate: datePickerDateFormatWithoutDash)
+            
+            let bookingDate = Singletion.shared.convertStringToDate(
+                strDate: Singletion.shared.convertDateFormate(date: endDate,
+                                                              currentFormate: datePickerSelectedFormat,
+                                                              outputFormat: datePickerDateFormatWithoutDash),
+                outputFormate: datePickerDateFormatWithoutDash)
+            
+            if bookingDate == currentDate {
+                arrSelectedDayBookings.append(booking)
+            }
+            
+            completion(arrSelectedDayBookings)
         }
     }
 }
