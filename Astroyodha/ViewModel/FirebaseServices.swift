@@ -15,8 +15,48 @@ class FirebaseService: ObservableObject {
     
     var strPhotoURL: String = ""
     var strKundaliURL: String = ""
-    
-    // MARK: - Check For Mobile Number Exist Or Not While SignIn/SignUp
+}
+
+// MARK: - Login User
+extension FirebaseService {
+    func loginUser(strPhoneNumber: String,
+                   completion: @escaping (_ isCompleted: Bool) -> Void) {
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
+        PhoneAuthProvider.provider().verifyPhoneNumber(strPhoneNumber, uiDelegate: nil) { ID, err in
+            Singletion.shared.hideProgress()
+            if err != nil {
+                completion(false)
+            } else {
+                UserDefaults.standard.set(ID, forKey: UserDefaultKey.strVerificationID)
+                UserDefaults.standard.set(strPhoneNumber, forKey: UserDefaultKey.strPhoneNumber)
+                completion(true)
+            }
+        }
+    }
+}
+
+// MARK: - Verify Phone Number And Send Otp
+extension FirebaseService {
+    func verifyNumberAndSendOTP(phone: String,
+                                completion: @escaping (_ isCompleted: Bool, _ error: Error?, _ id: String) -> Void) {
+        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { ID, err in
+            if err != nil {
+                Singletion.shared.hideProgress()
+                completion(false, err, "")
+                return
+            }
+            
+            Singletion.shared.hideProgress()
+            UserDefaults.standard.set(ID, forKey: UserDefaultKey.strVerificationID)
+            UserDefaults.standard.set(phone, forKey: UserDefaultKey.strPhoneNumber)
+            
+            completion(true, nil, (ID ?? ""))
+        }
+    }
+}
+
+// MARK: - Check For Mobile Number Exist Or Not While SignIn/SignUp
+extension FirebaseService {
     func checkMobileNumberIsExistOrNot(strPhoneNumber: String,
                                        completion: @escaping (_ isCompleted: Bool) -> Void) {
         Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
@@ -36,42 +76,10 @@ class FirebaseService: ObservableObject {
             }
         }
     }
-    
-    // MARK: - Login User
-    func loginUser(strPhoneNumber: String,
-                   completion: @escaping (_ isCompleted: Bool) -> Void) {
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
-        PhoneAuthProvider.provider().verifyPhoneNumber(strPhoneNumber, uiDelegate: nil) { ID, err in
-            Singletion.shared.hideProgress()
-            if err != nil {
-                completion(false)
-            } else {
-                UserDefaults.standard.set(ID, forKey: UserDefaultKey.strVerificationID)
-                UserDefaults.standard.set(strPhoneNumber, forKey: UserDefaultKey.strPhoneNumber)
-                completion(true)
-            }
-        }
-    }
-    
-    // MARK: - Verify Phone Number And Send Otp
-    func verifyNumberAndSendOTP(phone: String,
-                                completion: @escaping (_ isCompleted: Bool, _ error: Error?, _ id: String) -> Void) {
-        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { ID, err in
-            if err != nil {
-                Singletion.shared.hideProgress()
-                completion(false, err, "")
-                return
-            }
-            
-            Singletion.shared.hideProgress()
-            UserDefaults.standard.set(ID, forKey: UserDefaultKey.strVerificationID)
-            UserDefaults.standard.set(phone, forKey: UserDefaultKey.strPhoneNumber)
-            
-            completion(true, nil, (ID ?? ""))
-        }
-    }
-    
-    // MARK: - Verify User Entered Otp
+}
+
+// MARK: - Verify User Entered Otp
+extension FirebaseService {
     func verifyOTP(credential: PhoneAuthCredential,
                    completion: @escaping (_ isCompleted: Bool, _ error: Error?, _ authResult: AuthDataResult?) -> Void) {
         Auth.auth().signIn(with: credential) { (authResult, err) in
@@ -87,8 +95,73 @@ class FirebaseService: ObservableObject {
             }
         }
     }
-    
-    // MARK: - Update User/Astrologer Profile Photo
+}
+
+// MARK: - Add User Data
+extension FirebaseService {
+    func addUserData() {
+        let newUserReference = self.db.collection("user").document(objUser.uid)
+        newUserReference.setData(["birthdate": objUser.birthdate,
+                                  "birthplace": objUser.birthplace,
+                                  "birthtime": objUser.birthtime,
+                                  "createdat": Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                  "devicedetails": device,
+                                  "email": objUser.email,
+                                  "fullname": objUser.fullname,
+                                  "isOnline": objUser.isOnline,
+                                  "lastupdatetime": Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                  "phone": objUser.phone,
+                                  "profileimage": objUser.profileimage,
+                                  "socialid": objUser.socialid,
+                                  "socialtype": objUser.socialtype,
+                                  "token": objUser.token,
+                                  "uid": objUser.uid,
+                                  "usertype": currentUserType.rawValue,
+                                  "walletbalance": objUser.walletbalance
+                                 ]) { error in
+            // Check for errors
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+}
+
+// MARK: - Add Astrologer Data
+extension FirebaseService {
+    func addAstrologerData() {
+        let objDefaultAstrology = Singletion.shared.arrAstrology.first { $0.name == "Vedic" }
+        print(objDefaultAstrology?.id ?? "")
+        
+        let newUserReference = self.db.collection("user").document(objUser.uid)
+        newUserReference.setData(["birthdate": objUser.birthdate,
+                                  "createdat": Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                  "devicedetails": device,
+                                  "email": objUser.email,
+                                  "fullname": objUser.fullname,
+                                  "isOnline": objUser.isOnline,
+                                  "lastupdatetime": Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                  "phone": objUser.phone,
+                                  "price": 0,
+                                  "rating": 0,
+                                  "socialid": objUser.socialid,
+                                  "socialtype": objUser.socialtype,
+                                  "speciality": [(objDefaultAstrology?.id ?? "")],
+                                  "token": objUser.token,
+                                  "uid": objUser.uid,
+                                  "usertype": currentUserType.rawValue,
+                                  "walletbalance": objUser.walletbalance
+                                 ]) { error in
+            // Check for errors
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+}
+
+// MARK: - Update User/Astrologer Profile Photo
+extension FirebaseService {
     func uploadProfileImage(imgPhoto: UIImage,
                             dict: [String: Any],
                             isUser: Bool,
@@ -118,8 +191,7 @@ class FirebaseService: ObservableObject {
                                     completion(true)
                                 }
                             }
-                        }
-                        else {
+                        } else {
                             var dictAstrologer: [String: Any] = dict
                             dictAstrologer["imagepath"] = userPhotoPath
                             dictAstrologer["profileimage"] = url?.absoluteString ?? ""
@@ -135,41 +207,10 @@ class FirebaseService: ObservableObject {
             }
         }
     }
-    
-    // MARK: - Update User Profile Data
-    func updateUserData(dict: [String: Any],
-                        completion: @escaping (_ isCompleted: Bool) -> Void) {
-        let userUID = Auth.auth().currentUser?.uid ?? ""
-        db.collection("user").whereField("uid", isEqualTo: userUID).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print(err.localizedDescription)
-            } else if querySnapshot!.documents.count != 1 {
-                // Perhaps this is an error for you?
-            } else {
-                let document = querySnapshot!.documents.first
-                document?.reference.updateData([
-                    "fullname": (dict["fullname"] as? String ?? "") ,
-                    "phone": (dict["phone"] as? String ?? "") ,
-                    "email": (dict["email"] as? String ?? "") ,
-                    "birthdate": (dict["birthdate"] as? String ?? "") ,
-                    "birthtime": (dict["birthtime"] as? String ?? "") ,
-                    "birthplace": (dict["birthplace"] as? String ?? ""),
-                    "imagepath": (dict["imagepath"] as? String ?? ""),
-                    "profileimage": (dict["profileimage"] as? String ?? "")
-                ], completion: { error in
-                    if error != nil {
-                        print(error!.localizedDescription)
-                    } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                            completion(true)
-                        }
-                    }
-                })
-            }
-        }
-    }
-    
-    // MARK: - Update Astroloer Profile Data
+}
+
+// MARK: - Update Astroloer Profile Data
+extension FirebaseService {
     func updateAstrologerData(dict: [String: Any],
                               completion: @escaping (_ isCompleted: Bool) -> Void) {
         let userUID = Auth.auth().currentUser?.uid ?? ""
@@ -204,66 +245,44 @@ class FirebaseService: ObservableObject {
             }
         }
     }
-    
-    // MARK: - Add User Data
-    func addUserData() {
-        let newUserReference = self.db.collection("user").document(objUser.uid)
-        newUserReference.setData(["birthdate": objUser.birthdate,
-                                  "birthplace": objUser.birthplace,
-                                  "birthtime": objUser.birthtime,
-                                  "createdat": Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                  "devicedetails": device,
-                                  "email": objUser.email,
-                                  "fullname": objUser.fullname,
-                                  "isOnline": objUser.isOnline,
-                                  "lastupdatetime": Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                  "phone": objUser.phone,
-                                  "profileimage": objUser.profileimage,
-                                  "socialid": objUser.socialid,
-                                  "socialtype": objUser.socialtype,
-                                  "token": objUser.token,
-                                  "uid": objUser.uid,
-                                  "usertype": currentUserType.rawValue,
-                                  "walletbalance": objUser.walletbalance
-                                 ]) { error in
-            // Check for errors
-            if error != nil {
-                print(error!.localizedDescription)
+}
+
+// MARK: - Update User Profile Data
+extension FirebaseService {
+    func updateUserData(dict: [String: Any],
+                        completion: @escaping (_ isCompleted: Bool) -> Void) {
+        let userUID = Auth.auth().currentUser?.uid ?? ""
+        db.collection("user").whereField("uid", isEqualTo: userUID).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print(err.localizedDescription)
+            } else if querySnapshot!.documents.count != 1 {
+                // Perhaps this is an error for you?
+            } else {
+                let document = querySnapshot!.documents.first
+                document?.reference.updateData([
+                    "fullname": (dict["fullname"] as? String ?? "") ,
+                    "phone": (dict["phone"] as? String ?? "") ,
+                    "email": (dict["email"] as? String ?? "") ,
+                    "birthdate": (dict["birthdate"] as? String ?? "") ,
+                    "birthtime": (dict["birthtime"] as? String ?? "") ,
+                    "birthplace": (dict["birthplace"] as? String ?? ""),
+                    "imagepath": (dict["imagepath"] as? String ?? ""),
+                    "profileimage": (dict["profileimage"] as? String ?? "")
+                ], completion: { error in
+                    if error != nil {
+                        print(error!.localizedDescription)
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                            completion(true)
+                        }
+                    }
+                })
             }
         }
     }
-    
-    // MARK: - Add Astrologer Data
-    func addAstrologerData() {
-        let objDefaultAstrology = Singletion.shared.arrAstrology.first { $0.name == "Vedic" }
-        print(objDefaultAstrology?.id ?? "")
-        
-        let newUserReference = self.db.collection("user").document(objUser.uid)
-        newUserReference.setData(["birthdate": objUser.birthdate,
-                                  "createdat": Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                  "devicedetails": device,
-                                  "email": objUser.email,
-                                  "fullname": objUser.fullname,
-                                  "isOnline": objUser.isOnline,
-                                  "lastupdatetime": Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                  "phone": objUser.phone,
-                                  "price": 0,
-                                  "rating": 0,
-                                  "socialid": objUser.socialid,
-                                  "socialtype": objUser.socialtype,
-                                  "speciality": [(objDefaultAstrology?.id ?? "")],
-                                  "token": objUser.token,
-                                  "uid": objUser.uid,
-                                  "usertype": currentUserType.rawValue,
-                                  "walletbalance": objUser.walletbalance
-                                 ]) { error in
-            // Check for errors
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-        }
-    }
-    
+}
+
+extension FirebaseService {
     // MARK: - Add Astrologer Timeslot Data
     func addAstrologerTimeSlotData(objSlot: AppointmentTimeSlotModel,
                                    completion: @escaping (_ isCompleted: Bool) -> Void) {
@@ -277,7 +296,7 @@ class FirebaseService: ObservableObject {
                                    "starttime": objSlot.startTime,
                                    "timeslotid": objSlot.timeslotid,
                                    "type": objSlot.type,
-                                   "uid" : objSlot.uid,
+                                   "uid": objSlot.uid,
                                   ]) { error in
             // Check for errors
             if error != nil {
@@ -333,97 +352,10 @@ class FirebaseService: ObservableObject {
             }
         }
     }
-    
-    // MARK: - Upload Add Event Attachment
-    func uploadImage(imageProfile: UIImage,
-                     imageKundali: UIImage,
-                     timeslotid: String,
-                     completion: @escaping (_ isCompleted: Bool) -> Void)  {
-        
-        guard (Auth.auth().currentUser?.uid) != nil else { return }
-        let storageRefrance = Storage.storage().reference()
-        
-        guard let imageDataProfile = imageProfile.jpegData(compressionQuality: 0.5) else { return }
-        guard let imageDataKundali = imageKundali.jpegData(compressionQuality: 0.5) else { return }
-        
-        let fileRefProfile = storageRefrance.child(pathPhoto)
-        let fileRefKundali = storageRefrance.child(pathKundali)
-        
-        _ = fileRefProfile.putData(imageDataProfile, metadata: nil) { metaData, error in
-            if error == nil && metaData != nil {
-                _ = fileRefKundali.putData(imageDataKundali, metadata: nil) { metaData, error in
-                    if error == nil && metaData != nil {
-                        let storageRefrance = Storage.storage().reference().child(pathPhoto)
-                        storageRefrance.downloadURL { url, err in
-                            if err == nil && url != nil {
-                                self.strPhotoURL = url!.absoluteString // Get photo url
-                                
-                                let storageRefrance = Storage.storage().reference().child(pathKundali)
-                                storageRefrance.downloadURL { url, err in
-                                    if err == nil && url != nil {
-                                        self.strKundaliURL = url!.absoluteString // Get photo url
-                                        self.addBooking(timeSloat: timeslotid) { isComplet in
-                                            completion(isComplet)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    // MARK: - Add Booking Data
-    func addBooking(timeSloat: String,
-                    completion: @escaping (_ isCompleted: Bool) -> Void) {
-        // Add a data to a collection
-        let timeSlotReference = self.db.collection("bookinghistory").document(timeSloat)
-        timeSlotReference.setData(["allowextend": objAddBooking.allowextend,
-                                   "amount": objAddBooking.amount,
-                                   "astrologercharge": objAddBooking.astrologercharge,
-                                   "astrologerid": objAddBooking.astrologerid,
-                                   "astrologername": objAddBooking.astrologername,
-                                   "birthdate": objAddBooking.birthdate,
-                                   "birthplace": objAddBooking.birthplace,
-                                   "birthtime": objAddBooking.birthtime,
-                                   "bookingid": objAddBooking.bookingid,
-                                   "createdat": Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                   "date": objAddBooking.date,
-                                   "description": objAddBooking.description,
-                                   "endtime": objAddBooking.endtime,
-                                   "extendtime": objAddBooking.extendtime,
-                                   "fullName": objAddBooking.fullName,
-                                   "kundali" : strKundaliURL,
-                                   "kundalipath": pathKundali,
-                                   "month": objAddBooking.month,
-                                   "notificationmin": objAddBooking.notificationmin,
-                                   "notify": objAddBooking.notify,
-                                   "paymentstatus": objAddBooking.paymentstatus,
-                                   "paymenttype": objAddBooking.paymenttype,
-                                   "photo": strPhotoURL,
-                                   "photopath" : pathPhoto,
-                                   "starttime": objAddBooking.starttime,
-                                   "status": objAddBooking.status,
-                                   "transactionid": objAddBooking.transactionid,
-                                   "uid": objAddBooking.uid,
-                                   "userbirthdate": objAddBooking.userbirthdate,
-                                   "username": objAddBooking.username,
-                                   "userprofileimage": objAddBooking.userprofileimage,
-                                   "year": objAddBooking.year
-                                  ]) { error in
-            // Check for errors
-            if error != nil {
-                print(error!.localizedDescription)
-                completion(false)
-            } else {
-                completion(true)
-            }
-        }
-    }
-    
-    // MARK: - Get All Astrologers
+}
+
+// MARK: - Get All Astrologers
+extension FirebaseService {
     func fetchAllAstrologer(completion: @escaping (_ arrData: [AstrologerGridItmeVM]) -> Void) {
         db.collection("user").whereField("usertype", isEqualTo: "astrologer")
             .addSnapshotListener { querySnapshot, error in
@@ -449,8 +381,60 @@ class FirebaseService: ObservableObject {
                 }
             }
     }
-    
-    // MARK: - Fetch Booking Data
+}
+
+// MARK: - Add Booking Data
+extension FirebaseService {
+    func addBooking(timeSloat: String,
+                    completion: @escaping (_ isCompleted: Bool) -> Void) {
+        // Add a data to a collection
+        let timeSlotReference = self.db.collection("bookinghistory").document(timeSloat)
+        timeSlotReference.setData(["allowextend": objAddBooking.allowextend,
+                                   "amount": objAddBooking.amount,
+                                   "astrologercharge": objAddBooking.astrologercharge,
+                                   "astrologerid": objAddBooking.astrologerid,
+                                   "astrologername": objAddBooking.astrologername,
+                                   "birthdate": objAddBooking.birthdate,
+                                   "birthplace": objAddBooking.birthplace,
+                                   "birthtime": objAddBooking.birthtime,
+                                   "bookingid": objAddBooking.bookingid,
+                                   "createdat": Date(timeIntervalSince1970: Double(timestamp) / 1000),
+                                   "date": objAddBooking.date,
+                                   "description": objAddBooking.description,
+                                   "endtime": objAddBooking.endtime,
+                                   "extendtime": objAddBooking.extendtime,
+                                   "fullName": objAddBooking.fullName,
+                                   "kundali": strKundaliURL,
+                                   "kundalipath": pathKundali,
+                                   "month": objAddBooking.month,
+                                   "notificationmin": objAddBooking.notificationmin,
+                                   "notify": objAddBooking.notify,
+                                   "paymentstatus": objAddBooking.paymentstatus,
+                                   "paymenttype": objAddBooking.paymenttype,
+                                   "photo": strPhotoURL,
+                                   "photopath": pathPhoto,
+                                   "starttime": objAddBooking.starttime,
+                                   "status": objAddBooking.status,
+                                   "transactionid": objAddBooking.transactionid,
+                                   "uid": objAddBooking.uid,
+                                   "userbirthdate": objAddBooking.userbirthdate,
+                                   "username": objAddBooking.username,
+                                   "userprofileimage": objAddBooking.userprofileimage,
+                                   "year": objAddBooking.year
+                                  ]) { error in
+            // Check for errors
+            if error != nil {
+                print(error!.localizedDescription)
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+}
+
+// MARK: - Fetch Booking Data
+extension FirebaseService {
     func fetchBookingsData(completion: @escaping (_ upcomingData: [BookingAstrologerModel],
                                                   _ ongoingData: [BookingAstrologerModel],
                                                   _ pastData: [BookingAstrologerModel]) -> Void) {
@@ -548,8 +532,10 @@ class FirebaseService: ObservableObject {
                 }
         }
     }
-    
-    // MARK: - Fetch Particular Date Booking Data
+}
+
+// MARK: - Fetch Particular Date Booking Data
+extension FirebaseService {
     func fetchSelectedDateBookings(selectedDate: Date,
                                    completion: @escaping (_ bookingsData: [BookingAstrologerModel]) -> Void) {
         var comparingFieldKey = ""
@@ -649,6 +635,49 @@ class FirebaseService: ObservableObject {
                         }
                     }
                 }
+        }
+    }
+}
+
+// MARK: - Upload Add Event Attachment
+extension FirebaseService {
+    func uploadImage(imageProfile: UIImage,
+                     imageKundali: UIImage,
+                     timeslotid: String,
+                     completion: @escaping (_ isCompleted: Bool) -> Void)  {
+        
+        guard (Auth.auth().currentUser?.uid) != nil else { return }
+        let storageRefrance = Storage.storage().reference()
+        
+        guard let imageDataProfile = imageProfile.jpegData(compressionQuality: 0.5) else { return }
+        guard let imageDataKundali = imageKundali.jpegData(compressionQuality: 0.5) else { return }
+        
+        let fileRefProfile = storageRefrance.child(pathPhoto)
+        let fileRefKundali = storageRefrance.child(pathKundali)
+        
+        _ = fileRefProfile.putData(imageDataProfile, metadata: nil) { metaData, error in
+            if error == nil && metaData != nil {
+                _ = fileRefKundali.putData(imageDataKundali, metadata: nil) { metaData, error in
+                    if error == nil && metaData != nil {
+                        let storageRefrance = Storage.storage().reference().child(pathPhoto)
+                        storageRefrance.downloadURL { url, err in
+                            if err == nil && url != nil {
+                                self.strPhotoURL = url!.absoluteString // Get photo url
+                                
+                                let storageRefrance = Storage.storage().reference().child(pathKundali)
+                                storageRefrance.downloadURL { url, err in
+                                    if err == nil && url != nil {
+                                        self.strKundaliURL = url!.absoluteString // Get photo url
+                                        self.addBooking(timeSloat: timeslotid) { isComplet in
+                                            completion(isComplet)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

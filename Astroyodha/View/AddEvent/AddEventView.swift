@@ -187,7 +187,7 @@ extension AddEventView {
     private var bookingTimeDropdownView: some View {
         HStack {
             Picker("Event Duration", selection: $viewModel.strDurationSelection) {
-                ForEach(viewModel.arrDuration, id: \.self) {
+                ForEach(arrDuration, id: \.self) {
                     Text($0)
                 }
             }
@@ -202,7 +202,7 @@ extension AddEventView {
         HStack {
             Image(systemName: "bell").foregroundColor(.gray).padding(10)
             Picker("No notification", selection: $viewModel.strNotificationSelection) {
-                ForEach(viewModel.arrNotification, id: \.self) {
+                ForEach(arrNotification, id: \.self) {
                     Text($0)
                 }
             }
@@ -372,7 +372,7 @@ extension AddEventView {
         HStack {
             Image("tabWallet").foregroundColor(.gray).padding(10)
             Picker("Select payment mode", selection: $viewModel.strPaymentModeSelection) {
-                ForEach(viewModel.arrPaymentOption, id: \.self) {
+                ForEach(arrPaymentOption, id: \.self) {
                     Text($0)
                 }
             }

@@ -7,6 +7,22 @@
 
 import UIKit
 
+var arrDuration = ["15 minutes",
+                   "30 minutes",
+                   "45 minutes",
+                   "60 minutes"]
+
+var arrNotification = ["5 minutes before",
+                       "10 minutes before",
+                       "15 minutes before",
+                       "30 minutes before",
+                       "1 hour before",
+                       "1 hour after"]
+
+var arrPaymentOption = ["Pay with wallet",
+                        "Pay with online"]
+
+// MARK: - Path
 var userPhotoPath = "images/users/\(TimeInterval(timestamp)).jpg"
 let device = UIDevice.modelName
 let pathPhoto = "images/bookings/\(TimeInterval(timestamp))_photo.jpg"

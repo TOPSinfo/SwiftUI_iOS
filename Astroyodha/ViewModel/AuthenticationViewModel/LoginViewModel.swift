@@ -22,7 +22,11 @@ class LoginViewModel: ObservableObject {
     // Check wether the given Mobile number is exist or not and then do further steps
     func fireBaseSendOTPCode() {
         let phone = selectedCountryCode + strPhoneNumber
-        // check Phone number is already exist or not. If Phone number is exist then send OTP to the phone number and if not exist then show Number is not registered
+        /*
+         - Check Phone number is already exist or not.
+         - If Phone number is exist then send OTP to the phone number
+         - If Phone number is not exist then show Number is not registered
+         */
         firebase.checkMobileNumberIsExistOrNot(strPhoneNumber: phone, completion: { isCompleted in
             if isCompleted {
                 // send otp for new user

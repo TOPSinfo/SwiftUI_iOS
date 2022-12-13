@@ -115,7 +115,7 @@ class OTPVerificationViewModel: ObservableObject {
             verificationCode: otp1 + otp2 + otp3 + otp4 + otp5 + otp6)
         
         self.firebase.verifyOTP(credential: credential) { isCompleted, error, authResult  in
-            if(isCompleted) {
+            if isCompleted {
                 self.isValidationPass = true
                 UserDefaults.standard.set(true, forKey: UserDefaultKey.isUserLoggedIn)
                 

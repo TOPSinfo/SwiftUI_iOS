@@ -44,8 +44,7 @@ struct EditProfileView: View {
                                 birthPlaceTextView
                                 userEditProfileSubmitView
                             }
-                        }
-                        else {
+                        } else {
                             VStack(alignment: .leading, spacing: 0) {
                                 VStack(alignment: .leading, spacing: 20) {
                                     Text("Basic Details")
@@ -770,14 +769,14 @@ extension EditProfileView {
                 
                 if(viewModel.isImageChanged) {
                     viewModel.uploadProfileImage(dictUser: dictAstrologer) { isCompleted in
-                        if(isCompleted) {
+                        if isCompleted {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
                 }
                 else {
                     viewModel.updateAstrologerData(dictAstrologer: dictAstrologer) { isCompleted in
-                        if(isCompleted) {
+                        if isCompleted {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }

@@ -38,7 +38,7 @@ class EditProfileViewModel: ObservableObject {
     @Published var pickedImage = UIImage(named: "imgProfile")!
     @Published var isCameraSelected = false
     @Published var actionSheet: Bool = false
-    @Published var actionSheetOption : ActionSheetOption = .gallery
+    @Published var actionSheetOption: ActionSheetOption = .gallery
     @Published var isImageChanged: Bool = false
     @Published var arrAppointments: [AppointmentTimeSlotModel] = []
     @Published var arrLanguages: [LanguageObject] = []

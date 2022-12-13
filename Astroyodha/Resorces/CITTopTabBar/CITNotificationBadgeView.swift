@@ -48,7 +48,10 @@ public struct CITNotificationBadgeView_Previews: PreviewProvider {
             CITNotificationBadgeView(badge: .circle(style: .example))
             CITNotificationBadgeView(badge: .circle(style: .init(color: .blue)))
             CITNotificationBadgeView(badge: .circle(style: .init(color: .gray,
-                                                                 contentInsets: .init(top: 3, leading: 3, bottom: 3, trailing: 3),
+                                                                 contentInsets: .init(top: 3,
+                                                                                      leading: 3,
+                                                                                      bottom: 3,
+                                                                                      trailing: 3),
                                                                  amount: 12)))
         }
     }

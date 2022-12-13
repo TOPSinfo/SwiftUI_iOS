@@ -15,14 +15,14 @@ class Singletion {
     private init() { }
     var userViewModel = UserViewModel()
     
-    @Published var arrLanguage : [LanguageObject] = []
-    @Published var arrAstrology : [AstrologyObject] = []
+    @Published var arrLanguage: [LanguageObject] = []
+    @Published var arrAstrology: [AstrologyObject] = []
         
-    var arrDays:[DayObject] = []
-    var arrRepeat:[RepeatObject] = []
+    var arrDays: [DayObject] = []
+    var arrRepeat: [RepeatObject] = []
     var arrAppointments: [AppointmentTimeSlotModel] = []
     
-    var arrBookingDates:[Date] = []
+    var arrBookingDates: [Date] = []
     
     var objLoggedInUser: UserModel = UserModel(birthdate: "", birthplace: "", birthtime: "", createdat: Date(), devicedetails: "", email: "", fullname: "", imagepath: "", isOnline: false, lastupdatetime: Date(), phone: "", price: 0, profileimage: "", rating: 0.0, socialid: "", socialtype: "", speciality: [], languages: [], aboutYou: "", experience: 0, token: "", uid: "", usertype: "", walletbalance: 0)
     
@@ -134,7 +134,7 @@ class Singletion {
     // MARK: - Share Dialog
     func showActivityPopup() {
         let shareActivity = UIActivityViewController(activityItems: [shareLink], applicationActivities: nil)
-        if let vc = UIApplication.shared.currentUIWindow()?.rootViewController{
+        if let vc = UIApplication.shared.currentUIWindow()?.rootViewController {
             shareActivity.popoverPresentationController?.sourceView = vc.view
             shareActivity.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height, width: 0, height: 0)
             shareActivity.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
@@ -266,7 +266,7 @@ class Singletion {
         return Date()
     }
     
-    func convertDateStringInSpecificFormat(startDate: String, endDate :String) -> String {
+    func convertDateStringInSpecificFormat(startDate: String, endDate: String) -> String {
         let startDateWords = startDate.components(separatedBy: ["-"])
         let endDateWords = endDate.components(separatedBy: ["-"])
         

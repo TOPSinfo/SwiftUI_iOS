@@ -237,7 +237,7 @@ extension TimeSlotView {
         .frame(width: UIScreen.main.bounds.width - 40, height: 70)
     }
     
-    // MARK: -  Repeat Dropdown Popup View
+    // MARK: - Repeat Dropdown Popup View
     private var repeatDropdownPopupView: some View {
         Button {
             viewModel.isRepeatPopupShow.toggle()

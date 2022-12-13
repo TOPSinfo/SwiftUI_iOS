@@ -11,33 +11,25 @@ import Firebase
 
 class TimeSlotViewModel: ObservableObject {
     @Published var currentTimeSlot: TimeSlot = TimeSlot.repeatOption
-    
     @Published var repeatTitle: String = "Repeat"
     @Published var isRepeatPopupShow: Bool = false
-    
     @Published var isStartDateSelected: Bool = false
     @Published var strStartDateTitle: String = "Start Date"
     @Published var datePickerStartDate = Date()
-    
     @Published var isEndDateSelected: Bool = false
     @Published var strEndDateTitle: String = "End Date"
     @Published var datePickerEndDate = Date()
-    
     @Published var isStartTimeSelected: Bool = false
     @Published var strStartTimeTitle: String = "Start Time"
     @Published var timePickerStartTime = Date()
-    
     @Published var isEndTimeSelected: Bool = false
     @Published var strEndTimeTitle: String = "End Time"
     @Published var timePickerEndTime = Date()
-    
     @Published var showToast: Bool = false
     @Published var strAlertMessage: String = ""
-    
-    var firebase: FirebaseService = FirebaseService()
-    
     @Published var arrDays: [DayObject] = []
     @Published var arrRepeat: [RepeatObject] = []
+    var firebase: FirebaseService = FirebaseService()
     
     init() {
         arrDays = Singletion.shared.arrDays

@@ -10,7 +10,7 @@ import SwiftUI
 
 class SignupViewModel: ObservableObject {
     @Published var strAlertMessage = ""
-    @Published  var strPhoneNumber = ""
+    @Published var strPhoneNumber = ""
     @Published var strFirstName = ""
     @Published var strEmail = ""
     @Published var selectedCountryCode = "+91"
@@ -22,7 +22,7 @@ class SignupViewModel: ObservableObject {
     @Published var isChecked = false
     @Published var isUserSignUp = false
     @Published var showToast = false
-    @Published var trimVal : CGFloat = 0
+    @Published var trimVal: CGFloat = 0
     var dropDownList = Country.countryNamesByCode()
     var firebase: FirebaseService = FirebaseService()
     
