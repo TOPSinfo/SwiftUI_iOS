@@ -23,7 +23,7 @@ struct UserGridView: View {
             GeometryReader { geometry in
                 ScrollView(showsIndicators: false) {
                     VStack {
-                        LazyVGrid(columns: viewModel.columns, spacing: 14.66) {
+                        LazyVGrid(columns: viewModel.gridColumns, spacing: 14.66) {
                             if currentUserType == .user {
                                 ForEach((viewModel.arrAstrologers),
                                         content: { element in
