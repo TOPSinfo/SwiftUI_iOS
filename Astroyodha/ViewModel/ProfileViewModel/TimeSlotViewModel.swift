@@ -89,8 +89,8 @@ class TimeSlotViewModel: ObservableObject {
             // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
             let isValidWeekly = self.isValideWeeklySelection(strStartTime: strStartTime, strEndTime: strEndTime)
             
-            if(isValidWeekly) {
-                let arrUpdateNames = arrDays.filter( { return $0.isSelected == true } )
+            if isValidWeekly {
+                let arrUpdateNames = arrDays.filter({ return $0.isSelected == true })
                 var arrName = arrUpdateNames.map({ (weekDay: DayObject) -> String in
                     weekDay.name.lowercased()
                 })
@@ -109,7 +109,7 @@ class TimeSlotViewModel: ObservableObject {
                                                                     type: currentTimeSlot.rawValue,
                                                                     uid: userUID)
                     
-                    self.addTimeSlotData(objTimeSlot: objTimeSlot){ isCompleted in
+                    self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
                         completion(isCompleted)
                     }
                 }
@@ -134,7 +134,7 @@ class TimeSlotViewModel: ObservableObject {
                                                                     type: currentTimeSlot.rawValue,
                                                                     uid: userUID)
                     
-                    self.addTimeSlotData(objTimeSlot: objTimeSlot){ isCompleted in
+                    self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
                         completion(isCompleted)
                     }
                 }

@@ -55,7 +55,6 @@ extension OTPVerificationView {
     private var backButtonView: some View {
         VStack {
             Button(action: {
-                print("Back Button Clicked...")
                 self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image(currentUserType == .user ? "imgBack" : "imgBackAstro")

@@ -140,11 +140,11 @@ extension SignupView {
         HStack {
             Menu {
                 ForEach(signUpViewModel.dropDownList, id: \.self) { client in
-                    Button(action: {
+                    Button {
                         signUpViewModel.selectedCountry = client.name
                         signUpViewModel.selectedCountryCode = client.phoneCode
                         signUpViewModel.isPhoneNumberChange = true
-                    }) {
+                    } label: {
                         HStack {
                             Text("\(client.phoneCode) \(client.name)")
                                 .foregroundColor(client.name.isEmpty ? .gray : .black)
@@ -233,7 +233,7 @@ extension SignupView {
     // MARK: - Agreement View
     private var agreementView: some View {
         HStack {
-            Button(action: {
+            Button {
                 if !signUpViewModel.isChecked {
                     withAnimation(Animation.easeIn(duration: 0.6)) {
                         signUpViewModel.trimVal = 1
@@ -245,11 +245,10 @@ extension SignupView {
                         signUpViewModel.isChecked.toggle()
                     }
                 }
-            }) {
+            } label: {
                 SetCheckBox(trimVal: $signUpViewModel.trimVal,
                             isCheckBoxTrue: $signUpViewModel.isChecked)
             }
-            
             Text("I agree to the [terms & conditions](https://online-testing.com/Terms) and [Privacy policy](https://online-testing.com/Privacy)")
                 .tint(currentUserType.themeColor)
                 .foregroundColor(AppColor.c999999)
@@ -293,7 +292,6 @@ extension SignupView {
                 .font(appFont(type: .poppinsRegular, size: 18))
                 .foregroundColor(.gray)
             Button(action: {
-                print("Login")
                 self.presentationMode.wrappedValue.dismiss()
             }, label: {
                 Text(strLogin).foregroundColor(currentUserType.themeColor)

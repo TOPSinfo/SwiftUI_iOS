@@ -152,7 +152,7 @@ extension EditProfileView {
     // MARK: - Profile Photo view
     private var profilePhotoView: some View {
         VStack {
-            if(viewModel.isImageChanged) {
+            if viewModel.isImageChanged {
                 Image(uiImage: viewModel.pickedImage)
                     .resizable()
                     .scaledToFill()
@@ -449,10 +449,6 @@ extension EditProfileView {
                         .font(appFont(type: .poppinsRegular, size: 17))
                         .foregroundColor((viewModel.strLanguage == "Language") ? AppColor.c3C3C43 : AppColor.c242424)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                
-                if viewModel.isLanguageVisible {
-                    let _ = print(Singletion.shared.arrLanguage)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -769,7 +765,7 @@ extension EditProfileView {
                 dictAstrologer["profileimage"] = Singletion.shared.objLoggedInUser.profileimage
                 Singletion.shared.showDefaultProgress()
                 
-                if(viewModel.isImageChanged) {
+                if viewModel.isImageChanged {
                     viewModel.uploadProfileImage(dictUser: dictAstrologer) { isCompleted in
                         if isCompleted {
                             self.presentationMode.wrappedValue.dismiss()

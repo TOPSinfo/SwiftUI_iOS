@@ -166,7 +166,7 @@ extension FirebaseService {
                             dict: [String: Any],
                             isUser: Bool,
                             completion: @escaping (_ isCompleted: Bool) -> Void) {
-        guard (Auth.auth().currentUser?.uid) != nil else{return}
+        guard (Auth.auth().currentUser?.uid) != nil else{ return }
         
         userPhotoPath = Singletion.shared.objLoggedInUser.imagepath.isEmpty ? userPhotoPath : Singletion.shared.objLoggedInUser.imagepath
         
@@ -363,7 +363,7 @@ extension FirebaseService {
                     print("Error getting documents: \(err)")
                 } else {
                     if let snapshot = querySnapshot{
-                        let arrUsers: [AstrologerGridItmeVM] = snapshot.documents.map{ userData in
+                        let arrUsers: [AstrologerGridItmeVM] = snapshot.documents.map { userData in
                             let astroUser = AstrologerGridItmeVM(name: userData["fullname"] as? String ?? "",
                                                                  price: userData["price"] as? Int ?? 0,
                                                                  uid: userData["uid"] as? String ?? "",
@@ -453,8 +453,7 @@ extension FirebaseService {
                         print("Error getting documents: \(err)")
                     } else {
                         if let snapshot = querySnapshot {
-                            let arrAllBookings: [BookingAstrologerModel] = snapshot.documents.map{ userData in
-                                
+                            let arrAllBookings: [BookingAstrologerModel] = snapshot.documents.map{  userData in
                                 var createdAt: Date?
                                 var endTime: Date?
                                 var startTime: Date?
@@ -553,8 +552,7 @@ extension FirebaseService {
                         print("Error getting documents: \(err)")
                     } else {
                         if let snapshot = querySnapshot {
-                            let arrAllBookings: [BookingAstrologerModel] = snapshot.documents.map{ userData in
-                                
+                            let arrAllBookings: [BookingAstrologerModel] = snapshot.documents.map { userData in
                                 var createdAt: Date?
                                 var endTime: Date?
                                 var startTime: Date?

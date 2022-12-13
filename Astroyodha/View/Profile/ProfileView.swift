@@ -39,7 +39,7 @@ struct ProfileView: View {
                                 ratingAndConsultView
                             }
                             else {
-                                if(!(viewModel.objLoggedInUser?.birthdate.isEmpty ?? "-".isEmpty)) {
+                                if !(viewModel.objLoggedInUser?.birthdate.isEmpty ?? "-".isEmpty) {
                                     Singletion.shared.addDivider(color: AppColor.cF3F3F3,
                                                                  opacityValue: 1.0,
                                                                  height: 14)
@@ -89,7 +89,7 @@ struct OptionsFirstSectionView: View {
     @State var showHelpAndFaqView: Bool = false
     
     var body: some View {
-        Section() {
+        Section {
             ForEach(0..<3) { index in
                 let option = arrOptions[index]
                 
@@ -152,7 +152,7 @@ struct OptionsSecondSectionView: View {
     @State var isAlertShow: Bool = false
     
     var body: some View {
-        Section() {
+        Section {
             ForEach(3..<arrOptions.count) { index in
                 let option = arrOptions[index]
                 
@@ -223,7 +223,7 @@ struct OptionsSecondSectionView: View {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(rootView: NavigationView{InitialView()})
+            UIApplication.shared.currentUIWindow()?.rootViewController = UIHostingController(rootView: NavigationView { InitialView() })
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }

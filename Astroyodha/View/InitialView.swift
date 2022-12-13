@@ -35,9 +35,9 @@ struct InitialView: View {
                 VStack {
                     Button(action: {
                         btnAstrologerClicked()
-                    }) {
+                    }, label: {
                         Text(strLoginToAstrologer)
-                    }
+                    })
                     .buttonStyle(ButtonAstrologerStyle())
                     .padding(.bottom, 10)
                     NavigationLink(
@@ -47,9 +47,9 @@ struct InitialView: View {
                 VStack {
                     Button(action: {
                         btnUserLoginClicked()
-                    }) {
+                    }, label: {
                         Text(strLoginToUser)
-                    }
+                    })
                     .buttonStyle(ButtonLoginUserStyle())
                     NavigationLink(
                         destination: LoginView(),

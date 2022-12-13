@@ -85,11 +85,11 @@ extension LoginView {
         HStack {
             Menu {
                 ForEach(loginViewModel.dropDownList, id: \.self) { client in
-                    Button(action: {
+                    Button {
                         loginViewModel.selectedCountry = client.name
                         loginViewModel.selectedCountryCode = client.phoneCode
                         loginViewModel.isTextFieldChange = true
-                    }) {
+                    } label: {
                         HStack {
                             Text("\(client.phoneCode) \(client.name)")
                                 .foregroundColor(client.name.isEmpty ? .gray : .black)
@@ -148,7 +148,6 @@ extension LoginView {
     private var loginButtonView: some View {
         VStack(spacing: 0) {
             Button(action: {
-                
                 // Before processing the login action first check phone number validation
                 if loginViewModel.isValidate() {
                     Singletion.shared.showDefaultProgress()
