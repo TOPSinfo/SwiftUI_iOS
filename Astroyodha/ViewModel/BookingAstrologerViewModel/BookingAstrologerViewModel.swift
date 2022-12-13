@@ -137,7 +137,7 @@ class BookingAstrologerViewModel: ObservableObject {
             UIApplication.shared.dismissKeyboard()
             Singletion.shared.showDefaultProgress()
             
-            let strNotification:String = strNotificationSelection
+            let strNotification: String = strNotificationSelection
             let strNotificationSelectionWitoutMin = String(strNotification.prefix(2))
             let finalTramNotification = strNotificationSelectionWitoutMin.trimmingCharacters(in: .whitespaces)
             
@@ -159,7 +159,7 @@ class BookingAstrologerViewModel: ObservableObject {
             
             let randomDocumentIDBooking: String = Singletion.shared.randomAlphaNumericString(length: 20)
             
-            let str:String = strDurationSelection
+            let str: String = strDurationSelection
             let intDuration = Int(str.prefix(2))!
             let endTime = Calendar.current.date(byAdding: .minute, value: intDuration, to: timePicker)!
             

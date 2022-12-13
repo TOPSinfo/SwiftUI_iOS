@@ -37,8 +37,7 @@ struct ProfileView: View {
                                                              opacityValue: 1.0,
                                                              height: 14)
                                 ratingAndConsultView
-                            }
-                            else {
+                            } else {
                                 if !(viewModel.objLoggedInUser?.birthdate.isEmpty ?? "-".isEmpty) {
                                     Singletion.shared.addDivider(color: AppColor.cF3F3F3,
                                                                  opacityValue: 1.0,
@@ -200,7 +199,7 @@ struct OptionsSecondSectionView: View {
     
     // MARK: - Logout Confirmation Alert
     func showAlert() -> Alert {
-        return Alert (
+        return Alert(
             title: Text(""),
             message: Text(strLogoutConfirmation),
             primaryButton: .default(Text("Yes"), action: {

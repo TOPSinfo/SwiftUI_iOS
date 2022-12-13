@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 struct Country: Hashable {
-    
     var code: String
     var name: String
     var phoneCode: String

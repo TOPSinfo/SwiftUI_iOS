@@ -64,7 +64,7 @@ class BookingViewModel: ObservableObject {
             })
             
             var result = Set<Date>()
-            _ = self.arrBookingDates.map{ result.insert($0) }
+            _ = self.arrBookingDates.map { result.insert($0) }
             
             Singletion.shared.arrBookingDates = result.sorted()
         }

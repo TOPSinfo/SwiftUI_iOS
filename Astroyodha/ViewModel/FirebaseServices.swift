@@ -12,7 +12,6 @@ import SVProgressHUD
 
 class FirebaseService: ObservableObject {
     let db = Firestore.firestore()
-    
     var strPhotoURL: String = ""
     var strKundaliURL: String = ""
 }
@@ -168,7 +167,7 @@ extension FirebaseService {
                             dict: [String: Any],
                             isUser: Bool,
                             completion: @escaping (_ isCompleted: Bool) -> Void) {
-        guard (Auth.auth().currentUser?.uid) != nil else{ return }
+        guard (Auth.auth().currentUser?.uid) != nil else { return }
         
         userPhotoPath = Singletion.shared.objLoggedInUser.imagepath.isEmpty
         ? userPhotoPath
@@ -300,7 +299,7 @@ extension FirebaseService {
                                    "starttime": objSlot.startTime,
                                    "timeslotid": objSlot.timeslotid,
                                    "type": objSlot.type,
-                                   "uid": objSlot.uid,
+                                   "uid": objSlot.uid
                                   ]) { error in
             // Check for errors
             if error != nil {
