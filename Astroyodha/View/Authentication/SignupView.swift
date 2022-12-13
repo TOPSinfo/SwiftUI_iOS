@@ -36,7 +36,9 @@ struct SignupView: View {
                 }
                 .padding(5)
                 .toast(isPresenting: $signUpViewModel.showToast) {
-                    AlertToast(displayMode: .banner(.pop), type: .regular, title: signUpViewModel.strAlertMessage)
+                    AlertToast(displayMode: .banner(.pop),
+                               type: .regular,
+                               title: signUpViewModel.strAlertMessage)
                 }
             }
             .navigationBarHidden(true)
@@ -109,9 +111,11 @@ extension SignupView {
             Image("imgUser")
                 .resizable()
                 .frame(width: 15, height: 15)
-                .colorMultiply(signUpViewModel.isFirstNameChange ? currentUserType.themeColor : AppColor.c999999)
+                .colorMultiply(signUpViewModel.isFirstNameChange
+                               ? currentUserType.themeColor : AppColor.c999999)
             
-            TextField("First Name", text: $signUpViewModel.strFirstName, onEditingChanged: { (editingChanged) in
+            TextField("First Name", text: $signUpViewModel.strFirstName,
+                      onEditingChanged: { (editingChanged) in
                 if editingChanged {
                     signUpViewModel.isFirstNameChange = true
                 } else {
@@ -124,7 +128,8 @@ extension SignupView {
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
         .background(RoundedRectangle(cornerRadius: 5)
-                        .stroke(signUpViewModel.isFirstNameChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                        .stroke(signUpViewModel.isFirstNameChange
+                                ? currentUserType.themeColor : AppColor.cDCDCDC,
                                 lineWidth: 1))
         .padding(.horizontal)
         
@@ -155,11 +160,13 @@ extension SignupView {
                 Image("imgMobile")
                     .resizable()
                     .frame(width: 10, height: 15)
-                    .colorMultiply(signUpViewModel.isPhoneNumberChange ? currentUserType.themeColor : AppColor.c999999)
+                    .colorMultiply(signUpViewModel.isPhoneNumberChange
+                                   ? currentUserType.themeColor : AppColor.c999999)
                 Text(signUpViewModel.selectedCountryCode)
                     .font(appFont(type: .poppinsRegular, size: 18))
                     .fixedSize(horizontal: true, vertical: false)
-                    .foregroundColor(signUpViewModel.isPhoneNumberChange ? currentUserType.themeColor : AppColor.c999999)
+                    .foregroundColor(signUpViewModel.isPhoneNumberChange
+                                     ? currentUserType.themeColor : AppColor.c999999)
                 
                 Spacer()
                 Image(systemName: "chevron.down")
@@ -172,14 +179,16 @@ extension SignupView {
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
         .background(RoundedRectangle(cornerRadius: 5)
-                        .stroke(signUpViewModel.isPhoneNumberChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                        .stroke(signUpViewModel.isPhoneNumberChange
+                                ? currentUserType.themeColor : AppColor.cDCDCDC,
                                 lineWidth: 1))
         .padding(.horizontal)
     }
     
     // MARK: - Phone Number View
     private var phoneNumberView: some View {
-        TextField("Phone Number", text: $signUpViewModel.strPhoneNumber, onEditingChanged: { (editingChanged) in
+        TextField("Phone Number", text: $signUpViewModel.strPhoneNumber,
+                  onEditingChanged: { (editingChanged) in
             if editingChanged {
                 signUpViewModel.isPhoneNumberChange = true
             } else {
@@ -198,9 +207,11 @@ extension SignupView {
             Image("imgMail")
                 .resizable()
                 .frame(width: 15, height: 13)
-                .colorMultiply(signUpViewModel.isChangeEmail ? currentUserType.themeColor : AppColor.c999999)
+                .colorMultiply(signUpViewModel.isChangeEmail
+                               ? currentUserType.themeColor : AppColor.c999999)
             
-            TextField("Email", text: $signUpViewModel.strEmail, onEditingChanged: { (editingChanged) in
+            TextField("Email", text: $signUpViewModel.strEmail,
+                      onEditingChanged: { (editingChanged) in
                 if editingChanged {
                     signUpViewModel.isChangeEmail = true
                 } else {
@@ -213,7 +224,8 @@ extension SignupView {
         .frame(height: 50)
         .padding(.horizontal)
         .background(RoundedRectangle(cornerRadius: 5)
-                        .stroke(signUpViewModel.isChangeEmail ? currentUserType.themeColor : AppColor.cDCDCDC,
+                        .stroke(signUpViewModel.isChangeEmail
+                                ? currentUserType.themeColor : AppColor.cDCDCDC,
                                 lineWidth: 1))
         .padding(.horizontal)
     }
@@ -234,7 +246,8 @@ extension SignupView {
                     }
                 }
             }) {
-                SetCheckBox(trimVal: $signUpViewModel.trimVal, isCheckBoxTrue: $signUpViewModel.isChecked)
+                SetCheckBox(trimVal: $signUpViewModel.trimVal,
+                            isCheckBoxTrue: $signUpViewModel.isChecked)
             }
             
             Text("I agree to the [terms & conditions](https://online-testing.com/Terms) and [Privacy policy](https://online-testing.com/Privacy)")

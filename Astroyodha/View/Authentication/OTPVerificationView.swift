@@ -32,7 +32,9 @@ struct OTPVerificationView: View {
                 }
             }
             .toast(isPresenting: $otpViewModel.showToast) {
-                AlertToast(displayMode: .banner(.pop), type: .regular, title: otpViewModel.strAlertMessage)
+                AlertToast(displayMode: .banner(.pop),
+                           type: .regular,
+                           title: otpViewModel.strAlertMessage)
             }
         }
         .onAppear(perform: {

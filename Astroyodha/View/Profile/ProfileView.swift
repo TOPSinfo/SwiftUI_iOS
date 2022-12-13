@@ -33,12 +33,16 @@ struct ProfileView: View {
                                 .padding(.vertical, 20)
                             
                             if currentUserType == .astrologer {
-                                Singletion.shared.addDivider(color: AppColor.cF3F3F3, opacityValue: 1.0, height: 14)
+                                Singletion.shared.addDivider(color: AppColor.cF3F3F3,
+                                                             opacityValue: 1.0,
+                                                             height: 14)
                                 ratingAndConsultView
                             }
                             else {
                                 if(!(viewModel.objLoggedInUser?.birthdate.isEmpty ?? "-".isEmpty)) {
-                                    Singletion.shared.addDivider(color: AppColor.cF3F3F3, opacityValue: 1.0, height: 14)
+                                    Singletion.shared.addDivider(color: AppColor.cF3F3F3,
+                                                                 opacityValue: 1.0,
+                                                                 height: 14)
                                     dateOfBirthView
                                 }
                             }
@@ -47,7 +51,9 @@ struct ProfileView: View {
                                 OptionsFirstSectionView(arrOptions: $viewModel.arrOptions)
                                 OptionsSecondSectionView(arrOptions: $viewModel.arrOptions)
                             }
-                            .frame(width: geometry.size.width - 5, height: geometry.size.height - 270, alignment: .center)
+                            .frame(width: geometry.size.width - 5,
+                                   height: geometry.size.height - 270,
+                                   alignment: .center)
                             
                             .shadow(color: AppColor.c999999.opacity(0.25), radius: 2, y: 1.5)
                             .background(AppColor.cF3F3F3)

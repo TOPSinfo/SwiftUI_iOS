@@ -47,7 +47,9 @@ public struct CITNotificationBadgeView_Previews: PreviewProvider {
         HStack {
             CITNotificationBadgeView(badge: .circle(style: .example))
             CITNotificationBadgeView(badge: .circle(style: .init(color: .blue)))
-            CITNotificationBadgeView(badge: .circle(style: .init(color: .gray, contentInsets: .init(top: 3, leading: 3, bottom: 3, trailing: 3), amount: 12)))
+            CITNotificationBadgeView(badge: .circle(style: .init(color: .gray,
+                                                                 contentInsets: .init(top: 3, leading: 3, bottom: 3, trailing: 3),
+                                                                 amount: 12)))
         }
     }
 }

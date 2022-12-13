@@ -65,7 +65,7 @@ struct InitialView: View {
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center))
     }
     
-    // MARK:- BUTTON ACTION
+    // MARK: - BUTTON ACTION
     func btnAstrologerClicked() {
         currentUserType = UserType.astrologer
         isAstro = true
@@ -77,7 +77,7 @@ struct InitialView: View {
     }
 }
 
-// MARK:- BUTTON STYLE
+// MARK: - BUTTON STYLE
 struct ButtonAstrologerStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

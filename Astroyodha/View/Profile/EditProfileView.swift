@@ -87,7 +87,9 @@ struct EditProfileView: View {
                     }
                     .padding(5)
                     .toast(isPresenting: $viewModel.showToast) {
-                        AlertToast(displayMode: .banner(.pop), type: .regular, title: viewModel.strAlertMessage)
+                        AlertToast(displayMode: .banner(.pop),
+                                   type: .regular,
+                                   title: viewModel.strAlertMessage)
                     }
                 }
             }
@@ -98,7 +100,8 @@ struct EditProfileView: View {
                 .foregroundColor(.white)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .navigationBarColor(backgroundColor: currentUserType.themeColor, titleColor: .white)
+                .navigationBarColor(backgroundColor: currentUserType.themeColor,
+                                    titleColor: .white)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         backButtonView
@@ -300,7 +303,9 @@ extension EditProfileView {
                 .padding(.trailing, 10)
             
             VStack {
-                DatePicker("", selection: $viewModel.datePickerBirthDate, in: ...Date(), displayedComponents: .date)
+                DatePicker("", selection: $viewModel.datePickerBirthDate,
+                           in: ...Date(),
+                           displayedComponents: .date)
                     .labelsHidden()
                     .clipped()
                     .id(viewModel.datePickerBirthDate)
@@ -326,7 +331,9 @@ extension EditProfileView {
                 .padding(.trailing, 10)
             
             VStack {
-                DatePicker("", selection: $viewModel.datePickerTime, in: ...Date(), displayedComponents: .hourAndMinute)
+                DatePicker("", selection: $viewModel.datePickerTime,
+                           in: ...Date(),
+                           displayedComponents: .hourAndMinute)
                     .labelsHidden()
                     .clipped()
                     .id(viewModel.datePickerTime)

@@ -39,7 +39,9 @@ struct AddEventView: View {
                 }
             }
             .toast(isPresenting: $viewModel.showToast) {
-                AlertToast(displayMode: .banner(.pop), type: .regular, title: viewModel.strAlertMessage)
+                AlertToast(displayMode: .banner(.pop),
+                           type: .regular,
+                           title: viewModel.strAlertMessage)
             }
             Text("")
                 .navigationBarItems(leading: Text("Add Event"))
@@ -47,7 +49,8 @@ struct AddEventView: View {
                 .foregroundColor(.white)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .navigationBarColor(backgroundColor: AppColor.cF06649, titleColor: .white)
+                .navigationBarColor(backgroundColor: AppColor.cF06649,
+                                    titleColor: .white)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         cancleButtonView

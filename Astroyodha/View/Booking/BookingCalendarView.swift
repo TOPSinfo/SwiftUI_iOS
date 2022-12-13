@@ -151,7 +151,8 @@ extension BookingCalendarView {
             .foregroundColor(.white)
             .frame(height: 50)
             .frame(maxWidth: .infinity)
-            .navigationBarColor(backgroundColor: currentUserType.themeColor, titleColor: .white)
+            .navigationBarColor(backgroundColor: currentUserType.themeColor,
+                                titleColor: .white)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     backButtonView
@@ -252,7 +253,9 @@ extension BookingCalendarView {
                 }
                 .padding(.vertical, 12)
             }
-            .frame(width: geometry.size.width, height: geometry.size.height + 49, alignment: .center)
+            .frame(width: geometry.size.width,
+                   height: geometry.size.height + 49,
+                   alignment: .center)
             .background(AppColor.cFAFAFA)
         }
     }

@@ -26,7 +26,9 @@ struct LoginView: View {
             }
             .padding()
             .toast(isPresenting: $loginViewModel.showToast) {
-                AlertToast(displayMode: .banner(.pop), type: .regular, title: loginViewModel.strAlertMessage)
+                AlertToast(displayMode: .banner(.pop),
+                           type: .regular,
+                           title: loginViewModel.strAlertMessage)
             }
         }
         .navigationBarHidden(true)

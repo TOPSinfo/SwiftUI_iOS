@@ -29,7 +29,8 @@ struct HelpAndFaqView: View {
                 .foregroundColor(.white)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .navigationBarColor(backgroundColor: currentUserType.themeColor, titleColor: .white)
+                .navigationBarColor(backgroundColor: currentUserType.themeColor,
+                                    titleColor: .white)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         backButtonView

@@ -33,7 +33,9 @@ struct TimeSlotView: View {
                 Spacer()
             }
             .toast(isPresenting: $viewModel.showToast) {
-                AlertToast(displayMode: .banner(.pop), type: .regular, title: viewModel.strAlertMessage)
+                AlertToast(displayMode: .banner(.pop),
+                           type: .regular,
+                           title: viewModel.strAlertMessage)
             }
             
             Text("")
@@ -42,7 +44,8 @@ struct TimeSlotView: View {
                 .foregroundColor(.white)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
-                .navigationBarColor(backgroundColor: currentUserType.themeColor, titleColor: .white)
+                .navigationBarColor(backgroundColor: currentUserType.themeColor,
+                                    titleColor: .white)
             
                 .toolbar {
                     // 1 navigation cancel button
@@ -146,7 +149,9 @@ extension TimeSlotView {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(alignment: .leading) {
-                DatePicker("", selection: $viewModel.datePickerStartDate, in: Date()..., displayedComponents: .date)
+                DatePicker("", selection: $viewModel.datePickerStartDate,
+                           in: Date()...,
+                           displayedComponents: .date)
                     .labelsHidden()
                     .clipped()
                     .id(viewModel.datePickerStartDate)
@@ -162,7 +167,9 @@ extension TimeSlotView {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack {
-                DatePicker("", selection: $viewModel.datePickerEndDate, in: Date()..., displayedComponents: .date)
+                DatePicker("", selection: $viewModel.datePickerEndDate,
+                           in: Date()...,
+                           displayedComponents: .date)
                     .labelsHidden()
                     .clipped()
                     .id(viewModel.datePickerEndDate)
@@ -179,7 +186,9 @@ extension TimeSlotView {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack {
-                DatePicker("", selection: $viewModel.timePickerStartTime, in: Date()..., displayedComponents: .hourAndMinute)
+                DatePicker("", selection: $viewModel.timePickerStartTime,
+                           in: Date()...,
+                           displayedComponents: .hourAndMinute)
                     .labelsHidden()
                     .clipped()
                     .id(viewModel.timePickerStartTime)
@@ -196,7 +205,9 @@ extension TimeSlotView {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack {
-                DatePicker("", selection: $viewModel.timePickerEndTime, in: Date()..., displayedComponents: .hourAndMinute)
+                DatePicker("", selection: $viewModel.timePickerEndTime,
+                           in: Date()...,
+                           displayedComponents: .hourAndMinute)
                     .labelsHidden()
                     .clipped()
                     .id(viewModel.timePickerEndTime)

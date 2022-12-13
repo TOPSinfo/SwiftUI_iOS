@@ -69,7 +69,8 @@ extension BookingListView {
             .foregroundColor(AppColor.c242424)
             .frame(height: 200)
             .frame(maxWidth: .infinity)
-            .navigationBarColor(backgroundColor: .white, titleColor: .black)
+            .navigationBarColor(backgroundColor: .white,
+                                titleColor: .black)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack (spacing: 10) {

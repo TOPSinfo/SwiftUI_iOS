@@ -47,7 +47,9 @@ struct HomeView: View {
                         }
                         .padding(.horizontal, 26)
                     }
-                    .frame(width: geometry.size.width, height: geometry.size.height + 49, alignment: .center)
+                    .frame(width: geometry.size.width,
+                           height: geometry.size.height + 49,
+                           alignment: .center)
                 }
             }
             .navigationTitle("")
@@ -192,7 +194,8 @@ extension HomeView {
                     Image(bannerVM.imageName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: geometry.size.width * 0.4, height: 190.3)
+                        .frame(width: geometry.size.width * 0.4,
+                               height: 190.3)
                         .clipped()
                 }
             }

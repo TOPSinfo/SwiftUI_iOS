@@ -43,10 +43,13 @@ struct UserGridView: View {
                             isActive: $viewModel.isAddEvent) {EmptyView()}
                     }
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height + 49, alignment: .center)
+                .frame(width: geometry.size.width,
+                       height: geometry.size.height + 49,
+                       alignment: .center)
             }
             .navigationTitle(currentUserType == .user ? "Select Astrologers" : "Caht with Astrologer")
-            .navigationBarColor(backgroundColor: currentUserType.themeColor, titleColor: .white)
+            .navigationBarColor(backgroundColor: currentUserType.themeColor,
+                                titleColor: .white)
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitleDisplayMode(.large)
