@@ -31,7 +31,7 @@ class UserViewModel: ObservableObject {
                     
                     let objUser = UserModel(birthdate: userData["birthdate"] as? String ?? "",
                                             birthplace: userData["birthplace"] as? String ?? "",
-                                            birthtime:  userData["birthtime"] as? String ?? "",
+                                            birthtime: userData["birthtime"] as? String ?? "",
                                             createdat: userData["createdat"] as? Date ?? Foundation.Date(),
                                             devicedetails: userData["devicedetails"] as? String ?? "",
                                             email: userData["email"] as? String ?? "",

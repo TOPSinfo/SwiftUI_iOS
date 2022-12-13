@@ -135,7 +135,6 @@ public struct CITTopTabView: View {
     }
     
     // MARK: - Icon
-    
     @ViewBuilder
     var optionalIcon: some View {
         if let icon = item.icon {
@@ -151,7 +150,6 @@ public struct CITTopTabView: View {
     
     
     // MARK: - Underline
-    
     @ViewBuilder
     var optionalUnderline: some View {
         if isSelected && config.showUnderline {

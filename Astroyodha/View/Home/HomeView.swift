@@ -39,7 +39,7 @@ struct HomeView: View {
                             if currentUserType == .user {
                                 Spacer()
                                     .frame(height: 27.3)
-                                UserHomeUpcomingView(vms: vm.upcomingVMs)
+                                userHomeUpcomingView(vms: vm.upcomingVMs)
                             }
                             
                             Spacer()
@@ -204,7 +204,7 @@ extension HomeView {
     }
     
     // MARK: - Upcoming Content View
-    private func UserHomeUpcomingView(vms: [HomeUserUpcomingItemVM]) -> some View {
+    private func userHomeUpcomingView(vms: [HomeUserUpcomingItemVM]) -> some View {
         VStack(alignment: .leading, spacing: 13.3) {
             Text("Upcoming")
                 .font(appFont(type: .poppinsMedium, size: 18))
@@ -252,7 +252,9 @@ struct AstrologerGridItemView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Button(action: {}) {
+            Button {
+                
+            } label: {
                 VStack {
                     // Image
                     WebImage(url: URL(string: vm.imageAstro))
@@ -296,6 +298,7 @@ struct AstrologerGridItemView: View {
                     
                 }
             }
+
             Spacer()
                 .frame(height: 3.3)
             
