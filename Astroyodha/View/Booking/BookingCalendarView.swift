@@ -112,7 +112,10 @@ struct CalendarViewRepresentable: UIViewRepresentable {
             self.parent = parent
         }
         
-        // Fire Post notification when user select the data to get the selected date booking data. We have set the selected date into dictionary and pass that dictionary into the Notification center
+        /*
+         - Fire Post notification when user select the data to get the selected date booking data.
+         - We have set the selected date into dictionary and pass that dictionary into the Notification center
+         */
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
             parent.selectedDate = date
             var dictDate: [String: Date] = [:]
@@ -127,7 +130,9 @@ struct CalendarViewRepresentable: UIViewRepresentable {
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
             var eventCount = 0
             Singletion.shared.arrBookingDates.forEach { eventDate in
-                if eventDate.formatted(date: .complete, time: .omitted) == date.formatted(date: .complete, time: .omitted) {
+                if eventDate.formatted(date: .complete,
+                                       time: .omitted) == date.formatted(date: .complete,
+                                                                         time: .omitted) {
                     eventCount += 1
                 }
             }
