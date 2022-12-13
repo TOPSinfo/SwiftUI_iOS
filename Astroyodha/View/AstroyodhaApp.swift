@@ -23,7 +23,7 @@ struct AstroyodhaApp: App {
             let _ = Singletion.shared.setRepeatData()
             
             // Code to check wether user is already logged in or not. If loggedin then directly redirect to dashboard screen otherwise redirect to Initial screen
-            let isLogin: Bool = UserDefaults.standard.bool(forKey: UserDefaultKey.isUserLoggedIn)
+            let isLogin: Bool = defaults.bool(forKey: UserDefaultKey.isUserLoggedIn)
             if isLogin {
                 let objLoginDataCache = LoginDataCache.get()
                 

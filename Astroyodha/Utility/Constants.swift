@@ -22,6 +22,8 @@ var arrNotification = ["5 minutes before",
 var arrPaymentOption = ["Pay with wallet",
                         "Pay with online"]
 
+let defaults = UserDefaults.standard
+
 // MARK: - Path
 var userPhotoPath = "images/users/\(TimeInterval(timestamp)).jpg"
 let device = UIDevice.modelName

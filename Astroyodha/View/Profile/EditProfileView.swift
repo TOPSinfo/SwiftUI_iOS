@@ -480,7 +480,9 @@ extension EditProfileView {
                     Text(viewModel.strAstrology)
                         .multilineTextAlignment(.leading)
                         .font(appFont(type: .poppinsRegular, size: 17))
-                        .foregroundColor((viewModel.strAstrology == "Astrology Type") ? AppColor.c3C3C43 : AppColor.c242424)
+                        .foregroundColor((viewModel.strAstrology == "Astrology Type")
+                                         ? AppColor.c3C3C43
+                                         : AppColor.c242424)
                         .padding(.vertical, 6)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -502,10 +504,13 @@ extension EditProfileView {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 12)
-                .colorMultiply(viewModel.isPriceChange ? currentUserType.themeColor : AppColor.c999999)
+                .colorMultiply(viewModel.isPriceChange
+                               ? currentUserType.themeColor
+                               : AppColor.c999999)
                 .padding(.trailing, 5)
             
-            TextField("Price per 15 min", text: $viewModel.strPrice, onEditingChanged: { (editingChanged) in
+            TextField("Price per 15 min", text: $viewModel.strPrice,
+                      onEditingChanged: { (editingChanged) in
                 if editingChanged {
                     viewModel.isPriceChange = true
                 } else {
@@ -518,7 +523,9 @@ extension EditProfileView {
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
         .background(RoundedRectangle(cornerRadius: 5)
-                        .stroke(viewModel.isPriceChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                        .stroke(viewModel.isPriceChange
+                                ? currentUserType.themeColor
+                                : AppColor.cDCDCDC,
                                 lineWidth: 1))
         .padding(.horizontal)
     }
@@ -530,10 +537,13 @@ extension EditProfileView {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 12)
-                .colorMultiply(viewModel.isExperienceChange ? currentUserType.themeColor : AppColor.c999999)
+                .colorMultiply(viewModel.isExperienceChange
+                               ? currentUserType.themeColor
+                               : AppColor.c999999)
                 .padding(.trailing, 5)
             
-            TextField("Experience", text: $viewModel.strExperience, onEditingChanged: { (editingChanged) in
+            TextField("Experience", text: $viewModel.strExperience,
+                      onEditingChanged: { (editingChanged) in
                 if editingChanged {
                     viewModel.isExperienceChange = true
                 } else {
@@ -546,7 +556,9 @@ extension EditProfileView {
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
         .background(RoundedRectangle(cornerRadius: 5)
-                        .stroke(viewModel.isExperienceChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                        .stroke(viewModel.isExperienceChange
+                                ? currentUserType.themeColor
+                                : AppColor.cDCDCDC,
                                 lineWidth: 1))
         .padding(.horizontal)
     }
@@ -558,7 +570,9 @@ extension EditProfileView {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 16, height: 16)
-                .colorMultiply(viewModel.isAboutChange ? currentUserType.themeColor : AppColor.c999999)
+                .colorMultiply(viewModel.isAboutChange
+                               ? currentUserType.themeColor
+                               : AppColor.c999999)
                 .padding(.top, 15)
             
             TextView(
@@ -568,7 +582,8 @@ extension EditProfileView {
                 textVerticalPadding: 0,
                 placeholderHorizontalPadding: 3.0,
                 placeholderVerticalPadding: 0,
-                font: UIFont.init(name: AppFont.poppinsRegular.rawValue, size: 17)!
+                font: UIFont.init(name: AppFont.poppinsRegular.rawValue,
+                                  size: 17)!
             )
                 .padding(.vertical, 2)
                 .padding(.vertical, 10)
@@ -577,7 +592,9 @@ extension EditProfileView {
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
         .background(RoundedRectangle(cornerRadius: 5)
-                        .stroke(viewModel.isAboutChange ? currentUserType.themeColor : AppColor.cDCDCDC,
+                        .stroke(viewModel.isAboutChange
+                                ? currentUserType.themeColor
+                                : AppColor.cDCDCDC,
                                 lineWidth: 1))
         .padding(.horizontal)
     }
