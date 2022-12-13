@@ -135,7 +135,6 @@ struct UserEditProfileView_Previews: PreviewProvider {
     }
 }
 
-
 // MARK: - COMPONENTS
 extension EditProfileView {
     // MARK: - Back Button View
@@ -158,7 +157,7 @@ extension EditProfileView {
                     .scaledToFill()
                     .frame(width: 120, height: 120)
                     .cornerRadius(60)
-                    .overlay (alignment: .bottomTrailing) {
+                    .overlay(alignment: .bottomTrailing) {
                         editProfilePhotoView
                     }
                     .padding(.bottom, 5)
@@ -177,7 +176,7 @@ extension EditProfileView {
                     .scaledToFill()
                     .frame(width: 120, height: 120)
                     .cornerRadius(60)
-                    .overlay (alignment: .bottomTrailing) {
+                    .overlay(alignment: .bottomTrailing) {
                         editProfilePhotoView
                     }
                     .padding(.bottom, 5)
@@ -409,8 +408,7 @@ extension EditProfileView {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
-                }
-                else {
+                } else {
                     viewModel.updateUserData(dictUser: dictUser) { isCompleted in
                         if isCompleted {
                             self.presentationMode.wrappedValue.dismiss()
@@ -790,8 +788,7 @@ extension EditProfileView {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
-                }
-                else {
+                } else {
                     viewModel.updateAstrologerData(dictAstrologer: dictAstrologer) { isCompleted in
                         if isCompleted {
                             self.presentationMode.wrappedValue.dismiss()

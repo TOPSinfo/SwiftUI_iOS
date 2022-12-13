@@ -80,7 +80,7 @@ class Singletion {
         let arrNames = arrAstrology.map({ (astrology: AstrologyObject) -> String in
             astrology.name
         })
-        let strAstrology = (arrNames.map{String($0)}.joined(separator: ", "))
+        let strAstrology = arrNames.map{String($0)}.joined(separator: ", ")
         return strAstrology
     }
     
@@ -101,7 +101,7 @@ class Singletion {
         let arrNames = arrAstrology.map({ (astrology: AstrologyObject) -> String in
             astrology.name
         })
-        let strAstrology = (arrNames.map{String($0)}.joined(separator: ", "))
+        let strAstrology = arrNames.map{String($0)}.joined(separator: ", ")
         return strAstrology
     }
     
@@ -127,7 +127,7 @@ class Singletion {
         let arrLang = arrLanguages.map({ (language: LanguageObject) -> String in
             language.name
         })
-        let strLanguage = arrLang.map{ String($0) }.joined(separator: ", ")
+        let strLanguage = arrLang.map{String($0)}.joined(separator: ", ")
         return strLanguage
     }
     
@@ -313,7 +313,7 @@ class Singletion {
     func isValidPhone(phone: String) -> Bool {
         let phoneRegex = "^[0-9+]{0,1}+[0-9]{5,16}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        if(phone.count >= 4 && phone.count <= 12) {
+        if phone.count >= 4 && phone.count <= 12 {
             return phoneTest.evaluate(with: phone)
         } else {
             return false

@@ -43,8 +43,7 @@ struct BookingCalendarView: View {
             viewModel.strSelectedDate = dateFormatter.string(from: viewModel.selectedDate)
         }
         // Get the user selected date through the Notification Center
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.dateSelection))
-        { obj in
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.dateSelection)) { obj in
             // Extracted selected date from the Dictionary and Fetch the selected date booking data
             if let userInfo = obj.userInfo, let info = userInfo["selectedDate"] {
                 if let dtSelected = info as? Date {

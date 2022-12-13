@@ -319,8 +319,7 @@ extension FirebaseService {
             db.collection("user").document(userUID).collection("timeslot").getDocuments { timeslotSnapshot, error in
                 if error != nil {
                     print(error?.localizedDescription ?? "")
-                }
-                else {
+                } else {
                     if let snapshot = timeslotSnapshot {
                         DispatchQueue.main.async {
                             Singletion.shared.arrAppointments = snapshot.documents.map { timeSlotData in
@@ -366,7 +365,7 @@ extension FirebaseService {
                 if let err = error {
                     print("Error getting documents: \(err)")
                 } else {
-                    if let snapshot = querySnapshot{
+                    if let snapshot = querySnapshot {
                         let arrUsers: [AstrologerGridItmeVM] = snapshot.documents.map { userData in
                             let astroUser = AstrologerGridItmeVM(name: userData["fullname"] as? String ?? "",
                                                                  price: userData["price"] as? Int ?? 0,

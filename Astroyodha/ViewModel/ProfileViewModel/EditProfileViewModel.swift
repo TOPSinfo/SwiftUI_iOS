@@ -57,8 +57,7 @@ class EditProfileViewModel: ObservableObject {
                 self.pickedImage = image
                 self.isImageChanged = true
             }
-        }
-        else {
+        } else {
             return ImagePickerView(sourceType: .photoLibrary) { image in
                 self.pickedImage = image
                 self.isImageChanged = true

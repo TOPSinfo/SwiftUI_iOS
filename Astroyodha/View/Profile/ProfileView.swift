@@ -249,7 +249,7 @@ extension ProfileView {
                 .scaledToFill()
                 .frame(width: 120, height: 120)
                 .cornerRadius(60)
-                .overlay (alignment: .bottomTrailing) {
+                .overlay(alignment: .bottomTrailing) {
                     editProfilePhotoView
                 }
                 .padding(.bottom, 5)
