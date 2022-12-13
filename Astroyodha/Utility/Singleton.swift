@@ -127,7 +127,7 @@ class Singletion {
         let arrLang = arrLanguages.map({ (language: LanguageObject) -> String in
             language.name
         })
-        let strLanguage = (arrLang.map{String($0)}.joined(separator: ", "))
+        let strLanguage = arrLang.map{ String($0) }.joined(separator: ", ")
         return strLanguage
     }
     
@@ -169,7 +169,7 @@ class Singletion {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = backendDateFormat
         
-        if let date = dateFormatter.date(from:strDate) {
+        if let date = dateFormatter.date(from: strDate) {
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             
@@ -277,7 +277,7 @@ class Singletion {
                              outputFormate: String) -> Date {
         let dateFormatter = DateFormatter()
           dateFormatter.dateFormat = outputFormate
-        if let date = dateFormatter.date(from:strDate) {
+        if let date = dateFormatter.date(from: strDate) {
            return date
         }
         return Date()

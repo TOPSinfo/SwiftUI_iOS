@@ -31,7 +31,6 @@ extension UIApplication {
     }
     
     class func topViewController(base: UIViewController? = UIApplication.shared.currentUIWindow()?.rootViewController) -> UIViewController? {
-        
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)
         }

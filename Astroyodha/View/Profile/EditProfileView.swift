@@ -640,12 +640,12 @@ extension EditProfileView {
                     .cornerRadius(8)
                     
                     Button {
-                        let arrUpdateNames = viewModel.arrLanguages.filter( { return $0.isSelected == true } )
+                        let arrUpdateNames = viewModel.arrLanguages.filter({ return $0.isSelected == true })
                         let arrName = arrUpdateNames.map({ (language: LanguageObject) -> String in
                             language.name
                         })
                         
-                        viewModel.strLanguage = (arrName.map{String($0)}.joined(separator: ", "))
+                        viewModel.strLanguage = arrName.map{String($0)}.joined(separator: ", ")
                         print(viewModel.strLanguage)
                         viewModel.isLanguageVisible.toggle()
                     } label: {
@@ -714,12 +714,12 @@ extension EditProfileView {
                     .cornerRadius(8)
                     
                     Button {
-                        let arrUpdateNames = viewModel.arrAstrology.filter( { return $0.isSelected == true } )
+                        let arrUpdateNames = viewModel.arrAstrology.filter({ return $0.isSelected == true })
                         let arrName = arrUpdateNames.map({ (astrology: AstrologyObject) -> String in
                             astrology.name
                         })
                         
-                        viewModel.strAstrology = (arrName.map{String($0)}.joined(separator: ", "))
+                        viewModel.strAstrology = arrName.map{ String($0) }.joined(separator: ", ")
                         print(viewModel.strAstrology)
                         viewModel.isAstrologyVisible.toggle()
                     } label: {
@@ -760,12 +760,12 @@ extension EditProfileView {
                 
                 var dictAstrologer: [String: Any] = [:]
                 
-                let arrSelectedLanguageNames = viewModel.arrLanguages.filter( { return $0.isSelected == true } )
+                let arrSelectedLanguageNames = viewModel.arrLanguages.filter({ return $0.isSelected == true })
                 let arrSelectedLanguagesIDs = arrSelectedLanguageNames.map({ (language: LanguageObject) -> String in
                     language.id
                 })
                 
-                let arrSelectedAstrologyNames = viewModel.arrAstrology.filter( { return $0.isSelected == true } )
+                let arrSelectedAstrologyNames = viewModel.arrAstrology.filter({ return $0.isSelected == true })
                 let arrSelectedAstrologyIDs = arrSelectedAstrologyNames.map({ (astrology: AstrologyObject) -> String in
                     astrology.id
                 })
