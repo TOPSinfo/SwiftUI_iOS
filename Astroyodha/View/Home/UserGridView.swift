@@ -10,9 +10,7 @@ import SDWebImageSwiftUI
 
 struct UserGridView: View {
     @State var uiTabarController: UITabBarController?
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     @StateObject private var viewModel = HomeViewModel()
     
     var body: some View {

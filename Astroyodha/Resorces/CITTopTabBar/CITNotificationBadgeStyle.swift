@@ -32,7 +32,6 @@ public struct CITNotificationBadgeStyle: Equatable {
     public static var defaultTextColor = Color.white
     public static var example = CITNotificationBadgeStyle(color: .red)
     public static var none = CITNotificationBadgeStyle(color: .clear, size: .zero)
-    
     public let color: Color
     public let size: CGSize
     public let position: CITNotificationBadgePosition

@@ -269,7 +269,7 @@ extension TimeSlotView {
     // MARK: - Start/End Date View
     private var startEndDateView: some View {
         HStack {
-            if (viewModel.currentTimeSlot == .repeatOption || viewModel.currentTimeSlot == .customOption) {
+            if viewModel.currentTimeSlot == .repeatOption || viewModel.currentTimeSlot == .customOption {
                 Image("imgCalendar")
                     .resizable()
                     .scaledToFit()

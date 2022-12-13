@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct InitialView: View {
-    
     @State var isAstro: Bool = false
     @State var isUser: Bool = false
     
     var body: some View {
-        
         VStack(alignment: .center, spacing: 5) {
             Image("hand")
                 .resizable()
@@ -89,6 +87,7 @@ struct ButtonAstrologerStyle: ButtonStyle {
             .cornerRadius(8)
     }
 }
+
 struct ButtonLoginUserStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

@@ -8,7 +8,6 @@
 import Foundation
 
 class ProfileViewModel: ObservableObject {
-    
     @Published var objLoggedInUser: UserModel?
     @Published var arrOptions: [ProfileOption] = [
         ProfileOption.init(name: "Transaction History", image: "imgTransactionHistory"),
@@ -18,7 +17,6 @@ class ProfileViewModel: ObservableObject {
         ProfileOption.init(name: "Logout", image: "imgLogout")
     ]
     @Published var showEditProfile: Bool = false
-    
     let userViewModel = UserViewModel()
 
     func fetchCurrentUser() {
