@@ -47,7 +47,6 @@ extension FirebaseService {
             Singletion.shared.hideProgress()
             defaults.set(ID, forKey: UserDefaultKey.strVerificationID)
             defaults.set(phone, forKey: UserDefaultKey.strPhoneNumber)
-            
             completion(true, nil, (ID ?? ""))
         }
     }
@@ -678,7 +677,7 @@ extension FirebaseService {
     func uploadImage(imageProfile: UIImage,
                      imageKundali: UIImage,
                      timeslotid: String,
-                     completion: @escaping (_ isCompleted: Bool) -> Void)  {
+                     completion: @escaping (_ isCompleted: Bool) -> Void) {
         
         guard (Auth.auth().currentUser?.uid) != nil else { return }
         let storageRefrance = Storage.storage().reference()
