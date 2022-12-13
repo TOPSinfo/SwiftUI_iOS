@@ -114,22 +114,26 @@ class EditProfileViewModel: ObservableObject {
             
             // LANGUAGE
             (self.objLoggedInUser?.languages ?? []).isEmpty
-            ? (self.strLanguage = "Language") : (self.strLanguage = Singletion.shared.convertUserLanguagesIntoString(objLoggedInUser: self.objLoggedInUser!))
+            ? (self.strLanguage = "Language")
+            : (self.strLanguage = Singletion.shared.convertUserLanguagesIntoString(objLoggedInUser: self.objLoggedInUser!))
             self.arrLanguages = Singletion.shared.arrLanguage
             
             // ASTROLOGY
             (self.objLoggedInUser?.speciality ?? []).isEmpty
-            ? (self.strAstrology = "Astrology Type") : (self.strAstrology =  Singletion.shared.convertUserAstrologyIntoString(objLoggedInUser: self.objLoggedInUser!))
+            ? (self.strAstrology = "Astrology Type")
+            : (self.strAstrology =  Singletion.shared.convertUserAstrologyIntoString(objLoggedInUser: self.objLoggedInUser!))
             
             self.arrAstrology = Singletion.shared.arrAstrology
             
             // PRICE
             (self.objLoggedInUser?.price ?? 0) <= 0
-            ? (self.strPrice = "") : (self.strPrice = "\(self.objLoggedInUser?.price ?? 0)")
+            ? (self.strPrice = "")
+            : (self.strPrice = "\(self.objLoggedInUser?.price ?? 0)")
             
             // EXPERIENCE
             (self.objLoggedInUser?.experience ?? 0) <= 0
-            ? (self.strExperience = "") : (self.strExperience =  "\(self.objLoggedInUser?.experience ?? 0)")
+            ? (self.strExperience = "")
+            : (self.strExperience =  "\(self.objLoggedInUser?.experience ?? 0)")
             
             // ABOUT YOU
             self.strAbout = self.objLoggedInUser?.aboutYou ?? ""
@@ -137,7 +141,8 @@ class EditProfileViewModel: ObservableObject {
     }
     
     // MARK: - Upload Profile Photo
-    func uploadProfileImage(dictUser: [String: Any], completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func uploadProfileImage(dictUser: [String: Any],
+                            completion: @escaping (_ isCompleted: Bool) -> Void) {
         firebase.uploadProfileImage(imgPhoto: pickedImage,
                                     dict: dictUser,
                                     isUser: (currentUserType == .user) ? true : false) { isCompleted in
