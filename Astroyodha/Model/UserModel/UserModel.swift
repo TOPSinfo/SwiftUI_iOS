@@ -64,11 +64,11 @@ class UserModel: Codable {
 struct LoginDataCache {
     static let key = "loginDataCache"
     static func save(_ value: UserModel!) {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(value), forKey: key)
+        defaults.set(try? PropertyListEncoder().encode(value), forKey: key)
     }
     static func get() -> UserModel! {
         var loginData: UserModel!
-        if let data = UserDefaults.standard.value(forKey: key) as? Data {
+        if let data = defaults.value(forKey: key) as? Data {
             loginData = try? PropertyListDecoder().decode(UserModel.self, from: data)
             return loginData!
         } else {
@@ -76,7 +76,7 @@ struct LoginDataCache {
         }
     }
     static func remove() {
-        UserDefaults.standard.removeObject(forKey: key)
+        defaults.removeObject(forKey: key)
     }
 }
 

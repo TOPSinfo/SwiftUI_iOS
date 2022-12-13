@@ -27,8 +27,8 @@ extension FirebaseService {
             if err != nil {
                 completion(false)
             } else {
-                UserDefaults.standard.set(ID, forKey: UserDefaultKey.strVerificationID)
-                UserDefaults.standard.set(strPhoneNumber, forKey: UserDefaultKey.strPhoneNumber)
+                defaults.set(ID, forKey: UserDefaultKey.strVerificationID)
+                defaults.set(strPhoneNumber, forKey: UserDefaultKey.strPhoneNumber)
                 completion(true)
             }
         }
@@ -47,8 +47,8 @@ extension FirebaseService {
             }
             
             Singletion.shared.hideProgress()
-            UserDefaults.standard.set(ID, forKey: UserDefaultKey.strVerificationID)
-            UserDefaults.standard.set(phone, forKey: UserDefaultKey.strPhoneNumber)
+            defaults.set(ID, forKey: UserDefaultKey.strVerificationID)
+            defaults.set(phone, forKey: UserDefaultKey.strPhoneNumber)
             
             completion(true, nil, (ID ?? ""))
         }
@@ -90,7 +90,7 @@ extension FirebaseService {
                 completion(false, err, nil)
                 return
             } else {
-                UserDefaults.standard.set(true, forKey: UserDefaultKey.isUserLoggedIn)
+                defaults.set(true, forKey: UserDefaultKey.isUserLoggedIn)
                 objUser.uid = authResult!.user.uid
                 objUser.token = authResult!.user.refreshToken ?? ""
                 completion(true, err, authResult)
