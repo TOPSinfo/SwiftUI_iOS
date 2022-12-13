@@ -18,9 +18,7 @@ public struct TextView: View {
 				}
 			}
 			
-			public func textView(_ textView: UITextView,
-                                 shouldChangeTextIn range: NSRange,
-                                 replacementText text: String) -> Bool {
+			public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
 				parent.shouldChange?(range, text) ?? true
 			}
 			
