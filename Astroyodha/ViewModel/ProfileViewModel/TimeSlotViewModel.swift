@@ -87,7 +87,8 @@ class TimeSlotViewModel: ObservableObject {
             }
         } else if currentTimeSlot == .weeklyOption {
             // IF ALL SELECTED DETAILS ARE VALID THEN ADD SELETED DATA INTO DATABASE
-            let isValidWeekly = self.isValideWeeklySelection(strStartTime: strStartTime, strEndTime: strEndTime)
+            let isValidWeekly = self.isValideWeeklySelection(strStartTime: strStartTime,
+                                                             strEndTime: strEndTime)
             
             if isValidWeekly {
                 let arrUpdateNames = arrDays.filter({ return $0.isSelected == true })
@@ -143,7 +144,10 @@ class TimeSlotViewModel: ObservableObject {
     }
     
     // MARK: - Repeat Action Validation
-    func isValidRepeateSelection(strStartDate: String, strEndDate: String, strStartTime: String, strEndTime: String) -> Bool {
+    func isValidRepeateSelection(strStartDate: String,
+                                 strEndDate: String,
+                                 strStartTime: String,
+                                 strEndTime: String) -> Bool {
         if strStartDate.isEmpty {
             self.displayAlertWith(message: strSelectDate)
             return false
@@ -173,7 +177,8 @@ class TimeSlotViewModel: ObservableObject {
     }
     
     // MARK: - Weekly Action Validation
-    func isValideWeeklySelection(strStartTime: String, strEndTime: String) -> Bool {
+    func isValideWeeklySelection(strStartTime: String,
+                                 strEndTime: String) -> Bool {
         let selectedDaysCount = arrDays.filter({ $0.isSelected == true }).count
         
         if selectedDaysCount <= 0 {
@@ -196,7 +201,9 @@ class TimeSlotViewModel: ObservableObject {
     }
     
     // MARK: - Custom Action Validation
-    func isValidCustomSelection(strStartDate: String, strStartTime: String, strEndTime: String) -> Bool {
+    func isValidCustomSelection(strStartDate: String,
+                                strStartTime: String,
+                                strEndTime: String) -> Bool {
         if strStartDate.isEmpty {
             self.displayAlertWith(message: strSelectDate)
             return false
