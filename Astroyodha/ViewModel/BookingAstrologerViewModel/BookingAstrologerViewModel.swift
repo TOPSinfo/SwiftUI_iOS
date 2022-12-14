@@ -223,8 +223,8 @@ class BookingAstrologerViewModel: ObservableObject {
 }
 
 public func convertFrom(date: Date,
-                 fromFormat: String,
-                 toOutputFormat: String) -> String {
+                        fromFormat: String,
+                        toOutputFormat: String) -> String {
     return Singletion.shared.convertDateFormate(date: date,
                                                 currentFormate: fromFormat,
                                                 outputFormat: toOutputFormat)
