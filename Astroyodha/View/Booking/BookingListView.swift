@@ -155,12 +155,8 @@ struct BookingItemView: View {
                     let objBooking = arrBookings[index]
                     let dateWords = objBooking.date.components(separatedBy: ["-"])
                     
-                    let startTime = Singletion.shared.convertDateFormate(date: objBooking.starttime,
-                                                                         currentFormate: datePickerSelectedFormat,
-                                                                         outputFormat: "hh:mm a")
-                    let endTime = Singletion.shared.convertDateFormate(date: objBooking.endtime,
-                                                                       currentFormate: datePickerSelectedFormat,
-                                                                       outputFormat: "hh:mm a")
+                    let startTime = convertFrom(date: objBooking.starttime, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickertimeFormat)
+                    let endTime = convertFrom(date: objBooking.endtime, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickertimeFormat)
                     
                     HStack(alignment: .center, spacing: 10) {
                         Rectangle()

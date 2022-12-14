@@ -623,21 +623,15 @@ extension FirebaseService {
                             
                             var arrSelectedDayBookings: [BookingAstrologerModel] = []
                             for booking in arrAllBookings {
-                                print(booking.starttime)
-                                
                                 let endDate = Singletion.shared.convertStringToDate(strDate: booking.date,
                                                                                     outputFormate: datePickerDateFormat)
                                 
                                 let currentDate = Singletion.shared.convertStringToDate(
-                                    strDate: Singletion.shared.convertDateFormate(date: selectedDate,
-                                                                                  currentFormate: datePickerSelectedFormat,
-                                                                                  outputFormat: datePickerDateFormatWithoutDash),
+                                    strDate: convertFrom(date: selectedDate, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickerDateFormatWithoutDash),
                                     outputFormate: datePickerDateFormatWithoutDash)
                                 
-                                let bookingDate = Singletion.shared.convertStringToDate(
-                                    strDate: Singletion.shared.convertDateFormate(date: endDate,
-                                                                                  currentFormate: datePickerSelectedFormat,
-                                                                                  outputFormat: datePickerDateFormatWithoutDash),
+                               let bookingDate = Singletion.shared.convertStringToDate(
+                                    strDate: convertFrom(date: endDate, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickerDateFormatWithoutDash),
                                     outputFormate: datePickerDateFormatWithoutDash)
                                 
                                 if bookingDate == currentDate {
@@ -667,25 +661,23 @@ extension FirebaseService {
             let endDate = Singletion.shared.convertStringToDate(strDate: booking.date,
                                                                 outputFormate: datePickerDateFormat)
             
-            let currentDate = Singletion.shared.convertStringToDate(
-                strDate: Singletion.shared.convertDateFormate(date: selectedDate,
-                                                              currentFormate: datePickerSelectedFormat,
-                                                              outputFormat: datePickerDateFormatWithoutDash),
-                outputFormate: datePickerDateFormatWithoutDash)
-            
-            let bookingDate = Singletion.shared.convertStringToDate(
-                strDate: Singletion.shared.convertDateFormate(date: endDate,
-                                                              currentFormate: datePickerSelectedFormat,
-                                                              outputFormat: datePickerDateFormatWithoutDash),
-                outputFormate: datePickerDateFormatWithoutDash)
+            let currentDate = convertDate(dt: selectedDate)
+            let bookingDate = convertDate(dt: endDate)
             
             if bookingDate == currentDate {
                 arrSelectedDayBookings.append(booking)
             }
-            
             completion(arrSelectedDayBookings)
         }
     }
+}
+
+public func convertDate(dt: Date) -> Date {
+    return Singletion.shared.convertStringToDate(
+        strDate: Singletion.shared.convertDateFormate(date: dt,
+                                                      currentFormate: datePickerSelectedFormat,
+                                                      outputFormat: datePickerDateFormatWithoutDash),
+        outputFormate: datePickerDateFormatWithoutDash)
 }
 
 // MARK: - Upload Add Event Attachment

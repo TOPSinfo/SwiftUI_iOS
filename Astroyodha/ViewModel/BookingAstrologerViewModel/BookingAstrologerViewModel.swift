@@ -123,14 +123,6 @@ class BookingAstrologerViewModel: ObservableObject {
         showToast.toggle()
     }
     
-    func convertFrom(date: Date,
-                     fromFormat: String,
-                     toOutputFormat: String) -> String {
-        return Singletion.shared.convertDateFormate(date: date,
-                                                    currentFormate: fromFormat,
-                                                    outputFormat: toOutputFormat)
-    }
-    
     // MARK: SET BOOKING DATA TO FIREBASE
     func addBookingData(selectedAstrologer: AstrologerGridItmeVM?,
                         completion: @escaping (_ isCompleted: Bool) -> Void) {
@@ -142,19 +134,19 @@ class BookingAstrologerViewModel: ObservableObject {
             let strNotificationSelectionWitoutMin = String(strNotification.prefix(2))
             let finalTramNotification = strNotificationSelectionWitoutMin.trimmingCharacters(in: .whitespaces)
             
-            let strMyBirthDate = self.convertFrom(date: datePickerBirthDate,
+            let strMyBirthDate = convertFrom(date: datePickerBirthDate,
                                                   fromFormat: datePickerDateFormat,
                                                   toOutputFormat: "dd MMM yyyy")
-            let strBirthMonth = self.convertFrom(date: datePickerBirthDate,
+            let strBirthMonth = convertFrom(date: datePickerBirthDate,
                                                  fromFormat: datePickerDateFormat,
                                                  toOutputFormat: "MM")
-            let strBirthYear = self.convertFrom(date: datePickerBirthDate,
+            let strBirthYear = convertFrom(date: datePickerBirthDate,
                                                 fromFormat: datePickerDateFormat,
                                                 toOutputFormat: "yyyy")
-            let strMyBirthTime = self.convertFrom(date: timePickerBirth,
+            let strMyBirthTime = convertFrom(date: timePickerBirth,
                                                   fromFormat: "h:mm a",
                                                   toOutputFormat: "h:mm a")
-            let strSelectedDate = self.convertFrom(date: datePicker,
+            let strSelectedDate = convertFrom(date: datePicker,
                                                    fromFormat: datePickerDateFormat,
                                                    toOutputFormat: "dd-MMM-yyyy")
             
@@ -228,4 +220,12 @@ class BookingAstrologerViewModel: ObservableObject {
         }
         actionSheet.toggle()
     }
+}
+
+public func convertFrom(date: Date,
+                 fromFormat: String,
+                 toOutputFormat: String) -> String {
+    return Singletion.shared.convertDateFormate(date: date,
+                                                currentFormate: fromFormat,
+                                                outputFormat: toOutputFormat)
 }

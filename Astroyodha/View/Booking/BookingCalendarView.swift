@@ -222,12 +222,8 @@ extension BookingCalendarView {
                 ForEach(0..<viewModel.bookings.count, id: \.self) { index in
                     let objBooking = viewModel.bookings[index]
                     
-                    let startTime = Singletion.shared.convertDateFormate(date: objBooking.starttime,
-                                                                         currentFormate: datePickerSelectedFormat,
-                                                                         outputFormat: "hh:mm a")
-                    let endTime = Singletion.shared.convertDateFormate(date: objBooking.endtime,
-                                                                       currentFormate: datePickerSelectedFormat,
-                                                                       outputFormat: "hh:mm a")
+                    let startTime = convertFrom(date: objBooking.starttime, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickertimeFormat)
+                    let endTime = convertFrom(date: objBooking.endtime, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickertimeFormat)
                     
                     HStack(alignment: .center, spacing: 10) {
                         Rectangle()

@@ -18,28 +18,28 @@ struct UserTabView: View {
             Color.white
                 .edgesIgnoringSafeArea(.all)
             
-            tabView
+            userTabView
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     SwiftUITabBarController.refreshViews()
             }
         }
     }
     
-    var tabView: some View {
+    var userTabView: some View {
         let homeVC = SwiftUITabView(content: UIHostingController(rootView: HomeView()),
                                     title: "Dashboard",
                                     selectedImage: "tabHome",
                                     unSelectedImage: "tabHome")
-        let bookingVC = SwiftUITabView(content: UIHostingController(rootView: BookingListView()),
+        let userBookingVC = SwiftUITabView(content: UIHostingController(rootView: BookingListView()),
                                        title: "Booking",
                                        selectedImage: "tabBooking",
                                        unSelectedImage: "tabBooking")
-        let profileVC = SwiftUITabView(content: UIHostingController(rootView: ProfileView()),
+        let userProfileVC = SwiftUITabView(content: UIHostingController(rootView: ProfileView()),
                                        title: "Profile",
                                        selectedImage: "tabProfile",
                                        unSelectedImage: "tabProfile")
         
-        let tabBarView = SwiftUITabBarController(tabItems: [homeVC, bookingVC, profileVC],
+        let tabBarView = SwiftUITabBarController(tabItems: [homeVC, userBookingVC, userProfileVC],
                                                  configuration: .constant(SSTabConfiguration(
                                                     waveHeight: 25,
                                                     selectedTabTintColor: currentUserType.themeUIColor,

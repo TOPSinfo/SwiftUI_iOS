@@ -17,24 +17,24 @@ struct AstrologerTabView: View {
             Color.white
                 .edgesIgnoringSafeArea(.all)
             
-            tabView
+            astrologerTabView
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
                     SwiftUITabBarController.refreshViews()
             }
         }
     }
     
-    var tabView: some View {
-        let bookingVC = SwiftUITabView(content: UIHostingController(rootView: BookingListView()),
+    var astrologerTabView: some View {
+        let astrologerBookingVC = SwiftUITabView(content: UIHostingController(rootView: BookingListView()),
                                        title: "Booking",
                                        selectedImage: "tabBooking",
                                        unSelectedImage: "tabBooking")
-        let profileVC = SwiftUITabView(content: UIHostingController(rootView: ProfileView()),
+        let astrologerProfileVC = SwiftUITabView(content: UIHostingController(rootView: ProfileView()),
                                        title: "Profile",
                                        selectedImage: "tabProfile",
                                        unSelectedImage: "tabProfile")
         
-        let tabBarView = SwiftUITabBarController(tabItems: [bookingVC, profileVC],
+        let tabBarView = SwiftUITabBarController(tabItems: [astrologerBookingVC, astrologerProfileVC],
                                                  configuration: .constant(SSTabConfiguration(
                                                     waveHeight: 25,
                                                     selectedTabTintColor: currentUserType.themeUIColor,

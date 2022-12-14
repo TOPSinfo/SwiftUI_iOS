@@ -41,21 +41,10 @@ class TimeSlotViewModel: ObservableObject {
     
     // MARK: - Time Slot Validation
     func isValideTimeSlot(completion: @escaping (_ isCompleted: Bool) -> Void) {
-        let strStartDate = Singletion.shared.convertDateFormate(date: datePickerStartDate,
-                                                                currentFormate: datePickerSelectedFormat,
-                                                                outputFormat: datePickerDateFormat)
-
-        let strEndDate = Singletion.shared.convertDateFormate(date: datePickerEndDate,
-                                                              currentFormate: datePickerSelectedFormat,
-                                                              outputFormat: datePickerDateFormat)
-
-        let strStartTime = Singletion.shared.convertDateFormate(date: timePickerStartTime,
-                                                                currentFormate: datePickerSelectedFormat,
-                                                                outputFormat: datePickertimeFormat)
-
-        let strEndTime = Singletion.shared.convertDateFormate(date: timePickerEndTime,
-                                                              currentFormate: datePickerSelectedFormat,
-                                                              outputFormat: datePickertimeFormat)
+        let strStartDate = convertFrom(date: datePickerStartDate, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickerDateFormat)
+        let strEndDate = convertFrom(date: datePickerEndDate, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickerDateFormat)
+        let strStartTime = convertFrom(date: timePickerStartTime, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickertimeFormat)
+        let strEndTime = convertFrom(date: timePickerEndTime, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickertimeFormat)
         
         // CHECK THE CURRENT SELECTED TIME SLOT OPTION
         if currentTimeSlot == .repeatOption {

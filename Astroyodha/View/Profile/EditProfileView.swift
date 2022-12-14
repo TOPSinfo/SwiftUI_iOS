@@ -378,13 +378,8 @@ extension EditProfileView {
     // MARK: - User Submit Button View
     private var userEditProfileSubmitView: some View {
         Button(action: {
-            let strBirthDate = Singletion.shared.convertDateFormate(date: viewModel.datePickerBirthDate,
-                                                                    currentFormate: datePickerSelectedFormat,
-                                                                    outputFormat: datePickerDateFormatWithoutDash)
-            
-            let strBirthTime = Singletion.shared.convertDateFormate(date: viewModel.datePickerTime,
-                                                                    currentFormate: datePickerSelectedFormat,
-                                                                    outputFormat: datePickertimeFormat)
+            let strBirthDate = convertFrom(date: viewModel.datePickerBirthDate, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickerDateFormatWithoutDash)
+            let strBirthTime = convertFrom(date: viewModel.datePickerTime, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickertimeFormat)
             
             if viewModel.isUserValidate() {
                 UIApplication.shared.dismissKeyboard()
@@ -749,9 +744,7 @@ extension EditProfileView {
     // MARK: - Astrologer Submit View
     private var atrologerEditProfileSubmitView: some View {
         Button(action: {
-            let strBirthDate = Singletion.shared.convertDateFormate(date: viewModel.datePickerBirthDate,
-                                                                    currentFormate: datePickerSelectedFormat,
-                                                                    outputFormat: datePickerDateFormatWithoutDash)
+            let strBirthDate = convertFrom(date: viewModel.datePickerBirthDate, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickerDateFormatWithoutDash)
             
             if viewModel.isAstrologerValidate() {
                 UIApplication.shared.dismissKeyboard()
