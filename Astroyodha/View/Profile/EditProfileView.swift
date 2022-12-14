@@ -378,8 +378,12 @@ extension EditProfileView {
     // MARK: - User Submit Button View
     private var userEditProfileSubmitView: some View {
         Button(action: {
-            let strBirthDate = convertFrom(date: viewModel.datePickerBirthDate, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickerDateFormatWithoutDash)
-            let strBirthTime = convertFrom(date: viewModel.datePickerTime, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickertimeFormat)
+            let strBirthDate = convertFrom(date: viewModel.datePickerBirthDate,
+                                           fromFormat: datePickerSelectedFormat,
+                                           toOutputFormat: datePickerDateFormatWithoutDash)
+            let strBirthTime = convertFrom(date: viewModel.datePickerTime,
+                                           fromFormat: datePickerSelectedFormat,
+                                           toOutputFormat: datePickertimeFormat)
             
             if viewModel.isUserValidate() {
                 UIApplication.shared.dismissKeyboard()
