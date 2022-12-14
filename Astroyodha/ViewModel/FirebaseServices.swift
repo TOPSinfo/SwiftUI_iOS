@@ -59,7 +59,6 @@ extension FirebaseService {
                                        completion: @escaping (_ isCompleted: Bool) -> Void) {
         // Variable to Disable the Firebase verification
         Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn
-        
         // Check user entered phone number is exist or not in DB
         let collectionRef = db.collection("user")
         collectionRef.whereField("phone", isEqualTo: strPhoneNumber).getDocuments { (snapshot, err) in
