@@ -378,12 +378,12 @@ extension EditProfileView {
     // MARK: - User Submit Button View
     private var userEditProfileSubmitView: some View {
         Button(action: {
-            let strBirthDate = convertFrom(date: viewModel.datePickerBirthDate,
+            let strBirthDate = convert(date: viewModel.datePickerBirthDate,
                                            fromFormat: datePickerSelectedFormat,
-                                           toOutputFormat: datePickerDateFormatWithoutDash)
-            let strBirthTime = convertFrom(date: viewModel.datePickerTime,
+                                           toFormat: datePickerDateFormatWithoutDash)
+            let strBirthTime = convert(date: viewModel.datePickerTime,
                                            fromFormat: datePickerSelectedFormat,
-                                           toOutputFormat: datePickertimeFormat)
+                                           toFormat: datePickertimeFormat)
             
             if viewModel.isUserValidate() {
                 UIApplication.shared.dismissKeyboard()
@@ -748,7 +748,9 @@ extension EditProfileView {
     // MARK: - Astrologer Submit View
     private var atrologerEditProfileSubmitView: some View {
         Button(action: {
-            let strBirthDate = convertFrom(date: viewModel.datePickerBirthDate, fromFormat: datePickerSelectedFormat, toOutputFormat: datePickerDateFormatWithoutDash)
+            let strBirthDate = convert(date: viewModel.datePickerBirthDate,
+                                       fromFormat: datePickerSelectedFormat,
+                                       toFormat: datePickerDateFormatWithoutDash)
             
             if viewModel.isAstrologerValidate() {
                 UIApplication.shared.dismissKeyboard()

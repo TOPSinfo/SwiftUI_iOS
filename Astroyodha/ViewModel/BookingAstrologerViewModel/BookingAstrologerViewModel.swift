@@ -134,21 +134,21 @@ class BookingAstrologerViewModel: ObservableObject {
             let strNotificationSelectionWitoutMin = String(strNotification.prefix(2))
             let finalTramNotification = strNotificationSelectionWitoutMin.trimmingCharacters(in: .whitespaces)
             
-            let strMyBirthDate = convertFrom(date: datePickerBirthDate,
+            let strMyBirthDate = convert(date: datePickerBirthDate,
                                                   fromFormat: datePickerDateFormat,
-                                                  toOutputFormat: "dd MMM yyyy")
-            let strBirthMonth = convertFrom(date: datePickerBirthDate,
+                                                  toFormat: "dd MMM yyyy")
+            let strBirthMonth = convert(date: datePickerBirthDate,
                                                  fromFormat: datePickerDateFormat,
-                                                 toOutputFormat: "MM")
-            let strBirthYear = convertFrom(date: datePickerBirthDate,
+                                                 toFormat: "MM")
+            let strBirthYear = convert(date: datePickerBirthDate,
                                                 fromFormat: datePickerDateFormat,
-                                                toOutputFormat: "yyyy")
-            let strMyBirthTime = convertFrom(date: timePickerBirth,
+                                                toFormat: "yyyy")
+            let strMyBirthTime = convert(date: timePickerBirth,
                                                   fromFormat: "h:mm a",
-                                                  toOutputFormat: "h:mm a")
-            let strSelectedDate = convertFrom(date: datePicker,
+                                                  toFormat: "h:mm a")
+            let strSelectedDate = convert(date: datePicker,
                                                    fromFormat: datePickerDateFormat,
-                                                   toOutputFormat: "dd-MMM-yyyy")
+                                                   toFormat: "dd-MMM-yyyy")
             
             let randomDocumentIDBooking: String = Singletion.shared.randomAlphaNumericString(length: 20)
             
@@ -222,10 +222,10 @@ class BookingAstrologerViewModel: ObservableObject {
     }
 }
 
-public func convertFrom(date: Date,
+public func convert(date: Date,
                         fromFormat: String,
-                        toOutputFormat: String) -> String {
+                        toFormat: String) -> String {
     return Singletion.shared.convertDateFormate(date: date,
                                                 currentFormate: fromFormat,
-                                                outputFormat: toOutputFormat)
+                                                outputFormat: toFormat)
 }

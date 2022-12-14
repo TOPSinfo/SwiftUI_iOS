@@ -41,18 +41,18 @@ class TimeSlotViewModel: ObservableObject {
     
     // MARK: - Time Slot Validation
     func isValideTimeSlot(completion: @escaping (_ isCompleted: Bool) -> Void) {
-        let strStartDate = convertFrom(date: datePickerStartDate,
+        let strStartDate = convert(date: datePickerStartDate,
                                        fromFormat: datePickerSelectedFormat,
-                                       toOutputFormat: datePickerDateFormat)
-        let strEndDate = convertFrom(date: datePickerEndDate,
+                                       toFormat: datePickerDateFormat)
+        let strEndDate = convert(date: datePickerEndDate,
                                      fromFormat: datePickerSelectedFormat,
-                                     toOutputFormat: datePickerDateFormat)
-        let strStartTime = convertFrom(date: timePickerStartTime,
+                                     toFormat: datePickerDateFormat)
+        let strStartTime = convert(date: timePickerStartTime,
                                        fromFormat: datePickerSelectedFormat,
-                                       toOutputFormat: datePickertimeFormat)
-        let strEndTime = convertFrom(date: timePickerEndTime,
+                                       toFormat: datePickertimeFormat)
+        let strEndTime = convert(date: timePickerEndTime,
                                      fromFormat: datePickerSelectedFormat,
-                                     toOutputFormat: datePickertimeFormat)
+                                     toFormat: datePickertimeFormat)
         
         // CHECK THE CURRENT SELECTED TIME SLOT OPTION
         if currentTimeSlot == .repeatOption {

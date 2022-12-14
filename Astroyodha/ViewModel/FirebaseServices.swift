@@ -627,15 +627,15 @@ extension FirebaseService {
                                                                                     outputFormate: datePickerDateFormat)
                                 
                                 let currentDate = Singletion.shared.convertStringToDate(
-                                    strDate: convertFrom(date: selectedDate,
+                                    strDate: convert(date: selectedDate,
                                                          fromFormat: datePickerSelectedFormat,
-                                                         toOutputFormat: datePickerDateFormatWithoutDash),
+                                                         toFormat: datePickerDateFormatWithoutDash),
                                     outputFormate: datePickerDateFormatWithoutDash)
                                 
                                let bookingDate = Singletion.shared.convertStringToDate(
-                                    strDate: convertFrom(date: endDate,
+                                    strDate: convert(date: endDate,
                                                          fromFormat: datePickerSelectedFormat,
-                                                         toOutputFormat: datePickerDateFormatWithoutDash),
+                                                         toFormat: datePickerDateFormatWithoutDash),
                                     outputFormate: datePickerDateFormatWithoutDash)
                                 
                                 if bookingDate == currentDate {

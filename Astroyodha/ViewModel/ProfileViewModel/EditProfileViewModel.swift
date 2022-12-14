@@ -223,9 +223,9 @@ class EditProfileViewModel: ObservableObject {
     
     // MARK: - Astrologer Validation
     func isAstrologerValidate() -> Bool {
-        let strBirthDate = convertFrom(date: datePickerBirthDate,
+        let strBirthDate = convert(date: datePickerBirthDate,
                                        fromFormat: datePickerSelectedFormat,
-                                       toOutputFormat: datePickerDateFormatWithoutDash)
+                                       toFormat: datePickerDateFormatWithoutDash)
         
         if strFullName.isEmpty {
             self.displayAlertWith(message: strEnterFullName)
