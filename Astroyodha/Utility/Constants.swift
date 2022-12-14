@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Common Data
 var arrDuration = ["15 minutes",
                    "30 minutes",
                    "45 minutes",
@@ -30,6 +31,8 @@ let device = UIDevice.modelName
 let pathPhoto = "images/bookings/\(TimeInterval(timestamp))_photo.jpg"
 let pathKundali = "images/bookings/\(TimeInterval(timestamp))_Kundali.jpg"
 
+
+// MARK: - Variable to Disable the Firebase verification
 var isTestingModeOn = false
 
 // MARK: - Date formate
@@ -56,53 +59,27 @@ let paddingOfBox: CGFloat = 1
 
 
 let timestamp = Date().currentTimeMillis()
-var objUser: UserModel = UserModel(birthdate: "",
-                                   birthplace: "",
-                                   birthtime: "",
+var objUser: UserModel = UserModel(birthdate: "", birthplace: "", birthtime: "",
                                    createdat: Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                   devicedetails: "",
-                                   email: "",
-                                   fullname: "",
-                                   imagepath: "",
-                                   isOnline: false,
+                                   devicedetails: "", email: "", fullname: "",
+                                   imagepath: "", isOnline: false,
                                    lastupdatetime: Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                   phone: "",
-                                   profileimage: "",
-                                   socialid: "",
-                                   socialtype: "",
-                                   token: "",
-                                   uid: "",
-                                   usertype: "",
-                                   walletbalance: 0)
+                                   phone: "", profileimage: "", socialid: "",
+                                   socialtype: "", token: "", uid: "",
+                                   usertype: "", walletbalance: 0)
 
-var objAddBooking: BookingAstrologerModel = BookingAstrologerModel(allowextend: "",
-                                                                   amount: 0,
-                                                                   astrologercharge: 0,
-                                                                   astrologerid: "",
-                                                                   astrologername: "",
-                                                                   birthdate: "",
-                                                                   birthplace: "",
-                                                                   birthtime: "",
-                                                                   bookingid: "",
+var objAddBooking: BookingAstrologerModel = BookingAstrologerModel(allowextend: "", amount: 0, astrologercharge: 0,
+                                                                   astrologerid: "", astrologername: "", birthdate: "",
+                                                                   birthplace: "", birthtime: "", bookingid: "",
                                                                    createdat: Date(timeIntervalSince1970: Double(timestamp) / 1000),
                                                                    date: Date.getCurrentDate(dateFormate: "dd-MM-yyyy").description,
                                                                    description: "",
                                                                    endtime: Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                                                   extendtime: 0,
-                                                                   fullName: "",
-                                                                   kundali: "",
-                                                                   kundalipath: "",
-                                                                   month: "",
-                                                                   notificationmin: "",
-                                                                   notify: "",
-                                                                   paymentstatus: "",
-                                                                   paymenttype: "",
+                                                                   extendtime: 0, fullName: "", kundali: "",
+                                                                   kundalipath: "", month: "", notificationmin: "",
+                                                                   notify: "", paymentstatus: "", paymenttype: "",
                                                                    photo: "",
                                                                    starttime: Date(timeIntervalSince1970: Double(timestamp) / 1000),
-                                                                   status: "",
-                                                                   transactionid: "",
-                                                                   uid: "",
-                                                                   userbirthdate: "",
-                                                                   username: "",
-                                                                   userprofileimage: "",
+                                                                   status: "", transactionid: "", uid: "",
+                                                                   userbirthdate: "", username: "", userprofileimage: "",
                                                                    year: "")

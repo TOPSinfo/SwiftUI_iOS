@@ -20,7 +20,8 @@ class FirebaseService: ObservableObject {
 extension FirebaseService {
     func loginUser(strPhoneNumber: String,
                    completion: @escaping (_ isCompleted: Bool) -> Void) {
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
+        // Variable to Disable the Firebase verification
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn
         PhoneAuthProvider.provider().verifyPhoneNumber(strPhoneNumber, uiDelegate: nil) { ID, err in
             Singletion.shared.hideProgress()
             if err != nil {
@@ -56,8 +57,10 @@ extension FirebaseService {
 extension FirebaseService {
     func checkMobileNumberIsExistOrNot(strPhoneNumber: String,
                                        completion: @escaping (_ isCompleted: Bool) -> Void) {
-        Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn // firebase testing
+        // Variable to Disable the Firebase verification
+        Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn
         
+        // Check user entered phone number is exist or not in DB
         let collectionRef = db.collection("user")
         collectionRef.whereField("phone", isEqualTo: strPhoneNumber).getDocuments { (snapshot, err) in
             if let err = err {
@@ -87,6 +90,7 @@ extension FirebaseService {
                 completion(false, err, nil)
                 return
             } else {
+                // Save User ID and Token
                 defaults.set(true, forKey: UserDefaultKey.isUserLoggedIn)
                 objUser.uid = authResult!.user.uid
                 objUser.token = authResult!.user.refreshToken ?? ""
@@ -98,6 +102,7 @@ extension FirebaseService {
 
 // MARK: - Add User Data
 extension FirebaseService {
+    // On User registration add the data into the DB
     func addUserData() {
         let newUserReference = self.db.collection("user").document(objUser.uid)
         newUserReference.setData(["birthdate": objUser.birthdate,
@@ -128,6 +133,7 @@ extension FirebaseService {
 
 // MARK: - Add Astrologer Data
 extension FirebaseService {
+    // On Astrologer registration add the data into the DB
     func addAstrologerData() {
         let objDefaultAstrology = Singletion.shared.arrAstrology.first { $0.name == "Vedic" }
         print(objDefaultAstrology?.id ?? "")
@@ -161,6 +167,7 @@ extension FirebaseService {
 
 // MARK: - Update User/Astrologer Profile Photo
 extension FirebaseService {
+    // Update user/astrologer profile photo image into storage
     func uploadProfileImage(imgPhoto: UIImage,
                             dict: [String: Any],
                             isUser: Bool,
@@ -187,6 +194,10 @@ extension FirebaseService {
                             dictUser["imagepath"] = userPhotoPath
                             dictUser["profileimage"] = url?.absoluteString ?? ""
                             
+                            /*
+                             - Once photo stored successfully in storage
+                             - Take the photo url and update the user details in DB
+                             */
                             self.updateUserData(dict: dictUser) { isCompleted in
                                 if isCompleted {
                                     completion(true)
@@ -197,6 +208,10 @@ extension FirebaseService {
                             dictAstrologer["imagepath"] = userPhotoPath
                             dictAstrologer["profileimage"] = url?.absoluteString ?? ""
                             
+                            /*
+                             - Once photo stored successfully in storage
+                             - Take the photo url and update the astrologer details in DB
+                             */
                             self.updateAstrologerData(dict: dictAstrologer) { isCompleted in
                                 if isCompleted {
                                     completion(true)
@@ -212,6 +227,7 @@ extension FirebaseService {
 
 // MARK: - Update Astroloer Profile Data
 extension FirebaseService {
+    // Update the astrologer details in DB
     func updateAstrologerData(dict: [String: Any],
                               completion: @escaping (_ isCompleted: Bool) -> Void) {
         let userUID = Auth.auth().currentUser?.uid ?? ""
@@ -250,6 +266,7 @@ extension FirebaseService {
 
 // MARK: - Update User Profile Data
 extension FirebaseService {
+    // Update the user details in DB
     func updateUserData(dict: [String: Any],
                         completion: @escaping (_ isCompleted: Bool) -> Void) {
         let userUID = Auth.auth().currentUser?.uid ?? ""

@@ -217,6 +217,14 @@ struct OptionsSecondSectionView: View {
         defaults.set(false, forKey: UserDefaultKey.isUserLoggedIn)
         Singletion.shared.clearUserObject()
         
+        Singletion.shared.arrLanguage.indices.forEach {
+            Singletion.shared.arrLanguage[$0].isSelected = false
+        }
+        
+        Singletion.shared.arrAstrology.indices.forEach {
+            Singletion.shared.arrAstrology[$0].isSelected = false
+        }
+        
         // Logout from Firebase
         let firebaseAuth = Auth.auth()
         do {
