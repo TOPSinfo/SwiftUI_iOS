@@ -17,10 +17,10 @@ struct AstroyodhaApp: App {
     var body: some Scene {
         WindowGroup {
             // Fetching common data on initial app launch
-            let _ = print(Singletion.shared.getLanguageData())
-            let _ = print(Singletion.shared.getAstrologyData())
-            let _ = print(Singletion.shared.setDaysData())
-            let _ = print(Singletion.shared.setRepeatData())
+            let _ = Singletion.shared.getLanguageData()
+            let _ = Singletion.shared.getAstrologyData()
+            let _ = Singletion.shared.setDaysData()
+            let _ = Singletion.shared.setRepeatData()
             
             /*
              - Code to check wether user is already logged in or not.
