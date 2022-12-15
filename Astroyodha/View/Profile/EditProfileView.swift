@@ -396,15 +396,7 @@ extension EditProfileView {
                 }
             }
         }, label: {
-            Text("Submit")
-                .font(appFont(type: .poppinsRegular, size: 18))
-                .font(.title3)
-                .foregroundColor(.white)
-                .fontWeight(.bold)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(RoundedRectangle(cornerRadius: 8)
-                                .fill(currentUserType.themeColor))
+            commonTitleView(title: strSubmit)
         })
             .padding(.horizontal, 15)
     }
@@ -626,12 +618,7 @@ extension EditProfileView {
                         print(viewModel.strLanguage)
                         viewModel.isLanguageVisible.toggle()
                     } label: {
-                        Text("Submit")
-                            .font(appFont(type: .poppinsSemiBold, size: 17))
-                            .foregroundColor(.white)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 24)
-                            .frame(maxWidth: .infinity)
+                        commonActionButtonTitleView(title: strSubmit)
                     }
                     .background(AppColor.c27AAE1)
                     .cornerRadius(8)
@@ -700,12 +687,7 @@ extension EditProfileView {
                         print(viewModel.strAstrology)
                         viewModel.isAstrologyVisible.toggle()
                     } label: {
-                        Text("Submit")
-                            .font(appFont(type: .poppinsSemiBold, size: 17))
-                            .foregroundColor(.white)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 24)
-                            .frame(maxWidth: .infinity)
+                        commonActionButtonTitleView(title: strSubmit)
                     }
                     .background(AppColor.c27AAE1)
                     .cornerRadius(8)
@@ -776,15 +758,7 @@ extension EditProfileView {
                 }
             }
         }, label: {
-            Text("Save")
-                .font(appFont(type: .poppinsRegular, size: 18))
-                .font(.title3)
-                .foregroundColor(.white)
-                .fontWeight(.bold)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(RoundedRectangle(cornerRadius: 8)
-                                .fill(currentUserType.themeColor))
+            commonTitleView(title: strSave)
         })
             .padding(.horizontal, 15)
             .padding(.top, 30)

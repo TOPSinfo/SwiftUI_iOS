@@ -124,6 +124,35 @@ extension View {
         }
         .padding(.trailing, UIScreen.main.bounds.width - 60)
     }
+    
+    public func commonTitleView(title: String) -> some View {
+        Text(title)
+            .font(appFont(type: .poppinsRegular, size: 18))
+            .font(.title3)
+            .foregroundColor(.white)
+            .fontWeight(.bold)
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
+            .background(RoundedRectangle(cornerRadius: 5)
+                            .fill(currentUserType.themeColor))
+    }
+    
+    public func commonButtonTitleView(title: String) -> some View {
+        Text(title)
+            .font(appFont(type: .poppinsRegular, size: 17))
+            .foregroundColor(.white)
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
+    }
+    
+    public func commonActionButtonTitleView(title: String) -> some View {
+        Text(title)
+            .font(appFont(type: .poppinsSemiBold, size: 17))
+            .foregroundColor(.white)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 24)
+            .frame(maxWidth: .infinity)
+    }
 }
 
 struct NavigationBarModifier: ViewModifier {

@@ -142,15 +142,7 @@ extension LoginView {
                     loginViewModel.fireBaseSendOTPCode()
                 }
             }, label: {
-                Text(strLogin)
-                    .font(appFont(type: .poppinsRegular, size: 18))
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
-                    .background(RoundedRectangle(cornerRadius: 5)
-                                    .fill(currentUserType.themeColor))
+                commonTitleView(title: strLogin)
             })
                 .padding(5)
             

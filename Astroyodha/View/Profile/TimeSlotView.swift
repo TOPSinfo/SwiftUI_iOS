@@ -85,11 +85,7 @@ extension TimeSlotView {
                 }
             }
         }, label: {
-            Text("Save")
-                .font(appFont(type: .poppinsRegular, size: 17))
-                .foregroundColor(.white)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
+            commonButtonTitleView(title: strSave)
         })
     }
     

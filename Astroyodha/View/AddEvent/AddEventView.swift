@@ -89,11 +89,7 @@ extension AddEventView {
                 }
             }
         }, label: {
-            Text("Save")
-                .font(appFont(type: .poppinsRegular, size: 18))
-                .foregroundColor(.white)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
+            commonButtonTitleView(title: strSave)
         })
     }
     

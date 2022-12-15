@@ -122,15 +122,7 @@ extension OTPVerificationView {
                         otpViewModel.firebaseOtpVerification()
                     }
                 }, label: {
-                    Text(strVerify)
-                        .font(appFont(type: .poppinsRegular, size: 18))
-                        .font(.title3)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .background(RoundedRectangle(cornerRadius: 5)
-                                        .fill(currentUserType.themeColor))
+                    commonTitleView(title: strVerify)
                 }).padding()
             }
             
@@ -138,15 +130,7 @@ extension OTPVerificationView {
                 Button(action: {
                     otpViewModel.firebaseResendOTP()
                 }, label: {
-                    Text(strResendOTP)
-                        .font(appFont(type: .poppinsRegular, size: 18))
-                        .font(.title3)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .background(RoundedRectangle(cornerRadius: 5)
-                                        .fill(currentUserType.themeColor))
+                    commonTitleView(title: strResendOTP)
                 }).padding()
             }
         }
