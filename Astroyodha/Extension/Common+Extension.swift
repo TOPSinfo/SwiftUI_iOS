@@ -153,6 +153,16 @@ extension View {
             .padding(.horizontal, 24)
             .frame(maxWidth: .infinity)
     }
+    
+    public func phoneCodeView(phoneCode: String, name: String, flag: Image?) -> some View {
+        HStack {
+            Text("\(phoneCode) \(name)")
+                .foregroundColor(name.isEmpty ? .gray : .black)
+            Spacer()
+            flag
+        }
+        .padding(.infinity)
+    }
 }
 
 struct NavigationBarModifier: ViewModifier {

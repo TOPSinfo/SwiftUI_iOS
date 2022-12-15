@@ -77,13 +77,7 @@ extension LoginView {
                         loginViewModel.selectedCountryCode = client.phoneCode
                         loginViewModel.isTextFieldChange = true
                     } label: {
-                        HStack {
-                            Text("\(client.phoneCode) \(client.name)")
-                                .foregroundColor(client.name.isEmpty ? .gray : .black)
-                            Spacer()
-                            client.flag
-                        }
-                        .padding(.infinity)
+                        phoneCodeView(phoneCode: client.phoneCode, name: client.name, flag: client.flag)
                     }
                 }
             }
