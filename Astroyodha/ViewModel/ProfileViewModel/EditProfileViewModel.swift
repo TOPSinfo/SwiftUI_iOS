@@ -188,7 +188,7 @@ class EditProfileViewModel: ObservableObject {
             self.displayAlertWith(message: strEnterValidEmail)
             return false
         } else {
-            if (currentUserType == .user) {
+            if currentUserType == .user {
                 return true
             } else {
                 let strBirthDate = convert(date: datePickerBirthDate,

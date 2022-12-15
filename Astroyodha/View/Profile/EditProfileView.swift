@@ -125,15 +125,19 @@ struct UserEditProfileView_Previews: PreviewProvider {
 
 // MARK: - COMPONENTS
 extension EditProfileView {
+    private var photoView: some View {
+        Image(uiImage: viewModel.pickedImage)
+            .resizable()
+            .scaledToFill()
+            .frame(width: 120, height: 120)
+            .cornerRadius(60)
+    }
+    
     // MARK: - Profile Photo view
     private var profilePhotoView: some View {
         VStack {
             if viewModel.isImageChanged {
-                Image(uiImage: viewModel.pickedImage)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 120, height: 120)
-                    .cornerRadius(60)
+                photoView
                     .overlay(alignment: .bottomTrailing) {
                         editProfilePhotoView
                     }
@@ -142,11 +146,7 @@ extension EditProfileView {
                 WebImage(url: URL(string: Singletion.shared.objLoggedInUser.profileimage))
                     .resizable()
                     .placeholder {
-                        Image(uiImage: viewModel.pickedImage)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 120, height: 120)
-                            .cornerRadius(60)
+                        photoView
                     }
                     .indicator(.activity)
                     .transition(.fade(duration: 0.5))
