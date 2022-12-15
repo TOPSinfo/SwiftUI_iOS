@@ -69,7 +69,8 @@ class TimeSlotViewModel: ObservableObject {
                     
                     let objTimeSlot = appointmentObject(startDate: strStartDate,
                                                         startTime: strStartTime, endDate: strEndDate,
-                                                        endTime: strEndTime, repeatDays: [], documentID: randomDocumentID,
+                                                        endTime: strEndTime, repeatDays: [],
+                                                        documentID: randomDocumentID,
                                                         timeSlot: currentTimeSlot.rawValue, userUID: userUID)
                     
                     // ADD DATA INTO DATABASE
@@ -96,7 +97,8 @@ class TimeSlotViewModel: ObservableObject {
                     
                     let objTimeSlot = appointmentObject(startDate: "",
                                                         startTime: strStartTime, endDate: "",
-                                                        endTime: strEndTime, repeatDays: arrName, documentID: randomDocumentID,
+                                                        endTime: strEndTime, repeatDays: arrName,
+                                                        documentID: randomDocumentID,
                                                         timeSlot: currentTimeSlot.rawValue, userUID: userUID)
                     
                     self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
@@ -117,7 +119,8 @@ class TimeSlotViewModel: ObservableObject {
                     
                     let objTimeSlot = appointmentObject(startDate: strStartDate,
                                                         startTime: strStartTime, endDate: "",
-                                                        endTime: strEndTime, repeatDays: [], documentID: randomDocumentID,
+                                                        endTime: strEndTime, repeatDays: [],
+                                                        documentID: randomDocumentID,
                                                         timeSlot: currentTimeSlot.rawValue, userUID: userUID)
                     
                     self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
@@ -130,8 +133,8 @@ class TimeSlotViewModel: ObservableObject {
     
     func appointmentObject(startDate: String, startTime: String,
                            endDate: String, endTime: String, repeatDays: [String],
-                                 documentID: String, timeSlot: String,
-                                 userUID: String) -> AppointmentTimeSlotModel {
+                           documentID: String, timeSlot: String,
+                           userUID: String) -> AppointmentTimeSlotModel {
         let objAppointmentTimeSlot = AppointmentTimeSlotModel.init(startDate: startDate,
                                                                    startTime: startTime,
                                                                    endDate: endDate,
