@@ -79,6 +79,29 @@ extension View {
             .navigationBarBackButtonHidden(true)
             .navigationBarTitleDisplayMode(.inline)
     }
+    
+    // MARK: - ACTION SHEET
+    func showActionSheet(actionSheetOption: ActionSheetOption, completion: @escaping (_ isCameraSelected: Bool, _ showImagePicker: Bool) -> Void) -> ActionSheet {
+        let cameraButton: ActionSheet.Button = .default(Text(strCamera)) {
+            completion(true, true)
+        }
+        
+        let gallaryButton: ActionSheet.Button = .default(Text(strGallery)) {
+            completion(false, true)
+        }
+        
+        let cancelButton: ActionSheet.Button = .cancel()
+        switch actionSheetOption {
+        case .camera:
+            return ActionSheet(title: Text(""),
+                               message: Text("Select Option"),
+                               buttons: [cameraButton, gallaryButton, cancelButton])
+        case .gallery:
+            return ActionSheet(title: Text(""),
+                               message: Text("Select Option"),
+                               buttons: [cameraButton, gallaryButton, cancelButton])
+        }
+    }
 }
 
 struct NavigationBarModifier: ViewModifier {

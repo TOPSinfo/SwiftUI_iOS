@@ -50,3 +50,5 @@ var strSelectEndDateGreaterThanStartDate = "Please select end date greater than 
 var strSelectEndTimeGreaterThanStartTime = "Please select end time greater than start time"
 var strSelectDays = "Please select days"
 var strAstrologerName = "Astrologer Name"
+var strCamera = "Camera"
+var strGallery = "Gallery"

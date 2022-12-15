@@ -60,31 +60,6 @@ class BookingAstrologerViewModel: ObservableObject {
         }
     }
     
-    // MARK: - ACTION SHEET
-    func showActionSheet() -> ActionSheet {
-        let cameraButton: ActionSheet.Button = .default(Text("Camera")) {
-            self.isCameraSelected = true
-            self.showImagePicker = true
-        }
-        
-        let gallaryButton: ActionSheet.Button = .default(Text("Gallery")) {
-            self.isCameraSelected = false
-            self.showImagePicker = true
-        }
-        
-        let cancelButton: ActionSheet.Button = .cancel()
-        switch actionSheetOption {
-        case .camera:
-            return ActionSheet(title: Text(""),
-                               message: Text("Select Option"),
-                               buttons: [cameraButton, gallaryButton, cancelButton])
-        case .gallery:
-            return ActionSheet(title: Text(""),
-                               message: Text("Select Option"),
-                               buttons: [cameraButton, gallaryButton, cancelButton])
-        }
-    }
-    
     // MARK: - BUTTON ACTION FOR PAYMENT MODE
     func cancelPaymentMode() {
         strPaymentModeText = "Select payment mode"

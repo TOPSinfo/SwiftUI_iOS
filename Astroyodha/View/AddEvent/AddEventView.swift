@@ -32,7 +32,10 @@ struct AddEventView: View {
                     paymentModeMenuView
                 }
                 .actionSheet(isPresented: $viewModel.actionSheet) {
-                    viewModel.showActionSheet()
+                    showActionSheet(actionSheetOption: viewModel.actionSheetOption) { isCameraSelected, showImagePicker in
+                        viewModel.isCameraSelected = isCameraSelected
+                        viewModel.showImagePicker = showImagePicker
+                    }
                 }
                 .sheet(isPresented: $viewModel.showImagePicker) {
                     viewModel.imagePickerView()

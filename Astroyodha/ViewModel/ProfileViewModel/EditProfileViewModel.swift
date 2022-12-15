@@ -61,36 +61,7 @@ class EditProfileViewModel: ObservableObject {
             return ImagePickerView(sourceType: .photoLibrary) { image in
                 self.pickedImage = image
                 self.isImageChanged = true
-            }
-        }
-    }
-    
-    // MARK: - Photo Selection Action Sheet
-    func showActionSheet() -> ActionSheet {
-        let cameraButton: ActionSheet.Button = .default(Text("Camera")) {
-            self.isCameraSelected = true
-            self.showImagePicker = true
-        }
-        
-        let gallaryButton: ActionSheet.Button = .default(Text("Gallery")) {
-            self.isCameraSelected = false
-            self.showImagePicker = true
-        }
-        
-        let cancelButton: ActionSheet.Button = .cancel()
-        
-        switch actionSheetOption {
-        case .camera:
-            return ActionSheet(
-                title: Text("Options"),
-                message: Text("Select one option"),
-                buttons: [cameraButton, gallaryButton, cancelButton])
-        case .gallery:
-            return ActionSheet(
-                title: Text("Options"),
-                message: Text("Select one option"),
-                buttons: [cameraButton, gallaryButton, cancelButton])
-        }
+            }}
     }
     
     // MARK: - Set User Data
@@ -264,3 +235,4 @@ class EditProfileViewModel: ObservableObject {
         }
     }
 }
+
