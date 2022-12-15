@@ -29,9 +29,9 @@ struct BookingCalendarView: View {
                 selectedDateEventsView
             }
             
-            navigationView
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitleDisplayMode(.inline)
+            appBar(title: "Calendar") {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true
@@ -149,23 +149,6 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 
 // MARK: - COMPONENTS
 extension BookingCalendarView {
-    // MARK: - Navigation View
-    private var navigationView: some View {
-        Text("")
-            .navigationBarItems(leading: Text("Calendar"))
-            .font(appFont(type: .poppinsRegular, size: 18))
-            .foregroundColor(.white)
-            .frame(height: 50)
-            .frame(maxWidth: .infinity)
-            .navigationBarColor(backgroundColor: currentUserType.themeColor,
-                                titleColor: .white)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    backButtonView
-                }
-            }
-    }
-    
     // MARK: - Back Button View
     private var backButtonView: some View {
         Button(action: {

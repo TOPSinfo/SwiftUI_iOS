@@ -23,21 +23,9 @@ struct HelpAndFaqView: View {
                 .listSectionSeparatorTint(.red)
                 .background(.white)
             
-            Text("")
-                .navigationBarItems(leading: Text("Help / FAQ"))
-                .font(appFont(type: .poppinsRegular, size: 18))
-                .foregroundColor(.white)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .navigationBarColor(backgroundColor: currentUserType.themeColor,
-                                    titleColor: .white)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        backButtonView
-                    }
-                }
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitleDisplayMode(.inline)
+            appBar(title: "Help / FAQ") {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true
@@ -51,18 +39,8 @@ struct HelpAndFaqView_Previews: PreviewProvider {
     }
 }
 
+// MARK: - COMPONENTS
 extension HelpAndFaqView {
-    // BACK BUTTON
-    private var backButtonView: some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }, label: {
-            Image(systemName: "arrow.left")
-                .renderingMode(.template)
-                .foregroundColor(.white)
-        })
-    }
-    
     // HELP AND FAQ LIST VIEW
     private var listView: some View {
         List(viewModel.arrHelpFaqData) { responseData in

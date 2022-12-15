@@ -93,21 +93,9 @@ struct EditProfileView: View {
                 }
             }
             
-            Text("")
-                .navigationBarItems(leading: Text("Profile"))
-                .font(appFont(type: .poppinsRegular, size: 18))
-                .foregroundColor(.white)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .navigationBarColor(backgroundColor: currentUserType.themeColor,
-                                    titleColor: .white)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        backButtonView
-                    }
-                }
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitleDisplayMode(.inline)
+            appBar(title: "Profile") {
+                self.presentationMode.wrappedValue.dismiss()
+            }
             
             if viewModel.isLanguageVisible {
                 languagePopupView
@@ -893,5 +881,32 @@ extension EditProfileView {
             }
         }
         .padding(.horizontal)
+    }
+}
+
+// MARK: - Navigation View
+extension View {
+    public func appBar(title: String, backButtonAction: @escaping() -> Void) -> some View {
+        Text("")
+            .navigationBarItems(leading: Text(title))
+            .font(appFont(type: .poppinsRegular, size: 18))
+            .foregroundColor(.white)
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
+            .navigationBarColor(backgroundColor: currentUserType.themeColor,
+                                titleColor: .white)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        backButtonAction()
+                    }, label: {
+                        Image(systemName: "arrow.left")
+                            .renderingMode(.template)
+                            .foregroundColor(.white)
+                    })
+                }
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
