@@ -235,4 +235,3 @@ class EditProfileViewModel: ObservableObject {
         }
     }
 }
-

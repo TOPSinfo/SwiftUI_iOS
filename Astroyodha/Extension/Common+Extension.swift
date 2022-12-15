@@ -81,7 +81,9 @@ extension View {
     }
     
     // MARK: - ACTION SHEET
-    func showActionSheet(actionSheetOption: ActionSheetOption, completion: @escaping (_ isCameraSelected: Bool, _ showImagePicker: Bool) -> Void) -> ActionSheet {
+    func showActionSheet(actionSheetOption: ActionSheetOption,
+                         completion: @escaping (_ isCamera: Bool,
+                                                _ showPicker: Bool) -> Void) -> ActionSheet {
         let cameraButton: ActionSheet.Button = .default(Text(strCamera)) {
             completion(true, true)
         }
