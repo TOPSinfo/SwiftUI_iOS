@@ -204,3 +204,7 @@ public func convert(date: Date,
                                                 currentFormate: fromFormat,
                                                 outputFormat: toFormat)
 }
+
+public func extractTimeFrom(date: Date) -> String {
+    return convert(date: date, fromFormat: datePickerSelectedFormat, toFormat: datePickertimeFormat)
+}

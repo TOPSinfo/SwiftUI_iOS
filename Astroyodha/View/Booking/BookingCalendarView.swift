@@ -194,12 +194,8 @@ extension BookingCalendarView {
                 ForEach(0..<viewModel.bookings.count, id: \.self) { index in
                     let objBooking = viewModel.bookings[index]
                     
-                    let startTime = convert(date: objBooking.starttime,
-                                                fromFormat: datePickerSelectedFormat,
-                                            toFormat: datePickertimeFormat)
-                    let endTime = convert(date: objBooking.endtime,
-                                              fromFormat: datePickerSelectedFormat,
-                                          toFormat: datePickertimeFormat)
+                    let strStartTime = extractTimeFrom(date: objBooking.starttime)
+                    let strEndTime = extractTimeFrom(date: objBooking.endtime)
                     
                     HStack(alignment: .center, spacing: 10) {
                         Rectangle()
@@ -224,7 +220,7 @@ extension BookingCalendarView {
                                 .foregroundColor(AppColor.c242424)
                                 .padding(.horizontal, 5)
                             
-                            Text("Time: \(startTime) to \(endTime)")
+                            Text("Time: \(strStartTime) to \(strEndTime)")
                                 .font(appFont(type: .poppinsRegular, size: 13))
                                 .foregroundColor(AppColor.c999999)
                                 .padding(.horizontal, 5)

@@ -155,12 +155,8 @@ struct BookingItemView: View {
                     let objBooking = arrBookings[index]
                     let dateWords = objBooking.date.components(separatedBy: ["-"])
                     
-                    let startTime = convert(date: objBooking.starttime,
-                                                fromFormat: datePickerSelectedFormat,
-                                                toFormat: datePickertimeFormat)
-                    let endTime = convert(date: objBooking.endtime,
-                                              fromFormat: datePickerSelectedFormat,
-                                              toFormat: datePickertimeFormat)
+                    let startTime = extractTimeFrom(date: objBooking.starttime)
+                    let endTime = extractTimeFrom(date: objBooking.endtime)
                     
                     HStack(alignment: .center, spacing: 10) {
                         Rectangle()
