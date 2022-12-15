@@ -50,7 +50,9 @@ struct TimeSlotView: View {
                 .toolbar {
                     // 1 navigation cancel button
                     ToolbarItem(placement: .navigationBarLeading) {
-                        backButtonView
+                        backButtonView {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     }
                     // 2 navigation save button
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -74,17 +76,6 @@ struct TimeSlotView_Previews: PreviewProvider {
 
 // MARK: - COMPONENTS
 extension TimeSlotView {
-    // MARK: - Back Button View
-    private var backButtonView: some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }, label: {
-            Image(systemName: "arrow.left")
-                .renderingMode(.template)
-                .foregroundColor(.white)
-        })
-    }
-    
     // MARK: - Save Button View
     private var saveButtonView: some View {
         Button(action: {

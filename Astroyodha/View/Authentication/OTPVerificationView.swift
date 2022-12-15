@@ -21,7 +21,9 @@ struct OTPVerificationView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center, spacing: 5) {
-                backButtonView
+                backButtonViewForAuthentication(backButtonAction: {
+                    self.presentationMode.wrappedValue.dismiss()
+                })
                 headerView
                 oTPTextField
                 verifyAndResentOTPView
@@ -51,19 +53,6 @@ struct OTPVerificationView_Previews: PreviewProvider {
 
 // MARK: - COMPONENTS
 extension OTPVerificationView {
-    // MARK: - Back Button View
-    private var backButtonView: some View {
-        VStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Image(currentUserType == .user ? "imgBack" : "imgBackAstro")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-            }).padding(.top, 15)
-        }.padding(.trailing, UIScreen.main.bounds.width - 60)
-    }
-    
     // MARK: - Header Content View
     private var headerView: some View {
         VStack {

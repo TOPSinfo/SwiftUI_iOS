@@ -15,7 +15,9 @@ struct LoginView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            backButtonView
+            backButtonViewForAuthentication(backButtonAction: {
+                self.presentationMode.wrappedValue.dismiss()
+            })
             
             VStack(alignment: .center, spacing: 5) {
                 headerContentView
@@ -43,21 +45,6 @@ struct LoginView_Previews: PreviewProvider {
 
 // MARK: - COMPONENTS
 extension LoginView {
-    // MARK: - Back Button View
-    private var backButtonView: some View {
-        VStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Image(currentUserType == .user ? "imgBack" : "imgBackAstro")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-            })
-                .padding(.top, 15)
-        }
-        .padding(.trailing, UIScreen.main.bounds.width - 60)
-    }
-    
     // MARK: - Header Text content View
     private var headerContentView: some View {
         VStack {

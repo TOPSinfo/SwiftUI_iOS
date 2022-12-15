@@ -125,17 +125,6 @@ struct UserEditProfileView_Previews: PreviewProvider {
 
 // MARK: - COMPONENTS
 extension EditProfileView {
-    // MARK: - Back Button View
-    private var backButtonView: some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }, label: {
-            Image(systemName: "arrow.left")
-                .renderingMode(.template)
-                .foregroundColor(.white)
-        })
-    }
-    
     // MARK: - Profile Photo view
     private var profilePhotoView: some View {
         VStack {

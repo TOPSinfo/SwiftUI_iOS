@@ -67,13 +67,9 @@ extension View {
                                 titleColor: .white)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
+                    backButtonView {
                         backButtonAction()
-                    }, label: {
-                        Image(systemName: "arrow.left")
-                            .renderingMode(.template)
-                            .foregroundColor(.white)
-                    })
+                    }
                 }
             }
             .navigationBarBackButtonHidden(true)
@@ -103,6 +99,30 @@ extension View {
                                message: Text("Select Option"),
                                buttons: [cameraButton, gallaryButton, cancelButton])
         }
+    }
+    
+    public func backButtonView(backButtonAction: @escaping() -> Void) -> some View {
+        Button(action: {
+            backButtonAction()
+        }, label: {
+            Image(systemName: "arrow.left")
+                .renderingMode(.template)
+                .foregroundColor(.white)
+        })
+    }
+    
+    public func backButtonViewForAuthentication(backButtonAction: @escaping() -> Void) -> some View {
+        VStack {
+            Button(action: {
+                backButtonAction()
+            }, label: {
+                Image(currentUserType == .user ? "imgBack" : "imgBackAstro")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+            })
+                .padding(.top, 15)
+        }
+        .padding(.trailing, UIScreen.main.bounds.width - 60)
     }
 }
 

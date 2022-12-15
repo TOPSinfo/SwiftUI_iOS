@@ -17,7 +17,9 @@ struct SignupView: View {
         ScrollView(showsIndicators: false) {
             Group {
                 VStack(spacing: 5) {
-                    backButtonView
+                    backButtonViewForAuthentication(backButtonAction: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    })
                     Spacer()
                     createAccountTitleView
                     
@@ -80,20 +82,6 @@ struct SignupView_Previews: PreviewProvider {
 
 // MARK: - COMPONENTS
 extension SignupView {
-    private var backButtonView: some View {
-        VStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Image(currentUserType == .user ? "imgBack" : "imgBackAstro")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-            })
-                .padding(.top, 15)
-        }
-        .padding(.trailing, UIScreen.main.bounds.width - 60)
-    }
-    
     // MARK: - Create Account Title View
     private var createAccountTitleView: some View {
         Text(strCreateAnAccount)

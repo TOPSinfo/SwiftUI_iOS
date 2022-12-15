@@ -149,17 +149,6 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 
 // MARK: - COMPONENTS
 extension BookingCalendarView {
-    // MARK: - Back Button View
-    private var backButtonView: some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }, label: {
-            Image(systemName: "arrow.left")
-                .renderingMode(.template)
-                .foregroundColor(.white)
-        })
-    }
-    
     // MARK: - Next Previous Month Action view
     private var nextPreviousMonthView: some View {
         HStack(alignment: .top) {
