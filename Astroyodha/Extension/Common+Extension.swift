@@ -55,6 +55,30 @@ extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         ModifiedContent(content: self, modifier: CornerRadiusStyle(radius: radius, corners: corners))
     }
+    
+    public func appBar(title: String, backButtonAction: @escaping() -> Void) -> some View {
+        Text("")
+            .navigationBarItems(leading: Text(title))
+            .font(appFont(type: .poppinsRegular, size: 18))
+            .foregroundColor(.white)
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
+            .navigationBarColor(backgroundColor: currentUserType.themeColor,
+                                titleColor: .white)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        backButtonAction()
+                    }, label: {
+                        Image(systemName: "arrow.left")
+                            .renderingMode(.template)
+                            .foregroundColor(.white)
+                    })
+                }
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
+    }
 }
 
 struct NavigationBarModifier: ViewModifier {
