@@ -108,38 +108,44 @@ struct OptionsFirstSectionView: View {
                     print("Tapped at \(index)")
                 } label: {
                     VStack(alignment: .leading, spacing: 0) {
-                        HStack {
-                            Image(option.image)
-                                .resizable()
-                                .renderingMode(.template)
-                                .foregroundColor(currentUserType.themeColor)
-                                .frame(width: 20, height: 20)
-                                .padding(.trailing, 10)
-                            
-                            Text(option.name)
-                                .font(appFont(type: .poppinsRegular, size: 16))
-                        }
-                        .padding(.vertical, 8)
-                        .background(
-                            NavigationLink(
-                                destination: TransactionHistoryView(),
-                                isActive: $showTransactionHistoryView) {EmptyView()}
-                                .frame(width: 0, height: 0)
-                                .hidden()
-                        )
-                        .background(
-                            NavigationLink(
-                                destination: HelpAndFaqView(),
-                                isActive: $showHelpAndFaqView) {EmptyView()}
-                                .frame(width: 0, height: 0)
-                                .hidden()
-                        )
+                        optionView(image: option.image, name: option.name)
+                            .padding(.vertical, 8)
+                            .background(
+                                NavigationLink(
+                                    destination: TransactionHistoryView(),
+                                    isActive: $showTransactionHistoryView) {EmptyView()}
+                                    .frame(width: 0, height: 0)
+                                    .hidden()
+                            )
+                            .background(
+                                NavigationLink(
+                                    destination: HelpAndFaqView(),
+                                    isActive: $showHelpAndFaqView) {EmptyView()}
+                                    .frame(width: 0, height: 0)
+                                    .hidden()
+                            )
                     }
                 }
                 .foregroundColor(.black)
             }
         }
         .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Option View
+public func optionView(image: String,
+                       name: String) -> some View {
+    HStack {
+        Image(image)
+            .resizable()
+            .renderingMode(.template)
+            .foregroundColor(currentUserType.themeColor)
+            .frame(width: 20, height: 20)
+            .padding(.trailing, 10)
+        
+        Text(name)
+            .font(appFont(type: .poppinsRegular, size: 16))
     }
 }
 
@@ -165,25 +171,15 @@ struct OptionsSecondSectionView: View {
                         print("Tapped at \(index)")
                     } label: {
                         VStack(alignment: .leading, spacing: 0) {
-                            HStack {
-                                Image(option.image)
-                                    .resizable()
-                                    .renderingMode(.template)
-                                    .foregroundColor(currentUserType.themeColor)
-                                    .frame(width: 20, height: 20)
-                                    .padding(.trailing, 10)
-                                
-                                Text(option.name)
-                                    .font(appFont(type: .poppinsRegular, size: 16))
-                            }
-                            .padding(.vertical, 8)
-                            .background(
-                                NavigationLink(
-                                    destination: InitialView(),
-                                    isActive: $showLogin) { EmptyView() }
-                                    .frame(width: 0, height: 0)
-                                    .hidden()
-                            )
+                            optionView(image: option.image, name: option.name)
+                                .padding(.vertical, 8)
+                                .background(
+                                    NavigationLink(
+                                        destination: InitialView(),
+                                        isActive: $showLogin) { EmptyView() }
+                                        .frame(width: 0, height: 0)
+                                        .hidden()
+                                )
                         }
                     }
                     .foregroundColor(.black)
@@ -240,17 +236,21 @@ struct OptionsSecondSectionView: View {
 
 // MARK: - COMPONENTS
 extension ProfileView {
+    private var placeHolderImageView: some View {
+        Image("imgProfile")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 120, height: 120)
+            .cornerRadius(60)
+    }
+    
     // Profile Photo View
     private var profilePhotoView: some View {
         VStack {
             WebImage(url: URL(string: viewModel.objLoggedInUser?.profileimage ?? ""))
                 .resizable()
                 .placeholder {
-                    Image("imgProfile")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 120, height: 120)
-                        .cornerRadius(60)
+                    placeHolderImageView
                 }
                 .indicator(.activity)
                 .transition(.fade(duration: 0.5))

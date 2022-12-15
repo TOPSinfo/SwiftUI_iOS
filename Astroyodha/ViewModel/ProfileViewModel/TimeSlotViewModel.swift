@@ -67,14 +67,10 @@ class TimeSlotViewModel: ObservableObject {
                     let randomDocumentID: String = Singletion.shared.randomAlphaNumericString(length: 20)
                     print(randomDocumentID)
                     
-                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: strStartDate,
-                                                                    startTime: strStartTime,
-                                                                    endDate: strEndDate,
-                                                                    endTime: strEndTime,
-                                                                    repeatDays: [],
-                                                                    timeslotid: randomDocumentID,
-                                                                    type: currentTimeSlot.rawValue,
-                                                                    uid: userUID)
+                    let objTimeSlot = appointmentObject(startDate: strStartDate,
+                                                        startTime: strStartTime, endDate: strEndDate,
+                                                        endTime: strEndTime, repeatDays: [], documentID: randomDocumentID,
+                                                        timeSlot: currentTimeSlot.rawValue, userUID: userUID)
                     
                     // ADD DATA INTO DATABASE
                     self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
@@ -98,14 +94,10 @@ class TimeSlotViewModel: ObservableObject {
                     let randomDocumentID: String = Singletion.shared.randomAlphaNumericString(length: 20)
                     print(randomDocumentID)
                     
-                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: "",
-                                                                    startTime: strStartTime,
-                                                                    endDate: "",
-                                                                    endTime: strEndTime,
-                                                                    repeatDays: arrName,
-                                                                    timeslotid: randomDocumentID,
-                                                                    type: currentTimeSlot.rawValue,
-                                                                    uid: userUID)
+                    let objTimeSlot = appointmentObject(startDate: "",
+                                                        startTime: strStartTime, endDate: "",
+                                                        endTime: strEndTime, repeatDays: arrName, documentID: randomDocumentID,
+                                                        timeSlot: currentTimeSlot.rawValue, userUID: userUID)
                     
                     self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
                         completion(isCompleted)
@@ -123,14 +115,10 @@ class TimeSlotViewModel: ObservableObject {
                     let randomDocumentID: String = Singletion.shared.randomAlphaNumericString(length: 20)
                     print(randomDocumentID)
                     
-                    let objTimeSlot = AppointmentTimeSlotModel.init(startDate: strStartDate,
-                                                                    startTime: strStartTime,
-                                                                    endDate: "",
-                                                                    endTime: strEndTime,
-                                                                    repeatDays: [],
-                                                                    timeslotid: randomDocumentID,
-                                                                    type: currentTimeSlot.rawValue,
-                                                                    uid: userUID)
+                    let objTimeSlot = appointmentObject(startDate: strStartDate,
+                                                        startTime: strStartTime, endDate: "",
+                                                        endTime: strEndTime, repeatDays: [], documentID: randomDocumentID,
+                                                        timeSlot: currentTimeSlot.rawValue, userUID: userUID)
                     
                     self.addTimeSlotData(objTimeSlot: objTimeSlot) { isCompleted in
                         completion(isCompleted)
@@ -138,6 +126,21 @@ class TimeSlotViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func appointmentObject(startDate: String, startTime: String,
+                           endDate: String, endTime: String, repeatDays: [String],
+                                 documentID: String, timeSlot: String,
+                                 userUID: String) -> AppointmentTimeSlotModel {
+        let objAppointmentTimeSlot = AppointmentTimeSlotModel.init(startDate: startDate,
+                                                                   startTime: startTime,
+                                                                   endDate: endDate,
+                                                                   endTime: endTime,
+                                                                   repeatDays: [],
+                                                                   timeslotid: documentID,
+                                                                   type: timeSlot,
+                                                                   uid: userUID)
+        return objAppointmentTimeSlot
     }
     
     // MARK: - Repeat Action Validation
