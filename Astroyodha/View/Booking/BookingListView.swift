@@ -161,17 +161,7 @@ struct BookingItemView: View {
                     HStack(alignment: .center, spacing: 10) {
                         Rectangle()
                             .fill(
-                                (objBooking.status == BookingStatus.approved.rawValue)
-                                ? AppColor.c27AAE1
-                                : (objBooking.status == BookingStatus.waiting.rawValue)
-                                ? AppColor.cF1A341
-                                : (objBooking.status == BookingStatus.rejected.rawValue)
-                                ? AppColor.cF06649
-                                : (objBooking.status == BookingStatus.deleted.rawValue)
-                                ? AppColor.cBC2626
-                                : (objBooking.status == BookingStatus.completed.rawValue)
-                                ? AppColor.c80C181
-                                : AppColor.c27AAE1)
+                                colorAsPerBookingStatus(objBooking: objBooking))
                             .frame(
                                 width: UIScreen.main.bounds.width * 0.25,
                                 height: UIScreen.main.bounds.width * 0.28,
@@ -201,17 +191,8 @@ struct BookingItemView: View {
                                 
                                 Text(objBooking.status)
                                     .font(appFont(type: .poppinsRegular, size: 13))
-                                    .foregroundColor((objBooking.status == BookingStatus.approved.rawValue)
-                                                     ? AppColor.c27AAE1
-                                                     : (objBooking.status == BookingStatus.waiting.rawValue)
-                                                     ? AppColor.cF1A341
-                                                     : (objBooking.status == BookingStatus.rejected.rawValue)
-                                                     ? AppColor.cF06649
-                                                     : (objBooking.status == BookingStatus.deleted.rawValue)
-                                                     ? AppColor.cBC2626
-                                                     : (objBooking.status == BookingStatus.completed.rawValue)
-                                                     ? AppColor.c80C181
-                                                     : AppColor.c27AAE1)
+                                    .foregroundColor(
+                                        colorAsPerBookingStatus(objBooking: objBooking))
                             }
                         }
                         .frame(maxWidth: .infinity,
@@ -224,6 +205,22 @@ struct BookingItemView: View {
                 }
                 .padding(.bottom, 10)
             }
+        }
+    }
+    
+    func colorAsPerBookingStatus(objBooking: BookingAstrologerModel) -> Color {
+        if objBooking.status == BookingStatus.approved.rawValue {
+            return AppColor.c27AAE1
+        } else if objBooking.status == BookingStatus.waiting.rawValue {
+            return AppColor.cF1A341
+        } else if objBooking.status == BookingStatus.rejected.rawValue {
+            return AppColor.cF06649
+        } else if objBooking.status == BookingStatus.deleted.rawValue {
+            return AppColor.cBC2626
+        } else if objBooking.status == BookingStatus.completed.rawValue {
+            return AppColor.c80C181
+        } else {
+            return AppColor.c27AAE1
         }
     }
 }

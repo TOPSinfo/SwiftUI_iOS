@@ -174,7 +174,7 @@ class EditProfileViewModel: ObservableObject {
     }
     
     // MARK: - User Validation
-    func isUserValidate() -> Bool {
+    func isValidateData() -> Bool {
         if strFullName.isEmpty {
             self.displayAlertWith(message: strEnterFullName)
             return false
@@ -188,36 +188,23 @@ class EditProfileViewModel: ObservableObject {
             self.displayAlertWith(message: strEnterValidEmail)
             return false
         } else {
-            return true
-        }
-    }
-    
-    // MARK: - Astrologer Validation
-    func isAstrologerValidate() -> Bool {
-        let strBirthDate = convert(date: datePickerBirthDate,
-                                       fromFormat: datePickerSelectedFormat,
-                                       toFormat: datePickerDateFormatWithoutDash)
-        
-        if strFullName.isEmpty {
-            self.displayAlertWith(message: strEnterFullName)
-            return false
-        } else if strPhoneNumber.isEmpty {
-            self.displayAlertWith(message: strEnterPhoneNumber)
-            return false
-        } else if strEmail.isEmpty {
-            self.displayAlertWith(message: strEnterEmail)
-            return false
-        } else if !Singletion.shared.isValidEmail(strEmail) {
-            self.displayAlertWith(message: strEnterValidEmail)
-            return false
-        } else if strBirthDate.isEmpty {
-            self.displayAlertWith(message: strSelectBirthDate)
-            return false
-        } else if strAbout.isEmpty {
-            self.displayAlertWith(message: strEnterAboutYou)
-            return false
-        } else {
-            return true
+            if (currentUserType == .user) {
+                return true
+            } else {
+                let strBirthDate = convert(date: datePickerBirthDate,
+                                               fromFormat: datePickerSelectedFormat,
+                                               toFormat: datePickerDateFormatWithoutDash)
+                
+                if strBirthDate.isEmpty {
+                    self.displayAlertWith(message: strSelectBirthDate)
+                    return false
+                } else if strAbout.isEmpty {
+                    self.displayAlertWith(message: strEnterAboutYou)
+                    return false
+                } else {
+                    return true
+                }
+            }
         }
     }
     

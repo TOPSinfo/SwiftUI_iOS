@@ -365,7 +365,7 @@ extension EditProfileView {
                                            fromFormat: datePickerSelectedFormat,
                                            toFormat: datePickertimeFormat)
             
-            if viewModel.isUserValidate() {
+            if viewModel.isValidateData() {
                 UIApplication.shared.dismissKeyboard()
                 var dictUser: [String: Any] = [:]
                 
@@ -714,7 +714,7 @@ extension EditProfileView {
                                        fromFormat: datePickerSelectedFormat,
                                        toFormat: datePickerDateFormatWithoutDash)
             
-            if viewModel.isAstrologerValidate() {
+            if viewModel.isValidateData() {
                 UIApplication.shared.dismissKeyboard()
                 
                 var dictAstrologer: [String: Any] = [:]
