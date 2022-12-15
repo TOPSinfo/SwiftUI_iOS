@@ -45,22 +45,10 @@ struct UserGridView: View {
                        height: geometry.size.height + 49,
                        alignment: .center)
             }
-            .navigationTitle(currentUserType == .user ? "Select Astrologers" : "Caht with Astrologer")
-            .navigationBarColor(backgroundColor: currentUserType.themeColor,
-                                titleColor: .white)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    },
-                           label: {
-                        Image("back")
-                    })
-                }
-            }
+            appBar(title: (currentUserType == .user ? "Select Astrologers" : "Caht with Astrologer"),
+                   backButtonAction: {
+                presentationMode.wrappedValue.dismiss()
+            })
         }
         .onAppear(perform: {
             if currentUserType == .user {

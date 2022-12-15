@@ -19,20 +19,10 @@ struct TransactionHistoryView: View {
             Text("No Data Found")
                 .font(appFont(type: .poppinsRegular, size: 17))
                 .foregroundColor(AppColor.c242424)
-                .navigationBarItems(leading: Text("Transaction History"))
-                .font(appFont(type: .poppinsRegular, size: 18))
-                .foregroundColor(.white)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .navigationBarColor(backgroundColor: currentUserType.themeColor,
-                                    titleColor: .white)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        backButtonView
-                    }
-                }
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitleDisplayMode(.inline)
+            
+            appBar(title: "Transaction History") {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true
@@ -44,18 +34,5 @@ struct TransactionHistoryView: View {
 struct TransactionHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         TransactionHistoryView()
-    }
-}
-
-// MARK: - COMPONENTS
-extension TransactionHistoryView {
-    private var backButtonView: some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }, label: {
-            Image(systemName: "arrow.left")
-                .renderingMode(.template)
-                .foregroundColor(.white)
-        })
     }
 }
