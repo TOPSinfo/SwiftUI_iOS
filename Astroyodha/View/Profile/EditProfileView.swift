@@ -47,7 +47,7 @@ struct EditProfileView: View {
                         } else {
                             VStack(alignment: .leading, spacing: 0) {
                                 VStack(alignment: .leading, spacing: 20) {
-                                    Text("Basic Details")
+                                    Text(strBasicDetail)
                                         .font(appFont(type: .poppinsMedium, size: 20))
                                         .foregroundColor(AppColor.c242424)
                                         .padding(.horizontal)
@@ -58,7 +58,7 @@ struct EditProfileView: View {
                                     dateOfBirthTextView
                                 }
                                 
-                                Text("Other Details")
+                                Text(strOtherDetail)
                                     .font(appFont(type: .poppinsMedium, size: 20))
                                     .foregroundColor(AppColor.c242424)
                                     .padding(.horizontal)
@@ -205,7 +205,7 @@ extension EditProfileView {
                 .colorMultiply(viewModel.isFullNameChange ? currentUserType.themeColor : AppColor.c999999)
                 .padding(.trailing, 5)
             
-            TextField("Full Name", text: $viewModel.strFullName, onEditingChanged: { (editingChanged) in
+            TextField(strFullName, text: $viewModel.strFullName, onEditingChanged: { (editingChanged) in
                 viewModel.isFullNameChanging(editingChanged: editingChanged)
             })
                 .font(appFont(type: .poppinsRegular, size: 17))
@@ -229,7 +229,7 @@ extension EditProfileView {
                 .colorMultiply(AppColor.c999999)
                 .padding(.trailing, 10)
             
-            TextField("Mobile Number", text: $viewModel.strPhoneNumber)
+            TextField(strMobileNumber, text: $viewModel.strPhoneNumber)
                 .allowsHitTesting(false)
                 .font(appFont(type: .poppinsRegular, size: 17))
                 .frame(maxWidth: .infinity)
@@ -254,7 +254,7 @@ extension EditProfileView {
                 .colorMultiply(viewModel.isEmailChange ? currentUserType.themeColor : AppColor.c999999)
                 .padding(.trailing, 10)
             
-            TextField("Email Address", text: $viewModel.strEmail, onEditingChanged: { (editingChanged) in
+            TextField(strEmailAddress, text: $viewModel.strEmail, onEditingChanged: { (editingChanged) in
                 if editingChanged {
                     viewModel.isEmailChange = true
                 } else {
@@ -338,7 +338,7 @@ extension EditProfileView {
                 .colorMultiply(viewModel.isBirthPlaceChange ? currentUserType.themeColor : AppColor.c999999)
                 .padding(.trailing, 5)
             
-            TextField("Place of Birth", text: $viewModel.strBirthPlace, onEditingChanged: { (editingChanged) in
+            TextField(strPlaceOfBirth, text: $viewModel.strBirthPlace, onEditingChanged: { (editingChanged) in
                 if editingChanged {
                     viewModel.isBirthPlaceChange = true
                 } else {
@@ -599,7 +599,7 @@ extension EditProfileView {
                     Button {
                         viewModel.isLanguageVisible.toggle()
                     } label: {
-                        Text("Cancel")
+                        Text(strCancel)
                             .font(appFont(type: .poppinsSemiBold, size: 17))
                             .padding(.vertical, 8)
                             .padding(.horizontal, 24)
@@ -668,7 +668,7 @@ extension EditProfileView {
                     Button {
                         viewModel.isAstrologyVisible.toggle()
                     } label: {
-                        Text("Cancel")
+                        Text(strCancel)
                             .font(appFont(type: .poppinsSemiBold, size: 17))
                             .padding(.vertical, 8)
                             .padding(.horizontal, 24)
@@ -767,7 +767,7 @@ extension EditProfileView {
     // MARK: - Appointment Title View
     private var appointmentTitleView: some View {
         HStack {
-            Text("Appointment Slot")
+            Text(strAppointmentSlot)
                 .font(appFont(type: .poppinsMedium, size: 20))
                 .foregroundColor(AppColor.c242424)
                 .padding(.horizontal)
@@ -792,7 +792,7 @@ extension EditProfileView {
     
     // MARK: - No TimeSlot View
     private var noAppointmentSlotView: some View {
-        Text("Time slot not added.")
+        Text(strNoTimeSlot)
             .font(appFont(type: .poppinsMedium, size: 18))
             .foregroundColor(AppColor.c999999)
     }

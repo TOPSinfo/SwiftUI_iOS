@@ -93,11 +93,11 @@ struct OptionsFirstSectionView: View {
                 let option = arrOptions[index]
                 
                 Button {
-                    if arrOptions[index].name == "Transaction History" {
+                    if arrOptions[index].name == strTransactionHistory {
                         showTransactionHistoryView = true
-                    } else if arrOptions[index].name == "Help / FAQ" {
+                    } else if arrOptions[index].name == strHelpFaq {
                         showHelpAndFaqView = true
-                    } else if arrOptions[index].name == "Rate app" {
+                    } else if arrOptions[index].name == strRateApp {
                         guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
                             print("UNABLE TO GET CURRENT SCENE")
                             return
@@ -163,9 +163,9 @@ struct OptionsSecondSectionView: View {
                 
                 VStack {
                     Button {
-                        if arrOptions[index].name == "Share app" {
+                        if arrOptions[index].name == strShareApp {
                             Singletion.shared.showActivityPopup()
-                        } else if arrOptions[index].name == "Logout" {
+                        } else if arrOptions[index].name == strLogout {
                             isAlertShow.toggle()
                         }
                         print("Tapped at \(index)")
@@ -293,7 +293,7 @@ extension ProfileView {
             VStack(spacing: 4) {
                 Text(String(format: "%.1f", viewModel.objLoggedInUser?.rating ?? 0.0))
                     .font(appFont(type: .poppinsRegular, size: 20))
-                Text("Rating")
+                Text(strRating)
                     .font(.subheadline)
                     .foregroundColor(AppColor.c999999)
             }
@@ -305,7 +305,7 @@ extension ProfileView {
             VStack(spacing: 5) {
                 Text("0")
                     .font(.title3)
-                Text("Consults")
+                Text(strConsults)
                     .font(.subheadline)
                     .foregroundColor(AppColor.c999999)
             }
@@ -322,7 +322,7 @@ extension ProfileView {
                 .renderingMode(.template)
                 .foregroundColor(currentUserType.themeColor)
                 .frame(width: 16, height: 16)
-            Text("Date of Birth")
+            Text(strDateOfBirth)
                 .font(appFont(type: .poppinsRegular, size: 14))
                 .foregroundColor(AppColor.c999999)
             Text(viewModel.objLoggedInUser?.birthdate ?? "-")

@@ -23,7 +23,7 @@ struct HelpAndFaqView: View {
                 .listSectionSeparatorTint(.red)
                 .background(.white)
             
-            appBar(title: "Help / FAQ") {
+            appBar(title: strHelpFaq) {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }

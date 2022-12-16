@@ -64,7 +64,7 @@ extension BookingListView {
     // Navigaiton Bar
     private var navigationBarView: some View {
         Text("")
-            .navigationBarItems(leading: Text("My Bookings"))
+            .navigationBarItems(leading: Text(strMyBooking))
             .font(appFont(type: .poppinsBold, size: 22))
             .foregroundColor(AppColor.c242424)
             .frame(height: 200)
@@ -113,25 +113,19 @@ extension BookingListView {
                     
                     if tab.title == BookingFilter.upcoming.rawValue.uppercased() {
                         if bookingViewModel.arrUpcomingBookings.isEmpty {
-                            Text("No Data Found")
-                                .font(appFont(type: .poppinsRegular, size: 17))
-                                .foregroundColor(AppColor.c242424)
+                            noDataFoundView
                         } else {
                             BookingItemView(arrBookings: $bookingViewModel.arrUpcomingBookings)
                         }
                     } else if tab.title == BookingFilter.ongoing.rawValue.uppercased() {
                         if bookingViewModel.arrOnGoingBookings.isEmpty {
-                            Text("No Data Found")
-                                .font(appFont(type: .poppinsRegular, size: 17))
-                                .foregroundColor(AppColor.c242424)
+                            noDataFoundView
                         } else {
                             BookingItemView(arrBookings: $bookingViewModel.arrOnGoingBookings)
                         }
                     } else if tab.title == BookingFilter.past.rawValue.uppercased() {
                         if bookingViewModel.arrPastBookings.isEmpty {
-                            Text("No Data Found")
-                                .font(appFont(type: .poppinsRegular, size: 17))
-                                .foregroundColor(AppColor.c242424)
+                            noDataFoundView
                         } else {
                             BookingItemView(arrBookings: $bookingViewModel.arrPastBookings)
                         }
@@ -141,6 +135,13 @@ extension BookingListView {
             .tabViewStyle(.page(indexDisplayMode: .never))
             .edgesIgnoringSafeArea(.all)
         }
+    }
+    
+    // No Data Found View
+    private var noDataFoundView: some View {
+        Text(strNoDataFound)
+            .font(appFont(type: .poppinsRegular, size: 17))
+            .foregroundColor(AppColor.c242424)
     }
 }
 
@@ -185,7 +186,7 @@ struct BookingItemView: View {
                                 .foregroundColor(AppColor.c999999)
                             
                             HStack {
-                                Text("Status:")
+                                Text(strStatus)
                                     .font(appFont(type: .poppinsRegular, size: 13))
                                     .foregroundColor(AppColor.c999999)
                                 

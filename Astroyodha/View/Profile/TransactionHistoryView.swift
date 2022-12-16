@@ -16,11 +16,11 @@ struct TransactionHistoryView: View {
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
-            Text("No Data Found")
+            Text(strNoDataFound)
                 .font(appFont(type: .poppinsRegular, size: 17))
                 .foregroundColor(AppColor.c242424)
             
-            appBar(title: "Transaction History") {
+            appBar(title: strTransactionHistory) {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }

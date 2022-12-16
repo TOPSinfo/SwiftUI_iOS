@@ -82,7 +82,7 @@ class BookingAstrologerViewModel: ObservableObject {
             displayAlertWith(message: strUploadPhoto)
             return false
         } else if pickedImageKundali.isEqual(UIImage(named: "imgUploadImage")) {
-            displayAlertWith(message: strUploadKundali)
+            displayAlertWith(message: strUploadKundaliAlert)
             return false
         } else if strPlaceOfBirth.isEmpty {
             displayAlertWith(message: strAddBirthPlace)

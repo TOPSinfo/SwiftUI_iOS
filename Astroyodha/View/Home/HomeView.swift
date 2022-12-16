@@ -93,7 +93,7 @@ extension HomeView {
                 Spacer()
             }.padding(.top, 10)
             
-            Text("Welcome!!")
+            Text(strWelcome)
                 .font(appFont(type: .poppinsBold, size: 26))
                 .foregroundColor(AppColor.c242424)
             
@@ -117,7 +117,7 @@ extension HomeView {
                 },
                                label: {
                     if (astrologerGridVMs ?? []).count > 4 {
-                        Text("View All")
+                        Text(strViewAll)
                             .font(appFont(type: .poppinsRegular, size: 12))
                             .foregroundColor(AppColor.c242424)
                     }
@@ -170,7 +170,7 @@ extension HomeView {
                             vm.isBookAppointmentTapped = true
                         },
                                label: {
-                            Text("Book Appointment")
+                            Text(strBookAppointment)
                                 .font(appFont(type: .poppinsRegular, size: 9))
                                 .foregroundColor(bannerVM.backColor)
                                 .frame(width: 106.6, height: 30)
@@ -206,7 +206,7 @@ extension HomeView {
     // MARK: - Upcoming Content View
     private func userHomeUpcomingView(vms: [HomeUserUpcomingItemVM]) -> some View {
         VStack(alignment: .leading, spacing: 13.3) {
-            Text("Upcoming")
+            Text(strUpcoming)
                 .font(appFont(type: .poppinsMedium, size: 18))
                 .foregroundColor(AppColor.c242424)
                 .multilineTextAlignment(.leading)
@@ -314,7 +314,7 @@ struct AstrologerGridItemView: View {
             // Book button
             Button(action: bookNowTap,
                    label: {
-                Text("Book Now")
+                Text(strBookNow)
                     .font(appFont(type: .poppinsRegular, size: 12))
                     .foregroundColor(AppColor.cF06649)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

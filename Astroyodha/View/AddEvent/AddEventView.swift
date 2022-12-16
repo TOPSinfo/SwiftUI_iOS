@@ -47,7 +47,7 @@ struct AddEventView: View {
                            title: viewModel.strAlertMessage)
             }
             Text("")
-                .navigationBarItems(leading: Text("Add Event"))
+                .navigationBarItems(leading: Text(strAddEvent))
                 .font(appFont(type: .poppinsRegular, size: 18))
                 .foregroundColor(.white)
                 .frame(height: 50)
@@ -233,7 +233,7 @@ extension AddEventView {
     // MARK: - Person Detail Title View
     private var personDetailTitleView: some View {
         HStack {
-            Text("Person Details")
+            Text(strPersonDetail)
                 .bold()
                 .font(appFont(type: .poppinsRegular, size: 18))
         }
@@ -254,7 +254,7 @@ extension AddEventView {
             Button {
                 viewModel.changePhotoSelection(isKundaliPhoto: false)
             } label: {
-                Text("Upload your photo")
+                Text(strUploadYourPhoto)
             }
             .foregroundColor(AppColor.cF06649)
             Spacer()
@@ -271,7 +271,7 @@ extension AddEventView {
             Image(systemName: "person")
                 .foregroundColor(.gray)
                 .padding(10)
-            TextField("Full Name", text: $viewModel.strFullName)
+            TextField(strFullName, text: $viewModel.strFullName)
         }
         .frame(height: 50)
         .background(RoundedRectangle(cornerRadius: 1)
@@ -320,7 +320,7 @@ extension AddEventView {
     private var personBirthPlaceView: some View {
         HStack {
             Image(systemName: "mappin.and.ellipse").foregroundColor(.gray).padding(10)
-            TextField("Place Of Birth", text: $viewModel.strPlaceOfBirth)
+            TextField(strPlaceOfBirth, text: $viewModel.strPlaceOfBirth)
         }
         .frame(height: 50)
         .background(RoundedRectangle(cornerRadius: 1)
@@ -339,7 +339,7 @@ extension AddEventView {
             Button {
                 viewModel.changePhotoSelection(isKundaliPhoto: true)
             } label: {
-                Text("Upload Kundali")
+                Text(strUploadKundali)
             }
             .foregroundColor(AppColor.cF06649)
             Spacer()
@@ -356,7 +356,7 @@ extension AddEventView {
     // MARK: - Payment Mode Title View
     private var paymentModeDetailTitleView: some View {
         HStack {
-            Text("Payment Mode Details")
+            Text(strPaymentModelDetail)
                 .bold()
                 .font(appFont(type: .poppinsRegular, size: 18))
         }
