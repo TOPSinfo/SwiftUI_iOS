@@ -245,7 +245,7 @@ extension SignupView {
                 if signUpViewModel.isValidate() {
                     Singletion.shared.showDefaultProgress()
                     UIApplication.shared.dismissKeyboard()
-                    signUpViewModel.fireBaseSendOTPCode()
+                    signUpViewModel.fireBaseSendOTPCode(isFromSignup: true)
                 } else {
                     signUpViewModel.isUserSignUp = false
                     signUpViewModel.showToast = true

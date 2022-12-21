@@ -55,7 +55,7 @@ extension FirebaseService {
 
 // MARK: - Check For Mobile Number Exist Or Not While SignIn/SignUp
 extension FirebaseService {
-    func checkMobileNumberIsExistOrNot(strPhoneNumber: String,
+    func checkMobileNumberIsExistOrNot(strPhoneNumber: String, isFromSignup: Bool,
                                        completion: @escaping (_ isCompleted: Bool) -> Void) {
         // Variable to Disable the Firebase verification
         Auth.auth().settings?.isAppVerificationDisabledForTesting = isTestingModeOn
@@ -69,7 +69,16 @@ extension FirebaseService {
             } else {
                 for document in (snapshot?.documents)! {
                     if document.data()["phone"] != nil {
-                        completion(true)
+                        if (isFromSignup) {
+                            completion(true)
+                        } else {
+                            let strUserType: String = document.data()["usertype"] as? String ?? ""
+                            if currentUserType.rawValue == strUserType {
+                                completion(true)
+                            } else {
+                                completion(false)
+                            }
+                        }
                     }
                 }
             }

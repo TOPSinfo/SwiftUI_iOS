@@ -27,10 +27,10 @@ class SignupViewModel: ObservableObject {
     var firebase: FirebaseService = FirebaseService()
     
     // Check wether the given Mobile number is exist or not and then do further steps
-    func fireBaseSendOTPCode() {
+    func fireBaseSendOTPCode(isFromSignup: Bool) {
         let phone = selectedCountryCode + strPhoneNumber
         // check email already exist or not
-        firebase.checkMobileNumberIsExistOrNot(strPhoneNumber: phone, completion: { isCompleted in
+        firebase.checkMobileNumberIsExistOrNot(strPhoneNumber: phone, isFromSignup: isFromSignup, completion: { isCompleted in
             if !isCompleted {
                 // send otp for new user
                 self.firebase.loginUser(strPhoneNumber: phone) { isSuccess in

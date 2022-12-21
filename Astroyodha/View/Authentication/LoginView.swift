@@ -133,7 +133,7 @@ extension LoginView {
                 if loginViewModel.isValidate() {
                     Singletion.shared.showDefaultProgress()
                     UIApplication.shared.dismissKeyboard()
-                    loginViewModel.fireBaseSendOTPCode()
+                    loginViewModel.fireBaseSendOTPCode(isFromSignup: false)
                 }
             }, label: {
                 commonTitleView(title: strLogin)
