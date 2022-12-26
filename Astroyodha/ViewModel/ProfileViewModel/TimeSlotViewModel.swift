@@ -139,7 +139,7 @@ class TimeSlotViewModel: ObservableObject {
                                                                    startTime: startTime,
                                                                    endDate: endDate,
                                                                    endTime: endTime,
-                                                                   repeatDays: [],
+                                                                   repeatDays: repeatDays,
                                                                    timeslotid: documentID,
                                                                    type: timeSlot,
                                                                    uid: userUID)
